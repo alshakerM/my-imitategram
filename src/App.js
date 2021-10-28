@@ -31,18 +31,17 @@ function App() {
                 </div>
                 <MoreHoriz className="more-icon" />
               </div>
-              <CardMedia
-                component="img"
-                height="614"
-                width="614"
-                image={datum.post_image}
-                alt="Paella dish"
-              />
+              <div>
+                <img className="post-img" src={datum.post_image} alt="" />
+              </div>
 
               <CardActions disableSpacing>
                 <IconButton aria-label="add to favorites">
-                  {datum.is_post_liked ? <FavoriteIcon style={{color: "red"}}/> : <FavoriteIcon />}
-                 
+                  {datum.is_post_liked ? (
+                    <FavoriteIcon style={{ color: "red" }} />
+                  ) : (
+                    <FavoriteIcon />
+                  )}
                 </IconButton>
                 <IconButton aria-label="share">
                   <ShareIcon />
