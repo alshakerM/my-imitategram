@@ -14,11 +14,25 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
+import { Icons } from "./Icons/Icons";
 import data from "./Data/MOCK_DATA.json";
 
 function App() {
   return (
     <div className="content-section">
+      <nav className="nav-bar">
+        <div className="nav-container">
+          <div className="nav-content">
+            <div className="nav-title">Instagram</div>
+            <div className="input-section">
+              <input placeholder="Search" type="text" className="nav-input" />
+            </div>
+            <div className="nav-icons">
+              <Icons />
+            </div>
+          </div>
+        </div>
+      </nav>
       {data.map((datum) => (
         <div className="content">
           <div className="card-container">
