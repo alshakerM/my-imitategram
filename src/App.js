@@ -1,18 +1,23 @@
-import { Post } from "./Post/Post";
-import React from "react";
-import "./App.css";
+import { HomePage } from "./HomePage";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { Comments } from "./Comments/Comments";
 import data from "./Data/MOCK_DATA.json";
-import { NavBar } from "./NavBar/NavBar";
 
 function App() {
   return (
-    <div className="content-section">
-      <NavBar />
-      {data.map((datum) => (
-        <Post datum={datum} />
-      ))}
-    </div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/comments">
+          <Comments data={data} />
+          </Route>
+        <Route path="/">
+          <HomePage />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+    </BrowserRouter>
   );
 }
+
 
 export default App;
