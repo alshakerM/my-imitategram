@@ -1,5 +1,5 @@
 import { Icons } from "../Icons/Icons";
-
+import "./NavBar.css";
 
 export function NavBar() {
   return (
