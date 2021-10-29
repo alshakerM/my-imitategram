@@ -1,5 +1,6 @@
 
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import "./Icons.css";
 
 export function Icons() {
   return (

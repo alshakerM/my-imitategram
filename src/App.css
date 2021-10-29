@@ -29,10 +29,6 @@
   border-radius: 3px;
 }
 
-.icon {
-  padding: 0 10px;
-}
-
 .nav-title {
   font-family: "Festive", cursive !important;
   font-weight: 800;
@@ -44,47 +40,4 @@
   display: flex;
   justify-content: center;
 }
-#card {
-  margin-bottom: 50px;
-  max-width: 614px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #fff;
-}
-.card-header {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-}
-.user-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  margin: 7px;
-}
-.user-name {
-  font-size: 1rem;
-  margin: 0;
-  font-weight: 600;
-}
-.user-info {
-  margin-left: 8px;
-  flex: 1;
-  align-self: baseline;
-}
-.user-location {
-  margin: 0;
-  font-size: 12px;
-  color: rgb(38, 38, 38);
-}
 
-.post-img {
-  height: 614px;
-  width: 614px;
-}
-.post-caption-section {
-  padding: 1rem;
-}
-.like-count {
-  margin-bottom: 2%;
-}
