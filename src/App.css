@@ -41,6 +41,10 @@
 .icon {
   padding: 0 10px;
 }
+.share-like-icons {
+  display: inline-flex;
+  
+}
 .nav-title {
   font-family: "Festive", cursive !important;
   width: 250px;
@@ -90,4 +94,10 @@
 .post-img {
   height: 614px;
   width: 614px;
+}
+.post-caption-section {
+  padding: 1rem;
+}
+.like-count {
+  margin-bottom: 2%;
 }
