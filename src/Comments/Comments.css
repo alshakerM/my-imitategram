@@ -89,8 +89,7 @@
 }
 .comment-section-comments {
   border-bottom: 1px solid #dbdbdb;
-  max-height: 320px;
-
+  max-height: 500px;
   overflow: auto;
 }
 .comment-section-comments::-webkit-scrollbar {
@@ -123,7 +122,9 @@
   margin: 0 15px;
   margin-bottom: 20%;
 }
-
+.emoji {
+  padding: 0 5px;
+}
 .comment-input-section {
   display: flex;
   width: 100%;
