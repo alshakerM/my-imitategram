@@ -58,3 +58,10 @@
 .comment-text {
     margin-left: 5px;
 }
+.view-comments-button {
+  border: none;
+  background: none;
+  opacity: 0.5;
+  font-size: 15px;
+  cursor: pointer;
+}

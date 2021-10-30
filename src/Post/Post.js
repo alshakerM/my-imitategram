@@ -47,7 +47,7 @@ export function Post({ datum, backgroundColor, comments, setBackgroundColor }) {
               <p className="comment-text">{datum.comments[2].comment}</p>
             </div>
             <div>
-              <button
+              <button className="view-comments-button"
                 onClick={() => {
                   setTrigger(true);
                   setBackgroundColor(true);
