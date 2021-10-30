@@ -30,7 +30,6 @@
 .user-info {
   margin-left: 8px;
   flex: 1;
-
 }
 .user-location {
   margin: 0;
@@ -50,13 +49,13 @@
   font-weight: 800;
 }
 .comment-section {
-    display: flex;
+  display: flex;
 }
 .comment-user {
-    font-weight: bold;
+  font-weight: bold;
 }
 .comment-text {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 .view-comments-button {
   border: none;
