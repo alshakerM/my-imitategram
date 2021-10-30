@@ -1,10 +1,10 @@
 import { Icons } from "../Icons/Icons";
 import "./NavBar.css";
 
-export function NavBar() {
+export function NavBar({backgroundColor}) {
   return (
     <nav className="nav-bar">
-      <div className="nav-container">
+      <div  style={backgroundColor ? {background: "none", border: "none"} : {backgroundColor: "#fff"}}  className="nav-container">
         <div className="nav-content">
           <div className="nav-title">Instagram</div>
           <div className="input-section">

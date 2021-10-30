@@ -4,7 +4,7 @@
   left: 200px;
   width: 80%;
   height: 90%;
-  display: flex;
+  display: flex ;
 }
 .user-info2 {
   flex: 1;
@@ -72,6 +72,9 @@
   position: absolute;
   top: -40px;
   right: -200px;
+  background: none;
+  border: none;
+ 
 }
 .liked-user-avatar {
   width: 24px;

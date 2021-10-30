@@ -7,12 +7,12 @@ import React from "react";
 
 import "./Post.css";
 
-export function Post({ datum, comments }) {
+export function Post({ datum, backgroundColor, comments, setBackgroundColor }) {
   const [trigger, setTrigger] = React.useState(false);
   return (
     <div className="content">
       <div className="card-container">
-        <div id="card">
+        <div style={backgroundColor ? {background: "none", border: "none"} : {backgroundColor: "#fff"}} id="card">
           <div className="card-header">
             <img src={datum.user_thumbnail} className="user-avatar" alt="" />
             <div className="user-info">
@@ -47,13 +47,19 @@ export function Post({ datum, comments }) {
               <p className="comment-text">{datum.comments[2].comment}</p>
             </div>
             <div>
-              <button onClick={() => setTrigger(true)}>
+              <button
+                onClick={() => {
+                  setTrigger(true);
+                  setBackgroundColor(true);
+                }}
+              >
                 View all comments{" "}
               </button>
               <Comments
                 datum={datum}
                 trigger={trigger}
                 setTrigger={setTrigger}
+                setBackgroundColor={setBackgroundColor}
               />
             </div>
             {console.log(comments[0].comment)}
