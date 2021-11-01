@@ -10,30 +10,46 @@
   border-radius: 5px;
   background-color: #fff;
 }
-.post-container-expanded {
+.post-overlay {
+  top: 0;
+  position: fixed;
   display: flex;
-  background-color: red;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
 }
-.img-header-section {
-  display: inline-flex;
+
+.post-img-extended {
+  height: 600px;
 }
-.header-comment {
+.contents-section {
   display: flex;
+  flex-direction: column;
+}
+.extended-post-container {
+  display: flex;
+  border: 1px solid #dbdbdb;
+  background-color: white;
+  height: 600px;
+  width: 1200px;
 }
 .extended-comment-section {
-  
-}
-.card-header {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  flex: 1;
-}
-.card-header-extended {
-  width: 600px;
-  height: 60px;
-  display: flex;
   border-bottom: 1px solid #dbdbdb;
+  flex: 1;
+  overflow: auto;
+  padding: 0 5px;
+}
+
+.post-header-extended {
+  display: flex;
+  width: 600px;
+  border-bottom: 1px solid #dbdbdb;
+}
+.post-caption-extended {
+  font-weight: bold;
+  padding: 10px 10px;
 }
 
 .user-avatar {
@@ -56,25 +72,22 @@
   color: rgb(38, 38, 38);
 }
 
-
 .post-img {
   width: 600px;
   height: 500px;
 }
-.post-caption-section {
-  padding: 1rem;
+.post-caption-and-like-section {
+  padding: 10px;
 }
-.like-count {
-  margin-bottom: 2%;
+.likes-count {
+  padding: 15px;
   margin: 0;
 }
 
 .comment-user {
-  font-weight: bold;
+  padding: 5px;
 }
-.comment-text {
-  margin-left: 5px;
-}
+
 .view-comments-button {
   border: none;
   background: none;
@@ -88,4 +101,24 @@
 }
 .telegram-icon {
   padding-left: 20px;
+}
+.comment-input-section {
+  border-top: 1px solid #dbdbdb;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.comment-input {
+  width: 100%;
+  border: none;
+  background: none;
+  padding-left: 20px;
+}
+.post-button {
+  background: none;
+  border: none;
+  color: #0095f6;
 }

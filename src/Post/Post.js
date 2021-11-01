@@ -3,13 +3,6 @@ import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import React from "react";
 import "./Post.css";
 
-function PostImage({ post_image }) {
-  return (
-    <div className="img-container">
-      <img className="post-img" src={post_image} alt="" />
-    </div>
-  );
-}
 function PostActions(is_post_liked) {
   return (
     <div className="post-actions">
@@ -29,27 +22,7 @@ function PostActions(is_post_liked) {
     </div>
   );
 }
-function ExpandedPostComment({ datum }) {
-  return (
-    <div className="extended-comment-section">
-      {datum.comments.map((comment) => (
-        <div className="extended-comments">
-          <p className="comment-user">{comment.user_name}</p>
-          <p className="comment-text">{comment.comment}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
-function PostComment({ comments }) {
-  return (
-    <div className="comment-section">
-      <p className="comment-info">
-        <strong>{comments.user_name}</strong> {comments.comment}
-      </p>
-    </div>
-  );
-}
+
 function PostInput() {
   return (
     <div className="comment-input-section">
@@ -72,11 +45,11 @@ function PostInput() {
   );
 }
 export function Post({ datum }) {
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [isExtended, setIsExtended] = React.useState(false);
 
   function PostHeader({ user_name, user_thumbnail, city }) {
     return (
-      <div className={isExpanded ? "card-header-extended" : "card-header"}>
+      <div className={isExtended ? "post-header-extended" : "post-header"}>
         <img src={user_thumbnail} className="user-avatar" alt="" />
         <div className="user-info">
           <h2 className="user-name">{user_name}</h2>
@@ -93,9 +66,11 @@ export function Post({ datum }) {
       user_name={datum.user_name}
       user_thumbnail={datum.user_thumbnail}
     />,
-    <PostImage post_image={datum.post_image} />,
+    <div className="img-container">
+      <img className="post-img" src={datum.post_image} alt="" />
+    </div>,
     <PostActions is_post_liked={datum.is_post_liked} />,
-    <div className="post-caption-section">
+    <div className="post-caption-and-like-section">
       <p className="like-count">
         Liked by <strong>{datum.user_name}</strong> and{" "}
         <strong>{datum.likes_count} others </strong>
@@ -104,35 +79,69 @@ export function Post({ datum }) {
       <button
         className="view-comments-button"
         onClick={() => {
-          setIsExpanded(true);
+          setIsExtended(true);
         }}
       >
         View all comments{" "}
       </button>
-      <PostComment comments={datum.comments[0]} />
-      <PostComment comments={datum.comments[1]} />
+      <div className="comment-section">
+        <p className="comment-info">
+          <strong>{datum.comments[0].user_name}</strong>{" "}
+          {datum.comments[0].comment}
+        </p>
+        <p className="comment-info">
+          <strong>{datum.comments[1].user_name}</strong>{" "}
+          {datum.comments[1].comment}
+        </p>
+      </div>{" "}
       <PostInput />
     </div>,
   ];
   const expandedContent = [
-    <div className="img-header-section">
-      <PostImage post_image={datum.post_image} />
-      <PostHeader
-        city={datum.city}
-        user_name={datum.user_name}
-        user_thumbnail={datum.user_thumbnail}
-      />
-      ,
-      <ExpandedPostComment datum={datum} />,
+    <div className="extended-post-container">
+      <img className="post-img-extended" src={datum.post_image} alt="" />
+      <div className="contents-section">
+        <PostHeader
+          city={datum.city}
+          user_name={datum.user_name}
+          user_thumbnail={datum.user_thumbnail}
+        />
+        <p>
+          <span className="post-caption-extended">{datum.user_name}</span>{" "}
+          {datum.post_caption}
+        </p>
+        <div className="extended-comment-section">
+          {datum.comments.map((comment) => (
+            <div className="extended-comment">
+              <p className="comment-user">
+                <strong>{comment.user_name}</strong> {comment.comment}
+              </p>
+            </div>
+          ))}
+        </div>
+        <PostActions is_post_liked={datum.is_post_liked} />
+        <p className="likes-count">
+          Liked by <strong>{datum.user_name}</strong> and{" "}
+          <strong>{datum.likes_count} others </strong>
+        </p>
+        <PostInput />
+      </div>
     </div>,
   ];
 
   return (
-    <div className={isExpanded ? "content" : "content"}>
-      <div
-        className={isExpanded ? "post-container-expanded" : "post-container"}
-      >
-        {isExpanded ? [expandedContent] : [content]}
+    <div
+      onClick={(event) =>
+        event.target === event.currentTarget && setIsExtended(false)
+      }
+      className={isExtended ? "post-overlay" : ""}
+    >
+      <div className={isExtended ? "extended-content" : "content"}>
+        {isExtended ? (
+          expandedContent
+        ) : (
+          <div className="post-container">{[content]}</div>
+        )}
       </div>
     </div>
   );

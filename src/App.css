@@ -1,8 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Roboto:ital@1&family=Zen+Kurenaido&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Festive&family=Zen+Kurenaido&display=swap");
 .content-section {
   background-color: #fafafa;
-  font-family: "Zen Kurenaido", sans-serif;
+  font-family: 'Roboto', sans-serif;
   
 }
 body{
