@@ -1,56 +1,74 @@
-.card-container {
+.content {
   margin-top: 40px;
   display: flex;
   justify-content: center;
 }
-
-#card {
+.post-container {
   margin-bottom: 50px;
-  max-width: 614px;
+  max-width: 600px;
   border: 1px solid #ddd;
   border-radius: 5px;
   background-color: #fff;
+}
+.post-container-expanded {
+  display: flex;
+  background-color: red;
+}
+.img-header-section {
+  display: inline-flex;
+}
+.header-comment {
+  display: flex;
+}
+.extended-comment-section {
+  
 }
 .card-header {
   display: flex;
   align-items: center;
   padding: 10px;
+  flex: 1;
 }
+.card-header-extended {
+  width: 600px;
+  height: 60px;
+  display: flex;
+  border-bottom: 1px solid #dbdbdb;
+}
+
 .user-avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   margin: 7px;
 }
-.user-name {
-  font-size: 1rem;
-  margin: 0;
-  font-weight: 600;
-}
 .user-info {
-  margin-left: 8px;
   flex: 1;
 }
+.user-name {
+  padding: 0;
+  margin: 0;
+}
 .user-location {
+  padding: 0;
   margin: 0;
   font-size: 12px;
   color: rgb(38, 38, 38);
 }
 
+
 .post-img {
-  height: 614px;
-  width: 614px;
+  width: 600px;
+  height: 500px;
 }
 .post-caption-section {
   padding: 1rem;
 }
 .like-count {
   margin-bottom: 2%;
-  font-weight: 800;
+  margin: 0;
 }
-.comment-section {
-  display: flex;
-}
+
 .comment-user {
   font-weight: bold;
 }
@@ -63,4 +81,11 @@
   opacity: 0.5;
   font-size: 15px;
   cursor: pointer;
+  padding: 0;
+}
+.post-actions {
+  padding: 1rem;
+}
+.telegram-icon {
+  padding-left: 20px;
 }
