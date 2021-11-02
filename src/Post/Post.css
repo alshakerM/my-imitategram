@@ -91,24 +91,19 @@
   height: 500px;
 }
 .post-caption-and-like-section {
-  padding: 10px;
-}
-.likes-count {
-  padding: 15px;
-  margin: 0;
-}
-
-.comment-user {
-  padding: 5px;
+  padding-left: 10px;
+  border-bottom: 1px solid #dbdbdb;
+ 
 }
 
 .view-comments-button {
   border: none;
   background: none;
-  opacity: 0.5;
   font-size: 15px;
   cursor: pointer;
   padding: 0;
+  text-decoration: none;
+  color: black;
 }
 .post-actions {
   padding: 10px;

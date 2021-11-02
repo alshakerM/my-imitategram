@@ -114,8 +114,8 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
             {datum.comments[1].comment}
           </p>
         </div>{" "}
-        <PostInput />
       </div>
+      <PostInput />
     </>
   );
 
