@@ -30,9 +30,7 @@
 }
 .post-header {
   display: flex;
-  justify-content: center;
-  align-content: center;
-  padding: 13px;
+  padding: 10px;
   border-bottom: 1px solid #dbdbdb;
 }
 .post-img-extended {
