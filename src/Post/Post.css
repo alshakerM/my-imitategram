@@ -63,7 +63,9 @@
   font-weight: bold;
   padding: 10px 10px;
 }
-
+.more-icon {
+  align-self: center;
+}
 .user-avatar {
   width: 32px;
   height: 32px;
@@ -71,7 +73,9 @@
   margin: 7px;
 }
 .user-info {
+  padding-left: 8px;
   flex: 1;
+  justify-content: center;
   align-self: center;
 }
 .user-name {
