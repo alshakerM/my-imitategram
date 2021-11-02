@@ -89,15 +89,40 @@
   font-size: 10px;
   color: rgb(38, 38, 38);
 }
+.post-caption-text {
+  margin: 0;
+  padding: 0;
+}
+.comment-caption-avatar {
+  display: flex;
 
+  align-self: center;
+}
+.post-caption-user-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 5px;
+
+  align-self: center;
+}
+.like-count-section {
+  padding: 0;
+  margin: 0;
+}
+.like-count {
+  padding: 0;
+}
+.comment-info {
+  padding: 4px 0 4px;
+  margin: 0;
+}
 .post-img {
   width: 600px;
   height: 500px;
 }
 .post-caption-and-like-section {
   padding-left: 10px;
-  border-bottom: 1px solid #dbdbdb;
- 
 }
 
 .view-comments-button {
@@ -110,12 +135,13 @@
   color: black;
 }
 .post-actions {
-  padding: 10px;
+  padding: 10px 0 0 10px;
 }
 .comment-icon {
   padding: 0 15px;
 }
 .comment-input-section {
+  margin-top: 20px;
   border-top: 1px solid #dbdbdb;
   width: 100%;
   display: flex;
