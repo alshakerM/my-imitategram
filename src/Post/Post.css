@@ -10,13 +10,21 @@
   border-radius: 5px;
   background-color: #fff;
 }
-.post-overlay {
+
+.post-overlay.is-floating {
+  background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   position: fixed;
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+.post-overlay.is-extended {
+  display: flex;
+  width: 100%;
+  min-height: 90vh;
   align-items: center;
   justify-content: center;
 }
@@ -27,7 +35,6 @@
   padding: 13px;
   border-bottom: 1px solid #dbdbdb;
 }
-
 .post-img-extended {
   height: 600px;
 }
@@ -35,7 +42,7 @@
   display: flex;
   flex-direction: column;
 }
-.extended-post-container {
+.floating-post-container {
   display: flex;
   border: 1px solid #dbdbdb;
   background-color: white;

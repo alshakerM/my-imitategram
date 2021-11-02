@@ -1,8 +1,10 @@
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
+import { useHistory } from "react-router";
 import React from "react";
 import "./Post.css";
-
+import { Link } from "react-router-dom";
+import classnames from "classnames";
 function PostActions(is_post_liked) {
   return (
     <div className="post-actions">
@@ -44,97 +46,107 @@ function PostInput() {
     </div>
   );
 }
-export function Post({ datum }) {
-  const [isExtended, setIsExtended] = React.useState(false);
 
-  function PostHeader({ user_name, user_thumbnail, city }) {
-    return (
-      <div className={isExtended ? "post-header-extended" : "post-header"}>
-        <img src={user_thumbnail} className="user-avatar" alt="" />
-        <div className="user-info">
-          <h2 className="user-name">{user_name}</h2>
-          <p className="user-location">{city}</p>
-        </div>
-
-        <MoreHoriz className="more-icon" />
+function PostHeader({ user_name, isExtended, user_thumbnail, city }) {
+  return (
+    <div className={isExtended ? "post-header-extended" : "post-header"}>
+      <img src={user_thumbnail} className="user-avatar" alt="" />
+      <div className="user-info">
+        <h2 className="user-name">{user_name}</h2>
+        <p className="user-location">{city}</p>
       </div>
-    );
-  }
-  const content = [
-    <PostHeader
-      city={datum.city}
-      user_name={datum.user_name}
-      user_thumbnail={datum.user_thumbnail}
-    />,
-    <div className="img-container">
-      <img className="post-img" src={datum.post_image} alt="" />
-    </div>,
-    <PostActions is_post_liked={datum.is_post_liked} />,
-    <div className="post-caption-and-like-section">
-      <p className="like-count">
-        Liked by <strong>{datum.user_name}</strong> and{" "}
-        <strong>{datum.likes_count} others </strong>
-      </p>
-      <p>{datum.post_caption}</p>
-      <button
-        className="view-comments-button"
-        onClick={() => {
-          setIsExtended(true);
-        }}
-      >
-        View all comments{" "}
-      </button>
-      <div className="comment-section">
-        <p className="comment-info">
-          <strong>{datum.comments[0].user_name}</strong>{" "}
-          {datum.comments[0].comment}
-        </p>
-        <p className="comment-info">
-          <strong>{datum.comments[1].user_name}</strong>{" "}
-          {datum.comments[1].comment}
-        </p>
-      </div>{" "}
-      <PostInput />
-    </div>,
-  ];
-  const expandedContent = [
-    <div className="extended-post-container">
-      <img className="post-img-extended" src={datum.post_image} alt="" />
-      <div className="contents-section">
-        <PostHeader
-          city={datum.city}
-          user_name={datum.user_name}
-          user_thumbnail={datum.user_thumbnail}
-        />
-        <p>
-          <span className="post-caption-extended">{datum.user_name}</span>{" "}
-          {datum.post_caption}
-        </p>
-        <div className="extended-comment-section">
-          {datum.comments.map((comment) => (
-            <div className="extended-comment">
-              <p className="comment-user">
-                <strong>{comment.user_name}</strong> {comment.comment}
-              </p>
-            </div>
-          ))}
-        </div>
-        <PostActions is_post_liked={datum.is_post_liked} />
-        <p className="likes-count">
+
+      <MoreHoriz className="more-icon" />
+    </div>
+  );
+}
+
+export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
+  const content = (
+    <>
+      <PostHeader
+        city={datum.city}
+        user_name={datum.user_name}
+        user_thumbnail={datum.user_thumbnail}
+      />
+      <div className="img-container">
+        <img className="post-img" src={datum.post_image} alt="" />
+      </div>
+      <PostActions is_post_liked={datum.is_post_liked} />
+      <div className="post-caption-and-like-section">
+        <p className="like-count">
           Liked by <strong>{datum.user_name}</strong> and{" "}
           <strong>{datum.likes_count} others </strong>
         </p>
+        <p>{datum.post_caption}</p>
+        <Link
+          to={`/p/${index}`}
+          className="view-comments-button"
+          onClick={() => {
+            setIsExtended(true);
+          }}
+        >
+          View all comments{" "}
+        </Link>
+        <div className="comment-section">
+          <p className="comment-info">
+            <strong>{datum.comments[0].user_name}</strong>{" "}
+            {datum.comments[0].comment}
+          </p>
+          <p className="comment-info">
+            <strong>{datum.comments[1].user_name}</strong>{" "}
+            {datum.comments[1].comment}
+          </p>
+        </div>{" "}
         <PostInput />
       </div>
-    </div>,
-  ];
+    </>
+  );
 
+  const expandedContent = (
+    <>
+      <div className="floating-post-container">
+        <img className="post-img-extended" src={datum.post_image} alt="" />
+        <div className="contents-section">
+          <PostHeader
+            city={datum.city}
+            user_name={datum.user_name}
+            isExtended
+            user_thumbnail={datum.user_thumbnail}
+          />
+          <p>
+            <span className="post-caption-extended">{datum.user_name}</span>{" "}
+            {datum.post_caption}
+          </p>
+          <div className="extended-comment-section">
+            {datum.comments.map((comment) => (
+              <div className="extended-comment">
+                <p className="comment-user">
+                  <strong>{comment.user_name}</strong> {comment.comment}
+                </p>
+              </div>
+            ))}
+          </div>
+          <PostActions is_post_liked={datum.is_post_liked} />
+          <p className="likes-count">
+            Liked by <strong>{datum.user_name}</strong> and{" "}
+            <strong>{datum.likes_count} others </strong>
+          </p>
+          <PostInput />
+        </div>
+      </div>
+    </>
+  );
+  const history = useHistory();
   return (
     <div
       onClick={(event) =>
-        event.target === event.currentTarget && setIsExtended(false)
+        event.target === event.currentTarget && history.push("/")
       }
-      className={isExtended ? "post-overlay" : ""}
+      className={classnames("post-overlay", {
+        "is-extended": isExtended,
+        "is-floating": isFloating,
+      })}
     >
       <div className={isExtended ? "extended-content" : "content"}>
         {isExtended ? (
