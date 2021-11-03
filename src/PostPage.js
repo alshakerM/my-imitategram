@@ -1,7 +1,7 @@
 import { Post } from "./Post/Post";
 import React from "react";
 import "./App.css";
-import data from "./Data/MOCK_DATA.json";
+import data from "./Data/IG.json";
 
 export function PostPage({ postId, isFloating}) {
   const post = data[postId];

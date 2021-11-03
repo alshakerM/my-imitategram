@@ -43,6 +43,7 @@
   width: 24px;
   border-radius: 50%;
   align-self: center;
+  border: 1px solid #dbdbdb;
   margin-right: 5px;
 }
 .post-img-extended {
@@ -84,6 +85,7 @@
   height: 32px;
   border-radius: 50%;
   align-self: center;
+  border: 1px solid #dbdbdb;
   margin-left: 5px;
 }
 .extended-post-caption-avatar-text {
@@ -97,6 +99,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  border: 1px solid #dbdbdb;
   margin: 7px;
 }
 .user-info {
@@ -124,6 +127,7 @@
 .comment-caption-avatar {
   display: flex;
   align-self: center;
+ 
 }
 .extended-comment-user-avatar {
   width: 32px;
@@ -131,6 +135,7 @@
   border-radius: 50%;
   margin-right: 15px;
   align-self: center;
+  border: 1px solid #dbdbdb;
 }
 .extended-post-time {
   padding: 0;
