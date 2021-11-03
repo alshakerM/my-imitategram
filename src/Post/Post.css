@@ -7,7 +7,6 @@
   margin-bottom: 50px;
   max-width: 600px;
   border: 1px solid #ddd;
-  border-radius: 5px;
   background-color: #fff;
 }
 .comment-section {
@@ -35,7 +34,8 @@
 }
 .post-header {
   display: flex;
-  padding: 10px;
+  padding: 10px 0px;;
+  margin:0;
   border-bottom: 1px solid #dbdbdb;
 }
 .post-caption-user-avatar {
@@ -91,6 +91,7 @@
 }
 .more-icon {
   align-self: center;
+  padding-right: 15px;
 }
 .user-avatar {
   width: 32px;
@@ -99,7 +100,7 @@
   margin: 7px;
 }
 .user-info {
-  padding-left: 8px;
+  padding-left: 4px;
   flex: 1;
   justify-content: center;
   align-self: center;
