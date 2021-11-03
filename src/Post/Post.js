@@ -108,7 +108,6 @@ function PostInput() {
 function PostDate({ posting_time, isExtended }) {
   TimeAgo.addDefaultLocale(en);
   const timeAgo = new TimeAgo("en-US");
-  timeAgo.format(new Date());
   const postDate = timeAgo.format(new Date(posting_time));
   return (
     <p className={isExtended ? "extended-post-time" : "post-time"}>
