@@ -152,10 +152,18 @@
   cursor: pointer;
   color: #8e8e8e;
   text-decoration: none;
- 
 }
 .post-actions {
   padding: 10px 0 0 10px;
+  display: flex;
+  align-items: center;
+}
+.like-share-telegram-icons {
+  flex: 1;
+}
+.save-icon {
+  padding: 8px;
+  align-items: center;
 }
 .comment-icon {
   padding: 0 15px;
