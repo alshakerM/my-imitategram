@@ -126,6 +126,12 @@
   margin-right: 15px;
   align-self: center;
 }
+.extended-post-time {
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+  color: #8e8e8e;
+}
 .like-count-section {
   padding: 0;
   margin: 0;
@@ -136,6 +142,10 @@
 .comment-info {
   padding: 4px 0 4px;
   margin: 0;
+}
+.post-time {
+  color: #8e8e8e;
+  margin-top: 5px;
 }
 .post-img {
   width: 600px;
