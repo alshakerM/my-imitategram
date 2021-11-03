@@ -254,7 +254,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
                     <button className="like-button">
                       {comment.comment_likes}
                       <strong>
-                        {comment.comment_likes > 0 ? 'Likes' : 'like'}
+                        {comment.comment_likes > 0 ? ' Likes' : ' like'}
                       </strong>
                     </button>
                     <button className="reply-button">
