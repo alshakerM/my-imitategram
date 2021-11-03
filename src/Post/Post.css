@@ -141,6 +141,31 @@
 .extended-comment-username-comment {
   flex: 1;
 }
+.extended-post-like-replay-section {
+  display: flex;
+  align-items: center;
+  color: #8e8e8e;
+}
+.reply-button {
+  background-color: white;
+  border: none;
+  padding: 0;
+  color: #8e8e8e;
+}
+.extended-comment-time {
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border: none;
+  color: #8e8e8e;
+}
+.like-button {
+  border: none;
+  background-color: white;
+  font-size: 10px;
+  padding: 0 20px;
+  color: #8e8e8e;
+}
 .extended-comment-user-info {
   flex: 1;
   width: 100%;
@@ -158,12 +183,11 @@
   margin: 0;
   display: flex;
   align-items: center;
-  
 }
 .comment-username-comment-text {
   flex: 1;
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
 }
 
 .post-time {

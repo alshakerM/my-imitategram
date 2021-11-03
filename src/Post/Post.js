@@ -242,6 +242,15 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
                       <strong>{comment.user_name}</strong> {comment.comment}
                     </p>
                   </div>
+                  <div className="extended-post-like-replay-section">
+                    <button className="extended-comment-time">2 w</button>
+                    <button className="like-button">
+                      {comment.comment_likes}{" "}
+                      <strong>
+                      {comment.comment_likes > 0 ? "Likes" : "like"}{" "}</strong>
+                    </button>
+                    <button className="reply-button"><strong>Reply</strong></button>
+                  </div>
                 </div>
                 <svg
                   aria-label="Like"
