@@ -1,8 +1,8 @@
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import { HomePage } from "./HomePage";
-import { PostPage } from "./PostPage";
 import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import { HomePage } from "./HomePage";
 import { NavBar } from "./NavBar/NavBar";
+import { PostPage } from "./PostPage";
 
 
 function App() {

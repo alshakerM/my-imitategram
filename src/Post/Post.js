@@ -1,11 +1,11 @@
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en.json";
-import MoreHoriz from "@mui/icons-material/MoreHoriz";
-import { useHistory } from "react-router";
-import React from "react";
-import "./Post.css";
-import { Link } from "react-router-dom";
-import classnames from "classnames";
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en.json';
+import MoreHoriz from '@mui/icons-material/MoreHoriz';
+import { useHistory } from 'react-router';
+import React from 'react';
+import './Post.css';
+import { Link } from 'react-router-dom';
+import classnames from 'classnames';
 
 function PostActions(is_post_liked) {
   return (
@@ -14,8 +14,8 @@ function PostActions(is_post_liked) {
         <svg
           aria-label="Unlike"
           class="_8-yf5 "
-          color={is_post_liked ? "#ed4956" : "#8e8e8e"}
-          fill={is_post_liked ? "#ed4956" : "#8e8e8e"}
+          color={is_post_liked ? '#ed4956' : '#8e8e8e'}
+          fill={is_post_liked ? '#ed4956' : '#8e8e8e'}
           height="24"
           role="img"
           viewBox="0 0 48 48"
@@ -92,10 +92,10 @@ function PostInput() {
 }
 function PostDate({ posting_time, isExtended }) {
   TimeAgo.addDefaultLocale(en);
-  const timeAgo = new TimeAgo("en-US");
+  const timeAgo = new TimeAgo('en-US');
   const postDate = timeAgo.format(new Date(posting_time));
   return (
-    <p className={isExtended ? "extended-post-time" : "post-time"}>
+    <p className={isExtended ? 'extended-post-time' : 'post-time'}>
       {postDate.toUpperCase()}
     </p>
   );
@@ -103,7 +103,7 @@ function PostDate({ posting_time, isExtended }) {
 
 function PostHeader({ user_name, isExtended, user_thumbnail, city }) {
   return (
-    <div className={isExtended ? "post-header-extended" : "post-header"}>
+    <div className={isExtended ? 'post-header-extended' : 'post-header'}>
       <img src={user_thumbnail} className="user-avatar" alt="" />
       <div className="user-info">
         <h2 className="user-name">{user_name}</h2>
@@ -133,9 +133,10 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
             <img
               className="post-caption-user-avatar"
               src={datum.user_thumbnail}
+              alt="User avatar"
             />
             <p className="like-count">
-              Liked by <strong>{datum.user_name}</strong> and{" "}
+              Liked by <strong>{datum.user_name}</strong> and
               <strong>{datum.likes_count} others </strong>
             </p>
           </div>
@@ -148,12 +149,12 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
             setIsExtended(true);
           }}
         >
-          View all comments{" "}
+          View all comments
         </Link>
         <div className="comment-section">
           <div className="comment-info">
             <p className="comment-username-comment-text">
-              <strong>{datum.comments[0].user_name}</strong>{" "}
+              <strong>{datum.comments[0].user_name}</strong>
               {datum.comments[0].comment}
             </p>
             <p>
@@ -161,10 +162,10 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
                 aria-label="Like"
                 class="_8-yf5 "
                 color={
-                  datum.comments[0].is_liked_by_user ? "#ed4956" : "#8e8e8e"
+                  datum.comments[0].is_liked_by_user ? '#ed4956' : '#8e8e8e'
                 }
                 fill={
-                  datum.comments[0].is_liked_by_user ? "#ed4956" : "#8e8e8e"
+                  datum.comments[0].is_liked_by_user ? '#ed4956' : '#8e8e8e'
                 }
                 height="12"
                 role="img"
@@ -177,7 +178,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
           </div>
           <div className="comment-info">
             <p className="comment-username-comment-text">
-              <strong>{datum.comments[1].user_name}</strong>{" "}
+              <strong>{datum.comments[1].user_name}</strong>
               {datum.comments[1].comment}
             </p>
             <p>
@@ -185,10 +186,10 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
                 aria-label="Like"
                 class="_8-yf5 "
                 color={
-                  datum.comments[1].is_liked_by_user ? "#ed4956" : "#8e8e8e"
+                  datum.comments[1].is_liked_by_user ? '#ed4956' : '#8e8e8e'
                 }
                 fill={
-                  datum.comments[1].is_liked_by_user ? "#ed4956" : "#8e8e8e"
+                  datum.comments[1].is_liked_by_user ? '#ed4956' : '#8e8e8e'
                 }
                 height="12"
                 role="img"
@@ -200,7 +201,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
             </p>
           </div>
           <PostDate posting_time={datum.posting_time} isExtended={isExtended} />
-        </div>{" "}
+        </div>
       </div>
       <PostInput />
     </>
@@ -209,7 +210,11 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
   const expandedContent = (
     <>
       <div className="floating-post-container">
-        <img className="post-img-extended" src={datum.post_image} alt="" />
+        <img
+          className="post-img-extended"
+          src={datum.post_image}
+          alt={datum.post_caption}
+        />
         <div className="content-section">
           <PostHeader
             city={datum.city}
@@ -222,11 +227,12 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
               <img
                 className="extended-caption-user-avatar"
                 src={datum.user_thumbnail}
+                alt="User Avatar"
               />
               <p className="post-caption-extended">
                 <span>
                   <strong>{datum.user_name}</strong>
-                </span>{" "}
+                </span>
                 {datum.post_caption}
               </p>
             </div>
@@ -235,6 +241,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
                 <img
                   className="extended-comment-user-avatar"
                   src={datum.user_thumbnail}
+                  alt="User Avatar"
                 />
                 <div className="extended-comment-username-comment">
                   <div className="extended-comment-user-info">
@@ -245,18 +252,21 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
                   <div className="extended-post-like-replay-section">
                     <button className="extended-comment-time">2 w</button>
                     <button className="like-button">
-                      {comment.comment_likes}{" "}
+                      {comment.comment_likes}
                       <strong>
-                      {comment.comment_likes > 0 ? "Likes" : "like"}{" "}</strong>
+                        {comment.comment_likes > 0 ? 'Likes' : 'like'}
+                      </strong>
                     </button>
-                    <button className="reply-button"><strong>Reply</strong></button>
+                    <button className="reply-button">
+                      <strong>Reply</strong>
+                    </button>
                   </div>
                 </div>
                 <svg
                   aria-label="Like"
                   class="_8-yf5 "
-                  color={comment.is_liked_by_user ? "#ed4956" : "#8e8e8e"}
-                  fill={comment.is_liked_by_user ? "#ed4956" : "#8e8e8e"}
+                  color={comment.is_liked_by_user ? '#ed4956' : '#8e8e8e'}
+                  fill={comment.is_liked_by_user ? '#ed4956' : '#8e8e8e'}
                   height="12"
                   role="img"
                   viewBox="0 0 48 48"
@@ -269,7 +279,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
           </div>
           <PostActions is_post_liked={datum.is_post_liked} />
           <p className="likes-count">
-            Liked by <strong>{datum.user_name}</strong> and{" "}
+            Liked by <strong>{datum.user_name}</strong> and
             <strong>{datum.likes_count} others </strong>
           </p>
           <PostDate posting_time={datum.posting_time} isExtended={isExtended} />
@@ -282,14 +292,14 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
   return (
     <div
       onClick={(event) =>
-        event.target === event.currentTarget && history.push("/")
+        event.target === event.currentTarget && history.push('/')
       }
-      className={classnames("post-overlay", {
-        "is-extended": isExtended,
-        "is-floating": isFloating,
+      className={classnames('post-overlay', {
+        'is-extended': isExtended,
+        'is-floating': isFloating,
       })}
     >
-      <div className={isExtended ? "extended-content" : "content"}>
+      <div className={isExtended ? 'extended-content' : 'content'}>
         {isExtended ? (
           expandedContent
         ) : (
