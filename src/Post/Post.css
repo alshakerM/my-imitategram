@@ -48,7 +48,7 @@
 .post-img-extended {
   height: 600px;
 }
-.contents-section {
+.content-section {
   display: flex;
   flex-direction: column;
 }
@@ -68,6 +68,7 @@
 .extended-comment {
   display: flex;
   padding: 5px;
+  align-items: center;
 }
 
 .post-header-extended {
@@ -121,7 +122,6 @@
 }
 .comment-caption-avatar {
   display: flex;
-
   align-self: center;
 }
 .extended-comment-user-avatar {
@@ -137,6 +137,13 @@
   margin-left: 10px;
   color: #8e8e8e;
   font-size: 12px;
+}
+.extended-comment-username-comment {
+  flex: 1;
+}
+.extended-comment-user-info {
+  flex: 1;
+  width: 100%;
 }
 .like-count-section {
   padding: 0;
@@ -158,9 +165,7 @@
   padding:0;
   margin:0;
 }
-.comment-like-icon {
- 
-}
+
 .post-time {
   color: #8e8e8e;
   margin-top: 5px;
