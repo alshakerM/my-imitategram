@@ -131,6 +131,7 @@
   margin: 0;
   margin-left: 10px;
   color: #8e8e8e;
+  font-size: 12px;
 }
 .like-count-section {
   padding: 0;
@@ -146,6 +147,7 @@
 .post-time {
   color: #8e8e8e;
   margin-top: 5px;
+  font-size: 12px;
 }
 .post-img {
   width: 600px;

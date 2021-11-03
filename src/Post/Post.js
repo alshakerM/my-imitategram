@@ -124,7 +124,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
   TimeAgo.addDefaultLocale(en);
   const timeAgo = new TimeAgo("en-US");
   timeAgo.format(new Date());
-
+  const postDate = timeAgo.format(new Date(datum.posting_time));
   const content = (
     <>
       <PostHeader
@@ -168,7 +168,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
             <strong>{datum.comments[1].user_name}</strong>{" "}
             {datum.comments[1].comment}
           </p>
-          <p className="post-time">{timeAgo.format(new Date(datum.posting_time))}</p>
+          <p className="post-time">{postDate.toUpperCase()}</p>
         </div>{" "}
       </div>
       <PostInput />
@@ -216,7 +216,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
             Liked by <strong>{datum.user_name}</strong> and{" "}
             <strong>{datum.likes_count} others </strong>
           </p>
-          <p className="extended-post-time">{timeAgo.format(new Date(datum.posting_time))}</p>
+          <p className="extended-post-time">{postDate.toUpperCase()}</p>
           <PostInput />
         </div>
       </div>
