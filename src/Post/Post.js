@@ -240,7 +240,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
               <div className="extended-comment">
                 <img
                   className="extended-comment-user-avatar"
-                  src={datum.user_thumbnail}
+                  src={comment.user_thumbnail}
                   alt="User Avatar"
                 />
                 <div className="extended-comment-username-comment">
