@@ -33,6 +33,13 @@
   padding: 10px;
   border-bottom: 1px solid #dbdbdb;
 }
+.post-caption-user-avatar {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  align-self: center;
+  margin-right: 5px;
+}
 .post-img-extended {
   height: 600px;
 }
@@ -53,6 +60,10 @@
   overflow: auto;
   padding: 0 5px;
 }
+.extended-comment {
+  display: flex;
+  padding: 5px;
+}
 
 .post-header-extended {
   display: flex;
@@ -60,8 +71,17 @@
   border-bottom: 1px solid #dbdbdb;
 }
 .post-caption-extended {
-  font-weight: bold;
-  padding: 10px 10px;
+  padding: 0 15px;
+}
+.extended-caption-user-avatar {
+  width: 32x;
+  height: 32px;
+  border-radius: 50%;
+  align-self: center;
+  margin-left: 5px;
+}
+.extended-post-caption-avatar-text {
+  display: flex;
 }
 .more-icon {
   align-self: center;
@@ -92,26 +112,26 @@
 .post-caption-text {
   margin: 0;
   padding: 0;
+  margin-bottom: 5px;
 }
 .comment-caption-avatar {
   display: flex;
 
   align-self: center;
 }
-.post-caption-user-avatar {
-  width: 24px;
-  height: 24px;
+.extended-comment-user-avatar {
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  margin-right: 5px;
-
+  margin-right: 15px;
   align-self: center;
 }
 .like-count-section {
   padding: 0;
   margin: 0;
 }
-.like-count {
-  padding: 0;
+.likes-count {
+  padding-left: 10px;
 }
 .comment-info {
   padding: 4px 0 4px;
@@ -130,9 +150,9 @@
   background: none;
   font-size: 15px;
   cursor: pointer;
-  padding: 0;
+  color: #8e8e8e;
   text-decoration: none;
-  color: black;
+ 
 }
 .post-actions {
   padding: 10px 0 0 10px;

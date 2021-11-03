@@ -165,13 +165,25 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
             isExtended
             user_thumbnail={datum.user_thumbnail}
           />
-          <p>
-            <span className="post-caption-extended">{datum.user_name}</span>{" "}
-            {datum.post_caption}
-          </p>
           <div className="extended-comment-section">
+            <div className="extended-post-caption-avatar-text">
+              <img
+                className="extended-caption-user-avatar"
+                src={datum.user_thumbnail}
+              />
+              <p className="post-caption-extended">
+                <span>
+                  <strong>{datum.user_name}</strong>
+                </span>{" "}
+                {datum.post_caption}
+              </p>
+            </div>
             {datum.comments.map((comment) => (
               <div className="extended-comment">
+                <img
+                  className="extended-comment-user-avatar"
+                  src={datum.user_thumbnail}
+                />
                 <p className="comment-user">
                   <strong>{comment.user_name}</strong> {comment.comment}
                 </p>
