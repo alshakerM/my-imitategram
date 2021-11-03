@@ -59,7 +59,7 @@ function PostActions(is_post_liked) {
           aria-label="Direct"
           className="telegram-icon"
           color="#262626"
-          fill="#262626"
+          fill="#8e8e8e"
           height="22"
           role="img"
           viewBox="0 0 48 48"
