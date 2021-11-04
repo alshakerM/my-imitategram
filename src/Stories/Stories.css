@@ -1,0 +1,41 @@
+.stories-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.all-circles {
+  width: 600px;
+  height: 100px;
+  justify-self: center;
+  border: 1px solid #dbdbdb;
+  display: flex;
+  margin: 5px;
+  background-color: white;
+  overflow-y: auto;
+}
+.circle {
+  align-self: center;
+  color: red;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(
+    144deg,
+    rgba(255, 0, 0, 1) 31%,
+    rgba(255, 0, 155, 1) 55%
+  );
+  margin-left: 20px;
+}
+.circle2 {
+  border: 1px solid red;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  margin: 2px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+ 
+}

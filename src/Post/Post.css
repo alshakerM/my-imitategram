@@ -8,6 +8,7 @@
   max-width: 600px;
   border: 1px solid #ddd;
   background-color: #fff;
+  border-radius: 3;
 }
 .comment-section {
   display: flex;
@@ -59,6 +60,7 @@
   background-color: white;
   height: 600px;
   width: 1200px;
+  border-radius: 0 4px 4px 0;
 }
 .extended-comment-section {
   border-bottom: 1px solid #dbdbdb;
