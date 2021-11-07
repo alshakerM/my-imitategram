@@ -2,6 +2,7 @@
     width: 100%;
     background-color: #fff;
     border-bottom: 1px solid #dbdbdb;
+    position: fixed;
   }
   
   .nav-content {
