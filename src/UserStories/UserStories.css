@@ -1,14 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Festive&family=Zen+Kurenaido&display=swap");
+
+html {
+  background-color: #1f1f1f;
+}
+
+.everything-container {
+  background-color: #1f1f1f;
+}
 .extended-stories-container {
-  margin: 0;
-  height: 890px;
-  width: 500px;
+  margin: 20px auto;
+  height: 950px;
+  width: 540px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.instagram-logo-link {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 3em;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  font-family: "Festive", cursive !important;
+}
+.exit-icon-link {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: white;
+  padding: 20px;
 }
 .story-header {
   box-sizing: border-box;
   color: white;
   display: grid;
   grid-template-columns: min-content min-content min-content 1fr;
-  gap: 10px;
+
   background: linear-gradient(
     180deg,
     rgba(38, 38, 38, 0.8) 0%,
@@ -20,13 +48,18 @@
   z-index: 2;
   position: relative;
 }
+.story-user-avatar-username {
+  display: flex;
+}
 .progress-bars {
   grid-column: 1 / 5;
   display: flex;
   gap: 2px;
+  margin-top: 10px;
+  margin-bottom: -40px;
 }
 .progress-bar {
-  background: rgba(255,255,255,.35);
+  background: rgba(255, 255, 255, 0.35);
   height: 2px;
   flex: 1;
   border-radius: 2px;
@@ -36,4 +69,74 @@
 }
 .story-actions button {
   color: white;
+}
+.next-prev-buttons {
+  position: absolute;
+  top: 50%;
+  z-index: 20;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  width: 590px;
+  opacity: 0.2;
+}
+.prev-button {
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  color: #1f1f1f;
+  height: 30px;
+  width: 30px;
+  margin-left: -50px;
+  transform: rotate(180deg);
+}
+.next-button {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  color: #1f1f1f;
+}
+
+.story-footer {
+  z-index: 2;
+  position: relative;
+  margin-top: -153.7px;
+  display: flex;
+  justify-content: center;
+  height: 150px;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 38, 38, 0) 0%,
+    rgba(38, 38, 38, 0.6) 100%
+  );
+}
+
+.story-reply-input {
+  width: 85%;
+  border: 1px solid white;
+  border-radius: 22px;
+  height: 44px;
+  padding-left: 30px;
+  margin-bottom: 25px;
+  box-sizing: border-box;
+  align-self: flex-end;
+  background: none;
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+  overflow: hidden;
+}
+::-webkit-input-placeholder {
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  max-width: 110px;
+}
+.direct-story-icon {
+  align-self: flex-end;
+  margin-bottom: 35px;
+  padding: 0 5px 0 15px;
 }

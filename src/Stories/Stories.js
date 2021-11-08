@@ -32,7 +32,7 @@ export function Stories() {
             <StoryAvatar user={user} index={index} />
           ))}
         </div>
-        <div className="story-navigation-buttons">
+        
           <button
             onClick={() => {
               setScrollLeft((s) => Math.min(0, s + containerWidth / 2));
@@ -56,7 +56,7 @@ export function Stories() {
           >
             <ChevronRight />
           </button>
-        </div>
+        
       </div>
     </div>
   );
