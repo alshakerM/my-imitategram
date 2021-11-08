@@ -1,0 +1,39 @@
+.extended-stories-container {
+  margin: 0;
+  height: 890px;
+  width: 500px;
+}
+.story-header {
+  box-sizing: border-box;
+  color: white;
+  display: grid;
+  grid-template-columns: min-content min-content min-content 1fr;
+  gap: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 38, 38, 0.8) 0%,
+    rgba(38, 38, 38, 0) 100%
+  );
+  padding: 10px;
+  height: 100px;
+  margin-bottom: -100px;
+  z-index: 2;
+  position: relative;
+}
+.progress-bars {
+  grid-column: 1 / 5;
+  display: flex;
+  gap: 2px;
+}
+.progress-bar {
+  background: rgba(255,255,255,.35);
+  height: 2px;
+  flex: 1;
+  border-radius: 2px;
+}
+.story-actions {
+  justify-self: flex-end;
+}
+.story-actions button {
+  color: white;
+}

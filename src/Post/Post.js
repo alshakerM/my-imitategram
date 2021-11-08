@@ -1,11 +1,11 @@
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en.json";
 import MoreHoriz from "@mui/icons-material/MoreHoriz";
 import { useHistory } from "react-router";
 import React from "react";
 import "./Post.css";
 import { Link } from "react-router-dom";
 import classnames from "classnames";
+import { absoluteToRelativeDate } from "../utils";
+import { Avatar } from "../Avatar/Avatar";
 
 function PostActions(is_post_liked) {
   return (
@@ -91,9 +91,7 @@ function PostInput() {
   );
 }
 function PostDate({ posting_time, isExtended }) {
-  TimeAgo.addDefaultLocale(en);
-  const timeAgo = new TimeAgo("en-US");
-  const postDate = timeAgo.format(new Date(posting_time));
+  const postDate = absoluteToRelativeDate(new Date(posting_time));
   return (
     <p className={isExtended ? "extended-post-time" : "post-time"}>
       {postDate.toUpperCase()}
@@ -104,7 +102,7 @@ function PostDate({ posting_time, isExtended }) {
 function PostHeader({ user_name, isExtended, user_thumbnail, city }) {
   return (
     <div className={isExtended ? "post-header-extended" : "post-header"}>
-      <img src={user_thumbnail} className="user-avatar" alt="" />
+      <Avatar avatar={user_thumbnail} />
       <div className="user-info">
         <h2 className="user-name">{user_name}</h2>
         <p className="user-location">{city}</p>

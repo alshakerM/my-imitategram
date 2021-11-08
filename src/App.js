@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { HomePage } from "./HomePage";
 import { NavBar } from "./NavBar/NavBar";
 import { PostPage } from "./PostPage";
-import { StoryInfo } from "./StoryInfo/StoryInfo";
+import { UserStories } from "./UserStories/UserStories";
 
 function App() {
   const [isExtended, setIsExtended] = React.useState(false);
@@ -13,21 +13,21 @@ function App() {
       <Route
         path="/p/:postId"
         render={(match) => (
-          <PostPage
-            isFloating={isExtended}
-            postId={match.match.params.postId}
-          />
+          <>
+            <NavBar></NavBar>
+            <PostPage
+              isFloating={isExtended}
+              postId={match.match.params.postId}
+            />
+          </>
         )}
       ></Route>
       <Route
         path="/stories/:userId/"
-        render={(match) => (
-          <StoryInfo
-            userId={match.match.params.userId}
-          />
-        )}
+        render={(match) => <UserStories userId={match.match.params.userId} />}
       ></Route>
       <Route path="/" exact={!isExtended}>
+        <NavBar></NavBar>
         <HomePage setIsExtended={setIsExtended} />
       </Route>
     </BrowserRouter>

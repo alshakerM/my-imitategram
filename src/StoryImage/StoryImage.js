@@ -1,4 +1,5 @@
 import React from "react";
+import "./StoryImage.css"
 
 export function StoryImage({ onProgress, paused, ...props }) {
   const [progress, setCurrentProgress] = React.useState(0);
@@ -7,10 +8,10 @@ export function StoryImage({ onProgress, paused, ...props }) {
     if (progress < 1 && !paused) {
       setTimeout(() => setCurrentProgress(progress + 0.01), 150);
       onProgress(progress);
-    } else {
+    } else if (progress >= 1){
       onProgress(1);
     }
-  }, [progress]);
+  }, [progress, paused]);
 
-  return <img {...props} />;
+  return <img className="story-img" {...props} />;
 }

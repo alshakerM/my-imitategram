@@ -8,7 +8,6 @@ import { NavBar } from "./NavBar/NavBar";
 export function HomePage({ isExtended, setIsExtended }) {
   return (
     <div className="content-section">
-      <NavBar />
       <Stories />
       {data.map((datum, index) => (
         <Post
