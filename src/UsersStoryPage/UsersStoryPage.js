@@ -4,11 +4,9 @@ import storiesData from "../Data/IG-Stories.json";
 import { absoluteToRelativeDate } from "../utils";
 import "./UsersStroyPage.css";
 
-export function UsersStoryPage({ userId }) {
-  const userIndex = storiesData.findIndex((user) => user.user_id === userId);
-  const user = storiesData[userIndex];
-  const [storyIndex, setStoryIndex] = React.useState(0);
-  const story = user.stories[storyIndex];
+export function UsersStoryPage({ story }) {
+
+
   return (
     <div className="secondary-page-container">
       {storiesData.map((user) => (

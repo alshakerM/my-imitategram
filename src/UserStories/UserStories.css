@@ -6,13 +6,14 @@ html {
 
 .page-container {
   background-color: #1f1f1f;
+  display: flex;
 }
 .extended-stories-container {
   margin: 20px auto;
-  height: 950px;
-  width: 540px;
+  height: 900px;
+  min-width: 520px;
   border-radius: 8px;
-  overflow: hidden;
+  margin-left: 50px;
 }
 .instagram-logo-link {
   position: absolute;
@@ -139,4 +140,54 @@ html {
   align-self: flex-end;
   margin-bottom: 35px;
   padding: 0 5px 0 15px;
+}
+
+.secondary-extended-stories-container {
+  height: 550px;
+  min-width: 340px;
+  border-radius: 8px;
+  margin-top: 200px;
+  margin-left: 40px;
+  transform: scale(0.4);
+}
+
+#secondary-user-avatar {
+  position: absolute;
+  top: 250%;
+  right: 45%;
+  transform: scale(2);
+}
+.secondary-username {
+  position: absolute;
+  top: 300%;
+  right: 43%;
+  display: block;
+  line-height: 16px;
+  max-width: 60px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.secondary-story-post-time {
+  position: absolute;
+  top: 330%;
+  right: 50%;
+}
+.secondary-story-header {
+  box-sizing: border-box;
+  color: white;
+  display: grid;
+  grid-template-columns: min-content min-content min-content 1fr;
+
+  background: linear-gradient(
+    180deg,
+    rgba(38, 38, 38, 0.8) 0%,
+    rgba(38, 38, 38, 0) 100%
+  );
+  padding: 10px;
+  height: 100px;
+  margin-bottom: -100px;
+  z-index: 2;
+  position: relative;
 }
