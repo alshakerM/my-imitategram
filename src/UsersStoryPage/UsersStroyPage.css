@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Festive&family=Zen+Kurenaido&display=swap");
+
+html {
+  background-color: #1f1f1f;
+}
+
+.secondary-page-container {
+  background-color: #1f1f1f;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.secondary-extended-stories-container {
+  height: 550px;
+  min-width: 340px;
+  border-radius: 8px;
+  margin-top: 200px;
+  margin-left: 40px;
+}
+
+#secondary-user-avatar {
+  position: absolute;
+  top: 250%;
+  right: 45%;
+  transform: scale(2);
+}
+.secondary-username {
+  position: absolute;
+  top: 300%;
+  right: 43%;
+  display: block;
+  line-height: 16px;
+  max-width: 60px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.secondary-story-post-time {
+  position: absolute;
+  top: 330%;
+  right: 50%;
+}
+.secondary-story-header {
+  box-sizing: border-box;
+  color: white;
+  display: grid;
+  grid-template-columns: min-content min-content min-content 1fr;
+
+  background: linear-gradient(
+    180deg,
+    rgba(38, 38, 38, 0.8) 0%,
+    rgba(38, 38, 38, 0) 100%
+  );
+  padding: 10px;
+  height: 100px;
+  margin-bottom: -100px;
+  z-index: 2;
+  position: relative;
+}

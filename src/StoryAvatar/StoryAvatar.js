@@ -2,7 +2,7 @@ import "./StoryAvatar.css";
 import React from "react";
 import { Link } from "react-router-dom";
 
-export function StoryAvatar({ user, index }) {
+export function StoryAvatar({ user}) {
   const userId = user.user_id;
 
   return (

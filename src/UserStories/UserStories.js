@@ -1,4 +1,4 @@
-import storiesData from "../Data/IG-Stories.json";
+/**import storiesData from "../Data/IG-Stories.json";
 import "./UserStories.css";
 import React from "react";
 import { StoryImage } from "../StoryImage/StoryImage";
@@ -60,7 +60,7 @@ export function UserStories({ userId }) {
   };
 
   return (
-    <div className="everything-container">
+    <div className="page-container">
       <Link to="/" className="instagram-logo-link">
         Instagram
       </Link>
@@ -177,3 +177,4 @@ export function UserStories({ userId }) {
     </div>
   );
 }
+*/
