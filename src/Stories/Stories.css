@@ -6,6 +6,7 @@
 }
 .stories-overflow {
   overflow: hidden;
+
 }
 .story-nav-prev {
   position: absolute;
@@ -30,6 +31,7 @@
   box-sizing: border-box;
   gap: 20px;
   transition: transform 0.5s ease-out;
+
 }
 .all-circles::-webkit-scrollbar {
   display: none;
