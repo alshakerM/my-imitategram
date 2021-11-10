@@ -18,7 +18,7 @@ export function StoryVideo({ videoURL, paused, muted, onProgress }) {
       ref={videoRef}
       src={videoURL}
       onTimeUpdate={(event) =>
-        onProgress(event.target.currentTime / event.target.duration)
+        onProgress?.(event.target.currentTime / event.target.duration)
       }
     />
   );

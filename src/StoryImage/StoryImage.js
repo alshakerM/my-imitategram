@@ -1,17 +1,17 @@
-import React from "react";
-import "./StoryImage.css"
+import React from 'react';
+import './StoryImage.css';
 
-export function StoryImage({ onProgress, paused, ...props }) {
+export function StoryImage({ onProgress, paused, alt, ...props }) {
   const [progress, setCurrentProgress] = React.useState(0);
 
   React.useEffect(() => {
-    if (progress < 1 && !paused) {
+    if (onProgress && progress < 1 && !paused) {
       setTimeout(() => setCurrentProgress(progress + 0.01), 150);
       onProgress(progress);
-    } else if (progress >= 1){
+    } else if (onProgress && progress >= 1) {
       onProgress(1);
     }
-  }, [progress, paused]);
+  }, [progress, onProgress, paused]);
 
-  return <img className="story-img" {...props} />;
+  return <img className="story-img" alt={alt} {...props} />;
 }

@@ -1,14 +1,13 @@
-.nav-bar {
-}
-.nav-container {
+.navContainer {
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid #dbdbdb;
   position: fixed;
   margin-bottom: 20px;
+  z-index: 2;
 }
 
-.nav-content {
+.navContent {
   display: flex;
   margin: 0 25%;
   justify-content: space-around;
@@ -19,7 +18,7 @@
  
 }
 
-.nav-input {
+.navInput {
   height: 25px;
   background-color: #fafafa;
   border: solid 1px #dbdbdb;
@@ -28,7 +27,7 @@
   border-radius: 3px;
 }
 
-.nav-title {
+.navTitle {
   font-family: "Festive", cursive !important;
   font-weight: 800;
   font-size: 2.4rem;

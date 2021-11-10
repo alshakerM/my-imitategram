@@ -1,6 +1,6 @@
 import storiesData from "../Data/IG-Stories.json";
 import "./Stories.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { StoryAvatar } from "../StoryAvatar/StoryAvatar";
 import ChevronLeft from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
@@ -13,12 +13,13 @@ function width(el) {
 
 export function Stories() {
   const allCirclesDiv = React.useRef();
-  const allCirclesWidth = width(allCirclesDiv.current);
+  const allCirclesWidth = 449;//width(allCirclesDiv.current);
   const [containerWidth, setContainerWidth] = useState(0);
   const [scrollLeft, setScrollLeft] = React.useState(0);
   const scrollLimit = -1 * (allCirclesWidth - containerWidth);
+  
   return (
-    <div className="stories-container">
+    <div className="stories-avatars-container">
       <div
         ref={(ref) => setContainerWidth(width(ref))}
         className="stories-overflow"

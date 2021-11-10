@@ -1,14 +1,19 @@
-import { Icons } from "../Icons/Icons";
-import "./NavBar.css";
+import { Icons } from '../Icons/Icons';
+import {
+  navContainer,
+  navContent,
+  navInput,
+  navTitle,
+} from './NavBar.module.css';
 
-export function NavBar({backgroundColor}) {
+export function NavBar() {
   return (
-    <nav className="nav-bar">
-      <div  className="nav-container">
-        <div className="nav-content">
-          <div className="nav-title">Instagram</div>
+    <nav>
+      <div className={navContainer}>
+        <div className={navContent}>
+          <div className={navTitle}>Instagram</div>
           <div className="input-section">
-            <input placeholder="Search" type="text" className="nav-input" />
+            <input placeholder="Search" type="text" className={navInput} />
           </div>
           <div className="nav-icons">
             <Icons />

@@ -1,52 +1,76 @@
 import {
-  Clear, MoreHoriz,
-  NavigateNext, Pause,
+  Clear,
+  MoreHoriz,
+  Pause,
   PlayArrow,
   VolumeMute,
-  VolumeOff
-} from "@mui/icons-material";
-import { IconButton } from "@mui/material";
-import React from "react";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
-import { Avatar } from "../Avatar/Avatar";
-import storiesData from "../Data/IG-Stories.json";
-import { StoryImage } from "../StoryImage/StoryImage";
-import { StoryVideo } from "../StoryVideo/StoryVideo";
-import { absoluteToRelativeDate } from "../utils";
-import "./UserStories.css";
+  VolumeOff,
+  ChevronLeft,
+  ChevronRight,
+} from '@mui/icons-material';
 
+import { IconButton } from '@mui/material';
+import React, { useRef } from 'react';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { Avatar } from '../Avatar/Avatar';
+import storiesData from '../Data/IG-Stories.json';
+import { StoryImage } from '../StoryImage/StoryImage';
+import { StoryVideo } from '../StoryVideo/StoryVideo';
+import { absoluteToRelativeDate } from '../utils';
+import cx from 'classnames';
+import './UserStories.css';
+
+function getX(el) {
+  return el?.offsetLeft;
+}
+function width(el) {
+  return el?.getBoundingClientRect().width;
+}
 
 function progressWidth(storyIndex, progressBarIndex, progress) {
   if (progressBarIndex === storyIndex) {
     return `${progress * 100}%`;
   } else if (progressBarIndex < storyIndex) {
-    return "100%";
+    return '100%';
   } else if (progressBarIndex > storyIndex) {
     return 0;
   }
 }
+
 export function UserStories({ userId }) {
   const userIndex = storiesData.findIndex((user) => user.user_id === userId);
   const user = storiesData[userIndex];
   const nextUser = storiesData[userIndex + 1];
   const prevUser = storiesData[userIndex - 1];
   const history = useHistory();
-  const [storyIndex, setStoryIndex] = React.useState(0);
+  const [storyIndices, setStoryIndices] = React.useState(
+    storiesData.reduce((acc, user) => {
+      acc[user.user_id] = 0;
+      return acc;
+    }, {})
+  );
   const [pause, setPause] = React.useState(false);
   const [mute, setMute] = React.useState(false);
-  const story = user.stories[storyIndex];
+  const activeUserStory = user.stories[storyIndices[userId]];
   const [currentProgress, setCurrentProgress] = React.useState(0);
+  const allStoriesContainer = useRef();
+  const [currentStoryX, setCurrentStoryX] = React.useState(0);
+  const [currentStoryWidth, setCurrentStoryWidth] = React.useState(0);
+  const requiredX = window.innerWidth / 2 - currentStoryWidth / 2;
+  const scrollAmount = Math.floor(currentStoryX - requiredX);
 
   const progressHandler = (progress) => {
     if (progress === 1) {
-      if (storyIndex === user.stories.length - 1) {
+      if (storyIndices[userId] === user.stories.length - 1) {
         if (nextUser) {
           history.push(`/stories/${nextUser.user_id}`);
-          setStoryIndex(0);
         }
       } else {
-        setStoryIndex((i) => i + 1);
+        setStoryIndices((indices) => ({
+          ...indices,
+          [userId]: indices[userId] + 1,
+        }));
       }
       setCurrentProgress(0);
     } else {
@@ -55,57 +79,84 @@ export function UserStories({ userId }) {
   };
 
   return (
-    <div className="page-container">
+    <div key="all-stories" className="all-stories-container">
       <Link to="/" className="instagram-logo-link">
         Instagram
       </Link>
       <Link to="/" className="exit-icon-link">
         <Clear fontSize="large" />
       </Link>
-      {storiesData.map((user) => {
-        if (user.user_id === userId) {
+      <div
+        ref={allStoriesContainer}
+        className="stories-scrollable"
+        style={{ transform: `translateX(-${scrollAmount}px)` }}
+      >
+        {storiesData.map((user) => {
+          const activeStory = userId === user.user_id;
+          const story = activeStory ? activeUserStory : user.stories[0];
           return (
-            <div className="stories-container-extended" style={{transition: "all 0.5s ease-out"}}>
-              <div className="story-header">
-                <div className="progress-bars">
-                  {user.stories.map((story, index) => (
-                    <div className="progress-bar">
-                      <div
-                        style={{
-                          height: "2px",
-                          background: "white",
-                          width: progressWidth(
-                            storyIndex,
-                            index,
-                            currentProgress
-                          ),
-                        }}
-                      ></div>
-                    </div>
-                  ))}
+            <div
+              ref={(div) => {
+                if (div && activeStory && currentStoryX !== getX(div)) {
+                  setCurrentStoryX(getX(div));
+                  setCurrentStoryWidth(width(div));
+                }
+              }}
+              className={cx('stories-container', {
+                'is-extended': activeStory,
+                'is-small': !activeStory,
+              })}
+              style={{ transition: 'all 0.5s ease-out' }}
+              key={user.user_id}
+              onClick={() => {
+                if (!activeStory) {
+                  setCurrentProgress(0);
+                  history.push(`/stories/${user.user_id}`);
+                }
+              }}
+            >
+              {activeStory && (
+                <div className="story-header">
+                  <div className="progress-bars">
+                    {user.stories.map((story, index) => (
+                      <div className="progress-bar" key={story.story_id}>
+                        <div
+                          className="progress-bar-core"
+                          style={{
+                            width: progressWidth(
+                              storyIndices[userId],
+                              index,
+                              currentProgress
+                            ),
+                          }}
+                        ></div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <Avatar avatar={user.user_thumbnail} alt={user.user_name} />
+                  <p>
+                    <strong>{user.user_name}</strong>
+                  </p>
+                  <p>{absoluteToRelativeDate(story.posting_time)}</p>
+                  <div className="story-actions">
+                    <IconButton onClick={() => setPause(!pause)}>
+                      {pause ? <PlayArrow /> : <Pause />}
+                    </IconButton>
+                    <IconButton onClick={() => setMute(!mute)}>
+                      {mute ? <VolumeMute /> : <VolumeOff />}
+                    </IconButton>
+                    <IconButton>
+                      <MoreHoriz />
+                    </IconButton>
+                  </div>
                 </div>
-                <Avatar avatar={user.user_thumbnail} alt={user.user_name} />
-                <p>
-                  <strong>{user.user_name}</strong>
-                </p>
-                <p>{absoluteToRelativeDate(story.posting_time)}</p>
-                <div className="story-actions">
-                  <IconButton onClick={() => setPause(!pause)}>
-                    {pause ? <PlayArrow /> : <Pause />}
-                  </IconButton>
-                  <IconButton onClick={() => setMute(!mute)}>
-                    {mute ? <VolumeMute /> : <VolumeOff />}
-                  </IconButton>
-                  <IconButton>
-                    <MoreHoriz />
-                  </IconButton>
-                </div>
-              </div>
+              )}
               <div className="story-body">
-                {story.story_type === "video" ? (
+                {story.story_type === 'video' ? (
                   <StoryVideo
-                    paused={pause}
-                    muted={mute}
+                    paused={activeStory ? pause : true}
+                    muted={activeStory ? pause : true}
                     videoURL={story.story_media}
                     onProgress={progressHandler}
                     key={story.story_id}
@@ -114,44 +165,53 @@ export function UserStories({ userId }) {
                   <StoryImage
                     src={story.story_media}
                     onProgress={progressHandler}
-                    paused={pause}
+                    paused={activeStory ? pause : true}
                     key={story.story_id}
                   ></StoryImage>
                 )}
               </div>
-              <div className="next-prev-buttons">
-                <button
-                  className="prev-button"
-                  onClick={() => {
-                    if (storyIndex > 0) {
-                      setCurrentProgress(0);
-                      setStoryIndex((s) => s - 1);
-                    } else {
-                      if (prevUser) {
-                        history.push(`/stories/${prevUser.user_id}`);
+              {activeStory && (
+                <div className="next-prev-buttons">
+                  {(storyIndices[userId] > 0 || userIndex > 0) && (
+                    <button
+                      className="prev-button"
+                      onClick={() => {
+                        if (storyIndices[userId] > 0) {
+                          setCurrentProgress(0);
+                          setStoryIndices((indices) => ({
+                            ...indices,
+                            [userId]: indices[userId] - 1,
+                          }));
+                        } else {
+                          if (prevUser) {
+                            history.push(`/stories/${prevUser.user_id}`);
+                          }
+                        }
+                      }}
+                    >
+                      <ChevronLeft />
+                    </button>
+                  )}
+                  <button
+                    className="next-button"
+                    onClick={() => {
+                      if (storyIndices[userId] < user.stories.length - 1) {
+                        setCurrentProgress(0);
+                        setStoryIndices((indices) => ({
+                          ...indices,
+                          [userId]: indices[userId] + 1,
+                        }));
+                      } else {
+                        if (nextUser) {
+                          history.push(`/stories/${nextUser.user_id}`);
+                        }
                       }
-                    }
-                  }}
-                >
-                  <NavigateNext style={{padding: "3px"}} />
-                </button>
-                <button
-                  className="next-button"
-                  onClick={() => {
-                    if (storyIndex < user.stories.length - 1) {
-                      setCurrentProgress(0);
-                      setStoryIndex((s) => s + 1);
-                    } else {
-                      if (nextUser) {
-                        history.push(`/stories/${nextUser.user_id}`);
-                        setStoryIndex(0);
-                      }
-                    }
-                  }}
-                >
-                  <NavigateNext />
-                </button>
-              </div>
+                    }}
+                  >
+                    <ChevronRight />
+                  </button>
+                </div>
+              )}
               {story.can_reply ? (
                 <div className="story-footer">
                   <input
@@ -173,47 +233,12 @@ export function UserStories({ userId }) {
                   </svg>
                 </div>
               ) : (
-                ""
+                ''
               )}
             </div>
           );
-        } else {
-          return (
-            <div style={{transition: "all 0.5s ease-out"}} className="stories-container-small" >
-              <div className="secondary-story-header">
-                <Avatar
-                  id="user-avatar-small"
-                  src={user.user_thumbnail}
-                  alt={user.user_name}
-                />
-                <p className="username-small">
-                  <strong>{user.user_name}</strong>
-                </p>
-                <p className="story-post-time-small">
-                  {absoluteToRelativeDate(story.posting_time)}
-                </p>
-              </div>
-              <div className="story-body-small">
-                {story.story_type === "video" ? (
-                  <video
-                    style={{ opacity: "0.2", maxWidth: "340px" }}
-                    paused
-                    muted
-                    src={story.story_media}
-                    key={story.story_id}
-                  />
-                ) : (
-                  <img
-                    style={{ opacity: "0.2", maxWidth: "340px" }}
-                    src={story.story_media}
-                    alt=""
-                  />
-                )}
-              </div>
-            </div>
-          );
-        }
-      })}
+        })}
+      </div>
     </div>
   );
 }
