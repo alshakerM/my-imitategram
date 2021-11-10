@@ -3,7 +3,6 @@ import React from "react";
 import "./App.css";
 import data from "./Data/IG.json";
 import { Stories } from "./Stories/Stories";
-import { NavBar } from "./NavBar/NavBar";
 
 export function HomePage({ isExtended, setIsExtended }) {
   return (

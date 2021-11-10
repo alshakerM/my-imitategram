@@ -1,3 +1,4 @@
+
 .content {
   margin-top: 40px;
   display: flex;
@@ -35,8 +36,8 @@
 }
 .post-header {
   display: flex;
-  padding: 10px 0px;;
-  margin:0;
+  padding: 10px 0px;
+  margin: 0;
   border-bottom: 1px solid #dbdbdb;
 }
 .post-caption-user-avatar {
@@ -47,6 +48,10 @@
   border: 1px solid #dbdbdb;
   margin-right: 5px;
 }
+.post-caption-username-extended {
+  margin-right: 5px;
+  font-weight: bold;
+}
 .post-img-extended {
   height: 600px;
 }
@@ -54,7 +59,7 @@
   display: flex;
   flex-direction: column;
 }
-.floating-post-container {
+.post-container-floating {
   display: flex;
   border: 1px solid #dbdbdb;
   background-color: white;
@@ -62,13 +67,13 @@
   width: 1200px;
   border-radius: 0 4px 4px 0;
 }
-.extended-comment-section {
+.comment-section-extended {
   border-bottom: 1px solid #dbdbdb;
   flex: 1;
   overflow: auto;
   padding: 0 5px;
 }
-.extended-comment {
+.comment-extended {
   display: flex;
   padding: 5px;
   align-items: center;
@@ -82,7 +87,7 @@
 .post-caption-extended {
   padding: 0 15px;
 }
-.extended-caption-user-avatar {
+.caption-user-avatar-extended {
   width: 32x;
   height: 32px;
   border-radius: 50%;
@@ -90,7 +95,7 @@
   border: 1px solid #dbdbdb;
   margin-left: 5px;
 }
-.extended-post-caption-avatar-text {
+.post-caption-avatar-text-extended {
   display: flex;
 }
 .more-icon {
@@ -129,9 +134,8 @@
 .comment-caption-avatar {
   display: flex;
   align-self: center;
- 
 }
-.extended-comment-user-avatar {
+.comment-user-avatar-extended {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -139,17 +143,17 @@
   align-self: center;
   border: 1px solid #dbdbdb;
 }
-.extended-post-time {
+.post-time-extended {
   padding: 0;
   margin: 0;
   margin-left: 10px;
   color: #8e8e8e;
   font-size: 12px;
 }
-.extended-comment-username-comment {
+.comment-username-comment-extended {
   flex: 1;
 }
-.extended-post-like-replay-section {
+.post-like-replay-section-extended {
   display: flex;
   align-items: center;
   color: #8e8e8e;
@@ -160,7 +164,7 @@
   padding: 0;
   color: #8e8e8e;
 }
-.extended-comment-time {
+.comment-time-extended {
   padding: 0;
   margin: 0;
   background-color: white;
@@ -174,7 +178,7 @@
   padding: 0 20px;
   color: #8e8e8e;
 }
-.extended-comment-user-info {
+.comment-user-info-extended {
   flex: 1;
   width: 100%;
 }
@@ -197,7 +201,10 @@
   padding: 0;
   margin: 0;
 }
-
+.comment-username {
+  margin-right: 5px;
+  font-weight: bold;
+}
 .post-time {
   color: #8e8e8e;
   margin-top: 5px;

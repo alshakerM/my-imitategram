@@ -1,27 +1,21 @@
-import storiesData from "../Data/IG-Stories.json";
-import "./UserStories.css";
-import React from "react";
-import { StoryImage } from "../StoryImage/StoryImage";
-import { absoluteToRelativeDate } from "../utils";
-import { Avatar } from "../Avatar/Avatar";
-import { IconButton } from "@mui/material";
 import {
-  ArrowBackIosNewOutlined,
-  ArrowBackIosOutlined,
-  Clear,
-  Favorite,
-  MoreHoriz,
-  NavigateNext,
-  NavigateNextOutlined,
-  Pause,
+  Clear, MoreHoriz,
+  NavigateNext, Pause,
   PlayArrow,
   VolumeMute,
-  VolumeOff,
+  VolumeOff
 } from "@mui/icons-material";
-import { StoryVideo } from "../StoryVideo/StoryVideo";
+import { IconButton } from "@mui/material";
+import React from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import { UsersStoryPage } from "../UsersStoryPage/UsersStoryPage";
+import { Avatar } from "../Avatar/Avatar";
+import storiesData from "../Data/IG-Stories.json";
+import { StoryImage } from "../StoryImage/StoryImage";
+import { StoryVideo } from "../StoryVideo/StoryVideo";
+import { absoluteToRelativeDate } from "../utils";
+import "./UserStories.css";
+
 
 function progressWidth(storyIndex, progressBarIndex, progress) {
   if (progressBarIndex === storyIndex) {
@@ -71,7 +65,7 @@ export function UserStories({ userId }) {
       {storiesData.map((user) => {
         if (user.user_id === userId) {
           return (
-            <div className="extended-stories-container">
+            <div className="stories-container-extended" style={{transition: "all 0.5s ease-out"}}>
               <div className="story-header">
                 <div className="progress-bars">
                   {user.stories.map((story, index) => (
@@ -139,7 +133,7 @@ export function UserStories({ userId }) {
                     }
                   }}
                 >
-                  <NavigateNext />
+                  <NavigateNext style={{padding: "3px"}} />
                 </button>
                 <button
                   className="next-button"
@@ -185,21 +179,21 @@ export function UserStories({ userId }) {
           );
         } else {
           return (
-            <div className="secondary-extended-stories-container">
+            <div style={{transition: "all 0.5s ease-out"}} className="stories-container-small" >
               <div className="secondary-story-header">
                 <Avatar
-                  id="secondary-user-avatar"
+                  id="user-avatar-small"
                   src={user.user_thumbnail}
                   alt={user.user_name}
                 />
-                <p className="secondary-username">
+                <p className="username-small">
                   <strong>{user.user_name}</strong>
                 </p>
-                <p className="secondary-story-post-time">
+                <p className="story-post-time-small">
                   {absoluteToRelativeDate(story.posting_time)}
                 </p>
               </div>
-              <div className="secondary-story-body">
+              <div className="story-body-small">
                 {story.story_type === "video" ? (
                   <video
                     style={{ opacity: "0.2", maxWidth: "340px" }}

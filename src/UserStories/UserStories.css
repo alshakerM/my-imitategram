@@ -8,7 +8,7 @@ html {
   background-color: #1f1f1f;
   display: flex;
 }
-.extended-stories-container {
+.stories-container-extended {
   margin: 20px auto;
   height: 900px;
   min-width: 520px;
@@ -73,12 +73,13 @@ html {
 }
 .next-prev-buttons {
   position: absolute;
+  border: 0;
   top: 50%;
   z-index: 20;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  width: 590px;
+  width: 570px;
   opacity: 0.2;
 }
 .prev-button {
@@ -142,7 +143,7 @@ html {
   padding: 0 5px 0 15px;
 }
 
-.secondary-extended-stories-container {
+.stories-container-small {
   height: 550px;
   min-width: 340px;
   border-radius: 8px;
@@ -151,13 +152,13 @@ html {
   transform: scale(0.4);
 }
 
-#secondary-user-avatar {
+#user-avatar-small {
   position: absolute;
   top: 250%;
   right: 45%;
   transform: scale(2);
 }
-.secondary-username {
+.username-small {
   position: absolute;
   top: 300%;
   right: 43%;

@@ -93,7 +93,7 @@ function PostInput() {
 function PostDate({ posting_time, isExtended }) {
   const postDate = absoluteToRelativeDate(new Date(posting_time));
   return (
-    <p className={isExtended ? "extended-post-time" : "post-time"}>
+    <p className={isExtended ? "post-time-extended" : "post-time"}>
       {postDate.toUpperCase()}
     </p>
   );
@@ -157,13 +157,13 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
         <div className="comment-section">
           <div className="comment-info">
             <p className="comment-username-comment-text">
-              <strong>{datum.comments[0].user_name}</strong>
+              <span className="comment-username">{datum.comments[0].user_name}</span>
               {datum.comments[0].comment}
             </p>
             <p>
               <svg
                 aria-label="Like"
-                class="_8-yf5 "
+                className="_8-yf5 "
                 color={
                   datum.comments[0].is_liked_by_user ? "#ed4956" : "#8e8e8e"
                 }
@@ -181,13 +181,13 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
           </div>
           <div className="comment-info">
             <p className="comment-username-comment-text">
-              <strong>{datum.comments[1].user_name}</strong>
+            <span className="comment-username">{datum.comments[1].user_name}</span>
               {datum.comments[1].comment}
             </p>
             <p>
               <svg
                 aria-label="Like"
-                class="_8-yf5 "
+                className="_8-yf5 "
                 color={
                   datum.comments[1].is_liked_by_user ? "#ed4956" : "#8e8e8e"
                 }
@@ -212,7 +212,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
 
   const expandedContent = (
     <>
-      <div className="floating-post-container">
+      <div className="post-container-floating">
         <img
           className="post-img-extended"
           src={datum.post_image}
@@ -226,35 +226,35 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
             isExtended
             user_thumbnail={datum.user_thumbnail}
           />
-          <div className="extended-comment-section">
-            <div className="extended-post-caption-avatar-text">
+          <div className="comment-section-extended">
+            <div className="post-caption-avatar-text-extended">
               <img
-                className="extended-caption-user-avatar"
+                className="caption-user-avatar-extended"
                 src={datum.user_thumbnail}
                 alt="User Avatar"
               />
               <p className="post-caption-extended">
-                <span>
-                  <strong>{datum.user_name}</strong>
+                <span className="post-caption-username-extended">
+                  {datum.user_name}
                 </span>
                 {datum.post_caption}
               </p>
             </div>
             {datum.comments.map((comment) => (
-              <div className="extended-comment">
+              <div className="comment-extended">
                 <img
-                  className="extended-comment-user-avatar"
+                  className="comment-user-avatar-extended"
                   src={comment.user_thumbnail}
                   alt="User Avatar"
                 />
-                <div className="extended-comment-username-comment">
-                  <div className="extended-comment-user-info">
+                <div className="comment-username-comment-extended">
+                  <div className="comment-user-info-extended">
                     <p>
                       <strong>{comment.user_name}</strong> {comment.comment}
                     </p>
                   </div>
-                  <div className="extended-post-like-replay-section">
-                    <button className="extended-comment-time">2 w</button>
+                  <div className="post-like-replay-section-extended">
+                    <button className="comment-time-extended">2 w</button>
                     <button className="like-button">
                       {comment.comment_likes}
                       <strong>
@@ -268,7 +268,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
                 </div>
                 <svg
                   aria-label="Like"
-                  class="_8-yf5 "
+                  className="_8-yf5 "
                   color={comment.is_liked_by_user ? "#ed4956" : "#8e8e8e"}
                   fill={comment.is_liked_by_user ? "#ed4956" : "#8e8e8e"}
                   height="12"
@@ -303,7 +303,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
         "is-floating": isFloating,
       })}
     >
-      <div className={isExtended ? "extended-content" : "content"}>
+      <div className={isExtended ? "content-extended" : "content"}>
         {isExtended ? (
           expandedContent
         ) : (
