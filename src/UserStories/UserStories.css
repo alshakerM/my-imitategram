@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Festive&family=Zen+Kurenaido&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Festive&family=Zen+Kurenaido&display=swap");
 
 html {
   background-color: #1f1f1f;
 }
-
 .all-stories-container {
   background-color: #1f1f1f;
   overflow: hidden;
@@ -13,7 +12,6 @@ html {
   padding-left: 100vw;
   transition: transform 0.5s ease-in-out;
 }
-
 .stories-container {
   margin: 20px auto;
   height: 800px;
@@ -21,9 +19,6 @@ html {
   border-radius: 8px;
   margin-left: 50px;
 }
-.stories-container.is-extended {
-}
-
 .stories-container.is-small {
   transform: scale(0.4);
 }
@@ -35,7 +30,7 @@ html {
   font-size: 2em;
   color: white;
   text-decoration: none;
-  font-family: 'Festive', cursive !important;
+  font-family: "Festive", cursive !important;
   margin: 0;
 }
 
@@ -63,9 +58,7 @@ html {
   z-index: 2;
   position: relative;
 }
-.story-user-avatar-username {
-  display: flex;
-}
+
 .progress-bars {
   grid-column: 1 / 5;
   display: flex;
@@ -84,6 +77,17 @@ html {
   background: white;
   transition: width 200ms linear;
 }
+.story-username {
+  align-self: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.story-post-time {
+  display: flex;
+  align-self: center;
+  font-weight: 100;
+  box-sizing: border-box;
+}
 .story-actions {
   justify-self: flex-end;
 }
@@ -96,8 +100,11 @@ html {
   z-index: 20;
   margin: 0 auto;
   display: grid;
-  grid-template-areas: 'left right';
+  grid-template-areas: "left right";
   width: 500px;
+  opacity: 0.2;
+}
+.story-body.is-small {
   opacity: 0.2;
 }
 .next-button,
@@ -122,7 +129,7 @@ html {
 .story-footer {
   z-index: 2;
   position: relative;
-  margin-top: -153.7px;
+  margin-top: -184px;
   display: flex;
   justify-content: center;
   height: 150px;
@@ -139,64 +146,49 @@ html {
   border-radius: 22px;
   height: 44px;
   padding-left: 30px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   box-sizing: border-box;
   align-self: flex-end;
   background: none;
   text-overflow: ellipsis;
-
   white-space: nowrap;
   overflow: hidden;
 }
 ::-webkit-input-placeholder {
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
   max-width: 110px;
 }
 .direct-story-icon {
   align-self: flex-end;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   padding: 0 5px 0 15px;
 }
 
 #user-avatar-small {
   position: absolute;
-  top: 250%;
+  top: 280%;
   right: 45%;
-  transform: scale(2);
+  transform: scale(2.5);
 }
-.username-small {
+.story-username.is-small {
   position: absolute;
-  top: 300%;
+  top: 420%;
+  transform: scale(2.5);
   right: 43%;
   display: block;
   line-height: 16px;
-  max-width: 60px;
+  max-width: 75px;
   overflow: hidden;
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.secondary-story-post-time {
-  position: absolute;
-  top: 330%;
-  right: 50%;
-}
-.secondary-story-header {
-  box-sizing: border-box;
-  color: white;
-  display: grid;
-  grid-template-columns: min-content min-content min-content 1fr;
 
-  background: linear-gradient(
-    180deg,
-    rgba(38, 38, 38, 0.8) 0%,
-    rgba(38, 38, 38, 0) 100%
-  );
-  padding: 10px;
-  height: 100px;
-  margin-bottom: -100px;
-  z-index: 2;
-  position: relative;
+.story-post-time.is-small {
+  position: absolute;
+  top: 470%;
+  right: 50%;
+  transform: scale(2);
 }
