@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Festive&family=Zen+Kurenaido&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Festive&family=Zen+Kurenaido&display=swap');
 
 html {
   background-color: #1f1f1f;
@@ -19,9 +19,7 @@ html {
   border-radius: 8px;
   margin-left: 50px;
 }
-.stories-container.is-small {
-  
-}
+
 .instagram-logo-link {
   position: absolute;
   left: 20px;
@@ -29,7 +27,7 @@ html {
   font-size: 2em;
   color: white;
   text-decoration: none;
-  font-family: "Festive", cursive !important;
+  font-family: 'Festive', cursive !important;
   margin: 0;
 }
 
@@ -56,6 +54,15 @@ html {
   margin-bottom: -100px;
   z-index: 2;
   position: relative;
+  animation: fade-in 0.7s ease-out forwards;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 .story-header.is-small {
   height: 100%;
@@ -64,7 +71,7 @@ html {
   justify-content: center;
   margin-bottom: -800px;
   background: none;
-  
+  animation: none;
 }
 .progress-bars {
   grid-column: 1 / 6;
@@ -95,6 +102,9 @@ html {
   font-weight: 100;
   box-sizing: border-box;
 }
+.story-post-time.is-small {
+  margin: 0;
+}
 .story-actions {
   justify-self: flex-end;
   align-self: center;
@@ -108,9 +118,12 @@ html {
   z-index: 20;
   margin: 0 auto;
   display: grid;
-  grid-template-areas: "left right";
+  grid-template-areas: 'left right';
   width: 500px;
   opacity: 0.2;
+}
+.story-body {
+  transition: transform 0.5s ease-out;
 }
 .story-body.is-small {
   transform: scale(0.4);
@@ -165,7 +178,7 @@ html {
 }
 ::-webkit-input-placeholder {
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
   max-width: 110px;
 }

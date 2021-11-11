@@ -8,9 +8,7 @@ export function StoryAvatar({ user, isUserNameNeeded }) {
 
   return (
     <div
-      className={cx('story-avatar', {
-        'is-small': !isUserNameNeeded,
-      })}
+      className="story-avatar"
     >
       <div className="circle">
         <Link className="circle2" to={`/stories/${userId}`}>

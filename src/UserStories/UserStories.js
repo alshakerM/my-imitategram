@@ -122,7 +122,6 @@ export function UserStories({ userId }) {
                   'is-extended': activeStory,
                   'is-small': !activeStory,
                 })}
-                
               >
                 {activeStory && (
                   <div className="progress-bars">
