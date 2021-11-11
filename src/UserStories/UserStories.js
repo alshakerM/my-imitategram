@@ -8,20 +8,20 @@ import {
   ChevronLeft,
   ChevronRight,
   VolumeDown,
-} from "@mui/icons-material";
+} from '@mui/icons-material';
 
-import { IconButton } from "@mui/material";
-import React, { useRef } from "react";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
-import { Avatar } from "../Avatar/Avatar";
-import storiesData from "../Data/IG-Stories.json";
-import { StoryImage } from "../StoryImage/StoryImage";
-import { StoryVideo } from "../StoryVideo/StoryVideo";
-import { absoluteToRelativeDate } from "../utils";
-import cx from "classnames";
-import "./UserStories.css";
-import { StoryAvatar } from "../StoryAvatar/StoryAvatar";
+import { IconButton } from '@mui/material';
+import React, { useRef } from 'react';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { Avatar } from '../Avatar/Avatar';
+import storiesData from '../Data/IG-Stories.json';
+import { StoryImage } from '../StoryImage/StoryImage';
+import { StoryVideo } from '../StoryVideo/StoryVideo';
+import { absoluteToRelativeDate } from '../utils';
+import cx from 'classnames';
+import './UserStories.css';
+import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 
 function getX(el) {
   return el?.offsetLeft;
@@ -34,7 +34,7 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
   if (progressBarIndex === storyIndex) {
     return `${progress * 100}%`;
   } else if (progressBarIndex < storyIndex) {
-    return "100%";
+    return '100%';
   } else if (progressBarIndex > storyIndex) {
     return 0;
   }
@@ -104,11 +104,11 @@ export function UserStories({ userId }) {
                   setCurrentStoryWidth(width(div));
                 }
               }}
-              className={cx("stories-container", {
-                "is-extended": activeStory,
-                "is-small": !activeStory,
+              className={cx('stories-container', {
+                'is-extended': activeStory,
+                'is-small': !activeStory,
               })}
-              style={{ transition: "all 0.5s ease-out" }}
+              style={{ transition: 'all 0.5s ease-out' }}
               key={user.user_id}
               onClick={() => {
                 if (!activeStory) {
@@ -117,7 +117,13 @@ export function UserStories({ userId }) {
                 }
               }}
             >
-              <div className="story-header">
+              <div
+                className={cx('story-header', {
+                  'is-extended': activeStory,
+                  'is-small': !activeStory,
+                })}
+                
+              >
                 {activeStory && (
                   <div className="progress-bars">
                     {user.stories.map((story, index) => (
@@ -136,41 +142,43 @@ export function UserStories({ userId }) {
                     ))}
                   </div>
                 )}
+
                 {activeStory ? (
                   <Avatar
                     borderColor="#fff"
                     avatar={user.user_thumbnail}
-                    style={{ display: "flex", alignSelf: "center" }}
+                    style={{ display: 'flex', alignSelf: 'center' }}
                     alt={user.user_name}
                   />
                 ) : (
                   <StoryAvatar
                     user={user}
                     style={{
-                      position: "absolute",
-                      top: "290%",
-                      right: "45%",
-                      transform: "scale(3.5)",
+                      position: 'absolute',
+                      top: '290%',
+                      right: '45%',
+                      transform: 'scale(3.5)',
                     }}
                   />
                 )}
 
                 <p
-                  className={cx("story-username", {
-                    "is-extended": activeStory,
-                    "is-small": !activeStory,
+                  className={cx('story-username', {
+                    'is-extended': activeStory,
+                    'is-small': !activeStory,
                   })}
                 >
                   <strong>{user.user_name}</strong>
                 </p>
                 <p
-                  className={cx("story-post-time", {
-                    "is-extended": activeStory,
-                    "is-small": !activeStory,
+                  className={cx('story-post-time', {
+                    'is-extended': activeStory,
+                    'is-small': !activeStory,
                   })}
                 >
                   {absoluteToRelativeDate(story.posting_time)}
                 </p>
+
                 {activeStory ? (
                   <div className="story-actions">
                     <IconButton onClick={() => setPause(!pause)}>
@@ -184,17 +192,17 @@ export function UserStories({ userId }) {
                     </IconButton>
                   </div>
                 ) : (
-                  ""
+                  ''
                 )}
               </div>
 
               <div
-                className={cx("story-body", {
-                  "is-extended": activeStory,
-                  "is-small": !activeStory,
+                className={cx('story-body', {
+                  'is-extended': activeStory,
+                  'is-small': !activeStory,
                 })}
               >
-                {story.story_type === "video" ? (
+                {story.story_type === 'video' ? (
                   <StoryVideo
                     paused={activeStory ? pause : true}
                     muted={activeStory ? mute : true}
@@ -253,7 +261,7 @@ export function UserStories({ userId }) {
                   </button>
                 </div>
               )}
-              
+
               {story.can_reply && activeStory ? (
                 <div className="story-footer">
                   <input
@@ -275,7 +283,7 @@ export function UserStories({ userId }) {
                   </svg>
                 </div>
               ) : (
-                ""
+                ''
               )}
             </div>
           );

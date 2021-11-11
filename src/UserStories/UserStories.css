@@ -20,9 +20,8 @@ html {
   margin-left: 50px;
 }
 .stories-container.is-small {
-  transform: scale(0.4);
+  
 }
-
 .instagram-logo-link {
   position: absolute;
   left: 20px;
@@ -58,9 +57,17 @@ html {
   z-index: 2;
   position: relative;
 }
-
+.story-header.is-small {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: -800px;
+  background: none;
+  
+}
 .progress-bars {
-  grid-column: 1 / 5;
+  grid-column: 1 / 6;
   display: flex;
   gap: 2px;
   margin-top: 10px;
@@ -90,6 +97,7 @@ html {
 }
 .story-actions {
   justify-self: flex-end;
+  align-self: center;
 }
 .story-actions button {
   color: white;
@@ -105,6 +113,7 @@ html {
   opacity: 0.2;
 }
 .story-body.is-small {
+  transform: scale(0.4);
   opacity: 0.2;
 }
 .next-button,
@@ -164,31 +173,4 @@ html {
   align-self: flex-end;
   margin-bottom: 20px;
   padding: 0 5px 0 15px;
-}
-
-#user-avatar-small {
-  position: absolute;
-  top: 280%;
-  right: 45%;
-  transform: scale(2.5);
-}
-.story-username.is-small {
-  position: absolute;
-  top: 420%;
-  transform: scale(2.5);
-  right: 43%;
-  display: block;
-  line-height: 16px;
-  max-width: 75px;
-  overflow: hidden;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.story-post-time.is-small {
-  position: absolute;
-  top: 470%;
-  right: 50%;
-  transform: scale(2);
 }
