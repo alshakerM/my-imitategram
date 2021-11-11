@@ -9,7 +9,7 @@ html {
 }
 .stories-scrollable {
   display: flex;
-  padding-left: 100vw;
+  padding-left: 50vw;
   transition: transform 0.5s ease-in-out;
 }
 .stories-container {

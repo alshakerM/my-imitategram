@@ -152,12 +152,6 @@ export function UserStories({ userId }) {
                 ) : (
                   <StoryAvatar
                     user={user}
-                    style={{
-                      position: 'absolute',
-                      top: '290%',
-                      right: '45%',
-                      transform: 'scale(3.5)',
-                    }}
                   />
                 )}
 
