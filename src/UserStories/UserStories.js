@@ -7,6 +7,7 @@ import {
   VolumeOff,
   ChevronLeft,
   ChevronRight,
+  VolumeDown,
 } from '@mui/icons-material';
 
 import { IconButton } from '@mui/material';
@@ -20,6 +21,7 @@ import { StoryVideo } from '../StoryVideo/StoryVideo';
 import { absoluteToRelativeDate } from '../utils';
 import cx from 'classnames';
 import './UserStories.css';
+import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 
 function getX(el) {
   return el?.offsetLeft;
@@ -115,8 +117,13 @@ export function UserStories({ userId }) {
                 }
               }}
             >
-              {activeStory && (
-                <div className="story-header">
+              <div
+                className={cx('story-header', {
+                  'is-extended': activeStory,
+                  'is-small': !activeStory,
+                })}
+              >
+                {activeStory && (
                   <div className="progress-bars">
                     {user.stories.map((story, index) => (
                       <div className="progress-bar" key={story.story_id}>
@@ -133,30 +140,65 @@ export function UserStories({ userId }) {
                       </div>
                     ))}
                   </div>
+                )}
 
-                  <Avatar avatar={user.user_thumbnail} alt={user.user_name} />
-                  <p>
-                    <strong>{user.user_name}</strong>
-                  </p>
-                  <p>{absoluteToRelativeDate(story.posting_time)}</p>
+                {activeStory ? (
+                  <Avatar
+                    borderColor="#fff"
+                    avatar={user.user_thumbnail}
+                    style={{ display: 'flex', alignSelf: 'center' }}
+                    alt={user.user_name}
+                  />
+                ) : (
+                  <StoryAvatar
+                    user={user}
+                  />
+                )}
+
+                <p
+                  className={cx('story-username', {
+                    'is-extended': activeStory,
+                    'is-small': !activeStory,
+                  })}
+                >
+                  <strong>{user.user_name}</strong>
+                </p>
+                <p
+                  className={cx('story-post-time', {
+                    'is-extended': activeStory,
+                    'is-small': !activeStory,
+                  })}
+                >
+                  {absoluteToRelativeDate(story.posting_time)}
+                </p>
+
+                {activeStory ? (
                   <div className="story-actions">
                     <IconButton onClick={() => setPause(!pause)}>
                       {pause ? <PlayArrow /> : <Pause />}
                     </IconButton>
                     <IconButton onClick={() => setMute(!mute)}>
-                      {mute ? <VolumeMute /> : <VolumeOff />}
+                      {mute ? <VolumeOff /> : <VolumeDown />}
                     </IconButton>
                     <IconButton>
                       <MoreHoriz />
                     </IconButton>
                   </div>
-                </div>
-              )}
-              <div className="story-body">
+                ) : (
+                  ''
+                )}
+              </div>
+
+              <div
+                className={cx('story-body', {
+                  'is-extended': activeStory,
+                  'is-small': !activeStory,
+                })}
+              >
                 {story.story_type === 'video' ? (
                   <StoryVideo
                     paused={activeStory ? pause : true}
-                    muted={activeStory ? pause : true}
+                    muted={activeStory ? mute : true}
                     videoURL={story.story_media}
                     onProgress={progressHandler}
                     key={story.story_id}
@@ -212,7 +254,8 @@ export function UserStories({ userId }) {
                   </button>
                 </div>
               )}
-              {story.can_reply ? (
+
+              {story.can_reply && activeStory ? (
                 <div className="story-footer">
                   <input
                     type="text"

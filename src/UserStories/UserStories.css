@@ -3,29 +3,21 @@
 html {
   background-color: #1f1f1f;
 }
-
 .all-stories-container {
   background-color: #1f1f1f;
   overflow: hidden;
 }
 .stories-scrollable {
   display: flex;
-  padding-left: 100vw;
+  padding-left: 50vw;
   transition: transform 0.5s ease-in-out;
 }
-
 .stories-container {
   margin: 20px auto;
   height: 800px;
   min-width: 449px;
   border-radius: 8px;
   margin-left: 50px;
-}
-.stories-container.is-extended {
-}
-
-.stories-container.is-small {
-  transform: scale(0.4);
 }
 
 .instagram-logo-link {
@@ -62,12 +54,27 @@ html {
   margin-bottom: -100px;
   z-index: 2;
   position: relative;
+  animation: fade-in 0.7s ease-out forwards;
 }
-.story-user-avatar-username {
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.story-header.is-small {
+  height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: -800px;
+  background: none;
+  animation: none;
 }
 .progress-bars {
-  grid-column: 1 / 5;
+  grid-column: 1 / 6;
   display: flex;
   gap: 2px;
   margin-top: 10px;
@@ -84,8 +91,23 @@ html {
   background: white;
   transition: width 200ms linear;
 }
+.story-username {
+  align-self: center;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+.story-post-time {
+  display: flex;
+  align-self: center;
+  font-weight: 100;
+  box-sizing: border-box;
+}
+.story-post-time.is-small {
+  margin: 0;
+}
 .story-actions {
   justify-self: flex-end;
+  align-self: center;
 }
 .story-actions button {
   color: white;
@@ -98,6 +120,13 @@ html {
   display: grid;
   grid-template-areas: 'left right';
   width: 500px;
+  opacity: 0.2;
+}
+.story-body {
+  transition: transform 0.5s ease-out;
+}
+.story-body.is-small {
+  transform: scale(0.4);
   opacity: 0.2;
 }
 .next-button,
@@ -122,7 +151,7 @@ html {
 .story-footer {
   z-index: 2;
   position: relative;
-  margin-top: -153.7px;
+  margin-top: -184px;
   display: flex;
   justify-content: center;
   height: 150px;
@@ -139,12 +168,11 @@ html {
   border-radius: 22px;
   height: 44px;
   padding-left: 30px;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   box-sizing: border-box;
   align-self: flex-end;
   background: none;
   text-overflow: ellipsis;
-
   white-space: nowrap;
   overflow: hidden;
 }
@@ -156,47 +184,6 @@ html {
 }
 .direct-story-icon {
   align-self: flex-end;
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   padding: 0 5px 0 15px;
-}
-
-#user-avatar-small {
-  position: absolute;
-  top: 250%;
-  right: 45%;
-  transform: scale(2);
-}
-.username-small {
-  position: absolute;
-  top: 300%;
-  right: 43%;
-  display: block;
-  line-height: 16px;
-  max-width: 60px;
-  overflow: hidden;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.secondary-story-post-time {
-  position: absolute;
-  top: 330%;
-  right: 50%;
-}
-.secondary-story-header {
-  box-sizing: border-box;
-  color: white;
-  display: grid;
-  grid-template-columns: min-content min-content min-content 1fr;
-
-  background: linear-gradient(
-    180deg,
-    rgba(38, 38, 38, 0.8) 0%,
-    rgba(38, 38, 38, 0) 100%
-  );
-  padding: 10px;
-  height: 100px;
-  margin-bottom: -100px;
-  z-index: 2;
-  position: relative;
 }
