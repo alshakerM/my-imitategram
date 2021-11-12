@@ -6,13 +6,16 @@
 .circle {
   align-self: center;
   color: red;
-  width: 64px;
-  height: 64px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
   background: linear-gradient(
-    144deg,
-    rgba(255, 0, 0, 1) 31%,
-    rgba(255, 0, 155, 1) 55%
+    45deg,
+    rgba(253, 208, 116, 1) 0%,
+    rgba(247, 127, 52, 1) 25%,
+    rgba(221, 50, 110, 1) 50%,
+    rgba(221, 50, 110, 1) 75%,
+    rgba(164, 50, 177, 1) 100%
   );
 }
 .circle2 {
@@ -23,7 +26,7 @@
   margin: 2.5px;
   background-color: white;
   overflow: hidden;
-  display: block;
+  display: flex;
 }
 .story-avatar-username {
   margin: 0;
@@ -40,5 +43,7 @@
   margin-top: 6px;
 }
 .story-user-avatar {
-  border: 1px solid white;
+  border-radius: 50%;
+  align-self: center;
+  border: 0.5px solid white;
 }

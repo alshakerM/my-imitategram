@@ -124,10 +124,13 @@ html {
 }
 .story-body {
   transition: transform 0.5s ease-out;
+  border-radius: 8px;
+  overflow: hidden;
 }
 .story-body.is-small {
   transform: scale(0.4);
   opacity: 0.2;
+  border-radius: 20px;
 }
 .next-button,
 .prev-button {
@@ -154,6 +157,7 @@ html {
   margin-top: -184px;
   display: flex;
   justify-content: center;
+  animation: fade-in 0.6s ease-out;
   height: 150px;
   background: linear-gradient(
     180deg,
@@ -175,6 +179,7 @@ html {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+ 
 }
 ::-webkit-input-placeholder {
   color: white;
