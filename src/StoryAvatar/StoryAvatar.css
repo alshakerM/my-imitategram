@@ -4,10 +4,7 @@
   flex-direction: column;
 }
 .circle {
-  align-self: center;
-  color: red;
-  width: 62px;
-  height: 62px;
+  padding: 2px;
   border-radius: 50%;
   background: linear-gradient(
     45deg,
@@ -21,9 +18,6 @@
 .circle2 {
   border: 1px solid white;
   border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  margin: 2.5px;
   background-color: white;
   overflow: hidden;
   display: flex;
@@ -46,4 +40,6 @@
   border-radius: 50%;
   align-self: center;
   border: 0.5px solid white;
+  width: 55px;
+  height: 55px;
 }
