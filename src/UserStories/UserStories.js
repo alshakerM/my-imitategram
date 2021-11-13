@@ -21,7 +21,6 @@ import { absoluteToRelativeDate } from '../utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import './UserStories.css';
 
-
 function getX(el) {
   return el?.offsetLeft;
 }

@@ -4,6 +4,7 @@ import './App.css';
 import { Stories } from './Stories/Stories';
 import { useIGData } from './hooks/useIGData';
 
+
 export function HomePage({ isExtended, setIsExtended }) {
   const {data} = useIGData();
   return (
