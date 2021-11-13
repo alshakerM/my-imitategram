@@ -4,26 +4,16 @@
   flex-direction: column;
 }
 .circle {
-  align-self: center;
-  color: red;
-  width: 64px;
-  height: 64px;
+  padding: 2px;
   border-radius: 50%;
   background: linear-gradient(
-    144deg,
-    rgba(255, 0, 0, 1) 31%,
-    rgba(255, 0, 155, 1) 55%
+    45deg,
+    rgba(253, 208, 116, 1) 0%,
+    rgba(247, 127, 52, 1) 25%,
+    rgba(221, 50, 110, 1) 50%,
+    rgba(221, 50, 110, 1) 75%,
+    rgba(164, 50, 177, 1) 100%
   );
-}
-.circle2 {
-  border: 1px solid white;
-  border-radius: 50%;
-  width: 56px;
-  height: 56px;
-  margin: 2.5px;
-  background-color: white;
-  overflow: hidden;
-  display: block;
 }
 .story-avatar-username {
   margin: 0;
@@ -40,5 +30,10 @@
   margin-top: 6px;
 }
 .story-user-avatar {
-  border: 1px solid white;
+  border-radius: 50%;
+  border: 2px solid white;
+  width: 55px;
+  height: 55px;
+  background: white;
+  display: block;
 }
