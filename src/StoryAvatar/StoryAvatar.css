@@ -15,13 +15,6 @@
     rgba(164, 50, 177, 1) 100%
   );
 }
-.circle2 {
-  border: 1px solid white;
-  border-radius: 50%;
-  background-color: white;
-  overflow: hidden;
-  display: flex;
-}
 .story-avatar-username {
   margin: 0;
   text-align: center;
@@ -38,8 +31,9 @@
 }
 .story-user-avatar {
   border-radius: 50%;
-  align-self: center;
-  border: 0.5px solid white;
+  border: 2px solid white;
   width: 55px;
   height: 55px;
+  background: white;
+  display: block;
 }

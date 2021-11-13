@@ -7,11 +7,9 @@ export function StoryAvatar({ user, isUserNameNeeded }) {
   const userId = user.user_id;
 
   return (
-    <div
-      className="story-avatar"
-    >
+    <div className="story-avatar">
       <div className="circle">
-        <Link className="circle2" to={`/stories/${userId}`}>
+        <Link to={`/stories/${userId}`}>
           <img
             src={user.user_thumbnail}
             alt={`${user.user_name} avatar`}
