@@ -1,27 +1,24 @@
 import {
+  ChevronLeft,
+  ChevronRight,
   Clear,
   MoreHoriz,
   Pause,
   PlayArrow,
-  VolumeMute,
-  VolumeOff,
-  ChevronLeft,
-  ChevronRight,
   VolumeDown,
+  VolumeOff,
 } from '@mui/icons-material';
-
 import { IconButton } from '@mui/material';
+import cx from 'classnames';
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
-import storiesData from '../Data/IG-Stories.json';
+import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 import { StoryImage } from '../StoryImage/StoryImage';
 import { StoryVideo } from '../StoryVideo/StoryVideo';
 import { absoluteToRelativeDate } from '../utils';
-import cx from 'classnames';
 import './UserStories.css';
-import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 
 function getX(el) {
   return el?.offsetLeft;
@@ -41,6 +38,14 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
 }
 
 export function UserStories({ userId }) {
+  const [storiesData, setStoriesData] = React.useState([]);
+  React.useEffect(() => {
+    fetch('../Data/IG-Stories.json', {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((results) => setStoriesData(results));
+  }, []);
   const userIndex = storiesData.findIndex((user) => user.user_id === userId);
   const user = storiesData[userIndex];
   const nextUser = storiesData[userIndex + 1];
@@ -150,9 +155,7 @@ export function UserStories({ userId }) {
                     alt={user.user_name}
                   />
                 ) : (
-                  <StoryAvatar
-                    user={user}
-                  />
+                  <StoryAvatar user={user} />
                 )}
 
                 <p
