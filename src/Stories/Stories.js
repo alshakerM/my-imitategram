@@ -23,7 +23,6 @@ export function Stories() {
     }).then((res) => res.json())
     .then((results) => setStoriesData(results))
   }, []);
-  
   return (
     <div className="stories-avatars-container">
       <div
