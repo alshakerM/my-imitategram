@@ -7,7 +7,7 @@ import { Stories } from "./Stories/Stories";
 export function HomePage({ isExtended, setIsExtended }) {
   const [data, setData] = React.useState([])
   React.useEffect(() => {
-    fetch("../Data/MOCK_DATA.json" , {
+    fetch("../Data/IG.json" , {
       method: "GET"
     }).then((res) => res.json())
     .then((res) => setData(res))
