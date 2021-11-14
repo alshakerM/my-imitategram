@@ -1,18 +1,11 @@
-import { Post } from "./Post/Post";
-import React from "react";
-import "./App.css";
-import { Stories } from "./Stories/Stories";
-
+import { Post } from './Post/Post';
+import React from 'react';
+import './App.css';
+import { Stories } from './Stories/Stories';
+import { useIGData } from './hooks/useIGData';
 
 export function HomePage({ isExtended, setIsExtended }) {
-  const [data, setData] = React.useState([])
-  React.useEffect(() => {
-    fetch("../Data/IG.json" , {
-      method: "GET"
-    }).then((res) => res.json())
-    .then((res) => setData(res))
-  }, []);
-  console.log(data)
+  const {data} = useIGData();
   return (
     <div className="content-section">
       <Stories />

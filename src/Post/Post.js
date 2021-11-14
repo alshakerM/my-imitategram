@@ -6,24 +6,27 @@ import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 import { absoluteToRelativeDate } from '../utils';
 import { Avatar } from '../Avatar/Avatar';
+import { IconButton } from '@mui/material';
+import { useIGData } from '../hooks/useIGData';
 
-function PostActions(is_post_liked) {
+function PostActions({ index, is_post_liked }) {
+  const { toggleLike } = useIGData();
   return (
     <div className="post-actions">
       <div className="like-share-telegram-icons">
-        <svg
-          aria-label="Unlike"
-          class="_8-yf5 "
-          color={is_post_liked ? '#ed4956' : '#8e8e8e'}
-          fill={is_post_liked ? '#ed4956' : '#8e8e8e'}
-          height="24"
-          role="img"
-          viewBox="0 0 48 48"
-          width="24"
-        >
-          <path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
-        </svg>
-
+        <IconButton onClick={() => toggleLike(index)}>
+          <svg
+            aria-label="Unlike"
+            color={is_post_liked ? '#ed4956' : '#8e8e8e'}
+            fill={is_post_liked ? '#ed4956' : '#8e8e8e'}
+            height="24"
+            role="img"
+            viewBox="0 0 48 48"
+            width="24"
+          >
+            <path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
+          </svg>
+        </IconButton>
         <svg
           aria-label="Comment"
           className="comment-icon"
@@ -69,7 +72,8 @@ function PostActions(is_post_liked) {
   );
 }
 
-function PostInput() {
+function PostInput({ index }) {
+  const { addComment } = useIGData();
   return (
     <div className="comment-input-section">
       <svg
@@ -85,8 +89,20 @@ function PostInput() {
         <path d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z"></path>
         <path d="M34.9 24c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5 1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5zm-21.8 0c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zM24 37.3c-5.2 0-8-3.5-8.2-3.7-.5-.6-.4-1.6.2-2.1.6-.5 1.6-.4 2.1.2.1.1 2.1 2.5 5.8 2.5 3.7 0 5.8-2.5 5.8-2.5.5-.6 1.5-.7 2.1-.2.6.5.7 1.5.2 2.1 0 .2-2.8 3.7-8 3.7z"></path>
       </svg>
-      <input className="comment-input" placeholder="Add a comment..." />
-      <button className="post-button">Post</button>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          const comment = event.target.commentBody.value;
+          addComment(index, comment, 'mdoggett0');
+        }}
+      >
+        <input
+          name="commentBody"
+          className="comment-input"
+          placeholder="Add a comment..."
+        />
+        <button className="post-button">Post</button>
+      </form>
     </div>
   );
 }
@@ -129,7 +145,7 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
           loading="lazy"
         />
       </div>
-      <PostActions is_post_liked={datum?.is_post_liked} />
+      <PostActions index={index} is_post_liked={datum?.is_post_liked} />
       <div className="post-caption-and-like-section">
         <p className="like-count-section">
           <div className="comment-caption-avatar">
@@ -207,10 +223,13 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
               </svg>
             </p>
           </div>
-          <PostDate posting_time={datum?.posting_time} isExtended={isExtended} />
+          <PostDate
+            posting_time={datum?.posted_on}
+            isExtended={isExtended}
+          />
         </div>
       </div>
-      <PostInput />
+      <PostInput index={index} />
     </>
   );
 
@@ -290,8 +309,11 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
             Liked by <strong>{datum?.user_name}</strong> and
             <strong>{datum?.likes_count} others </strong>
           </p>
-          <PostDate posting_time={datum?.posting_time} isExtended={isExtended} />
-          <PostInput />
+          <PostDate
+            posting_time={datum?.posting_time}
+            isExtended={isExtended}
+          />
+          <PostInput index={index} />
         </div>
       </div>
     </>
