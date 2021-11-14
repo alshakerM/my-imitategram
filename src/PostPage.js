@@ -1,21 +1,24 @@
 import { Post } from './Post/Post';
-import React from 'react';
+import React, { useEffect } from 'react';
+
 
 export function PostPage({ postId, isFloating }) {
-  const [data, setData] = React.useState([]);
+  const arr = React.useS([]);
+  const data = arr[0];
+  const setData = arr[1];
   React.useEffect(() => {
-    fetch('../Data/MOCK_DATA.json', {
+    fetch('../Data/IG.json', {
       method: 'GET',
     })
       .then((res) => res.json())
       .then((results) => setData(results));
   }, []);
-  const post = data[postId];
+  const post = useDeleteAfter5Sec(data[postId]);
   return (
     <div className="content-section">
       <Post
         datum={post}
-        comments={post.comments}
+        comments={post?.comments}
         isExtended={true}
         isFloating={isFloating}
       />
