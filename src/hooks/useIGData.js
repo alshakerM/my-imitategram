@@ -10,7 +10,7 @@ function createComment(user_name, user_thumbnail, comment) {
     comment_id: uuid(),
     user_name,
     comment,
-    posted_on: new Date().toString(),
+    posting_time: new Date().toString(),
     user_thumbnail,
     comment_likes: 0,
     is_liked_by_user: false,
@@ -40,7 +40,7 @@ export function useIGData() {
     subscribers.add(setData);
   }, [setData]);
 
-  function togglePost(postIndex) {
+  function toggleLike(postIndex) {
     const newPost = { ...data[postIndex] };
     newPost.is_post_liked = !newPost.is_post_liked;
     const newData = data.slice(0);
@@ -66,5 +66,5 @@ export function useIGData() {
     updateSubscribers(newData);
   }
 
-  return { data, togglePost, addComment };
+  return { data, toggleLike, addComment };
 }
