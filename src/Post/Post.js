@@ -224,7 +224,10 @@ export function Post({ datum, isExtended, setIsExtended, index, isFloating }) {
               </svg>
             </p>
           </div>
-          <PostDate posting_time={datum?.posting_time} isExtended={isExtended} />
+          <PostDate
+            posting_time={datum?.posted_on}
+            isExtended={isExtended}
+          />
         </div>
       </div>
       <PostInput index={index} />
