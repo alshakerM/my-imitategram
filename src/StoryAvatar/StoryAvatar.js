@@ -1,7 +1,6 @@
 import './StoryAvatar.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import cx from 'classnames';
 
 export function StoryAvatar({ user, isUserNameNeeded }) {
   const userId = user.user_id;

@@ -1,4 +1,3 @@
-import storiesData from "../Data/IG-Stories.json";
 import "./Stories.css";
 import React, { useState } from "react";
 import { StoryAvatar } from "../StoryAvatar/StoryAvatar";
@@ -17,7 +16,13 @@ export function Stories() {
   const [containerWidth, setContainerWidth] = useState(0);
   const [scrollLeft, setScrollLeft] = React.useState(0);
   const scrollLimit = -1 * (allCirclesWidth - containerWidth);
-  
+  const [storiesData, setStoriesData] = React.useState([])
+  React.useEffect(() => {
+    fetch("../Data/IG-Stories.json" , {
+      method: "GET"
+    }).then((res) => res.json())
+    .then((results) => setStoriesData(results))
+  }, []);
   return (
     <div className="stories-avatars-container">
       <div

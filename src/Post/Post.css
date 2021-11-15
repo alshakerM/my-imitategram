@@ -159,6 +159,11 @@
   padding: 0 20px;
   color: #8e8e8e;
 }
+.post-like-button {
+  background: none;
+  border: none;
+  padding: 0;
+}
 .comment-user-info-extended {
   flex: 1;
   width: 100%;
@@ -190,6 +195,10 @@
   color: #8e8e8e;
   margin-top: 5px;
   font-size: 12px;
+}
+.post-comment-input {
+  flex: 1;
+  display: flex;
 }
 
 .post-time.is-extended {
