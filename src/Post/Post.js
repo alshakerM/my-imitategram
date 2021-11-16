@@ -1,13 +1,12 @@
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
-import { useHistory } from 'react-router';
-import React from 'react';
-import './Post.css';
-import { Link } from 'react-router-dom';
 import classnames from 'classnames';
-import { absoluteToRelativeDate } from '../utils';
+import React from 'react';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
-import { IconButton } from '@mui/material';
 import { useIGData } from '../hooks/useIGData';
+import { absoluteToRelativeDate } from '../utils';
+import './Post.css';
 
 function PostActions({ index, is_post_liked }) {
   const { toggleLike } = useIGData();
@@ -111,7 +110,7 @@ function PostDate({ posting_time }) {
   const postDate = absoluteToRelativeDate(new Date(posting_time));
   return (
     <section className="post-time-section">
-      <p className="post-time">{postDate?.toUpperCase()}</p>
+      <p className="post-time">{postDate.toUpperCase()}</p>
     </section>
   );
 }
@@ -158,11 +157,9 @@ function CommentSection({ index, comments, isExpanded, setIsExpanded }) {
         >
           {isExpanded && <Avatar src={comment.user_thumbnail} size="32" />}
           <div className="comment-body">
-            <div>
-              <p className="comment-text">
-                <strong>{comment.user_name}</strong> {comment.comment}
-              </p>
-            </div>
+            <p className="comment-text">
+              <strong>{comment.user_name}</strong> {comment.comment}
+            </p>
             {isExpanded && (
               <div>
                 <time className="comment-action">2w</time>
@@ -180,7 +177,6 @@ function CommentSection({ index, comments, isExpanded, setIsExpanded }) {
           </div>
           <svg
             aria-label="Like"
-            className="like-comment-icon"
             color={comment.is_liked_by_user ? '#ed4956' : '#8e8e8e'}
             fill={comment.is_liked_by_user ? '#ed4956' : '#8e8e8e'}
             height="12"
@@ -221,7 +217,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             <img
               className="post-img"
               src={datum?.post_image}
-              alt=""
+              alt={datum?.post_image}
               loading="lazy"
             />
           </section>
