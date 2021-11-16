@@ -132,7 +132,7 @@ export function UserStories({ userId }) {
                   }
                 }}
                 className={cx('stories-container', {
-                  'is-extended': activeStory,
+                  'is-expanded': activeStory,
                   'is-small': !activeStory,
                 })}
                 style={{ transition: 'all 0.5s ease-out' }}
@@ -146,7 +146,7 @@ export function UserStories({ userId }) {
               >
                 <div
                   className={cx('story-header', {
-                    'is-extended': activeStory,
+                    'is-expanded': activeStory,
                     'is-small': !activeStory,
                   })}
                 >
@@ -182,7 +182,7 @@ export function UserStories({ userId }) {
 
                   <p
                     className={cx('story-username', {
-                      'is-extended': activeStory,
+                      'is-expanded': activeStory,
                       'is-small': !activeStory,
                     })}
                   >
@@ -190,7 +190,7 @@ export function UserStories({ userId }) {
                   </p>
                   <p
                     className={cx('story-post-time', {
-                      'is-extended': activeStory,
+                      'is-expanded': activeStory,
                       'is-small': !activeStory,
                     })}
                   >
@@ -216,7 +216,7 @@ export function UserStories({ userId }) {
 
                 <div
                   className={cx('story-body', {
-                    'is-extended': activeStory,
+                    'is-expanded': activeStory,
                     'is-small': !activeStory,
                   })}
                 >

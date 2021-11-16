@@ -11,7 +11,7 @@ export function PostPage({ postId, isFloating }) {
         index={postId}
         datum={post}
         comments={post?.comments}
-        isExtended={true}
+        isExpanded={true}
         isFloating={isFloating}
       />
     </div>

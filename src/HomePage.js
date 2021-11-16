@@ -4,7 +4,7 @@ import './App.css';
 import { Stories } from './Stories/Stories';
 import { useIGData } from './hooks/useIGData';
 
-export function HomePage({ isExtended, setIsExtended }) {
+export function HomePage({ isExpanded, setIsExpanded }) {
   const {data} = useIGData();
   return (
     <div className="content-section">
@@ -13,8 +13,8 @@ export function HomePage({ isExtended, setIsExtended }) {
         <Post
           datum={datum}
           comments={datum.comments}
-          isExtended={isExtended}
-          setIsExtended={setIsExtended}
+          isExpanded={isExpanded}
+          setIsExpanded={setIsExpanded}
           index={index}
         />
       ))}
