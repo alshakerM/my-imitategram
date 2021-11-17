@@ -110,7 +110,7 @@ function PostInput({ index, isExpanded }) {
           className="comment-input"
           placeholder="Add a comment..."
         />
-        <button className="post-button">Post</button>
+        <button className="post-button"><strong>Post</strong></button>
       </form>
     </section>
   );
