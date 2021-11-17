@@ -187,9 +187,14 @@ section.comment-input-section {
 }
 .comment-input {
   width: 100%;
-  border: none;
+  border: 0;
   background: none;
   padding-left: 20px;
+  outline: none;
+}
+.comment-input::placeholder {
+  color: #8e8e8e;
+  font-size: 14px;
 }
 .post-button {
   background: none;
