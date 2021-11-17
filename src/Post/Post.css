@@ -19,7 +19,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     'img header'
-    'img caption'
+  
     'img comments'
     'img actions'
     'img likes'
@@ -93,7 +93,9 @@ section.post-caption-section {
   gap: 15px;
 }
 .post-caption-section.is-expanded {
-  padding: 15px 15px 4px;
+  padding: 0;
+  padding-top: 15px;
+  margin: 0;
 }
 section.comments-section {
   grid-area: comments;

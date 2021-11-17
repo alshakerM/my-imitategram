@@ -138,7 +138,7 @@ function PostHeader({ user_name, user_thumbnail, city }) {
     </section>
   );
 }
-function CommentSection({ index, comments, isExpanded, setIsExpanded }) {
+function CommentSection({ index, comments, isExpanded, setIsExpanded, datum }) {
   const commentsSummary = comments.slice(0, isExpanded ? undefined : 2);
   return (
     <section
@@ -158,6 +158,16 @@ function CommentSection({ index, comments, isExpanded, setIsExpanded }) {
             View all comments
           </Link>
         </div>
+      )}
+      {isExpanded && (
+        <section className={classnames('post-caption-section', {
+          'is-expanded': isExpanded,
+        })}>
+          <Avatar src={datum.user_thumbnail} alt={datum.user_name} />
+          <p className="post-caption-text">
+            <strong>{datum?.user_name}</strong> {datum?.post_caption}
+          </p>
+        </section>
       )}
       {commentsSummary.map((comment) => (
         <div
@@ -246,17 +256,15 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             Liked by <strong>{datum?.user_name}</strong> and
             <strong> {datum?.likes_count} others </strong>
           </section>
-          <section
-            className={classnames('post-caption-section', {
-              'is-expanded': isExpanded,
-            })}
-          >
-            {isExpanded && <Avatar src={datum?.user_thumbnail} />}
-            <p className="post-caption-text">
-              <strong>{datum?.user_name}</strong> {datum?.post_caption}
-            </p>
-          </section>
+          {!isExpanded && (
+            <section className="post-caption-section">
+              <p className="post-caption-text">
+                <strong>{datum?.user_name}</strong> {datum?.post_caption}
+              </p>
+            </section>
+          )}
           <CommentSection
+            datum={datum}
             index={index}
             setIsExpanded={setIsExpanded}
             comments={datum.comments}
