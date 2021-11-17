@@ -34,11 +34,11 @@ section.post-header {
 }
 .post-header {
   display: flex;
-  padding: 10px;
+  padding: 14px 4px 14px 16px;
   margin: 0;
   border-bottom: 1px solid #dbdbdb;
   box-sizing: border-box;
-  gap: 6px;
+  gap: 10px;
 }
 .more-icon {
   align-self: center;
@@ -69,36 +69,48 @@ section.img-container {
 
 section.post-actions {
   grid-area: actions;
-  padding: 0 10px;
+  padding: 6px 16px 8px 15px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
+}
+section.post-actions.is-expanded {
+  padding: 0px 15px 8px 15px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 section.like-count {
   grid-area: likes;
-  padding: 10px;
+  padding: 0px 15px;
+  margin-bottom: 3px;
 }
 
 section.post-caption-section {
   grid-area: caption;
-  padding: 5px 10px;
+  padding: 4px 15px;
   display: flex;
   gap: 15px;
 }
-
+.post-caption-section.is-expanded {
+  padding: 15px 15px 4px;
+}
 section.comments-section {
   grid-area: comments;
   overflow-y: auto;
-  max-height: 300px;
-  padding: 10px;
+  max-height: 310px;
+  padding: 0 15px;
 }
 section.comments-section.is-expanded {
   border-bottom: 1px solid #dbdbdb;
 }
 section.post-time-section {
   grid-area: time;
-  padding: 0 10px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  margin: 0;
 }
+
 section.comment-input-section {
   grid-area: input;
 }
@@ -149,14 +161,13 @@ section.comment-input-section {
   flex: 1;
 }
 .save-icon {
-  padding: 8px;
   align-items: center;
 }
 .comment-icon {
   padding: 0 15px;
 }
 .comment-input-section {
-  margin-top: 20px;
+  margin-top: 5px;
   border-top: 1px solid #dbdbdb;
   width: 100%;
   display: flex;
@@ -192,8 +203,11 @@ section.comment-input-section {
 }
 .post-time {
   color: #8e8e8e;
-  margin-top: 5px;
+  margin-top: 3px;
   font-size: 12px;
+}
+.post-time.is-expanded {
+  margin: 0;
 }
 
 .view-comments-button {
@@ -203,6 +217,7 @@ section.comment-input-section {
   cursor: pointer;
   color: #8e8e8e;
   text-decoration: none;
+  margin: 0;
 }
 .post-caption-text {
   margin: 0;

@@ -8,10 +8,14 @@ import { useIGData } from '../hooks/useIGData';
 import { absoluteToRelativeDate } from '../utils';
 import './Post.css';
 
-function PostActions({ index, is_post_liked }) {
+function PostActions({ index, is_post_liked, isExpanded }) {
   const { toggleLike } = useIGData();
   return (
-    <section className="post-actions">
+    <section
+      className={classnames('post-actions', {
+        'is-expanded': isExpanded,
+      })}
+    >
       <div className="like-share-telegram-icons">
         <button className="post-like-button" onClick={() => toggleLike(index)}>
           <svg
@@ -106,11 +110,17 @@ function PostInput({ index }) {
     </section>
   );
 }
-function PostDate({ posting_time }) {
+function PostDate({ posting_time, isExpanded }) {
   const postDate = absoluteToRelativeDate(new Date(posting_time));
   return (
     <section className="post-time-section">
-      <p className="post-time">{postDate.toUpperCase()}</p>
+      <p
+        className={classnames('post-time', {
+          'is-expanded': isExpanded,
+        })}
+      >
+        {postDate.toUpperCase()}
+      </p>
     </section>
   );
 }
@@ -222,13 +232,25 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             />
           </section>
 
-          <PostActions index={index} is_post_liked={datum?.is_post_liked} />
+          <PostActions
+            index={index}
+            is_post_liked={datum?.is_post_liked}
+            isExpanded={isExpanded}
+          />
 
-          <section className="like-count">
+          <section
+            className={classnames('like-count', {
+              'is-expanded': isExpanded,
+            })}
+          >
             Liked by <strong>{datum?.user_name}</strong> and
             <strong> {datum?.likes_count} others </strong>
           </section>
-          <section className="post-caption-section">
+          <section
+            className={classnames('post-caption-section', {
+              'is-expanded': isExpanded,
+            })}
+          >
             {isExpanded && <Avatar src={datum?.user_thumbnail} />}
             <p className="post-caption-text">
               <strong>{datum?.user_name}</strong> {datum?.post_caption}
