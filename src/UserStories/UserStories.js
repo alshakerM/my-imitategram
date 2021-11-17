@@ -194,7 +194,7 @@ export function UserStories({ userId }) {
                       'is-small': !activeStory,
                     })}
                   >
-                    {absoluteToRelativeDate(story.posting_time)}
+                    {absoluteToRelativeDate(story.posting_time, 'mini')}
                   </p>
 
                   {activeStory ? (

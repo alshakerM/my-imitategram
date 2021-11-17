@@ -9,6 +9,6 @@ const timeAgo = new TimeAgo("en-US");
  * @param {Date} date the JS date object
  * @returns {string} the relative time/date
  */
-export function absoluteToRelativeDate(date) {
-  return timeAgo.format(new Date(date), 'mini');
+export function absoluteToRelativeDate(date, dateTextSize) {
+  return timeAgo.format(new Date(date), dateTextSize);
 }
