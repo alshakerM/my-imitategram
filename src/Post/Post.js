@@ -21,8 +21,8 @@ function PostActions({ index, is_post_liked, isExpanded }) {
         <button className="post-like-button" onClick={() => toggleLike(index)}>
           <svg
             aria-label="Unlike"
-            color={is_post_liked ? '#ed4956' : '#8e8e8e'}
-            fill={is_post_liked ? '#ed4956' : '#8e8e8e'}
+            color={is_post_liked ? '#ed4956' : '#262626'}
+            fill={is_post_liked ? '#ed4956' : '#262626'}
             height="24"
             role="img"
             viewBox="0 0 48 48"
@@ -33,9 +33,9 @@ function PostActions({ index, is_post_liked, isExpanded }) {
         </button>
         <svg
           aria-label="Comment"
-          className="comment-icon"
-          color="#8e8e8e"
-          fill="#8e8e8e"
+          className="action-icon"
+          color="#262626"
+          fill="#262626"
           height="24"
           role="img"
           viewBox="0 0 48 48"
@@ -49,9 +49,9 @@ function PostActions({ index, is_post_liked, isExpanded }) {
         </svg>
         <svg
           aria-label="Direct"
-          className="telegram-icon"
+          className="action-icon"
           color="#262626"
-          fill="#8e8e8e"
+          fill="#262626"
           height="22"
           role="img"
           viewBox="0 0 48 48"
@@ -62,9 +62,9 @@ function PostActions({ index, is_post_liked, isExpanded }) {
       </div>
       <svg
         aria-label="Save"
-        className="save-icon"
-        color="#8e8e8e"
-        fill="#8e8e8e"
+        className="action-icon"
+        color="#262626"
+        fill="#262626"
         height="24"
         role="img"
         viewBox="0 0 48 48"
@@ -204,8 +204,9 @@ function CommentSection({ index, comments, isExpanded, setIsExpanded, datum }) {
           </div>
           <svg
             aria-label="Like"
-            color={comment.is_liked_by_user ? '#ed4956' : '#8e8e8e'}
-            fill={comment.is_liked_by_user ? '#ed4956' : '#8e8e8e'}
+            className="action-icon"
+            color={comment.is_liked_by_user ? '#ed4956' : '#262626'}
+            fill={comment.is_liked_by_user ? '#ed4956' : '#262626'}
             height="12"
             role="img"
             viewBox="0 0 48 48"
