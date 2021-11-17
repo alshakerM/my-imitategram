@@ -13,7 +13,7 @@ html {
   transition: transform 0.5s ease-in-out;
 }
 .stories-container {
-  margin: 20px auto;
+  margin: 70px auto;
   height: 800px;
   min-width: 449px;
   border-radius: 8px;
@@ -29,6 +29,7 @@ html {
   text-decoration: none;
   font-family: 'Festive', cursive !important;
   margin: 0;
+  z-index: 2;
 }
 
 .exit-icon-link {
