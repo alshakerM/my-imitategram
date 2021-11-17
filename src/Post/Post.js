@@ -188,8 +188,8 @@ function CommentSection({ index, comments, isExpanded, setIsExpanded, datum }) {
               <strong>{comment.user_name}</strong> {comment.comment}
             </p>
             {isExpanded && (
-              <div>
-                <time className="comment-action">2w</time>
+              <div className="comment-action-container">
+                <time className="comment-action">2 w</time>
                 <button className="comment-action">
                   <strong>
                     {comment.comment_likes}

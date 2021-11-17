@@ -19,7 +19,6 @@
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     'img header'
-  
     'img comments'
     'img actions'
     'img likes'
@@ -106,6 +105,7 @@ section.comments-section {
 section.comments-section.is-expanded {
   border-bottom: 1px solid #dbdbdb;
 }
+
 section.post-time-section {
   grid-area: time;
   padding: 0 15px;
@@ -134,15 +134,13 @@ section.comment-input-section {
 }
 .comment-action {
   font-size: 12px;
-  font-weight: 400;
   line-height: 16px;
   background: none;
   border: none;
   padding: 0;
   color: #8e8e8e;
-  margin-right: 12px;
+  margin: 16px 12px 4px 0;
   vertical-align: baseline;
-  margin-top: 12px;
   display: inline-block;
 }
 .comment-body {
@@ -179,7 +177,7 @@ section.comment-input-section {
   box-sizing: border-box;
 }
 .comment-input-section.is-expanded {
-  margin:0;
+  margin: 0;
   margin-top: 15px;
   padding: 10px;
 }
