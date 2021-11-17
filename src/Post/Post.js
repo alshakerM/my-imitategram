@@ -1,3 +1,4 @@
+import { ClassNames } from '@emotion/react';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import classnames from 'classnames';
 import React from 'react';
@@ -75,10 +76,14 @@ function PostActions({ index, is_post_liked, isExpanded }) {
   );
 }
 
-function PostInput({ index }) {
+function PostInput({ index, isExpanded }) {
   const { addComment } = useIGData();
   return (
-    <section className="comment-input-section">
+    <section
+    className={classnames('comment-input-section', {
+      'is-expanded': isExpanded,
+    })}
+    >
       <svg
         className="emoji"
         aria-label="Emoji"
@@ -160,9 +165,11 @@ function CommentSection({ index, comments, isExpanded, setIsExpanded, datum }) {
         </div>
       )}
       {isExpanded && (
-        <section className={classnames('post-caption-section', {
-          'is-expanded': isExpanded,
-        })}>
+        <section
+          className={classnames('post-caption-section', {
+            'is-expanded': isExpanded,
+          })}
+        >
           <Avatar src={datum.user_thumbnail} alt={datum.user_name} />
           <p className="post-caption-text">
             <strong>{datum?.user_name}</strong> {datum?.post_caption}
@@ -274,7 +281,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             posting_time={datum?.posting_time}
             isExpanded={isExpanded}
           />
-          <PostInput index={index} />
+          <PostInput index={index} isExpanded={isExpanded} />
         </>
       </div>
     </article>

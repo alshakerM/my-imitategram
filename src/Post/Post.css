@@ -75,7 +75,7 @@ section.post-actions {
   align-items: center;
 }
 section.post-actions.is-expanded {
-  padding: 0px 15px 8px 15px;
+  padding: 8px 15px;
   margin: 0;
   box-sizing: border-box;
 }
@@ -100,7 +100,7 @@ section.post-caption-section {
 section.comments-section {
   grid-area: comments;
   overflow-y: auto;
-  max-height: 310px;
+  max-height: 365px;
   padding: 0 15px;
 }
 section.comments-section.is-expanded {
@@ -177,6 +177,15 @@ section.comment-input-section {
   background-color: white;
   padding: 10px;
   box-sizing: border-box;
+}
+.comment-input-section.is-expanded {
+  margin:0;
+  margin-top: 15px;
+  padding: 10px;
+}
+.emoji {
+  align-self: center;
+  margin-left: 5px;
 }
 .comment-input {
   width: 100%;
