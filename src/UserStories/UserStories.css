@@ -38,7 +38,7 @@ html {
   top: 0;
   color: white;
   padding: 20px;
-  z-index: 2;
+  z-index: 3;
   cursor: pointer;
 }
 .story-header {
