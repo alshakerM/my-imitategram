@@ -38,6 +38,8 @@ html {
   top: 0;
   color: white;
   padding: 20px;
+  z-index: 2;
+  cursor: pointer;
 }
 .story-header {
   box-sizing: border-box;
