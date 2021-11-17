@@ -80,9 +80,9 @@ function PostInput({ index, isExpanded }) {
   const { addComment } = useIGData();
   return (
     <section
-    className={classnames('comment-input-section', {
-      'is-expanded': isExpanded,
-    })}
+      className={classnames('comment-input-section', {
+        'is-expanded': isExpanded,
+      })}
     >
       <svg
         className="emoji"
@@ -226,7 +226,6 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
         event.target === event.currentTarget && history.push('/');
       }}
       className={classnames('post-overlay', {
-        'is-expanded': isExpanded,
         'is-floating': isFloating,
       })}
     >
@@ -244,7 +243,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             <img
               className="post-img"
               src={datum?.post_image}
-              alt={datum?.post_image}
+              alt={`${datum?.user_name}  Avatar`}
               loading="lazy"
             />
           </section>
@@ -255,11 +254,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             isExpanded={isExpanded}
           />
 
-          <section
-            className={classnames('like-count', {
-              'is-expanded': isExpanded,
-            })}
-          >
+          <section className="like-count">
             Liked by <strong>{datum?.user_name}</strong> and
             <strong> {datum?.likes_count} others </strong>
           </section>
