@@ -160,11 +160,40 @@ section.comment-input-section {
 .like-share-telegram-icons {
   flex: 1;
 }
+.like-icon {
+  fill: white;
+  stroke-width: 3px;
+  stroke: #262626;
+  transform: scale(1);
+}
+.like-icon:hover {
+  stroke: #8e8e8e;
+}
+.like-icon.is-liked {
+  fill: #ed4956;
+  stroke-width: 0px;
+  transform-origin: center;
+  animation: scale-out 0.2s ease-in;
+}
+@keyframes scale-out {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .save-icon {
   align-items: center;
 }
-.comment-icon {
-  padding: 0 15px;
+.action-icon {
+  padding-right: 15px;
+}
+.action-icon:hover {
+  fill: #8e8e8e;
 }
 .comment-input-section {
   margin-top: 5px;
@@ -199,7 +228,7 @@ section.comment-input-section {
 .post-button {
   background: none;
   border: none;
-  color: #0095f6;
+  color: rgba(0, 149, 246, 0.3);
 }
 
 .post-img {
@@ -210,6 +239,7 @@ section.comment-input-section {
   background: none;
   border: none;
   padding: 0;
+  margin-right: 15px;
 }
 .post-comment-input {
   flex: 1;
