@@ -2,13 +2,13 @@ import './StoryAvatar.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import cx from 'classnames';
-export function StoryAvatar({ user, isUserNameNeeded, activeStory }) {
+export function StoryAvatar({ user, isUserNameNeeded, isAvatarScallingNeeded }) {
   const userId = user.user_id;
 
   return (
     <div
       className={cx('story-avatar', {
-        'is-small': !activeStory,
+        'is-small': isAvatarScallingNeeded,
       })}
     >
       <div className="circle">
