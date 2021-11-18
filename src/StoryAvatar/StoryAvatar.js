@@ -1,12 +1,16 @@
 import './StoryAvatar.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import cx from 'classnames';
 export function StoryAvatar({ user, isUserNameNeeded }) {
   const userId = user.user_id;
 
   return (
-    <div className="story-avatar">
+    <div
+      className={cx('story-avatar', {
+        'is-small': !isUserNameNeeded,
+      })}
+    >
       <div className="circle">
         <Link to={`/stories/${userId}`}>
           <img

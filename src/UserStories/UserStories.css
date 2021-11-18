@@ -19,7 +19,9 @@ html {
   border-radius: 8px;
   margin-left: 50px;
 }
-
+.stories-container.is-small {
+    transform: scale(0.4);
+}
 .instagram-logo-link {
   position: absolute;
   left: 20px;
@@ -46,7 +48,7 @@ html {
   color: white;
   display: grid;
   grid-template-columns: min-content min-content min-content 1fr;
-
+  
   background: linear-gradient(
     180deg,
     rgba(38, 38, 38, 0.8) 0%,
@@ -75,6 +77,7 @@ html {
   margin-bottom: -800px;
   background: none;
   animation: none;
+  background-color: rgba(31	,31	,31, 0.8);
 }
 .progress-bars {
   grid-column: 1 / 6;
@@ -99,6 +102,14 @@ html {
   padding: 0 10px;
   box-sizing: border-box;
 }
+.story-username.is-small {
+  transform: scale(2.5);
+  margin-bottom: 45px
+}
+.story-avatar.is-small {
+  transform: scale(2.5);
+  margin-bottom: 70px
+}
 .story-post-time {
   display: flex;
   align-self: center;
@@ -107,6 +118,8 @@ html {
 }
 .story-post-time.is-small {
   margin: 0;
+  transform: scale(2.5);
+  margin-bottom: 40px
 }
 .story-actions {
   justify-self: flex-end;
@@ -131,8 +144,7 @@ html {
   overflow: hidden;
 }
 .story-body.is-small {
-  transform: scale(0.4);
-  opacity: 0.2;
+
   border-radius: 20px;
 }
 .next-button,
