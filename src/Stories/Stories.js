@@ -4,7 +4,7 @@ import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 import ChevronLeft from '@mui/icons-material/ChevronLeft';
 import ChevronRight from '@mui/icons-material/ChevronRight';
 import classnames from 'classnames';
-
+import { CircularChevron } from '../CircularChevron';
 function width(el) {
   return el?.getBoundingClientRect().width;
 }
@@ -47,7 +47,7 @@ export function Stories() {
             hidden: scrollLeft === 0,
           })}
         >
-          <ChevronLeft />
+          <CircularChevron className="fill" size="9"/>
         </button>
 
         <button
@@ -58,7 +58,7 @@ export function Stories() {
             hidden: scrollLeft === scrollLimit,
           })}
         >
-          <ChevronRight />
+          <CircularChevron size="9" direction="left"/>
         </button>
       </div>
     </div>
