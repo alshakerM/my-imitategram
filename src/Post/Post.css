@@ -162,8 +162,8 @@ section.comment-input-section {
 }
 .like-icon {
   fill: white;
-  stroke-width: 2px;
-  stroke: black;
+  stroke-width: 3px;
+  stroke: #262626;
   transform: scale(1);
 }
 .like-icon:hover {
