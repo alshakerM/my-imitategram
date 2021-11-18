@@ -160,6 +160,31 @@ section.comment-input-section {
 .like-share-telegram-icons {
   flex: 1;
 }
+.like-icon {
+  fill: white;
+  stroke-width: 2px;
+  stroke: black;
+  transform: scale(1);
+}
+.like-icon:hover {
+  stroke: #8e8e8e
+}
+.like-icon.is-liked {
+  fill: #ed4956;
+  stroke-width: 0px;
+  animation: scale-out 0.2s ease-in;
+}
+@keyframes scale-out {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 .save-icon {
   align-items: center;
 }
@@ -208,7 +233,7 @@ section.comment-input-section {
   background: none;
   border: none;
   padding: 0;
-  padding-right: 15px;
+  margin-right: 15px;
 }
 .post-comment-input {
   flex: 1;
