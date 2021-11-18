@@ -194,6 +194,7 @@ html {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  height: 44px;
  
 }
 ::-webkit-input-placeholder {
