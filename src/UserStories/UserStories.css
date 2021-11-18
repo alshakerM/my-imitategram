@@ -106,7 +106,7 @@ html {
   transform: scale(2.5);
   margin-bottom: 45px
 }
-.story-avatar.is-small {
+.story-avatar-small {
   transform: scale(2.5);
   margin-bottom: 70px
 }

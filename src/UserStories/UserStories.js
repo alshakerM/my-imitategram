@@ -21,7 +21,6 @@ import { absoluteToRelativeDate } from '../utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import './UserStories.css';
 
-
 function getX(el) {
   return el?.offsetLeft;
 }
@@ -77,8 +76,8 @@ export function UserStories({ userId }) {
   const requiredX = window.innerWidth / 2 - currentStoryWidth / 2;
   const scrollAmount = Math.floor(currentStoryX - requiredX);
 
-
-  const isLoading = storiesData.length === 0 || Object.keys(storyIndices).length === 0;
+  const isLoading =
+    storiesData.length === 0 || Object.keys(storyIndices).length === 0;
 
   const progressHandler = (progress) => {
     if (progress === 1) {
@@ -177,7 +176,10 @@ export function UserStories({ userId }) {
                       alt={user.user_name}
                     />
                   ) : (
-                    <StoryAvatar user={user} isAvatarScallingNeeded={true} />
+                    <StoryAvatar
+                      user={user}
+                      className="story-avatar-small"
+                    />
                   )}
 
                   <p
