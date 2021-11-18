@@ -29,7 +29,9 @@ html {
   opacity: 0.7;
   border-radius: 3px;
 }
-
+.navInput::placeholder {
+  color: #8e8e8e;
+}
 .navTitle {
   font-family: 'Festive', cursive !important;
   font-weight: 800;

@@ -8,16 +8,14 @@ import {
 
 export function NavBar() {
   return (
-    <nav>
-      <div className={navContainer}>
-        <div className={navContent}>
-          <div className={navTitle}>Instagram</div>
-          <div className="input-section">
-            <input placeholder="Search" type="text" className={navInput} />
-          </div>
-          <div className="nav-icons">
-            <Icons />
-          </div>
+    <nav className={navContainer}>
+      <div className={navContent}>
+        <div className={navTitle}>Instagram</div>
+        <div className="input-section">
+          <input placeholder="Search" type="text" className={navInput} />
+        </div>
+        <div className="nav-icons">
+          <Icons />
         </div>
       </div>
     </nav>
