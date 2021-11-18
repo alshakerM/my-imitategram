@@ -177,7 +177,7 @@ export function UserStories({ userId }) {
                       alt={user.user_name}
                     />
                   ) : (
-                    <StoryAvatar user={user} />
+                    <StoryAvatar user={user} activeStory={activeStory} />
                   )}
 
                   <p
