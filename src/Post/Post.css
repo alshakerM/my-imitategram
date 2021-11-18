@@ -167,11 +167,12 @@ section.comment-input-section {
   transform: scale(1);
 }
 .like-icon:hover {
-  stroke: #8e8e8e
+  stroke: #8e8e8e;
 }
 .like-icon.is-liked {
   fill: #ed4956;
   stroke-width: 0px;
+  transform-origin: center;
   animation: scale-out 0.2s ease-in;
 }
 @keyframes scale-out {
