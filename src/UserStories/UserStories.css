@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Festive&family=Zen+Kurenaido&display=swap');
 
 html {
-  background-color: #1f1f1f;
+  background-color: #fafafa
 }
 .all-stories-container {
   background-color: #1f1f1f;
@@ -11,6 +11,7 @@ html {
   display: flex;
   padding-left: 50vw;
   transition: transform 0.5s ease-in-out;
+  height: 100vh;
 }
 .stories-container {
   margin: 70px auto;
