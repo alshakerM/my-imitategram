@@ -1,10 +1,8 @@
-import './Stories.css';
-import React, { useState } from 'react';
-import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
-import ChevronLeft from '@mui/icons-material/ChevronLeft';
-import ChevronRight from '@mui/icons-material/ChevronRight';
 import classnames from 'classnames';
-import { CircularChevron } from '../CircularChevron';
+import React, { useState } from 'react';
+import { CircularChevron } from '../Icons/CircularChevron';
+import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
+import './Stories.css';
 function width(el) {
   return el?.getBoundingClientRect().width;
 }
@@ -47,7 +45,7 @@ export function Stories() {
             hidden: scrollLeft === 0,
           })}
         >
-          <CircularChevron className="fill" size="9"/>
+          <CircularChevron size="9" />
         </button>
 
         <button
@@ -58,7 +56,7 @@ export function Stories() {
             hidden: scrollLeft === scrollLimit,
           })}
         >
-          <CircularChevron size="9" direction="left"/>
+          <CircularChevron size="9" direction="left" />
         </button>
       </div>
     </div>

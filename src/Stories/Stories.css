@@ -45,14 +45,12 @@
   width: 23px;
   border: none;
   background: transparent;
-  box-shadow: 2px 2px 6px 1px rgba(0,0,0,0.28);
-
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.28);
 }
 
-.story-nav-prev svg, .story-nav-next svg {
+.story-nav-prev svg,
+.story-nav-next svg {
   transform: scale(2.5);
-  color: black;
-  
 }
 
 .story-nav-next.hidden,
