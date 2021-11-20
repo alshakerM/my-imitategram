@@ -1,18 +1,101 @@
+import { Clear, SearchRounded } from '@mui/icons-material';
+import { IconButton, InputAdornment } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import { createStyles, withStyles } from '@mui/styles';
+import React from 'react';
 import { Icons } from '../Icons/Icons';
 import {
+  ClearButton,
+  ClearIcon,
+  inputSection,
   navContainer,
   navContent,
-  navInput,
   navTitle,
+  SearchIcon,
 } from './NavBar.module.css';
 
+const borderStyles = createStyles({
+  notchedOutline: {
+    borderColor: '#dbdbdb !important',
+    borderWidth: '1px !important',
+  },
+  inputSizeSmall: {
+    height: '20px!important',
+    width: '190px!important',
+    fontSize: '14px!important',
+    padding: '0!important',
+  },
+  formControl: { height: 28, padding: '0 12px!important' },
+});
+
+const BorderLessTextInput = withStyles(borderStyles)((props) => {
+  const { classes, InputProps, ...rest } = props;
+  return (
+    <TextField
+      sx={{ width: 200 }}
+      {...rest}
+      InputProps={{
+        ...InputProps,
+        classes: {
+          notchedOutline: classes.notchedOutline,
+          inputSizeSmall: classes.inputSizeSmall,
+          formControl: classes.formControl,
+        },
+      }}
+    />
+  );
+});
+
 export function NavBar() {
+  const [inputValue, setInputValue] = React.useState('');
+  const hasValue = inputValue;
   return (
     <nav className={navContainer}>
       <div className={navContent}>
-        <div className={navTitle}>Instagram</div>
-        <div className="input-section">
-          <input placeholder="Search" type="text" className={navInput} />
+        <div className={navTitle}>
+          <img src="Instagram_logo_text.svg" width="103" />
+        </div>
+        <div>
+          <BorderLessTextInput
+            onChange={(event) => setInputValue(event.target.value)}
+            margin="dense"
+            value={inputValue}
+            className={inputSection}
+            placeholder="Search"
+            size="small"
+            InputProps={
+              hasValue
+                ? {
+                    endAdornment: (
+                      <InputAdornment>
+                        <IconButton
+                          className={ClearButton}
+                          onClick={() => setInputValue('')}
+                        >
+                          <Clear
+                            className={ClearIcon}
+                            fontSize="small"
+                            position="end"
+                          />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }
+                : {
+                    startAdornment: (
+                      <InputAdornment>
+                        <SearchRounded
+                          style={{ color: '#BEBFC1' }}
+                          fontSize="small"
+                          className={SearchIcon}
+                        />
+                      </InputAdornment>
+                    ),
+                  }
+            }
+          >
+            <SearchRounded />
+          </BorderLessTextInput>
         </div>
         <div className="nav-icons">
           <Icons />

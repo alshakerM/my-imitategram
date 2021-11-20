@@ -1,9 +1,9 @@
-import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-import { HomePage } from "./HomePage";
-import { NavBar } from "./NavBar/NavBar";
-import { PostPage } from "./PostPage";
-import { UserStories } from "./UserStories/UserStories";
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { HomePage } from './HomePage';
+import { NavBar } from './NavBar/NavBar';
+import { PostPage } from './PostPage';
+import { UserStories } from './UserStories/UserStories';
 
 function App() {
   const [isExpanded, setIsExpanded] = React.useState(false);
