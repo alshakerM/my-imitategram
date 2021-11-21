@@ -45,7 +45,7 @@ export function Stories() {
             hidden: scrollLeft === 0,
           })}
         >
-          <CircularChevron size="9" />
+          <CircularChevron size="24" />
         </button>
 
         <button
