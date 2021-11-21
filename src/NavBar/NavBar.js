@@ -5,13 +5,13 @@ import { createStyles, withStyles } from '@mui/styles';
 import React from 'react';
 import { Icons } from '../Icons/Icons';
 import {
-  ClearButton,
-  ClearIcon,
+  clearButton,
+  clearIcon,
   inputSection,
   navContainer,
   navContent,
   navTitle,
-  SearchIcon,
+  searchIcon,
 } from './NavBar.module.css';
 
 const borderStyles = createStyles({
@@ -69,11 +69,11 @@ export function NavBar() {
                     endAdornment: (
                       <InputAdornment>
                         <IconButton
-                          className={ClearButton}
+                          className={clearButton}
                           onClick={() => setInputValue('')}
                         >
                           <Clear
-                            className={ClearIcon}
+                            className={clearIcon}
                             fontSize="small"
                             position="end"
                           />
@@ -87,7 +87,7 @@ export function NavBar() {
                         <SearchRounded
                           style={{ color: '#BEBFC1' }}
                           fontSize="small"
-                          className={SearchIcon}
+                          className={searchIcon}
                         />
                       </InputAdornment>
                     ),

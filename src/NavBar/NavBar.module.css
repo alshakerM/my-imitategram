@@ -35,19 +35,19 @@ html {
   border-radius: 4px;
   font-size: 14px;
 }
-.SearchIcon {
+.searchIcon {
   width: 16px;
 }
-.ClearIcon path {
+.clearIcon path {
   fill: #fafafa;
 }
-.ClearIcon {
+.clearIcon {
   background: rgba(142, 142, 142, 0.5);
   border-radius: 50%;
   width: 14px !important;
   height: 14px !important;
   cursor: default;
 }
-.ClearButton {
+.clearButton {
   padding: 0 !important;
 }
