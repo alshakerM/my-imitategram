@@ -27,7 +27,7 @@ html {
 .InstagramLogoImg {
   box-sizing: border-box;
 }
-.inputSection {
+.searchInputSection {
   background-color: #fafafa;
   margin-bottom: 10px;
   width: 300px;
@@ -37,6 +37,7 @@ html {
 }
 .searchIcon {
   width: 16px;
+  color: #bebfc1;
 }
 .clearIcon path {
   fill: #fafafa;

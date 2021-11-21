@@ -7,7 +7,7 @@ import { Icons } from '../Icons/Icons';
 import {
   clearButton,
   clearIcon,
-  inputSection,
+  searchInputSection,
   navContainer,
   navContent,
   navTitle,
@@ -60,7 +60,7 @@ export function NavBar() {
             onChange={(event) => setInputValue(event.target.value)}
             margin="dense"
             value={inputValue}
-            className={inputSection}
+            className={searchInputSection}
             placeholder="Search"
             size="small"
             InputProps={
@@ -85,7 +85,6 @@ export function NavBar() {
                     startAdornment: (
                       <InputAdornment>
                         <SearchRounded
-                          style={{ color: '#BEBFC1' }}
                           fontSize="small"
                           className={searchIcon}
                         />
