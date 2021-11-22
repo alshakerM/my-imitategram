@@ -143,5 +143,47 @@
   border: none;
 }
 .messagesInput::placeholder {
-    color: #262626
+  color: #262626;
+}
+.sendMessagesSection {
+  width: 100%;
+  border: 1px solid #dbdbdb;
+  height: 844.5px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.telegramIconContainer {
+  width: 96px;
+  height: 96px;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.telegramIcon {
+  width: 46px;
+  height: 46px;
+}
+.yourMessages {
+  margin: 0;
+  font-size: 18px;
+  margin-top: 16px;
+  color: #262626;
+  font-weight: 350;
+}
+.sendAMessage {
+  color: #8e8e8e;
+}
+.sendMessageButton {
+  border: 1px solid transparent;
+  background-color: #0095f6;
+  border-radius: 4px;
+  color: #fff;
+  padding: 5px 9px;
+  font-weight: 600;
 }
