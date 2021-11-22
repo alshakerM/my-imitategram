@@ -1,0 +1,26 @@
+.messageText {
+  border: 1px solid #efefef;
+  border-radius: 22px;
+  max-width: 236px;
+  min-height: 44px;
+  padding: 16px;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.messageText.is-sent {
+  background: #efefef;
+  display: flex;
+  justify-content: end;
+  margin-right: 20px;
+}
+.messages-user-thumbnail-message-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.messages-user-thumbnail-message-text.is-sent {
+  align-self: flex-end;
+}

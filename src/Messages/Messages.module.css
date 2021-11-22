@@ -1,0 +1,147 @@
+.messagesPageContainer {
+  max-width: 935px;
+  margin: 80px auto;
+  display: flex;
+}
+
+.userSection {
+  display: flex;
+  width: 350px;
+  border-top: 1px solid #dbdbdb;
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  padding: 0;
+  margin: 0;
+  height: 60px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
+.sendMessageIcon {
+  padding-right: 20px;
+}
+.usernameIconSection {
+  display: flex;
+  margin: 30px 20px 30px 120px;
+  background-color: #fff;
+}
+.arrowDownIcon {
+  transform: rotate(180deg);
+  align-self: center;
+  padding: 0 10px;
+}
+.sendersSection {
+  width: 350px;
+  border: 1px solid #dbdbdb;
+  overflow: hidden auto;
+  height: 50%;
+  background-color: #fff;
+}
+.sendersSection::-webkit-scrollbar {
+  display: none;
+}
+.senderInfo {
+  display: flex;
+  padding: 8px 20px;
+  gap: 10px;
+  align-items: center;
+}
+.SenderThumbnail {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+}
+.senderUsername {
+  align-self: center;
+  padding: 0;
+  margin: 0;
+}
+.hasSentMessage {
+  padding: 0;
+  margin: 0;
+  color: #8e8e8e;
+}
+.messagesSenderAvatar {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+.messagesSenderInfo {
+  display: flex;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  background-color: #fff;
+  width: 635px;
+  padding: 0 20px;
+  margin: 0;
+  height: 60px;
+  align-items: center;
+  gap: 10px;
+}
+.messagesSenderUsername {
+  justify-self: center;
+  margin: 0;
+}
+.whenWasActive {
+  padding: 0;
+  margin: 3px 0;
+  color: #8e8e8e;
+  font-size: 12px;
+}
+.messagesSenderUserInfo {
+  flex: 1;
+}
+.messagesSection {
+  height: 784.5px;
+  background-color: #fff;
+  border-bottom: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: auto;
+}
+.messagesBody {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.lastMessageSentDate {
+  align-self: center;
+  color: #8e8e8e;
+}
+.messageText {
+  justify-self: center;
+  align-self: center;
+}
+
+.emptyImg {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+.messagesInputContent {
+  display: flex;
+  justify-content: space-around;
+  min-height: 44px;
+  border-width: 1px;
+  padding-left: 11px;
+  padding-right: 8px;
+  border: 1px solid #dbdbdb;
+  border-radius: 22px;
+  align-items: center;
+}
+.messagesInputSection {
+  padding: 20px;
+}
+.messagesInput {
+  height: 18px !important;
+  width: 80%;
+  outline: none;
+  border: none;
+}
+.messagesInput::placeholder {
+    color: #262626
+}
