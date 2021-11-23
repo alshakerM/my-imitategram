@@ -28,11 +28,10 @@ function App() {
         render={(match) => <UserStories userId={match.match.params.userId} />}
       ></Route>
       <Route path="/direct/inbox/">
-        <NavBar />
         <Messages />
       </Route>
       <Route
-        path="/direct/:fromUserId"
+        path="/direct/t/:fromUserId"
         render={(match) => (
           <Messages fromUserId={match.match.params.fromUserId} />
         )}

@@ -147,7 +147,9 @@
 }
 .sendMessagesSection {
   width: 100%;
-  border: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  border-top: 1px solid #dbdbdb;
   height: 844.5px;
   background-color: #fff;
   display: flex;
