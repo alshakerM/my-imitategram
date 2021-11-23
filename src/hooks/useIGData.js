@@ -1,22 +1,10 @@
 import React from 'react';
-import { uuid } from 'uuidv4';
 
 let cachedData;
 
 const subscribers = new Set();
 
-function createComment(user_name, user_thumbnail, comment) {
-  const newComment = {
-    comment_id: uuid(),
-    user_name,
-    comment,
-    posting_time: new Date().toString(),
-    user_thumbnail,
-    comment_likes: 0,
-    is_liked_by_user: false,
-    replies: [],
-  };
-}
+function createComment(user_name, user_thumbnail, comment) {}
 
 export function useIGData() {
   const [data, setData] = React.useState(cachedData || []);

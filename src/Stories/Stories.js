@@ -33,7 +33,7 @@ export function Stories() {
           className="all-circles"
         >
           {storiesData.map((user, index) => (
-            <StoryAvatar user={user} index={index} isUserNameNeeded={true} />
+            <StoryAvatar key={user.user_id} user={user} index={index} isUserNameNeeded={true} />
           ))}
         </div>
 
