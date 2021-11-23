@@ -118,7 +118,7 @@ export function Messages({ fromUserId }) {
   console.log(fromUserId);
   return (
     <>
-      <NavBar />
+      <NavBar from_user_id ={messagesData[userIndex]?.from_user_id}/>
       <div className={messagesPageContainer}>
         <div className={leftSection}>
           <UserSection />

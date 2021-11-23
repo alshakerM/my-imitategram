@@ -46,7 +46,7 @@ const BorderLessTextInput = withStyles(borderStyles)((props) => {
   );
 });
 
-export function NavBar() {
+export function NavBar({from_user_id}) {
   const [inputValue, setInputValue] = React.useState('');
   const hasValue = inputValue;
   return (
@@ -97,7 +97,7 @@ export function NavBar() {
           </BorderLessTextInput>
         </div>
         <div className="nav-icons">
-          <Icons />
+          <Icons from_user_id={from_user_id}/>
         </div>
       </div>
     </nav>
