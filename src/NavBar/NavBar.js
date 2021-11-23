@@ -53,7 +53,7 @@ export function NavBar() {
     <nav className={navContainer}>
       <div className={navContent}>
         <div className={navTitle}>
-          <img src="Instagram_logo_text.svg" width="103" />
+          <img src="/Instagram_logo_text.svg" width="103" />
         </div>
         <div>
           <BorderLessTextInput
