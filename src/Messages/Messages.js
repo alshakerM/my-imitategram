@@ -1,42 +1,40 @@
-import React from 'react';
 import cx from 'classnames';
-import './Messages.css';
-import {
-  messagesPageContainer,
-  SenderThumbnail,
-  sendersSection,
-  senderInfo,
-  hasSentMessage,
-  senderUsername,
-  userSection,
-  sendMessageIcon,
-  arrowDownIcon,
-  leftSection,
-  usernameIconSection,
-  rightSection,
-  messagesSenderAvatar,
-  messagesSenderInfo as messagesHeader,
-  messagesSenderUsername,
-  whenWasActive,
-  messagesSenderUserInfo,
-  messagesSection,
-  lastMessageSentDate,
-  messagesBody,
-  messageText,
-  senderImgUsername,
-  emptyImg,
-  messagesInputSection,
-  messagesInput,
-  messagesInputContent,
-  telegramIconContainer,
-  telegramIcon,
-  sendMessagesSection,
-  yourMessages,
-  sendAMessage,
-  sendMessageButton,
-} from './Messages.module.css';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar } from '../NavBar/NavBar';
+import './Messages.css';
+import {
+  arrowDownIcon,
+  emptyImg,
+  hasSentMessage,
+  lastMessageSentDate,
+  leftSection,
+  messagesBody,
+  messagesInput,
+  messagesInputContent,
+  messagesInputSection,
+  messagesPageContainer,
+  messagesSection,
+  messagesSenderAvatar,
+  messagesSenderInfo as messagesHeader,
+  messagesSenderUserInfo,
+  messagesSenderUsername,
+  rightSection,
+  sendAMessage,
+  senderInfo,
+  sendersSection,
+  SenderThumbnail,
+  senderUsername,
+  sendMessageButton,
+  sendMessageIcon,
+  sendMessagesSection,
+  telegramIcon,
+  telegramIconContainer,
+  usernameIconSection,
+  userSection,
+  whenWasActive,
+  yourMessages,
+} from './Messages.module.css';
 
 function UserSection() {
   return (
@@ -118,7 +116,7 @@ export function Messages({ fromUserId }) {
   console.log(fromUserId);
   return (
     <>
-      <NavBar from_user_id ={messagesData[userIndex]?.from_user_id}/>
+      <NavBar from_user_id={messagesData[userIndex]?.from_user_id} />
       <div className={messagesPageContainer}>
         <div className={leftSection}>
           <UserSection />

@@ -13,7 +13,7 @@
 .messageText.is-sent {
   background: #efefef;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-right: 20px;
 }
 .messages-user-thumbnail-message-text {
