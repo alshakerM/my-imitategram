@@ -50,7 +50,7 @@
 .senderInfo:hover {
   background-color: #fafafa;
 }
-.SenderThumbnail {
+.senderThumbnail {
   height: 56px;
   width: 56px;
   border-radius: 50%;
@@ -142,7 +142,7 @@
   padding: 20px;
 }
 .messagesInput {
-  height: 18px !important;
+  height: 18px;
   width: 80%;
   outline: none;
   border: none;
@@ -165,7 +165,7 @@
 .telegramIconContainer {
   width: 96px;
   height: 96px;
-  border: 3px solid black;
+  border: 3px solid #262626;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -173,8 +173,8 @@
   border-radius: 50%;
 }
 .telegramIcon {
-  width: 46px;
-  height: 46px;
+  padding-top: 10px;
+  box-sizing: border-box;
 }
 .yourMessages {
   margin: 0;
