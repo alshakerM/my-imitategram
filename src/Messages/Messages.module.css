@@ -34,7 +34,7 @@
   width: 350px;
   border: 1px solid #dbdbdb;
   overflow: hidden auto;
-  height: 50%;
+  height: calc(100vh - 80px - 80px);
   background-color: #fff;
 }
 .sendersSection::-webkit-scrollbar {
@@ -46,11 +46,9 @@
   gap: 10px;
   align-items: center;
   text-decoration: none;
-  
 }
 .senderInfo:hover {
-background-color: #fafafa;
-  
+  background-color: #fafafa;
 }
 .SenderThumbnail {
   height: 56px;
@@ -101,7 +99,7 @@ background-color: #fafafa;
   flex: 1;
 }
 .messagesSection {
-  height: 784.5px;
+  height: calc(100vh - 80px - 80px);
   background-color: #fff;
   border-bottom: 1px solid #dbdbdb;
   border-right: 1px solid #dbdbdb;

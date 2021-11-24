@@ -4,16 +4,11 @@
   max-width: 236px;
   min-height: 44px;
   padding: 16px;
-  justify-self: center;
-  align-self: center;
-  text-align: center;
   box-sizing: border-box;
 }
 
 .messageText.is-sent {
   background: #efefef;
-  display: flex;
-  justify-content: flex-end;
   margin-right: 20px;
 }
 .messages-user-thumbnail-message-text {
