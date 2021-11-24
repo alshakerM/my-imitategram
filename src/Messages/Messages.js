@@ -73,11 +73,19 @@ function UserSection() {
     </div>
   );
 }
-function SenderSection({ messagesData }) {
+function SenderSection({ messagesData, fromUserId}) {
   return (
     <div className={sendersSection}>
       {messagesData.map((user) => (
-        <div className={senderInfo}>
+        <Link
+          to={`/direct/t/${user.from_user_id}`}
+          style={
+            user.from_user_id === fromUserId
+              ? { backgroundColor: '#efefef' }
+              : {}
+          }
+          className={senderInfo}
+        >
           <Link to={`/direct/t/${user.from_user_id}`}>
             <img
               className={SenderThumbnail}
@@ -89,7 +97,7 @@ function SenderSection({ messagesData }) {
             <p className={senderUsername}>{user.from_username}</p>
             <p className={hasSentMessage}>Active 20min ago</p>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
@@ -120,7 +128,7 @@ export function Messages({ fromUserId }) {
       <div className={messagesPageContainer}>
         <div className={leftSection}>
           <UserSection />
-          <SenderSection messagesData={messagesData} />
+          <SenderSection messagesData={messagesData} fromUserId={fromUserId} />
         </div>
 
         {fromUserId ? (
