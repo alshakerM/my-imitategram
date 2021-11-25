@@ -27,15 +27,13 @@ function App() {
         path="/stories/:userId/"
         render={(match) => <UserStories userId={match.match.params.userId} />}
       ></Route>
-      <Route path="/direct/inbox/">
-        <Messages />
-      </Route>
       <Route
-        path="/direct/t/:fromUserId"
+        path={['/direct/t/:fromUserId', '/direct/inbox']}
         render={(match) => (
           <Messages fromUserId={match.match.params.fromUserId} />
         )}
       ></Route>
+
       <Route path="/" exact={!isExpanded}>
         <NavBar></NavBar>
         <HomePage setIsExpanded={setIsExpanded} />

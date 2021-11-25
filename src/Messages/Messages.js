@@ -2,11 +2,11 @@ import cx from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar } from '../NavBar/NavBar';
-import './Messages.css';
 import {
   arrowDownIcon,
   emptyImg,
   hasSentMessage,
+  isSent,
   lastMessageSentDate,
   leftSection,
   messagesBody,
@@ -19,6 +19,8 @@ import {
   messagesSenderInfo as messagesHeader,
   messagesSenderUserInfo,
   messagesSenderUsername,
+  messagesUserThumbnailMessageText,
+  messageText,
   rightSection,
   sendAMessage,
   senderInfo,
@@ -73,7 +75,7 @@ function UserSection() {
     </div>
   );
 }
-function SenderSection({ messagesData, fromUserId}) {
+function SenderSection({ messagesData, fromUserId }) {
   return (
     <div className={sendersSection}>
       {messagesData.map((user) => (
@@ -186,8 +188,8 @@ export function Messages({ fromUserId }) {
                   const nextMessage = index + 1;
                   return (
                     <div
-                      className={cx('messages-user-thumbnail-message-text', {
-                        'is-sent': message.direction === 'sent',
+                      className={cx(messagesUserThumbnailMessageText, {
+                        [isSent]: message.direction === 'sent',
                       })}
                     >
                       {message.direction !==
@@ -202,9 +204,8 @@ export function Messages({ fromUserId }) {
                         <div className={emptyImg}></div>
                       )}
                       <p
-                        className={cx('messageText', {
-                          'is-sent': message.direction === 'sent',
-                          'is-received': message.direction === 'received',
+                        className={cx(messageText, {
+                          [isSent]: message.direction === 'sent',
                         })}
                       >
                         {message.message_body}

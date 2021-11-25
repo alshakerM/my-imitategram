@@ -118,10 +118,25 @@
   color: #8e8e8e;
 }
 .messageText {
-  justify-self: center;
-  align-self: center;
+  border: 1px solid #efefef;
+  border-radius: 22px;
+  max-width: 236px;
+  min-height: 44px;
+  padding: 16px;
+  box-sizing: border-box;
 }
-
+.messageText.isSent {
+  background: #efefef;
+  margin-right: 20px;
+}
+.messagesUserThumbnailMessageText {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.messagesUserThumbnailMessageText.isSent {
+  align-self: flex-end;
+}
 .emptyImg {
   width: 24px;
   height: 24px;
@@ -155,7 +170,6 @@
   border-right: 1px solid #dbdbdb;
   border-bottom: 1px solid #dbdbdb;
   border-top: 1px solid #dbdbdb;
-  height: 844.5px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
