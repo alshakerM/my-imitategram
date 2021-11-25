@@ -37,7 +37,7 @@ function PostActions({ index, is_post_liked, isExpanded }) {
         </button>
         <svg
           aria-label="Comment"
-          className="action-icon"
+          className="action-icons"
           color="#262626"
           height="24"
           role="img"
@@ -52,7 +52,7 @@ function PostActions({ index, is_post_liked, isExpanded }) {
         </svg>
         <svg
           aria-label="Direct"
-          className="action-icon"
+          className="action-icons"
           color="#262626"
           height="22"
           role="img"
@@ -119,6 +119,7 @@ function PostInput({ index, isExpanded }) {
 }
 function PostDate({ posting_time, isExpanded }) {
   const postDate = absoluteToRelativeDate(new Date(posting_time));
+
   return (
     <section className="post-time-section">
       <p
@@ -145,8 +146,62 @@ function PostHeader({ user_name, user_thumbnail, city }) {
     </section>
   );
 }
-function CommentSection({ index, comments, isExpanded, setIsExpanded, datum }) {
+function CommentReplySection({ comments, currentCommentIndex }) {
+  return (
+    <div className="reply-section">
+      {comments[currentCommentIndex]?.replies.map((reply) => (
+        <div key={reply.comment_id} className="replier-section">
+          <div className="replier-info">
+            <Avatar
+              src={reply.user_thumbnail}
+              alt={reply.user_name}
+              borderColor="#ddd"
+            />
+
+            <p className="replier-username-text">
+              <strong>{reply.user_name}</strong> {reply.comment}
+            </p>
+            <svg
+              aria-label="Like"
+              className="reply-like-icon"
+              color={reply.is_liked_by_user ? '#ed4956' : '#262626'}
+              height="12"
+              role="img"
+              viewBox="0 0 48 48"
+              width="12"
+            >
+              <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
+            </svg>
+          </div>
+          <div>
+            <time className="reply-post-date">
+              {absoluteToRelativeDate(reply.posted_on, 'mini')}
+            </time>
+            <button className="reply-action">
+              <strong>
+                {reply.comment_likes}
+                {reply.comment_likes > 0 ? ' likes' : ' like'}
+              </strong>
+            </button>
+            <button className="reply-action">
+              <strong>Reply</strong>
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+function CommentSection({
+  commentsIndex,
+  comments,
+  isExpanded,
+  setIsExpanded,
+  datum,
+}) {
   const commentsSummary = comments.slice(0, isExpanded ? undefined : 2);
+  const [isRepliesActive, setIsRepliesActive] = React.useState(false);
+  const [currentCommentIndex, setCurrentCommentIndex] = React.useState(0);
   return (
     <section
       className={classnames('comments-section', {
@@ -156,7 +211,7 @@ function CommentSection({ index, comments, isExpanded, setIsExpanded, datum }) {
       {!isExpanded && (
         <div>
           <Link
-            to={`/p/${index}`}
+            to={`/p/${commentsIndex}`}
             className="view-comments-button"
             onClick={() => {
               setIsExpanded(true);
@@ -178,45 +233,72 @@ function CommentSection({ index, comments, isExpanded, setIsExpanded, datum }) {
           </p>
         </section>
       )}
-      {commentsSummary.map((comment) => (
-        <div
-          className={classnames('comment-wrapper', {
-            'is-expanded': isExpanded,
-          })}
-        >
-          {isExpanded && <Avatar src={comment.user_thumbnail} size="32" />}
-          <div className="comment-body">
-            <p className="comment-text">
-              <strong>{comment.user_name}</strong> {comment.comment}
-            </p>
-            {isExpanded && (
-              <div className="comment-action-container">
-                <time className="comment-action">2 w</time>
-                <button className="comment-action">
-                  <strong>
-                    {comment.comment_likes}
-                    {comment.comment_likes > 0 ? ' likes' : ' like'}
-                  </strong>
-                </button>
-                <button className="comment-action">
-                  <strong>Reply</strong>
-                </button>
-              </div>
-            )}
-          </div>
-          <svg
-            aria-label="Like"
-            className="action-icon"
-            color={comment.is_liked_by_user ? '#ed4956' : '#262626'}
-            height="12"
-            role="img"
-            viewBox="0 0 48 48"
-            width="12"
+      {commentsSummary.map((comment, index) => {
+        return (
+          <div
+            key={comment.comment_id}
+            className={classnames('comment-wrapper', {
+              'is-expanded': isExpanded,
+            })}
           >
-            <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
-          </svg>
-        </div>
-      ))}
+            {isExpanded && <Avatar src={comment.user_thumbnail} size="32" />}
+            <div className="comment-body">
+              <p className="comment-text">
+                <strong>{comment.user_name}</strong> {comment.comment}
+              </p>
+              {isExpanded && (
+                <div>
+                  <div className="comment-action-container">
+                    <time className="comment-action">2 w</time>
+                    <button className="comment-action">
+                      <strong>
+                        {comment.comment_likes}
+                        {comment.comment_likes > 0 ? ' likes' : ' like'}
+                      </strong>
+                    </button>
+                    <button className="comment-action">
+                      <strong>Reply</strong>
+                    </button>
+                  </div>
+                  {comment.replies.length > 0 && (
+                    <div className="view-replies-section">
+                      <button
+                        className="view-replies-button"
+                        onClick={() => {
+                          setIsRepliesActive(!isRepliesActive);
+                          setCurrentCommentIndex(index);
+                        }}
+                      >
+                        <div className="view-replies-line"></div>
+                        {isRepliesActive
+                          ? 'Hide replies'
+                          : `View replies (${comment.replies.length})`}
+                      </button>
+                      {isRepliesActive && (
+                        <CommentReplySection
+                          comments={comments}
+                          currentCommentIndex={currentCommentIndex}
+                        />
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            <svg
+              aria-label="Like"
+              className="action-icon"
+              color={comment.is_liked_by_user ? '#ed4956' : '#262626'}
+              height="12"
+              role="img"
+              viewBox="0 0 48 48"
+              width="12"
+            >
+              <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
+            </svg>
+          </div>
+        );
+      })}
     </section>
   );
 }
@@ -269,7 +351,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
           )}
           <CommentSection
             datum={datum}
-            index={index}
+            commentsIndex={index}
             setIsExpanded={setIsExpanded}
             comments={datum.comments}
             isExpanded={isExpanded}

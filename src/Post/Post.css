@@ -189,7 +189,7 @@ section.comment-input-section {
 .save-icon {
   align-items: center;
 }
-.action-icon {
+.action-icons {
   padding-right: 15px;
 }
 .action-icon:hover {
@@ -265,4 +265,51 @@ section.comment-input-section {
 }
 .post-caption-text {
   margin: 0;
+}
+.view-replies-button {
+  background: none;
+  border: none;
+  font-weight: 600;
+  color: #8e8e8e;
+}
+.view-replies-line {
+  border-bottom: 1px solid #8e8e8e;
+  display: inline-block;
+  height: 0;
+  margin-right: 16px;
+  vertical-align: middle;
+  width: 24px;
+}
+.replier-info {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+  padding: 12px 0;
+  overflow: visible;
+  width: auto;
+}
+.replier-username-text {
+  flex: 1;
+  margin: 2px;
+}
+.reply-like-icon {
+  margin-right: -80px;
+  align-self: center;
+}
+.reply-post-date {
+  margin-left: 50px;
+  margin-right: 10px;
+  color: #8e8e8e;
+}
+.reply-action {
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: #8e8e8e;
+  padding: 0;
+  margin-right: 12px;
+}
+.view-replies-section {
+  margin: 16px 0 0 0px;
+  width: calc(100% - 54px);
 }
