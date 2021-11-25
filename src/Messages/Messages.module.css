@@ -2,8 +2,14 @@
   max-width: 935px;
   margin: 80px auto;
   display: flex;
+  border-radius: 40px;
+  box-sizing: border-box;
 }
-
+.emptyUserName {
+  margin-right: 20px;
+  width: 24px;
+  height: 24px;
+}
 .userSection {
   display: flex;
   width: 350px;
@@ -16,13 +22,14 @@
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
+  border-radius: 4px 0 0 0;
+  flex: 1;
 }
 .sendMessageIcon {
-  padding-right: 20px;
+  margin-right: 20px;
 }
 .usernameIconSection {
   display: flex;
-  margin: 30px 20px 30px 120px;
   background-color: #fff;
 }
 .arrowDownIcon {
@@ -36,6 +43,7 @@
   overflow: hidden auto;
   height: calc(100vh - 80px - 80px);
   background-color: #fff;
+  border-radius: 0 0 0 4px;
 }
 .sendersSection::-webkit-scrollbar {
   display: none;
@@ -84,6 +92,7 @@
   height: 60px;
   align-items: center;
   gap: 10px;
+  border-radius: 0 4px 0 0;
 }
 .messagesSenderUsername {
   justify-self: center;
@@ -107,6 +116,7 @@
   flex-direction: column;
   justify-content: flex-end;
   overflow: auto;
+  border-radius: 0 0 4px 0;
 }
 .messagesBody {
   overflow: auto;
@@ -125,10 +135,7 @@
   padding: 16px;
   box-sizing: border-box;
 }
-.messageText.isSent {
-  background: #efefef;
-  margin-right: 20px;
-}
+
 .messagesUserThumbnailMessageText {
   display: flex;
   align-items: center;

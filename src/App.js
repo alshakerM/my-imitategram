@@ -28,7 +28,7 @@ function App() {
         render={(match) => <UserStories userId={match.match.params.userId} />}
       ></Route>
       <Route
-        path={['/direct/t/:fromUserId', '/direct/inbox']}
+        path={['/direct/t/:fromUserId', '/direct/inbox/']}
         render={(match) => (
           <Messages fromUserId={match.match.params.fromUserId} />
         )}

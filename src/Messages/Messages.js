@@ -2,6 +2,7 @@ import cx from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar } from '../NavBar/NavBar';
+import { absoluteToRelativeDate } from '../utils';
 import {
   arrowDownIcon,
   emptyImg,
@@ -36,14 +37,16 @@ import {
   userSection,
   whenWasActive,
   yourMessages,
+  emptyUserName,
 } from './Messages.module.css';
 
 function UserSection() {
   return (
     <div className={userSection}>
+      <div className={emptyUserName}></div>
       <div className={usernameIconSection}>
         <p>
-          <strong>7kami_me</strong>{' '}
+          <strong>7kami_me</strong>
         </p>
         <svg
           aria-label="Down Chevron Icon"
@@ -97,7 +100,12 @@ function SenderSection({ messagesData, fromUserId }) {
           </Link>
           <div>
             <p className={senderUsername}>{user.from_username}</p>
-            <p className={hasSentMessage}>Active 20min ago</p>
+            <p className={hasSentMessage}>
+              Active{' '}
+              {absoluteToRelativeDate(
+                user.messages[user.messages.length - 1].sent_on
+              )}
+            </p>
           </div>
         </Link>
       ))}
@@ -123,7 +131,6 @@ export function Messages({ fromUserId }) {
       messagesData[userIndex]?.messages.length - 1
     ].sent_on
   );
-  console.log(fromUserId);
   return (
     <>
       <NavBar from_user_id={messagesData[userIndex]?.from_user_id} />
