@@ -146,10 +146,10 @@ function PostHeader({ user_name, user_thumbnail, city }) {
     </section>
   );
 }
-function CommentReplySection({ comments, currentCommentIndex }) {
+function CommentReplySection({ comment }) {
   return (
     <div className="reply-section">
-      {comments[currentCommentIndex]?.replies.map((reply) => (
+      {comment.replies.map((reply) => (
         <div key={reply.comment_id} className="replier-section">
           <div className="replier-info">
             <Avatar
@@ -201,7 +201,7 @@ function CommentSection({
 }) {
   const commentsSummary = comments.slice(0, isExpanded ? undefined : 2);
   const [isRepliesActive, setIsRepliesActive] = React.useState(false);
-  const [currentCommentIndex, setCurrentCommentIndex] = React.useState(0);
+  const [activeCommentId, setActiveCommentId] = React.useState('');
   return (
     <section
       className={classnames('comments-section', {
@@ -233,7 +233,7 @@ function CommentSection({
           </p>
         </section>
       )}
-      {commentsSummary.map((comment, index) => {
+      {commentsSummary.map((comment) => {
         return (
           <div
             key={comment.comment_id}
@@ -265,21 +265,20 @@ function CommentSection({
                       <button
                         className="view-replies-button"
                         onClick={() => {
+                          console.log(comment.comment_id);
+                          setActiveCommentId(comment.comment_id);
                           setIsRepliesActive(!isRepliesActive);
-                          setCurrentCommentIndex(index);
                         }}
                       >
                         <div className="view-replies-line"></div>
-                        {isRepliesActive
+                        {comment.comment_id === activeCommentId && isRepliesActive
                           ? 'Hide replies'
                           : `View replies (${comment.replies.length})`}
                       </button>
-                      {isRepliesActive && (
-                        <CommentReplySection
-                          comments={comments}
-                          currentCommentIndex={currentCommentIndex}
-                        />
-                      )}
+                      {comment.comment_id === activeCommentId &&
+                        isRepliesActive && (
+                          <CommentReplySection comment={comment} />
+                        )}
                     </div>
                   )}
                 </div>
