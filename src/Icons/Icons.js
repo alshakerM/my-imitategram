@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import './Icons.css';
 
-export function Icons({ from_user_id }) {
+export function Icons({ fromUserUd }) {
   const location = useLocation();
   return (
     <div className="icons-container">

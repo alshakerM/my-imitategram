@@ -3,54 +3,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar } from '../NavBar/NavBar';
 import { absoluteToRelativeDate } from '../utils';
-import {
-  arrowDownIcon,
-  emptyImg,
-  hasSentMessage,
-  isSent,
-  lastMessageSentDate,
-  leftSection,
-  messagesBody,
-  messagesInput,
-  messagesInputContent,
-  messagesInputSection,
-  messagesPageContainer,
-  messagesSection,
-  messagesSenderAvatar,
-  messagesSenderInfo as messagesHeader,
-  messagesSenderUserInfo,
-  messagesSenderUsername,
-  messagesUserThumbnailMessageText,
-  messageText,
-  rightSection,
-  sendAMessage,
-  senderInfo,
-  sendersSection,
-  senderThumbnail,
-  senderUsername,
-  sendMessageButton,
-  sendMessageIcon,
-  sendMessagesSection,
-  telegramIcon,
-  telegramIconContainer,
-  usernameIconSection,
-  userSection,
-  whenWasActive,
-  yourMessages,
-  emptyUserName,
-} from './Messages.module.css';
+import styles from './Messages.module.css';
 
 function UserSection() {
   return (
-    <div className={userSection}>
-      <div className={emptyUserName}></div>
-      <div className={usernameIconSection}>
+    <div className={styles.userSection}>
+      <div className={styles.emptyUserName}></div>
+      <div className={styles.usernameIconSection}>
         <p>
           <strong>7kami_me</strong>
         </p>
         <svg
           aria-label="Down Chevron Icon"
-          className={arrowDownIcon}
+          className={styles.arrowDownIcon}
           color="#262626"
           fill="#262626"
           height="20"
@@ -63,7 +28,7 @@ function UserSection() {
       </div>
       <svg
         aria-label="New message"
-        className={sendMessageIcon}
+        className={styles.sendMessageIcon}
         color="#262626"
         fill="#262626"
         height="24"
@@ -80,27 +45,24 @@ function UserSection() {
 }
 function SenderSection({ messagesData, fromUserId }) {
   return (
-    <div className={sendersSection}>
+    <div className={styles.sendersSection}>
       {messagesData.map((user) => (
         <Link
           to={`/direct/t/${user.from_user_id}`}
-          style={
-            user.from_user_id === fromUserId
-              ? { backgroundColor: '#efefef' }
-              : {}
-          }
-          className={senderInfo}
+          className={cx(styles.senderInfo, {
+            [styles.isSent]: user.from_user_id === fromUserId,
+          })}
         >
           <Link to={`/direct/t/${user.from_user_id}`}>
             <img
-              className={senderThumbnail}
+              className={styles.senderThumbnail}
               src={user.from_user_thumbnail}
               alt="sender avatar"
             />
           </Link>
           <div>
-            <p className={senderUsername}>{user.from_username}</p>
-            <p className={hasSentMessage}>
+            <p className={styles.senderUsername}>{user.from_username}</p>
+            <p className={styles.hasSentMessage}>
               Active{' '}
               {absoluteToRelativeDate(
                 user.messages[user.messages.length - 1].sent_on
@@ -134,31 +96,29 @@ export function Messages({ fromUserId }) {
   return (
     <>
       <NavBar from_user_id={messagesData[userIndex]?.from_user_id} />
-      <div className={messagesPageContainer}>
-        <div className={leftSection}>
+      <div className={styles.messagesPageContainer}>
+        <div className={styles.leftSection}>
           <UserSection />
           <SenderSection messagesData={messagesData} fromUserId={fromUserId} />
         </div>
 
         {fromUserId ? (
-          <div className={rightSection}>
-            <div className={messagesHeader}>
+          <div className={styles.rightSection}>
+            <div className={styles.messagesHeader}>
               <img
                 src={messagesData[userIndex]?.from_user_thumbnail}
                 alt="sender avatar"
-                className={messagesSenderAvatar}
+                className={styles.messagesSenderAvatar}
               />
-              <div className={messagesSenderUserInfo}>
-                <p className={messagesSenderUsername}>
+              <div className={styles.messagesSenderUserInfo}>
+                <p className={styles.messagesSenderUsername}>
                   <strong>{messagesData[userIndex]?.from_username}</strong>
                 </p>
-                <p className={whenWasActive}>Active 20min ago</p>
+                <p className={styles.whenWasActive}>Active 20min ago</p>
               </div>
               <svg
                 aria-label="View thread details"
-                class="_8-yf5 "
                 color="#262626"
-                fill="#262626"
                 height="24"
                 role="img"
                 viewBox="0 0 48 48"
@@ -176,10 +136,10 @@ export function Messages({ fromUserId }) {
                 <path d="M24 35.7c-.8 0-1.5-.7-1.5-1.5V23.5h-1.6c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5H24c.8 0 1.5.7 1.5 1.5v12.2c0 .8-.7 1.5-1.5 1.5z"></path>
               </svg>
             </div>
-            <div className={messagesSection}>
-              <div className={messagesBody}>
+            <div className={styles.messagesSection}>
+              <div className={styles.messagesBody}>
                 {messagesData.length > 0 && (
-                  <p className={lastMessageSentDate}>
+                  <p className={styles.lastMessageSentDate}>
                     {date.toLocaleString('en-us', {
                       month: 'long',
                       day: '2-digit',
@@ -195,8 +155,8 @@ export function Messages({ fromUserId }) {
                   const nextMessage = index + 1;
                   return (
                     <div
-                      className={cx(messagesUserThumbnailMessageText, {
-                        [isSent]: message.direction === 'sent',
+                      className={cx(styles.messagesUserThumbnailMessageText, {
+                        [styles.isSent]: message.direction === 'sent',
                       })}
                     >
                       {message.direction !==
@@ -205,14 +165,14 @@ export function Messages({ fromUserId }) {
                         <img
                           src={messagesData[userIndex].from_user_thumbnail}
                           alt="sender profile pic"
-                          className={messagesSenderAvatar}
+                          className={styles.messagesSenderAvatar}
                         />
                       ) : (
-                        <div className={emptyImg}></div>
+                        <div className={styles.emptyImg}></div>
                       )}
                       <p
-                        className={cx(messageText, {
-                          [isSent]: message.direction === 'sent',
+                        className={cx(styles.messageText, {
+                          [styles.isSent]: message.direction === 'sent',
                         })}
                       >
                         {message.message_body}
@@ -221,12 +181,10 @@ export function Messages({ fromUserId }) {
                   );
                 })}
               </div>
-              <div className={messagesInputSection}>
-                <div className={messagesInputContent}>
+              <div className={styles.messagesInputSection}>
+                <div className={styles.messagesInputContent}>
                   <svg
                     aria-label="Emoji"
-                    class="_8-yf5 "
-                    color="#262626"
                     fill="#262626"
                     height="24"
                     role="img"
@@ -239,12 +197,10 @@ export function Messages({ fromUserId }) {
                   <input
                     type="text"
                     placeholder="Message..."
-                    className={messagesInput}
+                    className={styles.messagesInput}
                   />
                   <svg
                     aria-label="Add Photo or Video"
-                    class="_8-yf5 "
-                    color="#262626"
                     fill="#262626"
                     height="24"
                     role="img"
@@ -258,11 +214,11 @@ export function Messages({ fromUserId }) {
             </div>
           </div>
         ) : (
-          <div className={sendMessagesSection}>
-            <div className={telegramIconContainer}>
+          <div className={styles.sendMessagesSection}>
+            <div className={styles.telegramIconContainer}>
               <svg
                 aria-label="Direct"
-                className={telegramIcon}
+                className={styles.telegramIcon}
                 color="#262626"
                 height="55"
                 role="img"
@@ -272,11 +228,11 @@ export function Messages({ fromUserId }) {
                 <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.4-.4.4-1 .1-1.5zM5.2 6.1h35.5L18 18.7 5.2 6.1zm18.7 33.6l-4.4-18.4L42.4 8.6 23.9 39.7z"></path>
               </svg>
             </div>
-            <p className={yourMessages}>Your messages</p>
-            <p className={sendAMessage}>
+            <p className={styles.yourMessages}>Your messages</p>
+            <p className={styles.sendAMessage}>
               Send private photos and messages to a friend or group
             </p>
-            <button className={sendMessageButton}>Send message</button>
+            <button className={styles.sendMessageButton}>Send message</button>
           </div>
         )}
       </div>

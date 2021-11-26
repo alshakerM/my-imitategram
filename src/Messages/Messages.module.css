@@ -13,12 +13,10 @@
 .userSection {
   display: flex;
   width: 350px;
-  border-top: 1px solid #dbdbdb;
-  border-left: 1px solid #dbdbdb;
-  border-right: 1px solid #dbdbdb;
+  border: 1px solid #dbdbdb;
   padding: 0;
   margin: 0;
-  height: 60px;
+  height: 58px;
   justify-content: space-between;
   align-items: center;
   background-color: #fff;
@@ -39,7 +37,9 @@
 }
 .sendersSection {
   width: 350px;
-  border: 1px solid #dbdbdb;
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
   overflow: hidden auto;
   height: calc(100vh - 80px - 80px);
   background-color: #fff;
@@ -54,6 +54,9 @@
   gap: 10px;
   align-items: center;
   text-decoration: none;
+}
+.senderInfo.isSent {
+  background-color: #efefef;
 }
 .senderInfo:hover {
   background-color: #fafafa;
@@ -73,6 +76,21 @@
   padding: 0;
   margin: 0;
   color: #8e8e8e;
+}
+.rightSection {
+  width: 100%;
+}
+.messagesHeader {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  background-color: #fff;
+  height: 60px;
+  padding: 0 20px;
+  align-items: center;
+  box-sizing: border-box;
 }
 .messagesSenderAvatar {
   height: 24px;
@@ -116,7 +134,6 @@
   flex-direction: column;
   justify-content: flex-end;
   overflow: auto;
-  border-radius: 0 0 4px 0;
 }
 .messagesBody {
   overflow: auto;
@@ -135,6 +152,9 @@
   padding: 16px;
   box-sizing: border-box;
 }
+.messageText.isSent {
+  background-color: #efefef;
+}
 
 .messagesUserThumbnailMessageText {
   display: flex;
@@ -143,6 +163,8 @@
 }
 .messagesUserThumbnailMessageText.isSent {
   align-self: flex-end;
+  padding-right: 16px;
+  box-sizing: border-box;
 }
 .emptyImg {
   width: 24px;
