@@ -1,3 +1,8 @@
 .icon {
   padding: 0 10px;
 }
+.messages-icon {
+  padding: 0;
+  background: none;
+  border: none;
+}
