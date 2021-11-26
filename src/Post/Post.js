@@ -200,8 +200,7 @@ function CommentSection({
   datum,
 }) {
   const commentsSummary = comments.slice(0, isExpanded ? undefined : 2);
-  const [isRepliesActive, setIsRepliesActive] = React.useState(false);
-  const [activeCommentId, setActiveCommentId] = React.useState('');
+  const [activeCommentId, setActiveCommentId] = React.useState(undefined);
   return (
     <section
       className={classnames('comments-section', {
@@ -265,20 +264,21 @@ function CommentSection({
                       <button
                         className="view-replies-button"
                         onClick={() => {
-                          console.log(comment.comment_id);
-                          setActiveCommentId(comment.comment_id);
-                          setIsRepliesActive(!isRepliesActive);
+                          setActiveCommentId(
+                            activeCommentId === comment.comment_id
+                              ? undefined
+                              : comment.comment_id
+                          );
                         }}
                       >
                         <div className="view-replies-line"></div>
-                        {comment.comment_id === activeCommentId && isRepliesActive
+                        {comment.comment_id === activeCommentId
                           ? 'Hide replies'
                           : `View replies (${comment.replies.length})`}
                       </button>
-                      {comment.comment_id === activeCommentId &&
-                        isRepliesActive && (
-                          <CommentReplySection comment={comment} />
-                        )}
+                      {comment.comment_id === activeCommentId && (
+                        <CommentReplySection comment={comment} />
+                      )}
                     </div>
                   )}
                 </div>
