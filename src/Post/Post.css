@@ -193,7 +193,9 @@ section.comment-input-section {
   padding-right: 15px;
 }
 .action-icon:hover {
+  cursor: pointer;
   fill: #8e8e8e;
+
 }
 .comment-input-section {
   margin-top: 5px;
@@ -271,6 +273,7 @@ section.comment-input-section {
   border: none;
   font-weight: 600;
   color: #8e8e8e;
+  cursor: pointer;
 }
 .view-replies-line {
   border-bottom: 1px solid #8e8e8e;
@@ -300,6 +303,7 @@ section.comment-input-section {
   margin-left: 50px;
   margin-right: 10px;
   color: #8e8e8e;
+  font-size: 12px;
 }
 .reply-action {
   background: none;
@@ -308,8 +312,25 @@ section.comment-input-section {
   color: #8e8e8e;
   padding: 0;
   margin-right: 12px;
+  font-size: 12px;
 }
 .view-replies-section {
   margin: 16px 0 0 0px;
   width: calc(100% - 54px);
+}
+.three-dots-button {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.three-dots-icon {
+  margin-bottom: -8px;
+}
+.comment-username {
+  font-weight: 600;
+}
+.comment-username:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
