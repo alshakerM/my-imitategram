@@ -16,6 +16,7 @@ export function HomePage({ isExpanded, setIsExpanded }) {
           isExpanded={isExpanded}
           setIsExpanded={setIsExpanded}
           index={index}
+          key={datum.post_id}
         />
       ))}
     </div>
