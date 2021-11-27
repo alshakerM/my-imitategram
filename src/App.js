@@ -4,6 +4,7 @@ import { HomePage } from './HomePage';
 import { Messages } from './Messages/Messages';
 import { NavBar } from './NavBar/NavBar';
 import { PostPage } from './PostPage';
+import { UserProfile } from './UserProfile/UserProfile';
 import { UserStories } from './UserStories/UserStories';
 
 function App() {
@@ -26,6 +27,10 @@ function App() {
       <Route
         path="/stories/:userId/"
         render={(match) => <UserStories userId={match.match.params.userId} />}
+      ></Route>
+      <Route
+        path="/:userName/" exact
+        render={(match) => <UserProfile userId={match.match.params.userName} />}
       ></Route>
       <Route
         path={['/direct/t/:fromUserId', '/direct/inbox/']}

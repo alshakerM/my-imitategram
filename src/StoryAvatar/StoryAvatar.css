@@ -28,6 +28,8 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-top: 6px;
+  text-decoration: none;
+  cursor: pointer;
 }
 .story-user-avatar {
   border-radius: 50%;

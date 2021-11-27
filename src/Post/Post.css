@@ -54,6 +54,8 @@ section.post-header {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
+  text-decoration: none;
+  color: #262626;
 }
 .user-location {
   padding-top: 2px;
