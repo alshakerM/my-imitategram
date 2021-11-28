@@ -50,11 +50,19 @@
   border: 1px solid #dbdbdb;
   height: 100%;
   border-radius: 4px;
+  cursor: pointer;
+}
+.showMore {
+  width: 34px;
+}
+.DownIcon {
+  transform: rotate(180deg);
 }
 .threeDotsButton {
   border: none;
   background: none;
   height: 28px;
+  cursor: pointer;
 }
 .followButton {
   padding: 2px 13px;
@@ -77,11 +85,18 @@
 }
 .count {
   font-size: 16px;
+  cursor: pointer;
+}
+.postCount {
+  font-size: 16px;
 }
 .userInfo {
   margin: 0;
 }
-.postVidoesTagged {
+.userInfoAndBio {
+  font-size: 16px;
+}
+.postVideosTagged {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -105,13 +120,20 @@
   height: 293px;
   position: relative;
 }
-.postImg:hover {
+
+.postsSectionPost {
+  display: flex;
+}
+.postsSectionPost:hover .postImg {
   position: static;
+}
+.taggedPost:hover .isTagged {
+  position: relative;
 }
 .postHover {
   width: 293px;
   height: 293px;
-  margin-top: -293px;
+  margin-left: -293px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,29 +142,17 @@
   color: #fff;
   font-weight: 600;
 }
-.postHover:hover {
-  position: relative;
+.isTagged {
+  margin: 0;
+  margin-top: -296px;
 }
+
 .taggedPosts {
   display: flex;
-  gap: 20px;
+  gap: 28px;
   flex-wrap: wrap;
 }
-.taggedPostHover {
-  width: 293px;
-  height: 293px;
-  margin-top: -293px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  font-weight: 600;
-}
-.taggedPostHover:hover {
-  position: relative;
-}
+
 .likeIconCount {
   display: flex;
   justify-content: center;
