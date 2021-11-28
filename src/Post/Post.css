@@ -16,6 +16,7 @@
     'input';
 }
 .post-content.is-expanded {
+  margin-top: 81px;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
     'img header'
@@ -105,6 +106,9 @@ section.comments-section {
 section.comments-section.is-expanded {
   border-bottom: 1px solid #dbdbdb;
 }
+section.comments-section.is-expanded::-webkit-scrollbar {
+  visibility: hidden;
+}
 
 section.post-time-section {
   grid-area: time;
@@ -125,6 +129,9 @@ section.comment-input-section {
 
 .comment-wrapper.is-expanded {
   margin: 15px 0;
+}
+.comment-wrapper.is-expanded:hover .three-dots-button {
+  visibility: visible;
 }
 .comment-text {
   margin: 2px 0;
@@ -195,7 +202,6 @@ section.comment-input-section {
 .action-icon:hover {
   cursor: pointer;
   fill: #8e8e8e;
-
 }
 .comment-input-section {
   margin-top: 5px;
@@ -274,6 +280,7 @@ section.comment-input-section {
   font-weight: 600;
   color: #8e8e8e;
   cursor: pointer;
+  font-size: 12px;
 }
 .view-replies-line {
   border-bottom: 1px solid #8e8e8e;
@@ -323,9 +330,9 @@ section.comment-input-section {
   background: none;
   border: none;
   cursor: pointer;
-}
-.three-dots-icon {
-  margin-bottom: -8px;
+  visibility: hidden;
+  padding-right: 15px;
+  vertical-align: middle;
 }
 .comment-username {
   font-weight: 600;

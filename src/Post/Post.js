@@ -1,7 +1,5 @@
-import { ClassNames } from '@emotion/react';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
-import classNames from 'classnames';
-import classnames from 'classnames';
+import { default as classNames, default as classnames } from 'classnames';
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -10,6 +8,41 @@ import { useIGData } from '../hooks/useIGData';
 import { absoluteToRelativeDate } from '../utils';
 import './Post.css';
 
+function PostLikeButton({
+  is_post_liked,
+  index,
+  toggleLike,
+  commentId,
+  replyId,
+  size = '24',
+  width = '28',
+  isMarginNeeded,
+}) {
+  return (
+    <>
+      <button
+        className="post-like-button"
+        onClick={() => toggleLike(index, commentId, replyId)}
+      >
+        <svg
+          style={{ marginRight: isMarginNeeded }}
+          aria-label="like-icon"
+          height={size}
+          role="img"
+          viewBox="0 0 48 48"
+          width={width}
+        >
+          <path
+            className={classNames('like-icon', {
+              'is-liked': is_post_liked,
+            })}
+            d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
+          ></path>
+        </svg>
+      </button>
+    </>
+  );
+}
 function PostActions({ index, is_post_liked, isExpanded }) {
   const { toggleLike } = useIGData();
   return (
@@ -19,22 +52,11 @@ function PostActions({ index, is_post_liked, isExpanded }) {
       })}
     >
       <div className="like-share-telegram-icons">
-        <button className="post-like-button" onClick={() => toggleLike(index)}>
-          <svg
-            aria-label="like-icon"
-            height="24"
-            role="img"
-            viewBox="0 0 48 48"
-            width="28"
-          >
-            <path
-              className={classNames('like-icon', {
-                'is-liked': is_post_liked,
-              })}
-              d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
-            ></path>
-          </svg>
-        </button>
+        <PostLikeButton
+          index={index}
+          is_post_liked={is_post_liked}
+          toggleLike={toggleLike}
+        />
         <svg
           aria-label="Comment"
           className="action-icons"
@@ -118,8 +140,6 @@ function PostInput({ index, isExpanded }) {
   );
 }
 function PostDate({ posting_time, isExpanded }) {
-  const postDate = absoluteToRelativeDate(new Date(posting_time));
-
   return (
     <section className="post-time-section">
       <p
@@ -127,7 +147,7 @@ function PostDate({ posting_time, isExpanded }) {
           'is-expanded': isExpanded,
         })}
       >
-        {postDate.toUpperCase()}
+        {absoluteToRelativeDate(posting_time, 'mini').toUpperCase}
       </p>
     </section>
   );
@@ -146,7 +166,8 @@ function PostHeader({ user_name, user_thumbnail, city }) {
     </section>
   );
 }
-function CommentReplySection({ comment }) {
+function CommentReplySection({ comment, toggleCommentLike, postIndex }) {
+  const { toggleCommentReplyLike } = useIGData();
   return (
     <div className="reply-section">
       {comment.replies.map((reply) => (
@@ -161,21 +182,20 @@ function CommentReplySection({ comment }) {
             <p className="replier-username-text">
               <strong>{reply.user_name}</strong> {reply.comment}
             </p>
-            <svg
-              aria-label="Like"
-              className="reply-like-icon"
-              color={reply.is_liked_by_user ? '#ed4956' : '#262626'}
-              height="12"
-              role="img"
-              viewBox="0 0 48 48"
+            <PostLikeButton
+              index={postIndex}
+              is_post_liked={reply.is_liked_by_user}
+              size="12"
               width="12"
-            >
-              <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
-            </svg>
+              toggleLike={toggleCommentReplyLike}
+              commentId={comment.comment_id}
+              replyId={reply.comment_id}
+              isMarginNeeded="-180px"
+            />
           </div>
           <div>
             <time className="reply-post-date">
-              {absoluteToRelativeDate(reply.posted_on, 'mini')}
+              {absoluteToRelativeDate(reply?.posted_on, 'mini')}
             </time>
             <button className="reply-action">
               <strong>
@@ -189,8 +209,6 @@ function CommentReplySection({ comment }) {
             <button className="three-dots-button">
               <svg
                 aria-label="Comment options"
-                class="_8-yf5 "
-                color="#8e8e8e"
                 fill="#8e8e8e"
                 height="24"
                 role="img"
@@ -215,9 +233,9 @@ function CommentSection({
   setIsExpanded,
   datum,
 }) {
-  const commentsSummary = comments.slice(0, isExpanded ? undefined : 2);
+  const commentsSummary = comments?.slice(0, isExpanded ? undefined : 2);
   const [activeCommentId, setActiveCommentId] = React.useState(undefined);
-  const [onCommentHover, setOnCommentHover] = React.useState(undefined);
+  const { toggleCommentLike } = useIGData();
   return (
     <section
       className={classnames('comments-section', {
@@ -243,28 +261,20 @@ function CommentSection({
             'is-expanded': isExpanded,
           })}
         >
-          <Avatar src={datum.user_thumbnail} alt={datum.user_name} />
+          <Avatar src={datum?.user_thumbnail} alt={datum?.user_name} />
           <p className="post-caption-text">
             <span className="comment-username">{datum?.user_name}</span>{' '}
             {datum?.post_caption}
           </p>
         </section>
       )}
-      {commentsSummary.map((comment, index) => {
+      {commentsSummary?.map((comment) => {
         return (
           <div
             key={comment.comment_id}
             className={classnames('comment-wrapper', {
               'is-expanded': isExpanded,
             })}
-            onMouseEnter={() =>
-              setOnCommentHover(
-                onCommentHover === comment.comment_id
-                  ? undefined
-                  : comment.comment_id
-              )
-            }
-            onMouseLeave={() => setOnCommentHover(undefined)}
           >
             {isExpanded && <Avatar src={comment.user_thumbnail} size="32" />}
             <div className="comment-body">
@@ -276,7 +286,7 @@ function CommentSection({
                 <div>
                   <div className="comment-action-container">
                     <time className="comment-action">
-                      {absoluteToRelativeDate(comment.posted_on, 'mini')}
+                      {absoluteToRelativeDate(comment?.posted_on, 'mini')}
                     </time>
                     <button className="comment-action">
                       <strong>
@@ -287,23 +297,21 @@ function CommentSection({
                     <button className="comment-action">
                       <strong>Reply</strong>
                     </button>
-                    {comment.comment_id === onCommentHover && (
-                      <button className="three-dots-button">
-                        <svg
-                          aria-label="Comment options"
-                          className="three-dots-icon"
-                          fill="#8e8e8e"
-                          height="24"
-                          role="img"
-                          viewBox="0 0 24 24"
-                          width="24"
-                        >
-                          <circle cx="12" cy="12" r="1.5"></circle>
-                          <circle cx="6.5" cy="12" r="1.5"></circle>
-                          <circle cx="17.5" cy="12" r="1.5"></circle>
-                        </svg>
-                      </button>
-                    )}
+
+                    <button className="three-dots-button">
+                      <svg
+                        aria-label="Comment options"
+                        fill="#8e8e8e"
+                        height="24"
+                        role="img"
+                        viewBox="0 0 24 24"
+                        width="24"
+                      >
+                        <circle cx="12" cy="12" r="1.5"></circle>
+                        <circle cx="6.5" cy="12" r="1.5"></circle>
+                        <circle cx="17.5" cy="12" r="1.5"></circle>
+                      </svg>
+                    </button>
                   </div>
                   {comment.replies.length > 0 && (
                     <div className="view-replies-section">
@@ -323,29 +331,25 @@ function CommentSection({
                           : `View replies (${comment.replies.length})`}
                       </button>
                       {comment.comment_id === activeCommentId && (
-                        <CommentReplySection comment={comment} />
+                        <CommentReplySection
+                          comment={comment}
+                          toggleCommentLike={toggleCommentLike}
+                          postIndex={postIndex}
+                        />
                       )}
                     </div>
                   )}
                 </div>
               )}
             </div>
-            <button className="post-like-button">
-              <svg
-                aria-label="like-icon"
-                height="12"
-                role="img"
-                viewBox="0 0 48 48"
-                width="12"
-              >
-                <path
-                  className={classNames('like-icon', {
-                    'is-liked': comment.is_liked_by_user,
-                  })}
-                  d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
-                ></path>
-              </svg>
-            </button>
+            <PostLikeButton
+              index={postIndex}
+              is_post_liked={comment.is_liked_by_user}
+              toggleLike={toggleCommentLike}
+              commentId={comment.comment_id}
+              size="12"
+              width="12"
+            />
           </div>
         );
       })}
@@ -403,7 +407,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             datum={datum}
             postIndex={index}
             setIsExpanded={setIsExpanded}
-            comments={datum.comments}
+            comments={datum?.comments}
             isExpanded={isExpanded}
           />
           <PostDate

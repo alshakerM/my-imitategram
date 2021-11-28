@@ -1,5 +1,5 @@
 import React from 'react';
-import { uuid } from 'uuidv4';
+import produce from 'immer';
 
 let cachedData;
 
@@ -7,7 +7,6 @@ const subscribers = new Set();
 
 function createComment(user_name, user_thumbnail, comment) {
   const newComment = {
-    comment_id: uuid(),
     user_name,
     comment,
     posting_time: new Date().toString(),
@@ -41,10 +40,29 @@ export function useIGData() {
   }, [setData]);
 
   function toggleLike(postIndex) {
-    const newPost = { ...data[postIndex] };
-    newPost.is_post_liked = !newPost.is_post_liked;
-    const newData = data.slice(0);
-    newData.splice(postIndex, 1, newPost);
+    const newData = produce(data, (draft) => {
+      draft[postIndex].is_post_liked = !draft[postIndex].is_post_liked;
+    });
+    updateSubscribers(newData);
+  }
+  function toggleCommentLike(postIndex, commentId) {
+    const newData = produce(data, (draft) => {
+      const comment = draft[postIndex].comments.find(
+        (el) => el.comment_id === commentId
+      );
+      comment.is_liked_by_user = !comment.is_liked_by_user;
+    });
+    updateSubscribers(newData);
+  }
+  function toggleCommentReplyLike(postIndex, commentId, replyId) {
+    const newData = produce(data, (draft) => {
+      const comment = draft[postIndex].comments.find(
+        (el) => el.comment_id === commentId
+      );
+      const reply = comment.replies.find((el) => el.comment_id === replyId);
+      reply.is_liked_by_user = !reply.is_liked_by_user;
+    });
+
     updateSubscribers(newData);
   }
 
@@ -66,5 +84,11 @@ export function useIGData() {
     updateSubscribers(newData);
   }
 
-  return { data, toggleLike, addComment };
+  return {
+    data,
+    toggleLike,
+    toggleCommentLike,
+    toggleCommentReplyLike,
+    addComment,
+  };
 }

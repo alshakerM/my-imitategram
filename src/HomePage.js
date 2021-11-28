@@ -9,10 +9,10 @@ export function HomePage({ isExpanded, setIsExpanded }) {
   return (
     <div className="content-section">
       <Stories />
-      {data.map((datum, index) => (
+      {data?.map((datum, index) => (
         <Post
           datum={datum}
-          comments={datum.comments}
+          comments={datum?.comments}
           isExpanded={isExpanded}
           setIsExpanded={setIsExpanded}
           index={index}
