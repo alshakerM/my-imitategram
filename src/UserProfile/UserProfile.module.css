@@ -119,6 +119,7 @@
   width: 293px;
   height: 293px;
   position: relative;
+  display: block;
 }
 
 .postsSectionPost {
@@ -133,7 +134,8 @@
 .postHover {
   width: 293px;
   height: 293px;
-  margin-left: -293px;
+  position: relative;
+  margin-top: -100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -141,6 +143,7 @@
   background: rgba(0, 0, 0, 0.3);
   color: #fff;
   font-weight: 600;
+  visibility: hidden;
 }
 .isTagged {
   margin: 0;
@@ -163,10 +166,18 @@
   fill: #fff;
 }
 .postContainer {
-  display: flex;
+  text-decoration: none;
+}
+.postContainer:hover .postHover {
+  visibility: visible;
 }
 .emptyPostSection {
   display: flex;
+}
+.postsSection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
 }
 .emptyPostTextSection {
   width: 555px;
@@ -209,9 +220,9 @@
   width: 935px;
 }
 .iconSection {
-border: 2px solid #262626;
-border-radius: 50%;
-padding: 8px
+  border: 2px solid #262626;
+  border-radius: 50%;
+  padding: 8px;
 }
 .profileIcon {
   height: 42px;
@@ -220,5 +231,5 @@ padding: 8px
 }
 .noPhotos {
   font-size: 28px;
-  font-weight: 300
+  font-weight: 300;
 }
