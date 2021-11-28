@@ -5,6 +5,7 @@ import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { NavBar } from '../NavBar/NavBar';
 import styles from './UserProfile.module.css';
+import { Avatar } from '../Avatar/Avatar';
 
 function UserProfilePost({ post }) {
   return (
@@ -71,10 +72,11 @@ export function UserProfile({ userName }) {
         <div className={styles.header}>
           <div className={styles.imgContainer}>
             <Link to={`/stories/${user?.user_id}`}>
-              <img
+              <Avatar
                 src={user?.user_thumbnail}
                 alt={`${user?.user_name} avatar`}
-                className={styles.userImg}
+                size="150px"
+                borderColor="#ddd"
               />
             </Link>
           </div>
@@ -148,7 +150,7 @@ export function UserProfile({ userName }) {
           <Link
             to={`/${user?.user_name}`}
             className={cx(styles.link, {
-              [styles.isClicked]: location.pathname === `/${user?.user_name}`,
+              [styles.isSelected]: location.pathname === `/${user?.user_name}`,
             })}
           >
             <svg
@@ -174,7 +176,7 @@ export function UserProfile({ userName }) {
           <Link
             to={`/${user?.user_name}/channel/`}
             className={cx(styles.link, {
-              [styles.isClicked]:
+              [styles.isSelected]:
                 location.pathname === `/${user?.user_name}/channel/`,
             })}
           >
@@ -197,7 +199,7 @@ export function UserProfile({ userName }) {
           <Link
             to={`/${user?.user_name}/tagged/`}
             className={cx(styles.link, {
-              [styles.isClicked]:
+              [styles.isSelected]:
                 location.pathname === `/${user?.user_name}/tagged/`,
             })}
           >

@@ -110,7 +110,7 @@
   color: #8e8e8e;
   height: 52px;
 }
-.isClicked {
+.isSelected {
   color: #262626;
   border-top: 1px solid #262626;
 }
@@ -125,12 +125,7 @@
 .postsSectionPost {
   display: flex;
 }
-.postsSectionPost:hover .postImg {
-  position: static;
-}
-.taggedPost:hover .isTagged {
-  position: relative;
-}
+
 .postHover {
   width: 293px;
   height: 293px;
@@ -144,10 +139,6 @@
   color: #fff;
   font-weight: 600;
   visibility: hidden;
-}
-.isTagged {
-  margin: 0;
-  margin-top: -296px;
 }
 
 .taggedPosts {
@@ -179,38 +170,7 @@
   flex-wrap: wrap;
   gap: 28px;
 }
-.emptyPostTextSection {
-  width: 555px;
-  height: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #fff;
-  align-items: center;
-}
-.emptyPostText {
-  font-size: 18px;
-  margin: 0;
-}
-.emptyPostAppText {
-  font-size: 16px;
-  margin: 0;
-  margin-top: 10px;
-  margin-bottom: 25px;
-}
-.storeImagesSection {
-  display: flex;
-  gap: 8px;
-}
-.appleStoreImg,
-.googleStoreImg {
-  width: 136px;
-  height: 40px;
-}
-.randomImg {
-  width: 380px;
-  height: 380px;
-}
+
 .emptyTaggedSection {
   display: flex;
   flex-direction: column;
