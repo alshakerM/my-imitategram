@@ -29,8 +29,11 @@ function App() {
         render={(match) => <UserStories userId={match.match.params.userId} />}
       ></Route>
       <Route
-        path="/:userName/" exact
-        render={(match) => <UserProfile userId={match.match.params.userName} />}
+        path={['/:userName/', '/:userName/channel/', '/:userName/tagged/']}
+        exact
+        render={(match) => (
+          <UserProfile userName={match.match.params.userName} />
+        )}
       ></Route>
       <Route
         path={['/direct/t/:fromUserId', '/direct/inbox/']}

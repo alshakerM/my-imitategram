@@ -99,13 +99,19 @@
   color: #262626;
   border-top: 1px solid #262626;
 }
-.postImgContainer {
-  width: 594px;
-  height: 594px;
-}
-.postImgHover {
+
+.postImg {
   width: 293px;
   height: 293px;
+  position: relative;
+}
+.postImg:hover {
+  position: static;
+}
+.postHover {
+  width: 293px;
+  height: 293px;
+  margin-top: -293px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,14 +120,28 @@
   color: #fff;
   font-weight: 600;
 }
-.postImg {
-  width: 293px;
-  height: 293px;
+.postHover:hover {
+  position: relative;
 }
-.postHover {
+.taggedPosts {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.taggedPostHover {
   width: 293px;
   height: 293px;
-  margin-left: -594px;
+  margin-top: -293px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-weight: 600;
+}
+.taggedPostHover:hover {
+  position: relative;
 }
 .likeIconCount {
   display: flex;
@@ -131,4 +151,7 @@
 }
 .Icon {
   fill: #fff;
+}
+.postContainer {
+  display: flex;
 }

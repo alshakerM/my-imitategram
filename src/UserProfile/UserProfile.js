@@ -6,13 +6,11 @@ import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { NavBar } from '../NavBar/NavBar';
 import styles from './UserProfile.module.css';
-export function UserProfile() {
+
+export function UserProfile({ userName }) {
   const [usersData, setUsersData] = React.useState([]);
-  const [onHover, setOnHover] = React.useState(false);
   const location = useLocation();
-  const user = usersData?.find(
-    (element) => `/${element.user_name}` === location.pathname
-  );
+  const user = usersData?.find((element) => element.user_name === userName);
   React.useEffect(() => {
     fetch('/Data/users.json', {
       method: 'GET',
@@ -176,24 +174,16 @@ export function UserProfile() {
               TAGGED
             </Link>
           </div>
-          <div style={{ display: 'flex' }}>
-            <div className={styles.postImgContainer}>
-              <img
-                src={user?.posts[0].post_image}
-                alt={user?.user_name}
-                className={styles.postImg}
-              />
-            </div>
+          <div className={styles.postContainer}>
+            {location.pathname === `/${user?.user_name}` && (
+              <>
+                <img
+                  src={user?.posts[0].post_image}
+                  alt={user?.user_name}
+                  className={styles.postImg}
+                />
 
-            <div
-              className={styles.postHover}
-              onMouseEnter={() => setOnHover(true)}
-            >
-              {onHover && (
-                <div
-                  className={styles.postImgHover}
-                  onMouseLeave={() => setOnHover(false)}
-                >
+                <div className={styles.postHover}>
                   <div className={styles.likeIconCount}>
                     <svg
                       aria-label="like-icon"
@@ -226,8 +216,55 @@ export function UserProfile() {
                     <p> {user?.posts[0].likes_count}</p>
                   </div>
                 </div>
-              )}
-            </div>
+              </>
+            )}
+            {location.pathname === `/${user?.user_name}/tagged/` && (
+              <div className={styles.taggedPosts}>
+                {user?.taggedPosts.map((taggedPost) => (
+                  <div key={taggedPost.post_id}>
+                    <img
+                      src={user?.posts[0].post_image}
+                      alt={user?.user_name}
+                      className={styles.postImg}
+                    />
+
+                    <div className={styles.postHover}>
+                      <div className={styles.likeIconCount}>
+                        <svg
+                          aria-label="like-icon"
+                          className={styles.Icon}
+                          height="19"
+                          role="img"
+                          viewBox="0 0 48 48"
+                          width="19"
+                        >
+                          <path
+                            className={styles.Icon}
+                            d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
+                          ></path>
+                        </svg>
+                        <p> {user?.posts[0].likes_count}</p>
+                      </div>
+                      <div className={styles.likeIconCount}>
+                        <svg
+                          aria-label="Comment"
+                          height="19"
+                          role="img"
+                          viewBox="0 0 48 48"
+                          width="19"
+                        >
+                          <path
+                            className={styles.Icon}
+                            d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4zm-3-22.1c0 4-1 7-2.6 10-.2.4-.3.9-.2 1.4l2.1 8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 2.6-11.4 0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 44.5 12.7 44.5 24z"
+                          ></path>
+                        </svg>
+                        <p> {user?.posts[0].likes_count}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
