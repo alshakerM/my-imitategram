@@ -1,4 +1,4 @@
-import { Check, Person } from '@mui/icons-material';
+import { Check, Person, PhotoCameraFrontOutlined } from '@mui/icons-material';
 import cx from 'classnames';
 import React from 'react';
 import { useLocation } from 'react-router';
@@ -6,6 +6,53 @@ import { Link } from 'react-router-dom';
 import { NavBar } from '../NavBar/NavBar';
 import styles from './UserProfile.module.css';
 
+function UserProfilePost({ user, post, taggedPost, location }) {
+  return (
+    <div
+      className={cx(styles.postHover, {
+        [styles.isTagged]: location.pathname === `/${user?.user_name}/tagged/`,
+      })}
+    >
+      <div className={styles.likeIconCount}>
+        <svg
+          aria-label="like-icon"
+          className={styles.Icon}
+          height="19"
+          role="img"
+          viewBox="0 0 48 48"
+          width="19"
+        >
+          <path
+            className={styles.Icon}
+            d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
+          ></path>
+        </svg>
+        {location.pathname === `/${user?.user_name}/tagged/` ? (
+          <p> {taggedPost.likes_count}</p>
+        ) : (
+          <p> {post.likes_count}</p>
+        )}
+      </div>
+      <div className={styles.likeIconCount}>
+        <svg
+          aria-label="Comment"
+          height="19"
+          role="img"
+          viewBox="0 0 48 48"
+          width="19"
+        >
+          <ellipse cx="24" cy="24" rx="24" ry="21" fill="white" />
+          <path d="M10 30, 40 20, 48 48" fill="white" />
+        </svg>
+        {location.pathname === `/${user?.user_name}/tagged/` ? (
+          <p> {taggedPost.comment_count}</p>
+        ) : (
+          <p> {post.comment_count}</p>
+        )}
+      </div>
+    </div>
+  );
+}
 export function UserProfile({ userName }) {
   const [usersData, setUsersData] = React.useState([]);
   const location = useLocation();
@@ -63,7 +110,6 @@ export function UserProfile({ userName }) {
                 <button className={styles.threeDotsButton}>
                   <svg
                     aria-label="Options"
-                    class="_8-yf5 "
                     fill="#262626"
                     height="32"
                     role="img"
@@ -176,95 +222,84 @@ export function UserProfile({ userName }) {
           <div className={styles.postContainer}>
             {location.pathname === `/${user?.user_name}` && (
               <div className={styles.postsSectionPost}>
-                <img
-                  src={user?.posts[0].post_image}
-                  alt={user?.user_name}
-                  className={styles.postImg}
-                />
-
-                <div className={styles.postHover}>
-                  <div className={styles.likeIconCount}>
-                    <svg
-                      aria-label="like-icon"
-                      className={styles.Icon}
-                      height="19"
-                      role="img"
-                      viewBox="0 0 48 48"
-                      width="19"
-                    >
-                      <path
-                        className={styles.Icon}
-                        d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
-                      ></path>
-                    </svg>
-                    <p> {user?.posts[0].likes_count}</p>
+                {user?.posts.length > 0 ? (
+                  user?.posts.map((post) => (
+                    <>
+                      <img
+                        src={post.post_image}
+                        alt={post.user_name}
+                        className={styles.postImg}
+                      />
+                      <UserProfilePost
+                        user={user}
+                        post={post}
+                        location={location}
+                      />
+                    </>
+                  ))
+                ) : (
+                  <div>
+                    <div className={styles.emptyPostSection}>
+                      <img
+                        src="/instagram-random-img.jpg"
+                        alt="collection of random images"
+                        className={styles.randomImg}
+                      />
+                      <div className={styles.emptyPostTextSection}>
+                        <p className={styles.emptyPostText}>
+                          <strong>
+                            Start capturing and sharing your moments.
+                          </strong>
+                        </p>
+                        <p className={styles.emptyPostAppText}>
+                          Get the app to share your first photo or video.
+                        </p>
+                        <div className={styles.storeImagesSection}>
+                          <img
+                            src="/apple-store-img.png"
+                            alt="apple store logo img.png"
+                            className={styles.appleStoreImg}
+                          />
+                          <img
+                            src="/google-store-img.png"
+                            alt="google store logo img"
+                            className={styles.googleStoreImg}
+                          />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className={styles.likeIconCount}>
-                    <svg
-                      aria-label="Comment"
-                      height="19"
-                      role="img"
-                      viewBox="0 0 48 48"
-                      width="19"
-                    >
-                      <path
-                        className={styles.Icon}
-                        d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4zm-3-22.1c0 4-1 7-2.6 10-.2.4-.3.9-.2 1.4l2.1 8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 2.6-11.4 0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 44.5 12.7 44.5 24z"
-                      ></path>
-                    </svg>
-                    <p> {user?.posts[0].likes_count}</p>
-                  </div>
-                </div>
+                )}
               </div>
             )}
             {location.pathname === `/${user?.user_name}/tagged/` && (
               <div className={styles.taggedPosts}>
-                {user?.taggedPosts.map((taggedPost) => (
-                  <div key={taggedPost.post_id} className={styles.taggedPost}>
-                    <img
-                      src={taggedPost.post_image}
-                      alt={taggedPost.user_name}
-                      className={styles.postImg}
-                    />
+                {user?.taggedPosts.length > 0 ? (
+                  user?.taggedPosts.map((taggedPost) => (
+                    <div key={taggedPost.post_id} className={styles.taggedPost}>
+                      <img
+                        src={taggedPost.post_image}
+                        alt={taggedPost.user_name}
+                        className={styles.postImg}
+                      />
 
-                    <div
-                      className={cx(styles.postHover, {
-                        [styles.isTagged]:
-                          location.pathname === `/${user?.user_name}/tagged/`,
-                      })}
-                    >
-                      <div className={styles.likeIconCount}>
-                        <svg
-                          aria-label="like-icon"
-                          className={styles.Icon}
-                          height="19"
-                          role="img"
-                          viewBox="0 0 48 48"
-                          width="19"
-                        >
-                          <path
-                            className={styles.Icon}
-                            d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
-                          ></path>
-                        </svg>
-                        <p> {taggedPost.likes_count}</p>
-                      </div>
-                      <div className={styles.likeIconCount}>
-                        <svg
-                          aria-label="Comment"
-                          height="19"
-                          role="img"
-                          viewBox="0 0 48 48"
-                          width="19"
-                        >
-                          <ellipse cx="24" cy="24" rx="24" ry="21" fill="white" />
-                          <path d="M10 30, 40 20, 48 48" fill="white" />
-                        </svg>
-                        <p> {taggedPost.likes_count}</p>
-                      </div>
+                      <UserProfilePost
+                        user={user}
+                        location={location}
+                        taggedPost={taggedPost}
+                      />
                     </div>
+                  ))
+                ) : (
+                  <div className={styles.emptyTaggedSection}>
+                    <div className={styles.iconSection}>
+                      <PhotoCameraFrontOutlined
+                        className={styles.profileIcon}
+                      />
+                    </div>
+                    <p className={styles.noPhotos}>No photos</p>
                   </div>
-                ))}
+                )}
               </div>
             )}
           </div>

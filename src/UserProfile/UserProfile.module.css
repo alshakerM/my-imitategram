@@ -165,3 +165,60 @@
 .postContainer {
   display: flex;
 }
+.emptyPostSection {
+  display: flex;
+}
+.emptyPostTextSection {
+  width: 555px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #fff;
+  align-items: center;
+}
+.emptyPostText {
+  font-size: 18px;
+  margin: 0;
+}
+.emptyPostAppText {
+  font-size: 16px;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 25px;
+}
+.storeImagesSection {
+  display: flex;
+  gap: 8px;
+}
+.appleStoreImg,
+.googleStoreImg {
+  width: 136px;
+  height: 40px;
+}
+.randomImg {
+  width: 380px;
+  height: 380px;
+}
+.emptyTaggedSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 285px;
+  width: 935px;
+}
+.iconSection {
+border: 2px solid #262626;
+border-radius: 50%;
+padding: 8px
+}
+.profileIcon {
+  height: 42px;
+  width: 42px;
+  color: rgba(26, 26, 26, 0.6);
+}
+.noPhotos {
+  font-size: 28px;
+  font-weight: 300
+}
