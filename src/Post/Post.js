@@ -135,7 +135,7 @@ function PostHeader({ user_name, user_thumbnail, city }) {
     <section className="post-header">
       <Avatar avatar={user_thumbnail} size="32" borderColor="#ddd" />
       <div className="user-info">
-        <h2 className="user-name">{user_name}</h2>
+        <Link to={`/${user_name}`} className="user-name">{user_name}</Link>
         <p className="user-location">{city}</p>
       </div>
 

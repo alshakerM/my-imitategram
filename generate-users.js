@@ -41,6 +41,7 @@ const conversations = users.map((user, index) => {
       post_id: post.post_id,
     })
   );
+  posts.push(posts[0]);
   return {
     ...user,
     full_name: fullNames[index].full_name,

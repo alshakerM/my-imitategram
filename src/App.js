@@ -4,6 +4,7 @@ import { HomePage } from './HomePage';
 import { Messages } from './Messages/Messages';
 import { NavBar } from './NavBar/NavBar';
 import { PostPage } from './PostPage';
+import { UserProfile } from './UserProfile/UserProfile';
 import { UserStories } from './UserStories/UserStories';
 
 function App() {
@@ -38,6 +39,13 @@ function App() {
         <NavBar></NavBar>
         <HomePage setIsExpanded={setIsExpanded} />
       </Route>
+      <Route
+        path={['/:userName/', '/:userName/channel/', '/:userName/tagged/']}
+        exact
+        render={(match) => (
+          <UserProfile userName={match.match.params.userName} />
+        )}
+      ></Route>
     </BrowserRouter>
   );
 }
