@@ -9,23 +9,13 @@ import { absoluteToRelativeDate } from '../utils';
 import { useLocation } from 'react-router';
 import './Post.css';
 
-function LikeButton({
-  is_post_liked,
-  index,
-  toggleLike,
-  commentId,
-  replyId,
-  height = '24',
-  width = '28',
-  isMarginNeeded,
-}) {
+function LikeButton({ is_post_liked, isClicked, height = '24', width = '28' }) {
   return (
     <button
       className="post-like-button"
-      onClick={() => toggleLike(index, commentId, replyId)}
+      onClick={() => isClicked}
     >
       <svg
-        style={{ marginRight: isMarginNeeded }}
         aria-label="like-icon"
         height={height}
         role="img"
@@ -52,9 +42,8 @@ function PostActions({ index, is_post_liked, isExpanded }) {
     >
       <div className="like-share-telegram-icons">
         <LikeButton
-          index={index}
           is_post_liked={is_post_liked}
-          toggleLike={toggleLike}
+          isClicked={toggleLike(index)}
         />
         <svg
           aria-label="Comment"
@@ -73,7 +62,7 @@ function PostActions({ index, is_post_liked, isExpanded }) {
         </svg>
         <svg
           aria-label="Direct"
-          className="action-icons"
+          className="action-iconsث"
           color="#262626"
           height="22"
           role="img"
