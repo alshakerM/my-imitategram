@@ -205,7 +205,7 @@ section.comment-input-section {
   align-items: center;
 }
 .action-icons {
-  padding-right: 15px;
+  padding: 0 15px;
 }
 .action-icon:hover {
   cursor: pointer;

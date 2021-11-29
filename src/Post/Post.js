@@ -11,10 +11,7 @@ import './Post.css';
 
 function LikeButton({ is_post_liked, isClicked, height = '24', width = '28' }) {
   return (
-    <button
-      className="post-like-button"
-      onClick={() => isClicked}
-    >
+    <button className="post-like-button" onClick={isClicked}>
       <svg
         aria-label="like-icon"
         height={height}
@@ -171,14 +168,16 @@ function CommentReplySection({ comment, toggleCommentLike, postIndex }) {
               <strong>{reply.user_name}</strong> {reply.comment}
             </p>
             <LikeButton
-              index={postIndex}
               is_post_liked={reply.is_liked_by_user}
+              isClicked={() =>
+                toggleCommentReplyLike(
+                  postIndex,
+                  comment.comment_id,
+                  reply.comment_id
+                )
+              }
               height="12"
               width="12"
-              toggleLike={toggleCommentReplyLike}
-              commentId={comment.comment_id}
-              replyId={reply.comment_id}
-              isMarginNeeded=""
             />
           </div>
           <div>
@@ -278,10 +277,10 @@ function CommentSection({
               </p>
               {isExpanded && (
                 <LikeButton
-                  index={postIndex}
                   is_post_liked={comment.is_liked_by_user}
-                  toggleLike={toggleCommentLike}
-                  commentId={comment.comment_id}
+                  isClicked={() =>
+                    toggleCommentLike(postIndex, comment.comment_id)
+                  }
                   height="12"
                   width="12"
                 />
@@ -349,10 +348,10 @@ function CommentSection({
             )}
             {!isExpanded && (
               <LikeButton
-                index={postIndex}
                 is_post_liked={comment.is_liked_by_user}
-                toggleLike={toggleCommentLike}
-                commentId={comment.comment_id}
+                isClicked={() =>
+                  toggleCommentLike(postIndex, comment.comment_id)
+                }
                 height="12"
                 width="12"
               />
