@@ -31,11 +31,7 @@
   line-height: 32px;
   height: 45px;
 }
-.userImg {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-}
+
 .buttonsContainer {
   display: flex;
   gap: 8px;
@@ -153,9 +149,7 @@
   align-items: center;
   gap: 7px;
 }
-.Icon {
-  fill: #fff;
-}
+
 .postContainer {
   text-decoration: none;
 }

@@ -29,13 +29,6 @@ function App() {
         render={(match) => <UserStories userId={match.match.params.userId} />}
       ></Route>
       <Route
-        path={['/:userName/', '/:userName/channel/', '/:userName/tagged/']}
-        exact
-        render={(match) => (
-          <UserProfile userName={match.match.params.userName} />
-        )}
-      ></Route>
-      <Route
         path={['/direct/t/:fromUserId', '/direct/inbox/']}
         render={(match) => (
           <Messages fromUserId={match.match.params.fromUserId} />
@@ -46,6 +39,13 @@ function App() {
         <NavBar></NavBar>
         <HomePage setIsExpanded={setIsExpanded} />
       </Route>
+      <Route
+        path={['/:userName/', '/:userName/channel/', '/:userName/tagged/']}
+        exact
+        render={(match) => (
+          <UserProfile userName={match.match.params.userName} />
+        )}
+      ></Route>
     </BrowserRouter>
   );
 }
