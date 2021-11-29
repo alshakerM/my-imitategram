@@ -73,6 +73,7 @@ section.post-actions {
   margin-top: 10px;
   display: flex;
   align-items: center;
+  gap: 15px;
 }
 section.post-actions.is-expanded {
   padding: 8px 15px;
@@ -174,6 +175,8 @@ section.comment-input-section {
 
 .like-share-telegram-icons {
   flex: 1;
+  gap: 15px;
+  display: flex;
 }
 .like-icon {
   fill: white;
@@ -205,9 +208,13 @@ section.comment-input-section {
   align-items: center;
 }
 .action-icons {
-  padding: 0 15px;
+  
 }
 .action-icon:hover {
+  cursor: pointer;
+  fill: #8e8e8e;
+}
+.action-icons:hover {
   cursor: pointer;
   fill: #8e8e8e;
 }
@@ -255,6 +262,7 @@ section.comment-input-section {
   background: none;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 .post-comment-input {
   flex: 1;

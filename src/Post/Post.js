@@ -40,7 +40,7 @@ function PostActions({ index, is_post_liked, isExpanded }) {
       <div className="like-share-telegram-icons">
         <LikeButton
           is_post_liked={is_post_liked}
-          isClicked={toggleLike(index)}
+          isClicked={() => toggleLike(index)}
         />
         <svg
           aria-label="Comment"
@@ -59,7 +59,7 @@ function PostActions({ index, is_post_liked, isExpanded }) {
         </svg>
         <svg
           aria-label="Direct"
-          className="action-iconsث"
+          className="action-icons"
           color="#262626"
           height="22"
           role="img"
