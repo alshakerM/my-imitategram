@@ -1,58 +1,57 @@
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
-import { default as classNames, default as classnames } from 'classnames';
+import cx from 'classnames';
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
 import { absoluteToRelativeDate } from '../utils';
+import { useLocation } from 'react-router';
 import './Post.css';
 
-function PostLikeButton({
+function LikeButton({
   is_post_liked,
   index,
   toggleLike,
   commentId,
   replyId,
-  size = '24',
+  height = '24',
   width = '28',
   isMarginNeeded,
 }) {
   return (
-    <>
-      <button
-        className="post-like-button"
-        onClick={() => toggleLike(index, commentId, replyId)}
+    <button
+      className="post-like-button"
+      onClick={() => toggleLike(index, commentId, replyId)}
+    >
+      <svg
+        style={{ marginRight: isMarginNeeded }}
+        aria-label="like-icon"
+        height={height}
+        role="img"
+        viewBox="0 0 48 48"
+        width={width}
       >
-        <svg
-          style={{ marginRight: isMarginNeeded }}
-          aria-label="like-icon"
-          height={size}
-          role="img"
-          viewBox="0 0 48 48"
-          width={width}
-        >
-          <path
-            className={classNames('like-icon', {
-              'is-liked': is_post_liked,
-            })}
-            d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
-          ></path>
-        </svg>
-      </button>
-    </>
+        <path
+          className={cx('like-icon', {
+            'is-liked': is_post_liked,
+          })}
+          d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
+        ></path>
+      </svg>
+    </button>
   );
 }
 function PostActions({ index, is_post_liked, isExpanded }) {
   const { toggleLike } = useIGData();
   return (
     <section
-      className={classnames('post-actions', {
+      className={cx('post-actions', {
         'is-expanded': isExpanded,
       })}
     >
       <div className="like-share-telegram-icons">
-        <PostLikeButton
+        <LikeButton
           index={index}
           is_post_liked={is_post_liked}
           toggleLike={toggleLike}
@@ -103,7 +102,7 @@ function PostInput({ index, isExpanded }) {
   const { addComment } = useIGData();
   return (
     <section
-      className={classnames('comment-input-section', {
+      className={cx('comment-input-section', {
         'is-expanded': isExpanded,
       })}
     >
@@ -143,11 +142,11 @@ function PostDate({ posting_time, isExpanded }) {
   return (
     <section className="post-time-section">
       <p
-        className={classnames('post-time', {
+        className={cx('post-time', {
           'is-expanded': isExpanded,
         })}
       >
-        {absoluteToRelativeDate(posting_time, 'mini').toUpperCase}
+        {absoluteToRelativeDate(posting_time, 'mini').toUpperCase()}
       </p>
     </section>
   );
@@ -182,15 +181,15 @@ function CommentReplySection({ comment, toggleCommentLike, postIndex }) {
             <p className="replier-username-text">
               <strong>{reply.user_name}</strong> {reply.comment}
             </p>
-            <PostLikeButton
+            <LikeButton
               index={postIndex}
               is_post_liked={reply.is_liked_by_user}
-              size="12"
+              height="12"
               width="12"
               toggleLike={toggleCommentReplyLike}
               commentId={comment.comment_id}
               replyId={reply.comment_id}
-              isMarginNeeded="-180px"
+              isMarginNeeded=""
             />
           </div>
           <div>
@@ -238,7 +237,7 @@ function CommentSection({
   const { toggleCommentLike } = useIGData();
   return (
     <section
-      className={classnames('comments-section', {
+      className={cx('comments-section', {
         'is-expanded': isExpanded,
       })}
     >
@@ -257,7 +256,7 @@ function CommentSection({
       )}
       {isExpanded && (
         <section
-          className={classnames('post-caption-section', {
+          className={cx('post-caption-section', {
             'is-expanded': isExpanded,
           })}
         >
@@ -272,84 +271,103 @@ function CommentSection({
         return (
           <div
             key={comment.comment_id}
-            className={classnames('comment-wrapper', {
+            className={cx('comment-wrapper', {
               'is-expanded': isExpanded,
             })}
           >
-            {isExpanded && <Avatar src={comment.user_thumbnail} size="32" />}
             <div className="comment-body">
+              {isExpanded && (
+                <Avatar
+                  src={comment.user_thumbnail}
+                  size="32"
+                  borderColor="#ddd"
+                />
+              )}
               <p className="comment-text">
                 <span className="comment-username">{comment.user_name}</span>{' '}
                 {comment.comment}
               </p>
               {isExpanded && (
-                <div>
-                  <div className="comment-action-container">
-                    <time className="comment-action">
-                      {absoluteToRelativeDate(comment?.posted_on, 'mini')}
-                    </time>
-                    <button className="comment-action">
-                      <strong>
-                        {comment.comment_likes}
-                        {comment.comment_likes > 0 ? ' likes' : ' like'}
-                      </strong>
-                    </button>
-                    <button className="comment-action">
-                      <strong>Reply</strong>
-                    </button>
-
-                    <button className="three-dots-button">
-                      <svg
-                        aria-label="Comment options"
-                        fill="#8e8e8e"
-                        height="24"
-                        role="img"
-                        viewBox="0 0 24 24"
-                        width="24"
-                      >
-                        <circle cx="12" cy="12" r="1.5"></circle>
-                        <circle cx="6.5" cy="12" r="1.5"></circle>
-                        <circle cx="17.5" cy="12" r="1.5"></circle>
-                      </svg>
-                    </button>
-                  </div>
-                  {comment.replies.length > 0 && (
-                    <div className="view-replies-section">
-                      <button
-                        className="view-replies-button"
-                        onClick={() => {
-                          setActiveCommentId(
-                            activeCommentId === comment.comment_id
-                              ? undefined
-                              : comment.comment_id
-                          );
-                        }}
-                      >
-                        <div className="view-replies-line"></div>
-                        {comment.comment_id === activeCommentId
-                          ? 'Hide replies'
-                          : `View replies (${comment.replies.length})`}
-                      </button>
-                      {comment.comment_id === activeCommentId && (
-                        <CommentReplySection
-                          comment={comment}
-                          toggleCommentLike={toggleCommentLike}
-                          postIndex={postIndex}
-                        />
-                      )}
-                    </div>
-                  )}
-                </div>
+                <LikeButton
+                  index={postIndex}
+                  is_post_liked={comment.is_liked_by_user}
+                  toggleLike={toggleCommentLike}
+                  commentId={comment.comment_id}
+                  height="12"
+                  width="12"
+                />
               )}
             </div>
-            <PostLikeButton
-              index={postIndex}
-              is_post_liked={comment.is_liked_by_user}
-              toggleLike={toggleCommentLike}
-              commentId={comment.comment_id}
-              size="12"
-              width="12"
-            />
+            {isExpanded && (
+              <div>
+                <div className="comment-action-container">
+                  <time className="comment-action">
+                    {absoluteToRelativeDate(comment?.posted_on, 'mini')}
+                  </time>
+                  <button className="comment-action">
+                    <strong>
+                      {comment.comment_likes}
+                      {comment.comment_likes > 0 ? ' likes' : ' like'}
+                    </strong>
+                  </button>
+                  <button className="comment-action">
+                    <strong>Reply</strong>
+                  </button>
+
+                  <button className="three-dots-button">
+                    <svg
+                      aria-label="Comment options"
+                      fill="#8e8e8e"
+                      height="24"
+                      role="img"
+                      viewBox="0 0 24 24"
+                      width="24"
+                    >
+                      <circle cx="12" cy="12" r="1.5"></circle>
+                      <circle cx="6.5" cy="12" r="1.5"></circle>
+                      <circle cx="17.5" cy="12" r="1.5"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {comment.replies.length > 0 && isExpanded && (
+              <div className="view-replies-section">
+                <button
+                  className="view-replies-button"
+                  onClick={() => {
+                    setActiveCommentId(
+                      activeCommentId === comment.comment_id
+                        ? undefined
+                        : comment.comment_id
+                    );
+                  }}
+                >
+                  <div className="view-replies-line"></div>
+                  {comment.comment_id === activeCommentId
+                    ? 'Hide replies'
+                    : `View replies (${comment.replies.length})`}
+                </button>
+                {comment.comment_id === activeCommentId && (
+                  <CommentReplySection
+                    comment={comment}
+                    toggleCommentLike={toggleCommentLike}
+                    postIndex={postIndex}
+                  />
+                )}
+              </div>
+            )}
+            {!isExpanded && (
+              <LikeButton
+                index={postIndex}
+                is_post_liked={comment.is_liked_by_user}
+                toggleLike={toggleCommentLike}
+                commentId={comment.comment_id}
+                height="12"
+                width="12"
+              />
+            )}
           </div>
         );
       })}
@@ -358,18 +376,18 @@ function CommentSection({
 }
 export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
   const history = useHistory();
+  const location = useLocation();
+
   return (
     <article
       onClick={(event) => {
-        event.target === event.currentTarget && history.push('/');
+        event.target === event.currentTarget && isFloating && history.push('/');
       }}
-      className={classnames('post-overlay', {
+      className={cx('post-overlay', {
         'is-floating': isFloating,
       })}
     >
-      <div
-        className={classnames('post-content', { 'is-expanded': isExpanded })}
-      >
+      <div className={cx('post-content', { 'is-expanded': isExpanded })}>
         <>
           <PostHeader
             city={'Baghdad'}

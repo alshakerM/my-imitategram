@@ -129,12 +129,14 @@ section.comment-input-section {
 
 .comment-wrapper.is-expanded {
   margin: 15px 0;
+  display: block;
 }
 .comment-wrapper.is-expanded:hover .three-dots-button {
   visibility: visible;
 }
 .comment-text {
   margin: 2px 0;
+  flex: 1;
 }
 .post-content.post-content.is-expanded .comment-text {
   margin: 0;
@@ -146,12 +148,18 @@ section.comment-input-section {
   border: none;
   padding: 0;
   color: #8e8e8e;
-  margin: 16px 12px 4px 0;
+  margin: 8px 12px 4px 0;
   vertical-align: baseline;
   display: inline-block;
 }
+.comment-action-container {
+  box-sizing: border-box;
+  padding-left: 47px;
+}
 .comment-body {
+  gap: 15px;
   flex: 1;
+  display: flex;
 }
 .post-overlay.is-floating {
   background-color: rgba(0, 0, 0, 0.5);
@@ -247,7 +255,6 @@ section.comment-input-section {
   background: none;
   border: none;
   padding: 0;
-  margin-right: 15px;
 }
 .post-comment-input {
   flex: 1;
@@ -322,8 +329,9 @@ section.comment-input-section {
   font-size: 12px;
 }
 .view-replies-section {
-  margin: 16px 0 0 0px;
-  width: calc(100% - 54px);
+  box-sizing: border-box;
+  padding-left: 47px;
+  margin: 10px 0;
 }
 .three-dots-button {
   padding: 0;
