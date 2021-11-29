@@ -9,9 +9,9 @@ import { absoluteToRelativeDate } from '../utils';
 import { useLocation } from 'react-router';
 import './Post.css';
 
-function LikeButton({ is_post_liked, isClicked, height = '24', width = '28' }) {
+function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
   return (
-    <button className="post-like-button" onClick={isClicked}>
+    <button className="post-like-button" onClick={onClick}>
       <svg
         aria-label="like-icon"
         height={height}
@@ -40,7 +40,7 @@ function PostActions({ index, is_post_liked, isExpanded }) {
       <div className="like-share-telegram-icons">
         <LikeButton
           is_post_liked={is_post_liked}
-          isClicked={() => toggleLike(index)}
+          onClick={() => toggleLike(index)}
         />
         <svg
           aria-label="Comment"
@@ -169,7 +169,7 @@ function CommentReplySection({ comment, toggleCommentLike, postIndex }) {
             </p>
             <LikeButton
               is_post_liked={reply.is_liked_by_user}
-              isClicked={() =>
+              onClick={() =>
                 toggleCommentReplyLike(
                   postIndex,
                   comment.comment_id,
@@ -278,7 +278,7 @@ function CommentSection({
               {isExpanded && (
                 <LikeButton
                   is_post_liked={comment.is_liked_by_user}
-                  isClicked={() =>
+                  onClick={() =>
                     toggleCommentLike(postIndex, comment.comment_id)
                   }
                   height="12"
@@ -349,7 +349,7 @@ function CommentSection({
             {!isExpanded && (
               <LikeButton
                 is_post_liked={comment.is_liked_by_user}
-                isClicked={() =>
+                onClick={() =>
                   toggleCommentLike(postIndex, comment.comment_id)
                 }
                 height="12"
