@@ -1798,16 +1798,16 @@
     "user_id": "e90314ba-ae40-4e42-9938-9655347739cc",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/5.mp4",
-        "width": 720,
-        "height": 1280
-      },
-      {
         "type": "photo",
         "url": "https://picsum.photos/1050",
         "width": 1050,
         "height": 1050
+      },
+      {
+        "type": "video",
+        "url": "/Media/postVideos/5.mp4",
+        "width": 720,
+        "height": 1280
       }
     ]
   },
@@ -2054,6 +2054,12 @@
     "user_id": "02b54c64-98e8-4474-8794-e11db915d6e8",
     "media_items": [
       {
+        "type": "photo",
+        "url": "https://picsum.photos/1020",
+        "width": 1020,
+        "height": 1020
+      },
+      {
         "type": "video",
         "url": "/Media/postVideos/5.mp4",
         "width": 720,
@@ -2064,12 +2070,6 @@
         "url": "/Media/postVideos/3.mp4",
         "width": 640,
         "height": 800
-      },
-      {
-        "type": "photo",
-        "url": "https://picsum.photos/1020",
-        "width": 1020,
-        "height": 1020
       }
     ]
   },
@@ -2676,22 +2676,16 @@
     "user_id": "00a5fcd4-351d-438f-98f6-dbecb63d8bd7",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/4.mp4",
-        "width": 720,
-        "height": 1280
-      },
-      {
-        "type": "photo",
-        "url": "https://picsum.photos/1020",
-        "width": 1020,
-        "height": 1020
-      },
-      {
         "type": "photo",
         "url": "https://picsum.photos/1010",
         "width": 1010,
         "height": 1010
+      },
+      {
+        "type": "video",
+        "url": "/Media/postVideos/4.mp4",
+        "width": 720,
+        "height": 1280
       },
       {
         "type": "photo",
@@ -2792,16 +2786,16 @@
     "user_id": "dd923653-e68a-4c09-bc5e-56a535499499",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/1.mp4",
-        "width": 640,
-        "height": 800
-      },
-      {
         "type": "photo",
         "url": "https://picsum.photos/1020",
         "width": 1020,
         "height": 1020
+      },
+      {
+        "type": "video",
+        "url": "/Media/postVideos/1.mp4",
+        "width": 640,
+        "height": 800
       },
       {
         "type": "photo",
@@ -5225,16 +5219,16 @@
     "user_id": "9bfae802-78f6-4056-87d9-c37be1b8d45f",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/5.mp4",
-        "width": 720,
-        "height": 1280
-      },
-      {
         "type": "photo",
         "url": "https://picsum.photos/1050",
         "width": 1050,
         "height": 1050
+      },
+      {
+        "type": "video",
+        "url": "/Media/postVideos/5.mp4",
+        "width": 720,
+        "height": 1280
       },
       {
         "type": "photo",
@@ -6236,16 +6230,16 @@
     "user_id": "b8a8d429-e9db-47b6-987b-2e2e3299155b",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/7.mp4",
-        "width": 640,
-        "height": 360
-      },
-      {
         "type": "photo",
         "url": "https://picsum.photos/1010",
         "width": 1010,
         "height": 1010
+      },
+      {
+        "type": "video",
+        "url": "/Media/postVideos/7.mp4",
+        "width": 640,
+        "height": 360
       },
       {
         "type": "photo",
@@ -7720,16 +7714,16 @@
     "user_id": "44fab68c-8ca7-4116-8995-6dce40591d45",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/2.mp4",
-        "width": 640,
-        "height": 800
-      },
-      {
         "type": "photo",
         "url": "https://picsum.photos/1040",
         "width": 1040,
         "height": 1040
+      },
+      {
+        "type": "video",
+        "url": "/Media/postVideos/2.mp4",
+        "width": 640,
+        "height": 800
       }
     ]
   },
@@ -8893,10 +8887,10 @@
     "user_id": "2f6677ce-1cfb-4a1c-9211-4afcdb48afa8",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/4.mp4",
-        "width": 720,
-        "height": 1280
+        "type": "photo",
+        "url": "https://picsum.photos/1050",
+        "width": 1050,
+        "height": 1050
       },
       {
         "type": "video",
@@ -9999,10 +9993,10 @@
     "user_id": "6dbff543-bdfb-4cd1-ad3b-63c8841166fd",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/1.mp4",
-        "width": 640,
-        "height": 800
+        "type": "photo",
+        "url": "https://picsum.photos/1000",
+        "width": 1000,
+        "height": 1000
       }
     ]
   },
@@ -11169,16 +11163,16 @@
     "user_id": "b2aa3327-f0e8-4baa-a7db-633496a40350",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/6.mp4",
-        "width": 640,
-        "height": 1138
-      },
-      {
         "type": "photo",
         "url": "https://picsum.photos/1050",
         "width": 1050,
         "height": 1050
+      },
+      {
+        "type": "video",
+        "url": "/Media/postVideos/6.mp4",
+        "width": 640,
+        "height": 1138
       },
       {
         "type": "video",
@@ -11485,6 +11479,12 @@
     "user_id": "52e2b152-8f17-4346-9e8f-d45173080078",
     "media_items": [
       {
+        "type": "photo",
+        "url": "https://picsum.photos/1030",
+        "width": 1030,
+        "height": 1030
+      },
+      {
         "type": "video",
         "url": "/Media/postVideos/2.mp4",
         "width": 640,
@@ -11495,12 +11495,6 @@
         "url": "/Media/postVideos/4.mp4",
         "width": 720,
         "height": 1280
-      },
-      {
-        "type": "photo",
-        "url": "https://picsum.photos/1030",
-        "width": 1030,
-        "height": 1030
       },
       {
         "type": "photo",
@@ -12434,16 +12428,16 @@
     "user_id": "052a7187-03db-4af1-9f3f-ee17d9349ec3",
     "media_items": [
       {
-        "type": "video",
-        "url": "/Media/postVideos/3.mp4",
-        "width": 640,
-        "height": 800
-      },
-      {
         "type": "photo",
         "url": "https://picsum.photos/1020",
         "width": 1020,
         "height": 1020
+      },
+      {
+        "type": "video",
+        "url": "/Media/postVideos/3.mp4",
+        "width": 640,
+        "height": 800
       },
       {
         "type": "photo",
