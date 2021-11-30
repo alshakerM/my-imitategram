@@ -227,8 +227,10 @@ export function UserStories({ userId }) {
                       paused={activeStory ? pause : true}
                       muted={activeStory ? mute : true}
                       videoURL={story.story_media}
+                      className="story-video"
                       onProgress={progressHandler}
                       key={story.story_id}
+                      autoPlay={true}
                     />
                   ) : (
                     <StoryImage

@@ -1,3 +1,4 @@
+import { PlayArrowRounded } from '@mui/icons-material';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import cx from 'classnames';
 import React from 'react';
@@ -5,6 +6,8 @@ import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
+import { CircularChevron } from '../Icons/CircularChevron';
+import { StoryVideo } from '../StoryVideo/StoryVideo';
 import { absoluteToRelativeDate } from '../utils';
 import './Post.css';
 
@@ -142,7 +145,9 @@ function PostHeader({ user_name, user_thumbnail, city }) {
     <section className="post-header">
       <Avatar avatar={user_thumbnail} size="32" borderColor="#ddd" />
       <div className="user-info">
-        <Link to={`/${user_name}`} className="user-name">{user_name}</Link>
+        <Link to={`/${user_name}`} className="user-name">
+          {user_name}
+        </Link>
         <p className="user-location">{city}</p>
       </div>
 
@@ -359,6 +364,83 @@ function CommentSection({
     </section>
   );
 }
+function MediaSection({ media_items, user_name }) {
+  const [mediaIndex, setMediaIndex] = React.useState(0);
+  const [videoPause, setVideoPause] = React.useState(false);
+  return (
+    <section className="img-container">
+      {media_items[mediaIndex].type === 'photo' ? (
+        <img
+          className="post-img"
+          src={media_items[mediaIndex].url}
+          alt={`${user_name}  Avatar`}
+          loading="lazy"
+        />
+      ) : (
+        <>
+          {videoPause && (
+            <div className="play-icon-container">
+              <PlayArrowRounded
+                onClick={() => setVideoPause(false)}
+                className="play-icon"
+                fontSize="large"
+              />
+            </div>
+          )}
+
+          <div
+            onClick={() => setVideoPause(!videoPause)}
+            className="post-video-container"
+          >
+            <StoryVideo
+              videoURL={media_items[mediaIndex].url}
+              paused={videoPause}
+              className="post-video"
+              autoPlay={false}
+            />
+          </div>
+        </>
+      )}
+
+      {media_items.length > 1 && (
+        <div className="img-buttons-container">
+          <button
+            className={cx('prev-img-button', {
+              hidden: mediaIndex === 0,
+            })}
+            onClick={() => {
+              setVideoPause(true);
+              setMediaIndex((m) => m - 1);
+            }}
+          >
+            <CircularChevron size="24" />
+          </button>
+
+          <button
+            className={cx('next-img-button', {
+              hidden: mediaIndex === media_items.length - 1,
+            })}
+            onClick={() => {
+              setVideoPause(true);
+              setMediaIndex((m) => m + 1);
+            }}
+          >
+            <CircularChevron size="24" direction="left" />
+          </button>
+        </div>
+      )}
+      <div className="blue-dots-section">
+        {media_items.map((_, index) => (
+          <div
+            className={cx('blue-dot', {
+              'is-blue': index === mediaIndex,
+            })}
+          ></div>
+        ))}
+      </div>
+    </section>
+  );
+}
 export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
   const history = useHistory();
   const location = useLocation();
@@ -381,14 +463,10 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             user_thumbnail={datum?.user_thumbnail}
           />
 
-          <section className="img-container">
-            <img
-              className="post-img"
-              src={datum?.media_items[0].url}
-              alt={`${datum?.user_name}  Avatar`}
-              loading="lazy"
-            />
-          </section>
+          <MediaSection
+            media_items={datum?.media_items}
+            user_name={datum?.user_name}
+          />
 
           <PostActions
             index={index}

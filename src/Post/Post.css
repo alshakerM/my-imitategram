@@ -67,6 +67,8 @@ section.post-header {
 
 section.img-container {
   grid-area: img;
+  display: flex;
+  flex-direction: column;
 }
 
 section.post-actions {
@@ -210,7 +212,6 @@ section.comment-input-section {
   align-items: center;
 }
 .action-icons {
-  
 }
 .action-icon:hover {
   cursor: pointer;
@@ -257,7 +258,16 @@ section.comment-input-section {
 }
 
 .post-img {
-  width: 600px;
+  height: 600px;
+  display: block;
+}
+.post-video-container {
+  justify-content: center;
+  display: flex;
+}
+.post-video {
+  height: 600px;
+  justify-self: center;
   display: block;
 }
 .post-like-button {
@@ -358,4 +368,56 @@ section.comment-input-section {
 .comment-username:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+.img-buttons-container {
+  position: relative;
+  top: -50%;
+  display: flex;
+  align-items: center;
+  height: 0;
+}
+.next-img-button,
+.prev-img-button {
+  padding: 0;
+  margin: 8px;
+  border-radius: 50%;
+  height: 23px;
+  width: 23px;
+  border: none;
+  background: transparent;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.28);
+}
+.next-img-button.hidden,
+.prev-img-button.hidden {
+  visibility: hidden;
+}
+.next-img-button {
+  margin-left: 532px;
+}
+.blue-dots-section {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: -20px;
+}
+.blue-dot {
+  height: 6px;
+  width: 6px;
+  background-color: #8e8e8e;
+  border-radius: 50%;
+}
+.blue-dot.is-blue {
+  background-color: rgb(0, 149, 246);
+}
+.play-icon-container {
+  height: 0;
+}
+.play-icon {
+  position: relative;
+  margin-bottom: -50%;
+  left: 50%;
+  color: #fff;
+  transform: scale(3.5);
+  z-index: 3;
 }

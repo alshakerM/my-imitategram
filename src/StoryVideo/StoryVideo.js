@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./StoryVideo.css";
 
-export function StoryVideo({ videoURL, paused, muted, onProgress }) {
+export function StoryVideo({ videoURL, paused, muted, onProgress, className, autoPlay}) {
   const videoRef = useRef();
   React.useEffect(() => {
     if (paused) {
@@ -12,9 +12,9 @@ export function StoryVideo({ videoURL, paused, muted, onProgress }) {
   }, [paused]);
   return (
     <video
-      className="story-video"
+      className={className}
       muted={muted}
-      autoPlay
+      autoPlay={autoPlay}
       ref={videoRef}
       src={videoURL}
       onTimeUpdate={(event) =>
