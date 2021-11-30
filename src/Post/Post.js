@@ -1,12 +1,11 @@
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import cx from 'classnames';
 import React from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
 import { absoluteToRelativeDate } from '../utils';
-import { useLocation } from 'react-router';
 import './Post.css';
 
 function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
@@ -151,7 +150,7 @@ function PostHeader({ user_name, user_thumbnail, city }) {
     </section>
   );
 }
-function CommentReplySection({ comment, toggleCommentLike, postIndex }) {
+function CommentReplySection({ comment, postIndex }) {
   const { toggleCommentReplyLike } = useIGData();
   return (
     <div className="reply-section">
@@ -349,9 +348,7 @@ function CommentSection({
             {!isExpanded && (
               <LikeButton
                 is_post_liked={comment.is_liked_by_user}
-                onClick={() =>
-                  toggleCommentLike(postIndex, comment.comment_id)
-                }
+                onClick={() => toggleCommentLike(postIndex, comment.comment_id)}
                 height="12"
                 width="12"
               />
