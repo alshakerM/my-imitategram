@@ -25,7 +25,7 @@ function App() {
         )}
       ></Route>
       <Route
-        path="/stories/:userId/"
+        path="/stories/:userId/" exact
         render={(match) => <UserStories userId={match.match.params.userId} />}
       ></Route>
       <Route
