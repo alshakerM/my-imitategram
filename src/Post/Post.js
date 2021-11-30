@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
-import { StoryVideo } from '../StoryVideo/StoryVideo';
+import { Video } from '../Video/Video';
 import { absoluteToRelativeDate } from '../utils';
 import './Post.css';
 
@@ -392,7 +392,7 @@ function MediaSection({ media_items, user_name }) {
             onClick={() => setVideoPause(!videoPause)}
             className="post-video-container"
           >
-            <StoryVideo
+            <Video
               videoURL={media_items[mediaIndex].url}
               paused={videoPause}
               className="post-video"
@@ -429,15 +429,17 @@ function MediaSection({ media_items, user_name }) {
           </button>
         </div>
       )}
-      <div className="blue-dots-section">
-        {media_items.map((_, index) => (
-          <div
-            className={cx('blue-dot', {
-              'is-blue': index === mediaIndex,
-            })}
-          ></div>
-        ))}
-      </div>
+      {media_items.length > 1 && (
+        <div className="blue-dots-section">
+          {media_items.map((_, index) => (
+            <div
+              className={cx('blue-dot', {
+                'is-blue': index === mediaIndex,
+              })}
+            ></div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

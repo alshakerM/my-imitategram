@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 import { StoryImage } from '../StoryImage/StoryImage';
-import { StoryVideo } from '../StoryVideo/StoryVideo';
+import { Video } from '../Video/Video';
 import { absoluteToRelativeDate } from '../utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import './UserStories.css';
@@ -223,7 +223,7 @@ export function UserStories({ userId }) {
                   })}
                 >
                   {story.story_type === 'video' ? (
-                    <StoryVideo
+                    <Video
                       paused={activeStory ? pause : true}
                       muted={activeStory ? mute : true}
                       videoURL={story.story_media}
