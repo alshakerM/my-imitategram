@@ -384,7 +384,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
           <section className="img-container">
             <img
               className="post-img"
-              src={datum?.post_image}
+              src={datum?.media_items[0].url}
               alt={`${datum?.user_name}  Avatar`}
               loading="lazy"
             />
