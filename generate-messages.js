@@ -8,8 +8,11 @@ const users = IGData.map((data) => ({
 }));
 const messages = IGData.flatMap((d) => d.comments.map((c) => c.comment));
 
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
 const conversations = users.map((user) => {
-  const randomTS = Math.random() * 1637530131000;
+  const randomTS = getRandomArbitrary(1637030131000, 1637530101000);
   return {
     from_user_id: user.user_id,
     from_user_thumbnail: user.user_thumbnail,

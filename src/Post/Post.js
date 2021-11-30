@@ -51,9 +51,9 @@ function PostActions({ index, is_post_liked, isExpanded }) {
           width="24"
         >
           <path
-            clip-rule="evenodd"
+            clipRule="evenodd"
             d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4zm-3-22.1c0 4-1 7-2.6 10-.2.4-.3.9-.2 1.4l2.1 8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 2.6-11.4 0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 44.5 12.7 44.5 24z"
-            fill-rule="evenodd"
+            fillRule="evenodd"
           ></path>
         </svg>
         <svg
@@ -142,7 +142,7 @@ function PostHeader({ user_name, user_thumbnail, city }) {
     <section className="post-header">
       <Avatar avatar={user_thumbnail} size="32" borderColor="#ddd" />
       <div className="user-info">
-        <h2 className="user-name">{user_name}</h2>
+        <Link to={`/${user_name}`} className="user-name">{user_name}</Link>
         <p className="user-location">{city}</p>
       </div>
 
@@ -365,6 +365,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
 
   return (
     <article
+      key={datum?.post_id}
       onClick={(event) => {
         event.target === event.currentTarget && isFloating && history.push('/');
       }}
@@ -412,6 +413,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             setIsExpanded={setIsExpanded}
             comments={datum?.comments}
             isExpanded={isExpanded}
+            key={datum.post_id}
           />
           <PostDate
             posting_time={datum?.posting_time}

@@ -46,14 +46,14 @@ const BorderLessTextInput = withStyles(borderStyles)((props) => {
   );
 });
 
-export function NavBar() {
+export function NavBar({from_user_id}) {
   const [inputValue, setInputValue] = React.useState('');
   const hasValue = inputValue;
   return (
     <nav className={navContainer}>
       <div className={navContent}>
         <div className={navTitle}>
-          <img src="/Instagram_logo_text.svg" width="103" />
+          <img src="/Instagram_logo_text.svg" width="103" alt="Instagram text"/>
         </div>
         <div>
           <BorderLessTextInput
@@ -67,23 +67,19 @@ export function NavBar() {
               hasValue
                 ? {
                     endAdornment: (
-                      <InputAdornment>
+                      <InputAdornment position="end">
                         <IconButton
                           className={clearButton}
                           onClick={() => setInputValue('')}
                         >
-                          <Clear
-                            className={clearIcon}
-                            fontSize="small"
-                            position="end"
-                          />
+                          <Clear className={clearIcon} fontSize="small" />
                         </IconButton>
                       </InputAdornment>
                     ),
                   }
                 : {
                     startAdornment: (
-                      <InputAdornment>
+                      <InputAdornment position="start" style={{ margin: 0 }}>
                         <SearchRounded
                           fontSize="small"
                           className={searchIcon}
@@ -97,7 +93,7 @@ export function NavBar() {
           </BorderLessTextInput>
         </div>
         <div className="nav-icons">
-          <Icons />
+          <Icons fromUserId={from_user_id}/>
         </div>
       </div>
     </nav>
