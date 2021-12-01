@@ -1,4 +1,3 @@
-import { PlayArrowRounded } from '@mui/icons-material';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import cx from 'classnames';
 import React from 'react';
@@ -7,8 +6,9 @@ import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
-import { Video } from '../Video/Video';
+import { PostVideo } from '../PostVideo/PostVideo';
 import { absoluteToRelativeDate } from '../utils';
+import { PostImage } from '../PostImage/PostImage';
 import './Post.css';
 
 function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
@@ -364,53 +364,60 @@ function CommentSection({
     </section>
   );
 }
-function MediaSection({ media_items, user_name }) {
-  const [mediaIndex, setMediaIndex] = React.useState(0);
+function width(el) {
+  return el?.getBoundingClientRect().width;
+}
+function MediaSection({media_items}) {
+  const mediaContainer = React.useRef();
+  const mediaContainerWidth = width(mediaContainer.current);
+  const [containerWidth, setContainerWidth] = React.useState(0);
+  const [scrollLeft, setScrollLeft] = React.useState(0);
   const [videoPause, setVideoPause] = React.useState(false);
+  const scrollLimit = -1 * (mediaContainerWidth - containerWidth);
+
+  const [mediaIndex, setMediaIndex] = React.useState(0);
   return (
-    <section className="img-container">
-      {media_items[mediaIndex].type === 'photo' ? (
-        <img
-          className="post-img"
-          src={media_items[mediaIndex].url}
-          alt={`${user_name}  Avatar`}
-          loading="lazy"
-        />
-      ) : (
-        <>
-          {videoPause && (
-            <div className="play-icon-container">
-              <PlayArrowRounded
-                onClick={() => setVideoPause(false)}
-                className="play-icon"
-                fontSize="large"
-              />
-            </div>
-          )}
-
-          <div
-            onClick={() => setVideoPause(!videoPause)}
-            className="post-video-container"
-          >
-            <Video
-              videoURL={media_items[mediaIndex].url}
-              paused={videoPause}
-              className="post-video"
-              autoPlay={false}
-            />
+    <section
+      className="media-section"
+      ref={(ref) => setContainerWidth(width(ref))}
+    >
+      <div
+        className="media-container"
+        ref={mediaContainer}
+        style={{ transform: `translateX(${scrollLeft}px)` }}
+      >
+        {media_items?.map((mediaItem) => (
+          <div>
+            {mediaItem.type === 'photo' ? (
+              <PostImage imageURL={mediaItem.url}/>
+            ) : (
+              <div
+                onClick={() => setVideoPause(!videoPause)}
+                className="post-video-container"
+              >
+                <PostVideo
+                  videoURL={mediaItem.url}
+                  paused={videoPause}
+                  className="post-video"
+                  autoPlay={false}
+                />
+              </div>
+            )}
           </div>
-        </>
-      )}
-
+        ))}
+      </div>
       {media_items.length > 1 && (
         <div className="img-buttons-container">
           <button
-            className={cx('prev-img-button', {
-              hidden: mediaIndex === 0,
-            })}
+            className={cx('prev-img-button', { hidden: scrollLeft === 0 })}
             onClick={() => {
               setVideoPause(true);
-              setMediaIndex((m) => m - 1);
+              setMediaIndex((e) => {
+                if (mediaIndex > 0) {
+                  return e - 1;
+                }
+              });
+              setScrollLeft((s) => Math.min(0, s + containerWidth));
             }}
           >
             <CircularChevron size="24" />
@@ -418,11 +425,16 @@ function MediaSection({ media_items, user_name }) {
 
           <button
             className={cx('next-img-button', {
-              hidden: mediaIndex === media_items.length - 1,
+              hidden: scrollLeft === scrollLimit,
             })}
             onClick={() => {
               setVideoPause(true);
-              setMediaIndex((m) => m + 1);
+              setMediaIndex((e) => {
+                if (mediaIndex < media_items.length - 1) {
+                  return e + 1;
+                }
+              });
+              setScrollLeft((s) => Math.max(scrollLimit, s - containerWidth));
             }}
           >
             <CircularChevron size="24" direction="left" />
@@ -430,10 +442,10 @@ function MediaSection({ media_items, user_name }) {
         </div>
       )}
       {media_items.length > 1 && (
-        <div className="blue-dots-section">
+        <div className="progress-dots-section">
           {media_items.map((_, index) => (
             <div
-              className={cx('blue-dot', {
+              className={cx('progress-dot', {
                 'is-blue': index === mediaIndex,
               })}
             ></div>

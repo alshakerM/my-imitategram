@@ -16,10 +16,10 @@ import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 import { StoryImage } from '../StoryImage/StoryImage';
-import { Video } from '../Video/Video';
 import { absoluteToRelativeDate } from '../utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import './UserStories.css';
+import { StoryVideo } from '../StroyVideo/StoryVideo';
 
 function getX(el) {
   return el?.offsetLeft;
@@ -223,7 +223,7 @@ export function UserStories({ userId }) {
                   })}
                 >
                   {story.story_type === 'video' ? (
-                    <Video
+                    <StoryVideo
                       paused={activeStory ? pause : true}
                       muted={activeStory ? mute : true}
                       videoURL={story.story_media}
