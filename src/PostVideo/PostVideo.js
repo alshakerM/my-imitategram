@@ -1,42 +1,40 @@
 import { PlayArrowRounded } from '@mui/icons-material';
 import React, { useRef } from 'react';
-import './PostVideo.css';
+import styles from  './PostVideo.module.css';
 
-export function PostVideo({
-  videoURL,
-  paused,
-  muted,
-
-  className,
-  autoPlay,
-}) {
+export function PostVideo({ videoURL, active }) {
+  const [videoPause, setVideoPause] = React.useState(true);
   const videoRef = useRef();
   React.useEffect(() => {
-    if (paused) {
+    if (videoPause) {
       videoRef.current?.pause();
     } else {
       videoRef.current?.play();
     }
-  }, [paused]);
+  }, [videoPause]);
+
+  React.useEffect(() => {
+    if (!active) {
+      setVideoPause(true);
+      if (videoRef.current) {
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, [active]);
+
   return (
-    <div>
-      {paused && (
-        <div className="play-icon-container">
+    <div onClick={() => setVideoPause(!videoPause)}>
+      {videoPause && (
+        <div className={styles.playIconContainer}>
           <PlayArrowRounded
-            onClick={() => videoRef.current.pause()}
-            className="play-icon"
+            onClick={() => setVideoPause(false)}
+            className={styles.playIcon}
             fontSize="large"
           />
         </div>
       )}
 
-      <video
-        className={className}
-        muted={muted}
-        autoPlay={autoPlay}
-        ref={videoRef}
-        src={videoURL}
-      />
+      <video className={styles.postVideo} ref={videoRef} src={videoURL} />
     </div>
   );
 }

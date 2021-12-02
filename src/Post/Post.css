@@ -268,11 +268,7 @@ section.comment-input-section {
   justify-content: center;
   display: flex;
 }
-.post-video {
-  height: 600px;
-  min-width: 600px;
-  justify-self: center;
-}
+
 .post-like-button {
   background: none;
   border: none;

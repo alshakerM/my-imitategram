@@ -367,12 +367,11 @@ function CommentSection({
 function width(el) {
   return el?.getBoundingClientRect().width;
 }
-function MediaSection({media_items}) {
+function MediaSection({ media_items }) {
   const mediaContainer = React.useRef();
   const mediaContainerWidth = width(mediaContainer.current);
   const [containerWidth, setContainerWidth] = React.useState(0);
   const [scrollLeft, setScrollLeft] = React.useState(0);
-  const [videoPause, setVideoPause] = React.useState(false);
   const scrollLimit = -1 * (mediaContainerWidth - containerWidth);
 
   const [mediaIndex, setMediaIndex] = React.useState(0);
@@ -386,22 +385,12 @@ function MediaSection({media_items}) {
         ref={mediaContainer}
         style={{ transform: `translateX(${scrollLeft}px)` }}
       >
-        {media_items?.map((mediaItem) => (
+        {media_items?.map((mediaItem, index) => (
           <div>
             {mediaItem.type === 'photo' ? (
-              <PostImage imageURL={mediaItem.url}/>
+              <PostImage imageURL={mediaItem.url}  />
             ) : (
-              <div
-                onClick={() => setVideoPause(!videoPause)}
-                className="post-video-container"
-              >
-                <PostVideo
-                  videoURL={mediaItem.url}
-                  paused={videoPause}
-                  className="post-video"
-                  autoPlay={false}
-                />
-              </div>
+              <PostVideo videoURL={mediaItem.url} active={mediaIndex === index}/>
             )}
           </div>
         ))}
@@ -411,7 +400,6 @@ function MediaSection({media_items}) {
           <button
             className={cx('prev-img-button', { hidden: scrollLeft === 0 })}
             onClick={() => {
-              setVideoPause(true);
               setMediaIndex((e) => {
                 if (mediaIndex > 0) {
                   return e - 1;
@@ -428,7 +416,6 @@ function MediaSection({media_items}) {
               hidden: scrollLeft === scrollLimit,
             })}
             onClick={() => {
-              setVideoPause(true);
               setMediaIndex((e) => {
                 if (mediaIndex < media_items.length - 1) {
                   return e + 1;
@@ -477,10 +464,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             user_thumbnail={datum?.user_thumbnail}
           />
 
-          <MediaSection
-            media_items={datum?.media_items}
-            user_name={datum?.user_name}
-          />
+          <MediaSection media_items={datum?.media_items} />
 
           <PostActions
             index={index}
