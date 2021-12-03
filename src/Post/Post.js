@@ -367,11 +367,9 @@ function CommentSection({
 
 function MediaSection({ media_items, isExpanded }) {
   const mediaContainer = React.useRef();
-  const mediaContainerWidth = elementWidth(mediaContainer.current);
   const [mediaSectionWidth, setMediaSectionWidth] = React.useState(0);
   const [mediaIndex, setMediaIndex] = React.useState(0);
   const scrollLeft = -1 * mediaIndex * mediaSectionWidth;
-  const scrollLimit = -1 * (mediaContainerWidth - mediaSectionWidth);
 
   return (
     <section
@@ -410,10 +408,9 @@ function MediaSection({ media_items, isExpanded }) {
           >
             <CircularChevron size="24" />
           </button>
-
           <button
             className={cx('next-img-button', {
-              hidden: scrollLeft === scrollLimit,
+              hidden: mediaIndex === media_items.length - 1,
             })}
             onClick={() => {
               setMediaIndex((mediaIndex) => {
