@@ -20,12 +20,10 @@ import { absoluteToRelativeDate } from '../utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import './UserStories.css';
 import { StoryVideo } from '../StroyVideo/StoryVideo';
+import { elementWidth } from '../utils';
 
 function getX(el) {
   return el?.offsetLeft;
-}
-function width(el) {
-  return el?.getBoundingClientRect().width;
 }
 
 function progressWidth(storyIndex, progressBarIndex, progress) {
@@ -127,7 +125,7 @@ export function UserStories({ userId }) {
                 ref={(div) => {
                   if (div && activeStory && currentStoryX !== getX(div)) {
                     setCurrentStoryX(getX(div));
-                    setCurrentStoryWidth(width(div));
+                    setCurrentStoryWidth(elementWidth(div));
                   }
                 }}
                 className={cx('stories-container', {
@@ -176,10 +174,7 @@ export function UserStories({ userId }) {
                       alt={user.user_name}
                     />
                   ) : (
-                    <StoryAvatar
-                      user={user}
-                      className="story-avatar-small"
-                    />
+                    <StoryAvatar user={user} className="story-avatar-small" />
                   )}
 
                   <p
