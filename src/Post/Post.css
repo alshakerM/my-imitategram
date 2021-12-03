@@ -406,19 +406,22 @@ section.comment-input-section {
   justify-content: center;
   margin: 0;
   margin-top: -45px;
-  z-index: 5;
+  z-index: 2;
   position: relative;
-
 }
 .progress-dot {
   height: 6px;
   width: 6px;
-  background-color: rgba(168,168,168);
+  background: rgb(168, 168, 168);
   border-radius: 50%;
 }
 .progress-dot.is-active {
   background-color: rgb(0, 149, 246);
 }
+
 .progress-dot.is-expanded {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.progress-dot.is-expanded-active {
   background-color: #fff;
 }

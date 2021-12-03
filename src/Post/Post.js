@@ -434,10 +434,12 @@ function MediaSection({ media_items, isExpanded }) {
           })}
         >
           {media_items.map((_, index) => (
-            <div key={index}
+            <div
+              key={index}
               className={cx('progress-dot', {
                 'is-active': index === mediaIndex,
-                'is-expanded': index === mediaIndex && isExpanded,
+                'is-expanded': isExpanded,
+                'is-expanded-active': index === mediaIndex && isExpanded,
               })}
             ></div>
           ))}
