@@ -76,9 +76,7 @@ section.media-section {
   overflow-x: auto;
   transition: transform 0.25s ease-in-out;
 }
-.media-container::-webkit-scrollbar {
-  display: none;
-}
+
 section.post-actions {
   grid-area: actions;
   padding: 6px 16px 8px 15px;
@@ -183,6 +181,7 @@ section.comment-input-section {
   height: 100%;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .like-share-telegram-icons {
@@ -241,7 +240,6 @@ section.comment-input-section {
 .comment-input-section.is-expanded {
   margin: 0;
   margin-top: 15px;
-  padding: 10px;
 }
 .emoji {
   align-self: center;
@@ -375,6 +373,7 @@ section.comment-input-section {
   align-items: center;
   justify-content: space-between;
   height: 0;
+  background: rgba(0, 0, 0, 0.1);
 }
 .next-img-button,
 .prev-img-button {
@@ -391,18 +390,35 @@ section.comment-input-section {
 .prev-img-button.hidden {
   visibility: hidden;
 }
+.next-img-button svg,
+.prev-img-button svg {
+  opacity: 0.7;
+}
 .progress-dots-section {
   display: flex;
   gap: 5px;
   justify-content: center;
   margin-top: 15px;
 }
+.progress-dots-section.is-expanded {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin: 0;
+  margin-top: -45px;
+  z-index: 5;
+  position: relative;
+
+}
 .progress-dot {
   height: 6px;
   width: 6px;
-  background-color: #8e8e8e;
+  background-color: rgba(168,168,168);
   border-radius: 50%;
 }
-.progress-dot.is-blue {
+.progress-dot.is-active {
   background-color: rgb(0, 149, 246);
+}
+.progress-dot.is-expanded {
+  background-color: #fff;
 }

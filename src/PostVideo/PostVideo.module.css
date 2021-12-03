@@ -1,5 +1,6 @@
 .postVideo {
   height: 600px;
+  display: block;
   min-width: 600px;
   justify-self: center;
 }

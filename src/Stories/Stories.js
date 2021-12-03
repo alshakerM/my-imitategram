@@ -3,13 +3,11 @@ import React, { useState } from 'react';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 import './Stories.css';
-function width(el) {
-  return el?.getBoundingClientRect().width;
-}
+import { elementWidth } from '../utils';
 
 export function Stories() {
   const allCirclesDiv = React.useRef();
-  const allCirclesWidth = width(allCirclesDiv.current);
+  const allCirclesWidth = elementWidth(allCirclesDiv.current);
   const [containerWidth, setContainerWidth] = useState(0);
   const [scrollLeft, setScrollLeft] = React.useState(0);
   const scrollLimit = -1 * (allCirclesWidth - containerWidth);
@@ -24,7 +22,7 @@ export function Stories() {
   return (
     <div className="stories-avatars-container">
       <div
-        ref={(ref) => setContainerWidth(width(ref))}
+        ref={(ref) => setContainerWidth(elementWidth(ref))}
         className="stories-overflow"
       >
         <div
@@ -33,7 +31,12 @@ export function Stories() {
           className="all-circles"
         >
           {storiesData.map((user, index) => (
-            <StoryAvatar key={user.user_id} user={user} index={index} isUserNameNeeded={true} />
+            <StoryAvatar
+              key={user.user_id}
+              user={user}
+              index={index}
+              isUserNameNeeded={true}
+            />
           ))}
         </div>
 

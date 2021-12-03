@@ -1,14 +1,14 @@
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import cx from 'classnames';
 import React from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
-import { PostVideo } from '../PostVideo/PostVideo';
-import { absoluteToRelativeDate } from '../utils';
 import { PostImage } from '../PostImage/PostImage';
+import { PostVideo } from '../PostVideo/PostVideo';
+import { absoluteToRelativeDate, elementWidth } from '../utils';
 import './Post.css';
 
 function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
@@ -364,21 +364,19 @@ function CommentSection({
     </section>
   );
 }
-function width(el) {
-  return el?.getBoundingClientRect().width;
-}
-function MediaSection({ media_items }) {
-  const mediaContainer = React.useRef();
-  const mediaContainerWidth = width(mediaContainer.current);
-  const [containerWidth, setContainerWidth] = React.useState(0);
-  const [scrollLeft, setScrollLeft] = React.useState(0);
-  const scrollLimit = -1 * (mediaContainerWidth - containerWidth);
 
+function MediaSection({ media_items, isExpanded }) {
+  const mediaContainer = React.useRef();
+  const mediaContainerWidth = elementWidth(mediaContainer.current);
+  const [mediaSectionWidth, setMediaSectionWidth] = React.useState(0);
   const [mediaIndex, setMediaIndex] = React.useState(0);
+  const scrollLeft = -1 * mediaIndex * mediaSectionWidth;
+  const scrollLimit = -1 * (mediaContainerWidth - mediaSectionWidth);
+
   return (
     <section
       className="media-section"
-      ref={(ref) => setContainerWidth(width(ref))}
+      ref={(ref) => setMediaSectionWidth(elementWidth(ref))}
     >
       <div
         className="media-container"
@@ -386,11 +384,14 @@ function MediaSection({ media_items }) {
         style={{ transform: `translateX(${scrollLeft}px)` }}
       >
         {media_items?.map((mediaItem, index) => (
-          <div>
+          <div key={index}>
             {mediaItem.type === 'photo' ? (
-              <PostImage imageURL={mediaItem.url}  />
+              <PostImage imageURL={mediaItem.url} />
             ) : (
-              <PostVideo videoURL={mediaItem.url} active={mediaIndex === index}/>
+              <PostVideo
+                videoURL={mediaItem.url}
+                active={mediaIndex === index}
+              />
             )}
           </div>
         ))}
@@ -400,12 +401,11 @@ function MediaSection({ media_items }) {
           <button
             className={cx('prev-img-button', { hidden: scrollLeft === 0 })}
             onClick={() => {
-              setMediaIndex((e) => {
+              setMediaIndex((mediaIndex) => {
                 if (mediaIndex > 0) {
-                  return e - 1;
+                  return mediaIndex - 1;
                 }
               });
-              setScrollLeft((s) => Math.min(0, s + containerWidth));
             }}
           >
             <CircularChevron size="24" />
@@ -416,12 +416,11 @@ function MediaSection({ media_items }) {
               hidden: scrollLeft === scrollLimit,
             })}
             onClick={() => {
-              setMediaIndex((e) => {
+              setMediaIndex((mediaIndex) => {
                 if (mediaIndex < media_items.length - 1) {
-                  return e + 1;
+                  return mediaIndex + 1;
                 }
               });
-              setScrollLeft((s) => Math.max(scrollLimit, s - containerWidth));
             }}
           >
             <CircularChevron size="24" direction="left" />
@@ -429,11 +428,16 @@ function MediaSection({ media_items }) {
         </div>
       )}
       {media_items.length > 1 && (
-        <div className="progress-dots-section">
+        <div
+          className={cx('progress-dots-section', {
+            'is-expanded': isExpanded,
+          })}
+        >
           {media_items.map((_, index) => (
-            <div
+            <div key={index}
               className={cx('progress-dot', {
-                'is-blue': index === mediaIndex,
+                'is-active': index === mediaIndex,
+                'is-expanded': index === mediaIndex && isExpanded,
               })}
             ></div>
           ))}
@@ -444,7 +448,6 @@ function MediaSection({ media_items }) {
 }
 export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
   const history = useHistory();
-  const location = useLocation();
 
   return (
     <article
@@ -464,7 +467,10 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             user_thumbnail={datum?.user_thumbnail}
           />
 
-          <MediaSection media_items={datum?.media_items} />
+          <MediaSection
+            media_items={datum?.media_items}
+            isExpanded={isExpanded}
+          />
 
           <PostActions
             index={index}
