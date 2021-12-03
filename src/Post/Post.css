@@ -422,6 +422,6 @@ section.comment-input-section {
 .progress-dot.is-expanded {
   background-color: rgba(255, 255, 255, 0.4);
 }
-.progress-dot.is-expanded-active {
+.progress-dot.is-expanded.is-active {
   background-color: #fff;
 }

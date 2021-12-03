@@ -439,7 +439,6 @@ function MediaSection({ media_items, isExpanded }) {
               className={cx('progress-dot', {
                 'is-active': index === mediaIndex,
                 'is-expanded': isExpanded,
-                'is-expanded-active': index === mediaIndex && isExpanded,
               })}
             ></div>
           ))}
