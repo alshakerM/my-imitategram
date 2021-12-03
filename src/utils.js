@@ -13,3 +13,6 @@ const timeAgo = new TimeAgo('en-US');
 export function absoluteToRelativeDate(date, dateTextSize) {
   return timeAgo.format(new Date(date), dateTextSize);
 }
+export function elementWidth(el) {
+  return el?.getBoundingClientRect().width;
+}

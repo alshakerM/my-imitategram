@@ -1,0 +1,17 @@
+.postVideo {
+  height: 600px;
+  display: block;
+  min-width: 600px;
+  justify-self: center;
+}
+.playIconContainer {
+  height: 0;
+}
+.playIcon {
+  position: relative;
+  margin-bottom: -50%;
+  left: 50%;
+  color: #fff;
+  transform: scale(3.5);
+  z-index: 3;
+}

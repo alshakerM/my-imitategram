@@ -7,7 +7,7 @@
   display: grid;
   grid-template-areas:
     'header'
-    'img'
+    'media'
     'actions'
     'likes'
     'caption'
@@ -19,12 +19,12 @@
   margin-top: 81px;
   grid-template-columns: 1fr 1fr;
   grid-template-areas:
-    'img header'
-    'img comments'
-    'img actions'
-    'img likes'
-    'img time'
-    'img input';
+    'media header'
+    'media comments'
+    'media actions'
+    'media likes'
+    'media time'
+    'media input';
   max-width: 1200px;
   max-height: 600px;
 }
@@ -65,8 +65,16 @@ section.post-header {
   color: rgb(38, 38, 38);
 }
 
-section.img-container {
-  grid-area: img;
+section.media-section {
+  grid-area: media;
+  overflow: hidden;
+}
+.media-container {
+  display: flex;
+  width: max-content;
+  overflow-y: hidden;
+  overflow-x: auto;
+  transition: transform 0.25s ease-in-out;
 }
 
 section.post-actions {
@@ -173,6 +181,7 @@ section.comment-input-section {
   height: 100%;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .like-share-telegram-icons {
@@ -209,9 +218,7 @@ section.comment-input-section {
 .save-icon {
   align-items: center;
 }
-.action-icons {
-  
-}
+
 .action-icon:hover {
   cursor: pointer;
   fill: #8e8e8e;
@@ -233,7 +240,6 @@ section.comment-input-section {
 .comment-input-section.is-expanded {
   margin: 0;
   margin-top: 15px;
-  padding: 10px;
 }
 .emoji {
   align-self: center;
@@ -256,10 +262,11 @@ section.comment-input-section {
   color: rgba(0, 149, 246, 0.3);
 }
 
-.post-img {
-  width: 600px;
-  display: block;
+.post-video-container {
+  justify-content: center;
+  display: flex;
 }
+
 .post-like-button {
   background: none;
   border: none;
@@ -358,4 +365,60 @@ section.comment-input-section {
 .comment-username:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+.img-buttons-container {
+  position: relative;
+  top: -50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.next-img-button,
+.prev-img-button {
+  padding: 0;
+  margin: 8px;
+  border-radius: 50%;
+  height: 23px;
+  width: 23px;
+  border: none;
+  background: transparent;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.28);
+}
+.next-img-button.hidden,
+.prev-img-button.hidden {
+  visibility: hidden;
+}
+.next-img-button svg,
+.prev-img-button svg {
+  opacity: 0.7;
+}
+.progress-dots-section {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  margin-top: 15px;
+}
+.progress-dots-section.is-expanded {
+  margin: 0;
+  margin-top: -45px;
+  z-index: 2;
+  position: relative;
+}
+.progress-dot {
+  height: 6px;
+  width: 6px;
+  background: rgb(168, 168, 168);
+  border-radius: 50%;
+}
+.progress-dot.is-active {
+  background-color: rgb(0, 149, 246);
+}
+
+.progress-dot.is-expanded {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.progress-dot.is-expanded.is-active {
+  background-color: #fff;
 }

@@ -6,15 +6,7 @@ let cachedData;
 const subscribers = new Set();
 
 function createComment(user_name, user_thumbnail, comment) {
-  const newComment = {
-    user_name,
-    comment,
-    posting_time: new Date().toString(),
-    user_thumbnail,
-    comment_likes: 0,
-    is_liked_by_user: false,
-    replies: [],
-  };
+
 }
 
 export function useIGData() {

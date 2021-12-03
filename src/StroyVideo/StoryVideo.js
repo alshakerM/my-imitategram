@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import "./StoryVideo.css";
+import React, { useRef } from 'react';
+import './StoryVideo.css';
 
 export function StoryVideo({ videoURL, paused, muted, onProgress }) {
   const videoRef = useRef();

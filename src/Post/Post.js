@@ -1,11 +1,14 @@
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import cx from 'classnames';
 import React from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
-import { absoluteToRelativeDate } from '../utils';
+import { CircularChevron } from '../Icons/CircularChevron';
+import { PostImage } from '../PostImage/PostImage';
+import { PostVideo } from '../PostVideo/PostVideo';
+import { absoluteToRelativeDate, elementWidth } from '../utils';
 import './Post.css';
 
 function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
@@ -142,7 +145,9 @@ function PostHeader({ user_name, user_thumbnail, city }) {
     <section className="post-header">
       <Avatar avatar={user_thumbnail} size="32" borderColor="#ddd" />
       <div className="user-info">
-        <Link to={`/${user_name}`} className="user-name">{user_name}</Link>
+        <Link to={`/${user_name}`} className="user-name">
+          {user_name}
+        </Link>
         <p className="user-location">{city}</p>
       </div>
 
@@ -359,9 +364,76 @@ function CommentSection({
     </section>
   );
 }
+
+function MediaSection({ media_items, isExpanded }) {
+  const mediaContainer = React.useRef();
+  const [mediaSectionWidth, setMediaSectionWidth] = React.useState(0);
+  const [mediaIndex, setMediaIndex] = React.useState(0);
+  const scrollLeft = -1 * mediaIndex * mediaSectionWidth;
+
+  return (
+    <section
+      className="media-section"
+      ref={(ref) => setMediaSectionWidth(elementWidth(ref))}
+    >
+      <div
+        className="media-container"
+        ref={mediaContainer}
+        style={{ transform: `translateX(${scrollLeft}px)` }}
+      >
+        {media_items?.map((mediaItem, index) => (
+          <div key={index}>
+            {mediaItem.type === 'photo' ? (
+              <PostImage imageURL={mediaItem.url} />
+            ) : (
+              <PostVideo
+                videoURL={mediaItem.url}
+                active={mediaIndex === index}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+      {media_items.length > 1 && (
+        <div className="img-buttons-container">
+          <button
+            className={cx('prev-img-button', { hidden: scrollLeft === 0 })}
+            onClick={() => setMediaIndex(mediaIndex - 1)}
+          >
+            <CircularChevron size="24" />
+          </button>
+          <button
+            className={cx('next-img-button', {
+              hidden: mediaIndex === media_items.length - 1,
+            })}
+            onClick={() => setMediaIndex(mediaIndex + 1)}
+          >
+            <CircularChevron size="24" direction="left" />
+          </button>
+        </div>
+      )}
+      {media_items.length > 1 && (
+        <div
+          className={cx('progress-dots-section', {
+            'is-expanded': isExpanded,
+          })}
+        >
+          {media_items.map((_, index) => (
+            <div
+              key={index}
+              className={cx('progress-dot', {
+                'is-active': index === mediaIndex,
+                'is-expanded': isExpanded,
+              })}
+            ></div>
+          ))}
+        </div>
+      )}
+    </section>
+  );
+}
 export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
   const history = useHistory();
-  const location = useLocation();
 
   return (
     <article
@@ -381,14 +453,10 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             user_thumbnail={datum?.user_thumbnail}
           />
 
-          <section className="img-container">
-            <img
-              className="post-img"
-              src={datum?.media_items[0].url}
-              alt={`${datum?.user_name}  Avatar`}
-              loading="lazy"
-            />
-          </section>
+          <MediaSection
+            media_items={datum?.media_items}
+            isExpanded={isExpanded}
+          />
 
           <PostActions
             index={index}
