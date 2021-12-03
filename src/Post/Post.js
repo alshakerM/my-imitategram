@@ -398,13 +398,7 @@ function MediaSection({ media_items, isExpanded }) {
         <div className="img-buttons-container">
           <button
             className={cx('prev-img-button', { hidden: scrollLeft === 0 })}
-            onClick={() => {
-              setMediaIndex((mediaIndex) => {
-                if (mediaIndex > 0) {
-                  return mediaIndex - 1;
-                }
-              });
-            }}
+            onClick={() => setMediaIndex(mediaIndex - 1)}
           >
             <CircularChevron size="24" />
           </button>
@@ -412,13 +406,7 @@ function MediaSection({ media_items, isExpanded }) {
             className={cx('next-img-button', {
               hidden: mediaIndex === media_items.length - 1,
             })}
-            onClick={() => {
-              setMediaIndex((mediaIndex) => {
-                if (mediaIndex < media_items.length - 1) {
-                  return mediaIndex + 1;
-                }
-              });
-            }}
+            onClick={() => setMediaIndex(mediaIndex + 1)}
           >
             <CircularChevron size="24" direction="left" />
           </button>

@@ -401,9 +401,6 @@ section.comment-input-section {
   margin-top: 15px;
 }
 .progress-dots-section.is-expanded {
-  display: flex;
-  gap: 5px;
-  justify-content: center;
   margin: 0;
   margin-top: -45px;
   z-index: 2;
