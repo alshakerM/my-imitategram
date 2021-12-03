@@ -1,0 +1,56 @@
+.suggestionSection {
+  padding: 112px 0;
+  margin: 0 auto;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.suggestedText {
+  font-size: 16px;
+  font-weight: 600;
+}
+.suggestionContentSection {
+  background-color: #fff;
+}
+.suggestionContent {
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
+}
+.suggestionsUserNameReason {
+  flex: 1;
+}
+
+.suggestionUserName {
+  margin: 0;
+  margin-left: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #262626;
+}
+.suggestionUserFullName {
+  margin: 0;
+  margin-left: 12px;
+  margin-top: 2px;
+  color: #8e8e8e;
+  font-weight: 400;
+  font-size: 12px;
+  max-width: 195px;
+}
+.suggestionUserReason {
+  margin: 0;
+  margin-left: 12px;
+  margin-top: 2px;
+  color: #8e8e8e;
+  font-weight: 400;
+  font-size: 12px;
+}
+.followButton {
+  border: 1px solid transparent;
+  width: 61px;
+  height: 30px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #0095f6;
+  font-weight: 600;
+}

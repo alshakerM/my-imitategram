@@ -6,6 +6,7 @@ import { NavBar } from './NavBar/NavBar';
 import { PostPage } from './PostPage';
 import { UserProfile } from './UserProfile/UserProfile';
 import { UserStories } from './UserStories/UserStories';
+import { Suggestions } from './Suggestions/Suggestions';
 
 function App() {
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -24,8 +25,10 @@ function App() {
           </>
         )}
       ></Route>
+
       <Route
-        path="/stories/:userId/" exact
+        path="/stories/:userId/"
+        exact
         render={(match) => <UserStories userId={match.match.params.userId} />}
       ></Route>
       <Route
@@ -34,7 +37,9 @@ function App() {
           <Messages fromUserId={match.match.params.fromUserId} />
         )}
       ></Route>
-
+      <Route path="/explore/people/" exact>
+        <Suggestions />
+      </Route>
       <Route path="/" exact={!isExpanded}>
         <NavBar></NavBar>
         <HomePage setIsExpanded={setIsExpanded} />

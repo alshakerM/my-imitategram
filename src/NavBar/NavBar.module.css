@@ -13,6 +13,7 @@ html {
 .navTitle {
   margin-top: 7px;
   flex: 0.5;
+  filter: blur(0.4px);
 }
 .navContent {
   display: flex;
