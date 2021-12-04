@@ -5,6 +5,7 @@ import { Stories } from './Stories/Stories';
 import { useIGData } from './hooks/useIGData';
 import { Avatar } from './Avatar/Avatar';
 import { Link } from 'react-router-dom';
+import { Suggestions } from './Suggestions/Suggestions';
 
 export function HomePage({ isExpanded, setIsExpanded }) {
   const { data } = useIGData();
@@ -30,28 +31,7 @@ export function HomePage({ isExpanded, setIsExpanded }) {
           key={datum.post_id}
         />
       ))}
-      <div className="suggestion-section">
-        <div className="suggestion-text-see-button">
-          <p className="suggestion-text">Suggestions for you</p>
-          <Link to="/explore/people/" className="see-all-button">
-            See All
-          </Link>
-        </div>
-        <div className="suggestion-content-section">
-          {slicedSuggestionData.map((suggestionDatum) => (
-            <div className="suggestion-content" key={suggestionDatum.user_id}>
-              <Avatar size="42" src={suggestionDatum.user_thumbnail} />
-              <div className="suggestion-user-name-reason">
-                <p className="suggestion-user-name">
-                  {suggestionDatum.user_name}
-                </p>
-                <p className="suggestion-reason">{suggestionDatum.reason}</p>
-              </div>
-              <button className="suggestion-follow-button">Follow</button>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Suggestions isExpanded={true} />
     </div>
   );
 }

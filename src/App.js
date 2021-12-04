@@ -45,7 +45,7 @@ function App() {
         <HomePage setIsExpanded={setIsExpanded} />
       </Route>
       <Route
-        path={['/:userName/', '/:userName/channel/', '/:userName/tagged/']}
+        path={['/:userName', '/:userName/channel/', '/:userName/tagged/']}
         exact
         render={(match) => (
           <UserProfile userName={match.match.params.userName} />
