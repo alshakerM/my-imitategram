@@ -4,9 +4,9 @@ import { HomePage } from './HomePage';
 import { Messages } from './Messages/Messages';
 import { NavBar } from './NavBar/NavBar';
 import { PostPage } from './PostPage';
+import { SuggestionPage } from './SuggestionsPage/SuggestionPage';
 import { UserProfile } from './UserProfile/UserProfile';
 import { UserStories } from './UserStories/UserStories';
-import { Suggestions } from './Suggestions/Suggestions';
 
 function App() {
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -38,7 +38,7 @@ function App() {
         )}
       ></Route>
       <Route path="/explore/people/" exact>
-        <Suggestions />
+        <SuggestionPage />
       </Route>
       <Route path="/" exact={!isExpanded}>
         <NavBar></NavBar>

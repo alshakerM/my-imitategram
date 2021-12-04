@@ -5,22 +5,26 @@
   width: 100%;
   box-sizing: border-box;
 }
-.suggestionSection.onHomePage {
+.suggestionSectionOnHomePage {
   position: fixed;
-  top: 9%;
-  left: 66%;
+  top: 25%;
+  left: 65.45%;
   height: 100vh;
   width: 293px;
 }
-.suggestedText {
+.text {
   font-size: 16px;
   font-weight: 600;
+  margin: 0;
+  margin-bottom: 6px;
+  margin-left: 13px;
 }
-.suggestionText.onHomePage {
+.textOnHomePage {
   color: #8e8e8e;
   font-weight: 600;
+  margin-left: 14px;
 }
-.SuggestionTextViewButton {
+.textViewButton {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,39 +35,39 @@
   font-weight: 600;
   color: #262626;
   padding: 0;
-  margin-right: 12px;
+  margin-right: 14px;
   cursor: pointer;
   text-decoration: none;
   font-size: 12px;
 }
-.suggestionContentSection {
+.contentSection {
   background-color: #fff;
 }
-.suggestionContentSection.onHomePage {
-  background-color: transparent;
-}
-.suggestionContent {
+
+.content {
   display: flex;
   padding: 8px 16px;
   align-items: center;
 }
-.suggestionContent.onHomePage {
+.contentSectionOnHomePage {
   padding: 0;
   box-sizing: border-box;
-  margin-bottom: 12px;
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
 }
-.suggestionsUserNameReason {
+.userNameAndReason {
   flex: 1;
 }
 
-.suggestionUserName {
+.userName {
   margin: 0;
   margin-left: 12px;
   font-weight: 600;
   text-decoration: none;
   color: #262626;
 }
-.suggestionUserFullName {
+.userFullName {
   margin: 0;
   margin-left: 12px;
   margin-top: 2px;
@@ -72,22 +76,22 @@
   font-size: 12px;
   max-width: 195px;
 }
-.suggestionUserReason {
+.userReason {
   margin: 0;
   margin-left: 12px;
-
   padding-top: 2px;
   color: #8e8e8e;
   font-weight: 400;
   font-size: 12px;
 }
-.suggestionUserReason.onHomePage {
+.userReasonOnHomePage {
+  margin: 0;
   margin-left: 12px;
   margin-top: 0px;
   color: #8e8e8e;
   font-weight: 400;
   font-size: 12px;
-  max-width: 185px;
+  max-width: 165px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -101,7 +105,7 @@
   background-color: #0095f6;
   font-weight: 600;
 }
-.followButton.onHomePage {
+.followButtonOnHomePage {
   border: 0;
   background: 0;
   color: #0095f6;

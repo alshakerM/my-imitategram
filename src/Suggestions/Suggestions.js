@@ -18,85 +18,56 @@ export function Suggestions({ isExpanded }) {
 
   return (
     <>
-      <NavBar />
       {isExpanded ? (
-        <div
-          className={cx(styles.suggestionSection, {
-            [styles.onHomePage]: isExpanded,
-          })}
-        >
-          <div className={styles.SuggestionTextViewButton}>
-            <p
-              className={cx(styles.suggestionText, {
-                [styles.onHomePage]: isExpanded,
-              })}
-            >
-              Suggestions for you
-            </p>
-            <Link to="/explore/people/" className={styles.seeAllButton}>
-              See All
-            </Link>
-          </div>
-          <div
-            className={cx(styles.suggestionContentSection, {
-              [styles.onHomePage]: isExpanded,
-            })}
-          >
-            {slicedSuggestionData?.map((suggestionData) => (
-              <div
-                className={cx(styles.suggestionContent, {
-                  [styles.onHomePage]: isExpanded,
-                })}
-              >
-                <Avatar src={suggestionData.user_thumbnail} size="32" />
-                <div className={styles.suggestionsUserNameReason}>
+        <div className={styles.suggestionSection}>
+          <p className={styles.text}>Suggested</p>
+          <div className={styles.contentSection}>
+            {suggestionsData?.map((suggestionData) => (
+              <div className={styles.content}>
+                <Avatar src={suggestionData.user_thumbnail} size="44" />
+                <div className={styles.userNameAndReason}>
                   <Link
                     to={`/${suggestionData.user_name}`}
-                    className={styles.suggestionUserName}
+                    className={styles.userName}
                   >
                     {suggestionData.user_name}
                   </Link>
-                  <p
-                    className={cx(styles.suggestionUserReason, {
-                      [styles.onHomePage]: isExpanded,
-                    })}
-                  >
-                    {suggestionData.reason}
+                  <p className={styles.userFullName}>
+                    {suggestionData.full_name}
                   </p>
+                  <p className={styles.userReason}>{suggestionData.reason}</p>
                 </div>
-                <button
-                  className={cx(styles.followButton, {
-                    [styles.onHomePage]: isExpanded,
-                  })}
-                >
-                  Follow
-                </button>
+                <button className={styles.followButton}>Follow</button>
               </div>
             ))}
           </div>
         </div>
       ) : (
-        <div className={styles.suggestionSection}>
-          <p className={styles.suggestedText}>Suggested</p>
-          <div className={styles.suggestionContentSection}>
-            {suggestionsData?.map((suggestionData) => (
-              <div className={styles.suggestionContent}>
-                <Avatar src={suggestionData.user_thumbnail} size="44" />
-                <div className={styles.suggestionsUserNameReason}>
+        <div className={styles.suggestionSectionOnHomePage}>
+          <div className={styles.textViewButton}>
+            <p className={styles.textOnHomePage}>Suggestions for you</p>
+            <Link to="/explore/people/" className={styles.seeAllButton}>
+              See All
+            </Link>
+          </div>
+          <div className={styles.contentSectiononHomePage}>
+            {slicedSuggestionData?.map((suggestionData) => (
+              <div className={styles.contentSectionOnHomePage}>
+                <Avatar src={suggestionData.user_thumbnail} size="32" />
+                <div className={styles.userNameAndReason}>
                   <Link
                     to={`/${suggestionData.user_name}`}
-                    className={styles.suggestionUserName}
+                    className={styles.userName}
                   >
                     {suggestionData.user_name}
                   </Link>
-                  <p className={styles.suggestionUserFullName}>
-                    {suggestionData.full_name}
-                  </p>
-                  <p className={styles.suggestionUserReason}>
+                  <p className={styles.userReasonOnHomePage}>
                     {suggestionData.reason}
                   </p>
                 </div>
-                <button className={styles.followButton}>Follow</button>
+                <button className={styles.followButtonOnHomePage}>
+                  Follow
+                </button>
               </div>
             ))}
           </div>
