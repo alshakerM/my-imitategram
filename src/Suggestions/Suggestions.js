@@ -1,8 +1,8 @@
-import styles from './Suggestions.module.css';
-import React from 'react';
-import { Avatar } from '../Avatar/Avatar';
-import { Link } from 'react-router-dom';
 import cx from 'classnames';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Avatar } from '../Avatar/Avatar';
+import styles from './Suggestions.module.css';
 
 export function Suggestions({ isExpanded }) {
   const [suggestionsData, setSuggestionsData] = React.useState([]);
@@ -14,8 +14,6 @@ export function Suggestions({ isExpanded }) {
       .then((results) => setSuggestionsData(results));
   }, []);
   const slicedSuggestionData = suggestionsData.slice(0, 5);
-  const div = document.createElement('div');
-
   if (isExpanded) {
     return (
       <div className={styles.suggestionSection}>
@@ -31,7 +29,7 @@ export function Suggestions({ isExpanded }) {
                 >
                   {suggestionData.user_name}
                 </Link>
-                <p className={cx(styles.userFullName, styles.isExpanded)}>
+                <p className={styles.userFullName}>
                   {suggestionData.full_name}
                 </p>
                 <p className={cx(styles.userReason, styles.isExpanded)}>
