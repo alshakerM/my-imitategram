@@ -67,7 +67,7 @@ export function UserProfile({ userName }) {
 
   return (
     <>
-      <NavBar />
+      
       <div className={styles.profilePage}>
         <div className={styles.header}>
           <div className={styles.imgContainer}>
