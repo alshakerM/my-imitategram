@@ -1,10 +1,5 @@
 const { writeFileSync } = require('fs');
-const IGData = require('./public/Data/IG-v2.json');
-const users = IGData.map((data) => ({
-  user_name: data.user_name,
-  user_thumbnail: data.user_thumbnail,
-  user_id: data.user_id,
-}));
+const users = require('./public/Data/users.json');
 
 const suggestions = users.map((user) => {
   const reasons = [
@@ -18,6 +13,7 @@ const suggestions = users.map((user) => {
     user_name: user.user_name,
     user_id: user.user_id,
     user_thumbnail: user.user_thumbnail,
+    full_name: user.full_name,
     reason: reasons[Math.floor(Math.random() * reasons.length)],
   };
 });

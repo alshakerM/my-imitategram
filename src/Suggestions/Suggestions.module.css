@@ -1,0 +1,99 @@
+.suggestionSection {
+  padding: 112px 0;
+  margin: 0 auto;
+  max-width: 614px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.text {
+  color: #8e8e8e;
+  font-weight: 600;
+  margin-left: 14px;
+}
+
+.text.isExpanded {
+  font-size: 16px;
+  margin: 0;
+  margin-bottom: 6px;
+  color: #262626
+}
+
+.textViewButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.seeAllButton {
+  border: 0;
+  background: none;
+  font-weight: 600;
+  color: #262626;
+  padding: 0;
+  margin-right: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 12px;
+}
+.contentSection {
+  background-color: #fff;
+}
+
+.content {
+  display: flex;
+  padding: 8px 16px;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.userNameAndReason {
+  flex: 1;
+}
+
+.userName {
+  margin: 0;
+  margin-left: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #262626;
+}
+.userFullName {
+  margin: 0;
+  margin-left: 12px;
+  margin-top: 2px;
+  color: #8e8e8e;
+  font-weight: 400;
+  max-width: 195px;
+}
+.userReason.isExpanded {
+  margin: 0;
+  margin-left: 12px;
+  padding-top: 2px;
+  color: #8e8e8e;
+  font-weight: 400;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.userReason {
+  max-width: 165px;
+}
+
+.followButton {
+  border: 0;
+  background: 0;
+  color: #0095f6;
+  padding: 0;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.followButton.isExpanded {
+  border: 1px solid transparent;
+  width: 61px;
+  height: 30px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #0095f6;
+}

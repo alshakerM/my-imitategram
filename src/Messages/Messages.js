@@ -95,7 +95,7 @@ export function Messages({ fromUserId }) {
   );
   return (
     <>
-      <NavBar from_user_id={messagesData[userIndex]?.from_user_id} />
+      
       <div className={styles.messagesPageContainer}>
         <div className={styles.leftSection}>
           <UserSection />

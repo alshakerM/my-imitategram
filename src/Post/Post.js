@@ -439,7 +439,10 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
     <article
       key={datum?.post_id}
       onClick={(event) => {
-        event.target === event.currentTarget && isFloating && history.push('/');
+        if (event.target === event.currentTarget && isFloating) {
+          setIsExpanded(false);
+          history.push('/');
+        }
       }}
       className={cx('post-overlay', {
         'is-floating': isFloating,

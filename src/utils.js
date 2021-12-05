@@ -16,3 +16,11 @@ export function absoluteToRelativeDate(date, dateTextSize) {
 export function elementWidth(el) {
   return el?.getBoundingClientRect().width;
 }
+
+/**
+ * Locks the body from scrolling
+ * @param {Boolean} lock true = lock, false = unlock
+ */
+export function lockBodyScrolls(lock) {
+  document.body.style.overflow = lock ? 'hidden' : '';
+}

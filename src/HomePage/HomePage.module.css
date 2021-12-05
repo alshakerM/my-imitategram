@@ -1,0 +1,21 @@
+.content {
+  max-width: 975px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+.leftSide {
+}
+.content {
+  display: flex;
+}
+
+.rightSide {
+  /* 54px is the navbar's height + some nice margin */
+  margin-top: calc(54px + 33px);
+  padding-left: 16px;
+  width: 100%;
+}
+.fixedContent {
+  position: fixed;
+}
