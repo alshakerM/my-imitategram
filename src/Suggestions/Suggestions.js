@@ -43,16 +43,16 @@ export function Suggestions({ isExpanded }) {
           </div>
         </div>
       ) : (
-        <div className={styles.suggestionSectionOnHomePage}>
+        <div className={styles.suggestionSectionIsExpanded}>
           <div className={styles.textViewButton}>
-            <p className={styles.textOnHomePage}>Suggestions for you</p>
+            <p className={styles.textIsExpanded}>Suggestions for you</p>
             <Link to="/explore/people/" className={styles.seeAllButton}>
               See All
             </Link>
           </div>
-          <div className={styles.contentSectiononHomePage}>
+          <div>
             {slicedSuggestionData?.map((suggestionData) => (
-              <div className={styles.contentSectionOnHomePage}>
+              <div className={styles.content}>
                 <Avatar src={suggestionData.user_thumbnail} size="32" />
                 <div className={styles.userNameAndReason}>
                   <Link
@@ -61,11 +61,15 @@ export function Suggestions({ isExpanded }) {
                   >
                     {suggestionData.user_name}
                   </Link>
-                  <p className={styles.userReasonOnHomePage}>
+                  <p
+                    className={cx(styles.userReason, {
+                      [styles.isExpanded]: true,
+                    })}
+                  >
                     {suggestionData.reason}
                   </p>
                 </div>
-                <button className={styles.followButtonOnHomePage}>
+                <button className={styles.followButtonIsExpanded}>
                   Follow
                 </button>
               </div>

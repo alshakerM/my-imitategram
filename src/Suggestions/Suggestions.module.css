@@ -5,7 +5,7 @@
   width: 100%;
   box-sizing: border-box;
 }
-.suggestionSectionOnHomePage {
+.suggestionSectionIsExpanded {
   position: fixed;
   top: 25%;
   left: 65.45%;
@@ -19,7 +19,7 @@
   margin-bottom: 6px;
   margin-left: 13px;
 }
-.textOnHomePage {
+.textIsExpanded {
   color: #8e8e8e;
   font-weight: 600;
   margin-left: 14px;
@@ -48,14 +48,9 @@
   display: flex;
   padding: 8px 16px;
   align-items: center;
-}
-.contentSectionOnHomePage {
-  padding: 0;
   box-sizing: border-box;
-  display: flex;
-  padding: 8px 16px;
-  align-items: center;
 }
+
 .userNameAndReason {
   flex: 1;
 }
@@ -83,18 +78,12 @@
   color: #8e8e8e;
   font-weight: 400;
   font-size: 12px;
-}
-.userReasonOnHomePage {
-  margin: 0;
-  margin-left: 12px;
-  margin-top: 0px;
-  color: #8e8e8e;
-  font-weight: 400;
-  font-size: 12px;
-  max-width: 165px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.userReason.isExpanded {
+  max-width: 165px;
 }
 .followButton {
   border: 1px solid transparent;
@@ -105,11 +94,12 @@
   background-color: #0095f6;
   font-weight: 600;
 }
-.followButtonOnHomePage {
+.followButtonIsExpanded {
   border: 0;
   background: 0;
   color: #0095f6;
   padding: 0;
   cursor: pointer;
   font-size: 12px;
+  font-weight: 600;
 }

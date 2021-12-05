@@ -23,7 +23,7 @@ export function HomePage({ isExpanded, setIsExpanded }) {
           key={datum.post_id}
         />
       ))}
-      <Suggestions isExpanded={false} />
+      <Suggestions />
     </div>
   );
 }
