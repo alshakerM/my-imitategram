@@ -46,14 +46,19 @@ const BorderLessTextInput = withStyles(borderStyles)((props) => {
   );
 });
 
-export function NavBar({from_user_id}) {
+export function NavBar({ from_user_id }) {
   const [inputValue, setInputValue] = React.useState('');
   const hasValue = inputValue;
   return (
     <nav className={navContainer}>
       <div className={navContent}>
         <div className={navTitle}>
-          <img src="/Instagram_logo_text.svg" width="103" alt="Instagram text"/>
+          <img
+            src="/Instagram_logo_text.svg"
+            width="109"
+            height="39"
+            alt="Instagram text"
+          />
         </div>
         <div>
           <BorderLessTextInput
@@ -93,7 +98,7 @@ export function NavBar({from_user_id}) {
           </BorderLessTextInput>
         </div>
         <div className="nav-icons">
-          <Icons fromUserId={from_user_id}/>
+          <Icons fromUserId={from_user_id} />
         </div>
       </div>
     </nav>
