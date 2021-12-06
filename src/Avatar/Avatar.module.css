@@ -3,17 +3,22 @@
   transform: rotateZ(180deg);
 }
 .animationCircle.isAnimated {
-  transform-origin: 50% 50%;
-  transform: rotateZ(0);
-  animation: closeGaps 2s ease forwards;
+  stroke-dasharray: 880 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25
+    25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 25 5 46 5 46 5 46 5 46 5 46 5
+    46 5 46 5 46 5 46 5 46 5 46 5 46 5 46 5 46 5 46 5 46 5 46 5;
+  stroke-linecap: round;
+  stroke-dashoffset: 0;
+  animation: story-spin 2.5s ease-out;
+  transform-origin: center center;
+  transform: rotateZ(0deg);
 }
-@keyframes closeGaps {
-  0% {
-    stroke-dasharray: 20 100;
-  }
+@keyframes story-spin {
   100% {
-    stroke-dasharray: 80 0;
-    transform: rotateZ(180deg);
+    stroke-dashoffset: 1860;
+    stroke-dasharray: 880 46 0 50 1 49 4 46 5 46 5 46 5 46 5 46 5 46 5 46 5 46 5
+      46 5 46 5 46 5 46 5 46 5 46 5 46 50 0 50 0 50 0 50 0 50 0 50 0 50 0 50 0
+      50 0 50 0 50 0 50 0 50 0 60 0 60 0 60 0 60 0 60 0;
+      transform: rotateZ(350deg);
   }
 }
 .userAvatar {
