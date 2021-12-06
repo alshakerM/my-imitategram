@@ -21,7 +21,7 @@ export function Suggestions({ isExpanded }) {
         <div className={cx(styles.contentSection, styles.isExpanded)}>
           {suggestionsData?.map((suggestionData) => (
             <div className={cx(styles.content, styles.isExpanded)}>
-              <Avatar src={suggestionData.user_thumbnail} size="44" />
+              <Avatar user={suggestionData} size="44" />
               <div className={cx(styles.userNameAndReason, styles.isExpanded)}>
                 <Link
                   to={`/${suggestionData.user_name}`}
@@ -56,7 +56,7 @@ export function Suggestions({ isExpanded }) {
         <div>
           {slicedSuggestionData?.map((suggestionData) => (
             <div className={styles.content}>
-              <Avatar src={suggestionData.user_thumbnail} size="32" />
+              <Avatar user={suggestionData} size="small" />
               <div className={styles.userNameAndReason}>
                 <Link
                   to={`/${suggestionData.user_name}`}

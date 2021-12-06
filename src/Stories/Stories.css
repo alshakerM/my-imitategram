@@ -51,3 +51,19 @@
 .story-nav-prev.hidden {
   visibility: hidden;
 }
+.story-avatar-username {
+  margin: 0;
+  text-align: center;
+  color: #262626;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  max-width: 64px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}

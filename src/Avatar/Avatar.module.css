@@ -1,0 +1,22 @@
+.animationCircle {
+  transform-origin: center center;
+  transform: rotateZ(180deg);
+}
+.animationCircle.isAnimated {
+  transform-origin: 50% 50%;
+  transform: rotateZ(0);
+  animation: closeGaps 2s ease forwards;
+}
+@keyframes closeGaps {
+  0% {
+    stroke-dasharray: 20 100;
+  }
+  100% {
+    stroke-dasharray: 80 0;
+    transform: rotateZ(180deg);
+  }
+}
+.userAvatar {
+  border-radius: 50%;
+  display: block;
+}

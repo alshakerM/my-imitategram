@@ -3,12 +3,11 @@ import cx from 'classnames';
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
-import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
-import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
+import { Avatar } from "../Avatar/Avatar";
 import { absoluteToRelativeDate, elementWidth } from '../utils';
 import './Post.css';
 
@@ -141,14 +140,11 @@ function PostDate({ posting_time, isExpanded }) {
   );
 }
 
-function PostHeader({ user_name, user_thumbnail, city, datum }) {
+
+function PostHeader({ user_name, city, datum }) {
   return (
     <section className="post-header">
-      {datum?.poster_has_story ? (
-        <StoryAvatar user={datum} size="42" />
-      ) : (
-        <Avatar avatar={user_thumbnail} size="32" borderColor="#ddd" />
-      )}
+      <Avatar user={datum} size="small" colorRing={datum?.poster_has_story} />
 
       <div className="user-info">
         <Link to={`/${user_name}`} className="user-name">
@@ -168,11 +164,7 @@ function CommentReplySection({ comment, postIndex }) {
       {comment.replies.map((reply) => (
         <div key={reply.comment_id} className="replier-section">
           <div className="replier-info">
-            <Avatar
-              src={reply.user_thumbnail}
-              alt={reply.user_name}
-              borderColor="#ddd"
-            />
+            <Avatar user={reply} size="24" />
 
             <p className="replier-username-text">
               <strong>{reply.user_name}</strong> {reply.comment}
@@ -258,7 +250,7 @@ function CommentSection({
             'is-expanded': isExpanded,
           })}
         >
-          <Avatar src={datum?.user_thumbnail} alt={datum?.user_name} />
+          <Avatar user={datum} size="32" />
           <p className="post-caption-text">
             <span className="comment-username">{datum?.user_name}</span>{' '}
             {datum?.post_caption}
@@ -274,13 +266,7 @@ function CommentSection({
             })}
           >
             <div className="comment-body">
-              {isExpanded && (
-                <Avatar
-                  src={comment.user_thumbnail}
-                  size="32"
-                  borderColor="#ddd"
-                />
-              )}
+              {isExpanded && <Avatar user={comment} size="32" />}
               <p className="comment-text">
                 <span className="comment-username">{comment.user_name}</span>{' '}
                 {comment.comment}

@@ -3,7 +3,6 @@ import cx from 'classnames';
 import React from 'react';
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
-import { NavBar } from '../NavBar/NavBar';
 import styles from './UserProfile.module.css';
 import { Avatar } from '../Avatar/Avatar';
 
@@ -61,24 +60,25 @@ export function UserProfile({ userName }) {
       .then((results) => setUsersData(results));
   }, []);
 
+  if (!user) {
+    return null;
+  }
+
   const postsToRender =
-    (location.pathname.includes('tagged') ? user?.taggedPosts : user?.posts) ||
+    (location.pathname.includes('tagged') ? user.taggedPosts : user.posts) ||
     [];
 
   return (
     <>
-      
       <div className={styles.profilePage}>
         <div className={styles.header}>
           <div className={styles.imgContainer}>
-            <Link to={`/stories/${user?.user_id}`}>
-              <Avatar
-                src={user?.user_thumbnail}
-                alt={`${user?.user_name} avatar`}
-                size="150px"
-                borderColor="#ddd"
-              />
-            </Link>
+            <Avatar
+              user={user}
+              size="large"
+              animate={user.user_has_story}
+              colorRing={user.user_has_story}
+            />
           </div>
           <div>
             <div className={styles.userInfoAndButtons}>

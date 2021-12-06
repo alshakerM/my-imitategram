@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Festive&family=Zen+Kurenaido&display=swap');
 
 html {
-  background-color: #fafafa
+  background-color: #fafafa;
 }
 .all-stories-container {
   background-color: #1f1f1f;
@@ -21,7 +21,7 @@ html {
   margin-left: 50px;
 }
 .stories-container.is-small {
-    transform: scale(0.4);
+  transform: scale(0.4);
 }
 .instagram-logo-link {
   position: absolute;
@@ -49,7 +49,7 @@ html {
   color: white;
   display: grid;
   grid-template-columns: min-content min-content min-content 1fr;
-  
+
   background: linear-gradient(
     180deg,
     rgba(38, 38, 38, 0.8) 0%,
@@ -61,6 +61,7 @@ html {
   z-index: 2;
   position: relative;
   animation: fade-in 0.7s ease-out forwards;
+  align-items: flex-start;
 }
 @keyframes fade-in {
   0% {
@@ -75,17 +76,17 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-bottom: -800px;
   background: none;
   animation: none;
-  background-color: rgba(31	,31	,31, 0.8);
+  background-color: rgba(31, 31, 31, 0.8);
 }
 .progress-bars {
   grid-column: 1 / 6;
   display: flex;
   gap: 2px;
   margin-top: 10px;
-  margin-bottom: -40px;
 }
 .progress-bar {
   background: rgba(255, 255, 255, 0.35);
@@ -99,32 +100,30 @@ html {
   transition: width 200ms linear;
 }
 .story-username {
-  align-self: center;
-  padding: 0 10px;
   box-sizing: border-box;
+  margin: 8px 5px;
 }
 .story-username.is-small {
   transform: scale(2.5);
-  margin-bottom: 45px
+  margin-bottom: 45px;
 }
 .story-avatar-small {
   transform: scale(2.5);
-  margin-bottom: 70px
+  margin-bottom: 70px;
 }
 .story-post-time {
-  display: flex;
-  align-self: center;
   font-weight: 100;
   box-sizing: border-box;
+  margin: 8px 5px;
+  color: rgba(255, 255, 255, 0.6);
 }
 .story-post-time.is-small {
   margin: 0;
   transform: scale(2.5);
-  margin-bottom: 40px
+  margin-bottom: 40px;
 }
 .story-actions {
   justify-self: flex-end;
-  align-self: center;
 }
 .story-actions button {
   color: white;
@@ -145,7 +144,6 @@ html {
   overflow: hidden;
 }
 .story-body.is-small {
-
   border-radius: 20px;
 }
 .next-button,
@@ -196,7 +194,6 @@ html {
   white-space: nowrap;
   overflow: hidden;
   height: 44px;
- 
 }
 ::-webkit-input-placeholder {
   color: white;

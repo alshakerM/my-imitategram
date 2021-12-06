@@ -14,7 +14,6 @@ import React, { useRef } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
-import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 import { StoryImage } from '../StoryImage/StoryImage';
 import { absoluteToRelativeDate } from '../utils';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -165,18 +164,15 @@ export function UserStories({ userId }) {
                       ))}
                     </div>
                   )}
-
-                  {activeStory ? (
-                    <Avatar
-                      borderColor="#fff"
-                      avatar={user.user_thumbnail}
-                      style={{ display: 'flex', alignSelf: 'center' }}
-                      alt={user.user_name}
-                    />
-                  ) : (
-                    <StoryAvatar user={user} className="story-avatar-small" />
-                  )}
-
+                  <Avatar
+                    user={user}
+                    size={activeStory ? 'small' : 'medium'}
+                    className={cx({
+                      'story-avatar-small': !activeStory,
+                      'story-avatar-active': activeStory,
+                    })}
+                    colorRing={!activeStory}
+                  />
                   <p
                     className={cx('story-username', {
                       'is-expanded': activeStory,
@@ -193,7 +189,6 @@ export function UserStories({ userId }) {
                   >
                     {absoluteToRelativeDate(story.posting_time, 'mini')}
                   </p>
-
                   {activeStory ? (
                     <div className="story-actions">
                       <IconButton onClick={() => setPause(!pause)}>
