@@ -8,6 +8,7 @@ import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
+import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
 import { absoluteToRelativeDate, elementWidth } from '../utils';
 import './Post.css';
 
@@ -140,10 +141,15 @@ function PostDate({ posting_time, isExpanded }) {
   );
 }
 
-function PostHeader({ user_name, user_thumbnail, city }) {
+function PostHeader({ user_name, user_thumbnail, city, datum }) {
   return (
     <section className="post-header">
-      <Avatar avatar={user_thumbnail} size="32" borderColor="#ddd" />
+      {datum?.poster_has_story ? (
+        <StoryAvatar user={datum} size="42" />
+      ) : (
+        <Avatar avatar={user_thumbnail} size="32" borderColor="#ddd" />
+      )}
+
       <div className="user-info">
         <Link to={`/${user_name}`} className="user-name">
           {user_name}
@@ -454,6 +460,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             city={'Baghdad'}
             user_name={datum?.user_name}
             user_thumbnail={datum?.user_thumbnail}
+            datum={datum}
           />
 
           <MediaSection
