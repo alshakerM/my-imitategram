@@ -27,7 +27,7 @@ export function lockBodyScrolls(lock) {
 
 /**
  * takes a number and returns it as a human readable number
- * exp (10000 = 10k)
+ * e.g. (10000 = 10k), (1200 => 1,200), (12000 => 12k)
  * @param {num} num is the number
  * @returns returns the the number as human readable number
  */
@@ -39,10 +39,15 @@ export function readableNumber(num) {
   } else if (num >= 10000) {
     return `${(num / 1000).toFixed(1)}k`;
   } else if (num < 10000) {
-    return digitGrouping(num);
+    return digitGrouping(num);// using only digitGrouping because we only need to display any number below 10k with only a comma
   }
   return num;
 }
+/**
+ * 
+ * @param {*} num you pass a number here
+ * @returns return any number over 1k with a comma instead ofa dot e.g.(without: 1.000, with: 1,000)
+ */
 export function digitGrouping(num) {
   return Intl.NumberFormat('en-us', { useGrouping: true }).format(num);
 }
