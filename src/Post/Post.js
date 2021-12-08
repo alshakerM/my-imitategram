@@ -7,8 +7,7 @@ import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
-import { Avatar } from "../Avatar/Avatar";
-import { absoluteToRelativeDate, elementWidth } from '../utils';
+import { absoluteToRelativeDate, digitGrouping, elementWidth } from '../utils';
 import './Post.css';
 
 function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
@@ -188,7 +187,7 @@ function CommentReplySection({ comment, postIndex }) {
             </time>
             <button className="reply-action">
               <strong>
-                {reply.comment_likes}
+                {digitGrouping(reply.comment_likes)}
                 {reply.comment_likes > 0 ? ' likes' : ' like'}
               </strong>
             </button>
@@ -290,7 +289,7 @@ function CommentSection({
                   </time>
                   <button className="comment-action">
                     <strong>
-                      {comment.comment_likes}
+                      {digitGrouping(comment.comment_likes)}
                       {comment.comment_likes > 0 ? ' likes' : ' like'}
                     </strong>
                   </button>
@@ -331,7 +330,7 @@ function CommentSection({
                   <div className="view-replies-line"></div>
                   {comment.comment_id === activeCommentId
                     ? 'Hide replies'
-                    : `View replies (${comment.replies.length})`}
+                    : `View replies (${digitGrouping(comment.replies.length)})`}
                 </button>
                 {comment.comment_id === activeCommentId && (
                   <CommentReplySection
@@ -462,7 +461,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
 
           <section className="like-count">
             Liked by <strong>{datum?.user_name}</strong> and
-            <strong> {datum?.likes_count} others </strong>
+            <strong> {digitGrouping(datum?.likes_count)} others </strong>
           </section>
           {!isExpanded && (
             <section className="post-caption-section">

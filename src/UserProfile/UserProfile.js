@@ -5,6 +5,7 @@ import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import styles from './UserProfile.module.css';
 import { Avatar } from '../Avatar/Avatar';
+import { readableNumber } from '../utils';
 
 function UserProfilePost({ post }) {
   return (
@@ -29,7 +30,7 @@ function UserProfilePost({ post }) {
               d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"
             ></path>
           </svg>
-          <p> {post.likes_count}</p>
+          <p>{readableNumber(post.likes_count)}</p>
         </div>
         <div className={styles.likeIconCount}>
           <svg
@@ -42,7 +43,7 @@ function UserProfilePost({ post }) {
             <ellipse cx="24" cy="24" rx="24" ry="21" fill="white" />
             <path d="M10 30, 40 20, 48 48" fill="white" />
           </svg>
-          <p> {post.comment_count}</p>
+          <p>{readableNumber(post.comment_count)}</p>
         </div>
       </div>
     </Link>
@@ -126,15 +127,15 @@ export function UserProfile({ userName }) {
             </div>
             <div className={styles.postInfo}>
               <p className={styles.postCount}>
-                <strong>{user?.postCount}</strong>{' '}
+                <strong>{readableNumber(user?.postCount)}</strong>{' '}
                 {user?.postCount > 1 ? 'posts' : 'post'}
               </p>
               <p className={styles.count}>
-                <strong>{user?.followers}</strong>{' '}
+                <strong>{readableNumber(user?.followers)}</strong>{' '}
                 {user?.followers > 1 ? 'followers' : 'follower'}
               </p>
               <p className={styles.count}>
-                <strong>{user?.following}</strong> following
+                <strong>{readableNumber(user?.following)}</strong> following
               </p>
             </div>
             <div className={styles.userInfoAndBio}>

@@ -11,15 +11,15 @@
 .story-nav-prev {
   position: absolute;
   top: 0;
-  margin: 135px auto;
+  margin: 130px auto;
   margin-left: 10px;
 }
 
 .story-nav-next {
   position: absolute;
   top: 0;
-  margin: 135px auto;
-  margin-left: 560px;
+  margin: 130px auto;
+  margin-left: 580px;
 }
 .all-circles {
   width: max-content;
@@ -28,7 +28,7 @@
   background-color: white;
   overflow-y: hidden;
   overflow-x: auto;
-  padding: 20px;
+  padding: 16px;
   box-sizing: border-box;
   gap: 20px;
   transition: transform 0.5s ease-out;
