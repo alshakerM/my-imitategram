@@ -1,10 +1,10 @@
-const { v4 } = require('uuid');
 const { writeFileSync } = require('fs');
-const IGData = require('./public/Data/IG.json');
+const IGData = require('./public/Data/IG-v2.json');
 const users = IGData.map((data) => ({
   user_name: data.user_name,
   user_thumbnail: data.user_thumbnail,
-  user_id: v4(),
+  user_id: data.user_id,
+  user_has_story: data.poster_has_story,
 }));
 const messages = IGData.flatMap((d) => d.comments.map((c) => c.comment));
 const fullNames = [
@@ -35,7 +35,7 @@ const conversations = users.map((user, index) => {
   const following = Math.floor(0 + Math.random() * 50000);
   const posts = IGData.filter((post) => post.user_name === user.user_name).map(
     (post) => ({
-      post_image: post.post_image,
+      post_image: post.media_items[0].url,
       likes_count: post.likes_count,
       comment_count: post.comments.length,
       post_id: post.post_id,
@@ -50,14 +50,14 @@ const conversations = users.map((user, index) => {
     bio: messages[index],
     postCount: posts.length,
     posts,
-    taggedPosts: IGData.filter((post) => post.user_name !== user.user_name).map(
-      (post) => ({
-        post_image: post.post_image,
+    taggedPosts: IGData.filter((post) => post.user_name !== user.user_name)
+      .map((post) => ({
+        post_image: post.media_items[0].url,
         likes_count: post.likes_count,
         comment_count: post.comments.length,
         post_id: post.post_id,
-      })
-    ).slice(10),
+      }))
+      .slice(10),
   };
 });
 

@@ -8,13 +8,13 @@
 .text {
   color: #8e8e8e;
   font-weight: 600;
-  margin-left: 14px;
 }
 
 .text.isExpanded {
   font-size: 16px;
   margin: 0;
   margin-bottom: 6px;
+  margin-left: 16px;
   color: #262626
 }
 
@@ -29,7 +29,6 @@
   font-weight: 600;
   color: #262626;
   padding: 0;
-  margin-right: 14px;
   cursor: pointer;
   text-decoration: none;
   font-size: 12px;
@@ -40,9 +39,12 @@
 
 .content {
   display: flex;
-  padding: 8px 16px;
+  padding: 1px;
   align-items: center;
   box-sizing: border-box;
+}
+.content.isExpanded {
+  padding: 8px 16px;
 }
 
 .userNameAndReason {
@@ -51,14 +53,14 @@
 
 .userName {
   margin: 0;
-  margin-left: 12px;
+  margin-left: 8px;
   font-weight: 600;
   text-decoration: none;
   color: #262626;
 }
 .userFullName {
   margin: 0;
-  margin-left: 12px;
+  margin-left: 8px;
   margin-top: 2px;
   color: #8e8e8e;
   font-weight: 400;
@@ -66,7 +68,7 @@
 }
 .userReason.isExpanded {
   margin: 0;
-  margin-left: 12px;
+  margin-left: 8px;
   padding-top: 2px;
   color: #8e8e8e;
   font-weight: 400;

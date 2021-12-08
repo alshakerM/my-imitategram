@@ -1,9 +1,10 @@
 import classnames from 'classnames';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { CircularChevron } from '../Icons/CircularChevron';
-import { StoryAvatar } from '../StoryAvatar/StoryAvatar';
-import './Stories.css';
+import { Avatar } from '../Avatar/Avatar';
 import { elementWidth } from '../utils';
+import './Stories.css';
 
 export function Stories() {
   const allCirclesDiv = React.useRef();
@@ -31,12 +32,21 @@ export function Stories() {
           className="all-circles"
         >
           {storiesData.map((user, index) => (
-            <StoryAvatar
-              key={user.user_id}
-              user={user}
-              index={index}
-              isUserNameNeeded={true}
-            />
+            <div key={user.user_id}>
+              <Avatar
+                key={user.user_id}
+                user={user}
+                index={index}
+                colorRing
+                size="medium"
+              />
+              <Link
+                to={`/${user?.user_name}`}
+                className="story-avatar-username"
+              >
+                {user.user_name}
+              </Link>
+            </div>
           ))}
         </div>
 
