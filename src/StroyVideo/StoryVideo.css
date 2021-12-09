@@ -1,5 +1,4 @@
 .story-video {
   width: 100%;
-  height: 800px;
-  min-width: 449px;
+  border-radius: 8px;
 }

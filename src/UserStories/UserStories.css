@@ -8,17 +8,16 @@ html {
   overflow: hidden;
 }
 .stories-scrollable {
-  display: flex;
-  padding-left: 50vw;
   transition: transform 0.5s ease-in-out;
   height: 100vh;
+  white-space: nowrap;
 }
 .stories-container {
-  margin: 70px auto;
-  height: 800px;
-  min-width: 449px;
+  margin: 18px 0;
   border-radius: 8px;
-  margin-left: 50px;
+  transition: all 0.5s ease-out;
+  display: inline-block;
+  vertical-align: top;
 }
 .stories-container.is-small {
   transform: scale(0.4);
@@ -62,6 +61,7 @@ html {
   position: relative;
   animation: fade-in 0.7s ease-out forwards;
   align-items: flex-start;
+  border-radius: 8px;
 }
 @keyframes fade-in {
   0% {
@@ -76,8 +76,9 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: absolute;
   align-items: center;
-  margin-bottom: -800px;
+  width: 100%;
   background: none;
   animation: none;
   background-color: rgba(31, 31, 31, 0.8);
@@ -125,8 +126,15 @@ html {
 .story-actions {
   justify-self: flex-end;
 }
-.story-actions button {
+.story-action {
+  padding: 0;
+  background: none;
+  border: none;
   color: white;
+  cursor: pointer;
+}
+.story-action + .story-action {
+  margin-left: 5px;
 }
 .next-prev-buttons {
   position: relative;

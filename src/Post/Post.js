@@ -141,7 +141,6 @@ function PostDate({ posting_time, isExpanded }) {
   );
 }
 
-
 function PostHeader({ user_name, city, datum }) {
   return (
     <section className="post-header">

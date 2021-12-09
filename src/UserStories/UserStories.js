@@ -8,8 +8,7 @@ import {
   VolumeDown,
   VolumeOff,
 } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
-import cx from 'classnames';
+  import cx from 'classnames';
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -19,11 +18,9 @@ import { absoluteToRelativeDate } from '../utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import './UserStories.css';
 import { StoryVideo } from '../StroyVideo/StoryVideo';
-import { elementWidth } from '../utils';
 
-function getX(el) {
-  return el?.offsetLeft;
-}
+const STORY_ASPECT_RATIO = 0.562;
+const STORY_VERTICAL_MARGIN = 18;
 
 function progressWidth(storyIndex, progressBarIndex, progress) {
   if (progressBarIndex === storyIndex) {
@@ -36,6 +33,10 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
 }
 
 export function UserStories({ userId }) {
+  const [innerHeight, setInnerHeight] = React.useState(
+    Math.max(500, window.innerHeight)
+  );
+
   const [storiesData, setStoriesData] = React.useState([]);
   React.useEffect(() => {
     fetch('/Data/IG-Stories.json', {
@@ -43,6 +44,16 @@ export function UserStories({ userId }) {
     })
       .then((res) => res.json())
       .then((results) => setStoriesData(results));
+  }, []);
+  React.useEffect(() => {
+    function handler() {
+      setInnerHeight(Math.max(500, window.innerHeight));
+    }
+    window.addEventListener('resize', handler);
+
+    return () => {
+      window.removeEventListener('resize', handler);
+    };
   }, []);
   const userIndex = storiesData.findIndex((user) => user.user_id === userId);
   const user = storiesData[userIndex];
@@ -68,9 +79,10 @@ export function UserStories({ userId }) {
   const activeUserStory = user?.stories[storyIndices[userId]];
   const [currentProgress, setCurrentProgress] = React.useState(0);
   const allStoriesContainer = useRef();
-  const [currentStoryX, setCurrentStoryX] = React.useState(0);
-  const [currentStoryWidth, setCurrentStoryWidth] = React.useState(0);
-  const requiredX = window.innerWidth / 2 - currentStoryWidth / 2;
+  const storyHeight = innerHeight - STORY_VERTICAL_MARGIN * 2;
+  const storyWidth = Math.floor(STORY_ASPECT_RATIO * storyHeight);
+  const currentStoryX = userIndex * storyWidth;
+  const requiredX = window.innerWidth / 2 - storyWidth / 2;
   const scrollAmount = Math.floor(currentStoryX - requiredX);
 
   const isLoading =
@@ -113,7 +125,7 @@ export function UserStories({ userId }) {
       <div
         ref={allStoriesContainer}
         className="stories-scrollable"
-        style={{ transform: `translateX(-${scrollAmount}px)` }}
+        style={{ transform: `translateX(${-scrollAmount}px)` }}
       >
         {Object.keys(storyIndices).length &&
           storiesData.map((user) => {
@@ -121,17 +133,11 @@ export function UserStories({ userId }) {
             const story = activeStory ? activeUserStory : user.stories[0];
             return (
               <div
-                ref={(div) => {
-                  if (div && activeStory && currentStoryX !== getX(div)) {
-                    setCurrentStoryX(getX(div));
-                    setCurrentStoryWidth(elementWidth(div));
-                  }
-                }}
                 className={cx('stories-container', {
                   'is-expanded': activeStory,
                   'is-small': !activeStory,
                 })}
-                style={{ transition: 'all 0.5s ease-out' }}
+                style={{ width: storyWidth, height: storyHeight }}
                 key={user.user_id}
                 onClick={() => {
                   if (!activeStory) {
@@ -191,15 +197,21 @@ export function UserStories({ userId }) {
                   </p>
                   {activeStory ? (
                     <div className="story-actions">
-                      <IconButton onClick={() => setPause(!pause)}>
+                      <button
+                        className="story-action"
+                        onClick={() => setPause(!pause)}
+                      >
                         {pause ? <PlayArrow /> : <Pause />}
-                      </IconButton>
-                      <IconButton onClick={() => setMute(!mute)}>
+                      </button>
+                      <button
+                        className="story-action"
+                        onClick={() => setMute(!mute)}
+                      >
                         {mute ? <VolumeOff /> : <VolumeDown />}
-                      </IconButton>
-                      <IconButton>
+                      </button>
+                      <button className="story-action">
                         <MoreHoriz />
-                      </IconButton>
+                      </button>
                     </div>
                   ) : (
                     ''
