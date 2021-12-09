@@ -8,6 +8,8 @@ import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
 import { absoluteToRelativeDate, digitGrouping, elementWidth } from '../utils';
+import { Avatar } from '../Avatar/Avatar';
+
 import './Post.css';
 
 function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
