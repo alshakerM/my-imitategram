@@ -8,19 +8,49 @@ import {
   VolumeDown,
   VolumeOff,
 } from '@mui/icons-material';
-  import cx from 'classnames';
+import cx from 'classnames';
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { StoryImage } from '../StoryImage/StoryImage';
-import { absoluteToRelativeDate } from '../utils';
+import { absoluteToRelativeDate, numberBetween } from '../utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import './UserStories.css';
 import { StoryVideo } from '../StroyVideo/StoryVideo';
 
 const STORY_ASPECT_RATIO = 0.562;
 const STORY_VERTICAL_MARGIN = 18;
+const TABLET_BREAKPOINT = 1540;
+const TABLET_STORY_RATIO = 0.59;
+/**
+ * borders are needed to activate next-prev nav buttons hover
+ */
+const STORY_BORDER_WIDTH = 46;
+
+function calculateStoryDimensions() {
+  const maxHeight = window.innerHeight - STORY_VERTICAL_MARGIN * 2;
+  let height, width;
+  if (window.innerWidth < window.innerHeight) {
+    // strangely, real IG connects the height of the story to the width of the screen
+    height = Math.min(window.innerWidth - STORY_VERTICAL_MARGIN * 2, maxHeight);
+    width = height * STORY_ASPECT_RATIO;
+  } else {
+    if (window.innerWidth < TABLET_BREAKPOINT) {
+      height = numberBetween(
+        TABLET_STORY_RATIO * window.innerWidth,
+        500,
+        maxHeight
+      );
+
+      width = height * STORY_ASPECT_RATIO;
+    } else {
+      height = maxHeight;
+      width = height * STORY_ASPECT_RATIO;
+    }
+  }
+  return { width, height };
+}
 
 function progressWidth(storyIndex, progressBarIndex, progress) {
   if (progressBarIndex === storyIndex) {
@@ -33,8 +63,8 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
 }
 
 export function UserStories({ userId }) {
-  const [innerHeight, setInnerHeight] = React.useState(
-    Math.max(500, window.innerHeight)
+  const [dimensions, setDimensions] = React.useState(
+    calculateStoryDimensions()
   );
 
   const [storiesData, setStoriesData] = React.useState([]);
@@ -47,7 +77,8 @@ export function UserStories({ userId }) {
   }, []);
   React.useEffect(() => {
     function handler() {
-      setInnerHeight(Math.max(500, window.innerHeight));
+      setDimensions(calculateStoryDimensions());
+      console.log(1)
     }
     window.addEventListener('resize', handler);
 
@@ -79,10 +110,9 @@ export function UserStories({ userId }) {
   const activeUserStory = user?.stories[storyIndices[userId]];
   const [currentProgress, setCurrentProgress] = React.useState(0);
   const allStoriesContainer = useRef();
-  const storyHeight = innerHeight - STORY_VERTICAL_MARGIN * 2;
-  const storyWidth = Math.floor(STORY_ASPECT_RATIO * storyHeight);
-  const currentStoryX = userIndex * storyWidth;
-  const requiredX = window.innerWidth / 2 - storyWidth / 2;
+  const currentStoryX = userIndex * dimensions.width;
+  const requiredX =
+    window.innerWidth / 2 - (dimensions.width / 2 + STORY_BORDER_WIDTH);
   const scrollAmount = Math.floor(currentStoryX - requiredX);
 
   const isLoading =
@@ -129,18 +159,18 @@ export function UserStories({ userId }) {
       >
         {Object.keys(storyIndices).length &&
           storiesData.map((user) => {
-            const activeStory = userId === user.user_id;
-            const story = activeStory ? activeUserStory : user.stories[0];
+            const activeUser = userId === user.user_id;
+            const story = activeUser ? activeUserStory : user.stories[0];
             return (
               <div
                 className={cx('stories-container', {
-                  'is-expanded': activeStory,
-                  'is-small': !activeStory,
+                  'is-expanded': activeUser,
+                  'is-small': !activeUser,
                 })}
-                style={{ width: storyWidth, height: storyHeight }}
+                style={dimensions}
                 key={user.user_id}
                 onClick={() => {
-                  if (!activeStory) {
+                  if (!activeUser) {
                     setCurrentProgress(0);
                     history.push(`/stories/${user.user_id}`);
                   }
@@ -148,11 +178,11 @@ export function UserStories({ userId }) {
               >
                 <div
                   className={cx('story-header', {
-                    'is-expanded': activeStory,
-                    'is-small': !activeStory,
+                    'is-expanded': activeUser,
+                    'is-small': !activeUser,
                   })}
                 >
-                  {activeStory && (
+                  {activeUser && (
                     <div className="progress-bars">
                       {user.stories.map((story, index) => (
                         <div className="progress-bar" key={story.story_id}>
@@ -172,30 +202,30 @@ export function UserStories({ userId }) {
                   )}
                   <Avatar
                     user={user}
-                    size={activeStory ? 'small' : 'medium'}
+                    size={activeUser ? 'small' : 'medium'}
                     className={cx({
-                      'story-avatar-small': !activeStory,
-                      'story-avatar-active': activeStory,
+                      'story-avatar-small': !activeUser,
+                      'story-avatar-active': activeUser,
                     })}
-                    colorRing={!activeStory}
+                    colorRing={!activeUser}
                   />
                   <p
                     className={cx('story-username', {
-                      'is-expanded': activeStory,
-                      'is-small': !activeStory,
+                      'is-expanded': activeUser,
+                      'is-small': !activeUser,
                     })}
                   >
                     <strong>{user.user_name}</strong>
                   </p>
                   <p
                     className={cx('story-post-time', {
-                      'is-expanded': activeStory,
-                      'is-small': !activeStory,
+                      'is-expanded': activeUser,
+                      'is-small': !activeUser,
                     })}
                   >
                     {absoluteToRelativeDate(story.posting_time, 'mini')}
                   </p>
-                  {activeStory ? (
+                  {activeUser ? (
                     <div className="story-actions">
                       <button
                         className="story-action"
@@ -220,14 +250,14 @@ export function UserStories({ userId }) {
 
                 <div
                   className={cx('story-body', {
-                    'is-expanded': activeStory,
-                    'is-small': !activeStory,
+                    'is-expanded': activeUser,
+                    'is-small': !activeUser,
                   })}
                 >
                   {story.story_type === 'video' ? (
                     <StoryVideo
-                      paused={activeStory ? pause : true}
-                      muted={activeStory ? mute : true}
+                      paused={activeUser ? pause : true}
+                      muted={activeUser ? mute : true}
                       videoURL={story.story_media}
                       className="story-video"
                       onProgress={progressHandler}
@@ -238,13 +268,16 @@ export function UserStories({ userId }) {
                     <StoryImage
                       src={story.story_media}
                       onProgress={progressHandler}
-                      paused={activeStory ? pause : true}
+                      paused={activeUser ? pause : true}
                       key={story.story_id}
                     ></StoryImage>
                   )}
                 </div>
-                {activeStory && (
-                  <div className="next-prev-buttons">
+                {activeUser && (
+                  <div
+                    className="next-prev-buttons"
+                    style={{ width: dimensions.width }}
+                  >
                     {(storyIndices[userId] > 0 || userIndex > 0) && (
                       <button
                         className="prev-button"
@@ -286,7 +319,7 @@ export function UserStories({ userId }) {
                   </div>
                 )}
 
-                {story.can_reply && activeStory ? (
+                {story.can_reply && activeUser ? (
                   <div className="story-footer">
                     <input
                       type="text"

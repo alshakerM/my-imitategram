@@ -8,16 +8,24 @@ html {
   overflow: hidden;
 }
 .stories-scrollable {
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.2s ease-out;
   height: 100vh;
-  white-space: nowrap;
+  flex-wrap: nowrap;
+  display: flex;
+  align-items: center;
 }
 .stories-container {
   margin: 18px 0;
   border-radius: 8px;
   transition: all 0.5s ease-out;
-  display: inline-block;
-  vertical-align: top;
+  flex: 0 0 auto;
+}
+.stories-container.is-expanded {
+  border-left: 46px solid transparent;
+  border-right: 46px solid transparent;
+}
+.stories-container.is-expanded:hover *.next-prev-buttons {
+  opacity: 1;
 }
 .stories-container.is-small {
   transform: scale(0.4);
@@ -98,8 +106,9 @@ html {
 .progress-bar-core {
   height: 2px;
   background: white;
-  transition: width 200ms linear;
+  
 }
+
 .story-username {
   box-sizing: border-box;
   margin: 8px 5px;
@@ -136,6 +145,15 @@ html {
 .story-action + .story-action {
   margin-left: 5px;
 }
+
+.story-body {
+  transition: transform 0.5s ease-out;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.story-body.is-small {
+  border-radius: 20px;
+}
 .next-prev-buttons {
   position: relative;
   top: -50%;
@@ -146,14 +164,7 @@ html {
   width: 500px;
   opacity: 0.2;
 }
-.story-body {
-  transition: transform 0.5s ease-out;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.story-body.is-small {
-  border-radius: 20px;
-}
+
 .next-button,
 .prev-button {
   border-radius: 50%;
@@ -165,18 +176,19 @@ html {
 .prev-button {
   grid-area: left;
   width: min-content;
-  margin-left: -50px;
+  margin-left: -46px;
 }
 .next-button {
   grid-area: right;
   width: min-content;
   justify-self: flex-end;
+  margin-right: -46px;
 }
 
 .story-footer {
   z-index: 2;
   position: relative;
-  margin-top: -184px;
+  margin-top: -183px;
   display: flex;
   justify-content: center;
   animation: fade-in 0.6s ease-out;

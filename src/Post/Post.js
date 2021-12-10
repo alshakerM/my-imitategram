@@ -426,7 +426,6 @@ function MediaSection({ media_items, isExpanded }) {
 }
 export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
   const history = useHistory();
-
   return (
     <article
       key={datum?.post_id}
