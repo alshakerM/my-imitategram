@@ -19,7 +19,7 @@ export function useIGData() {
 
   React.useEffect(() => {
     if (!cachedData) {
-      fetch('../Data/IG-v2.json', {
+      fetch('../Data/IG-v3.json', {
         method: 'GET',
       })
         .then((res) => res.json())
