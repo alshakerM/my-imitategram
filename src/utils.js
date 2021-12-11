@@ -16,6 +16,9 @@ export function absoluteToRelativeDate(date, dateTextSize) {
 export function elementWidth(el) {
   return el?.getBoundingClientRect().width;
 }
+export function elementHeight(el) {
+  return el?.getBoundingClientRect().height;
+}
 
 /**
  * Locks the body from scrolling
@@ -39,15 +42,25 @@ export function readableNumber(num) {
   } else if (num >= 10000) {
     return `${(num / 1000).toFixed(1)}k`;
   } else if (num < 10000) {
-    return digitGrouping(num);// using only digitGrouping because we only need to display any number below 10k with only a comma
+    return digitGrouping(num); // using only digitGrouping because we only need to display any number below 10k with only a comma
   }
   return num;
 }
 /**
- * 
+ *
  * @param {*} num you pass a number here
  * @returns return any number over 1k with a comma instead ofa dot e.g.(without: 1.000, with: 1,000)
  */
 export function digitGrouping(num) {
   return Intl.NumberFormat('en-us', { useGrouping: true }).format(num);
+}
+/**
+ * bounds n between min and max
+ * @param {number} n
+ * @param {number} min
+ * @param {number} max
+ * @returns
+ */
+export function numberBetween(n, min, max) {
+  return Math.max(min, Math.min(n, max));
 }
