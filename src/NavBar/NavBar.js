@@ -3,6 +3,7 @@ import { IconButton, InputAdornment } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { createStyles, withStyles } from '@mui/styles';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Icons } from '../Icons/Icons';
 import {
   clearButton,
@@ -52,14 +53,14 @@ export function NavBar({ from_user_id }) {
   return (
     <nav className={navContainer}>
       <div className={navContent}>
-        <div className={navTitle}>
+        <Link to="/" className={navTitle}>
           <img
             src="/Instagram_logo_text.svg"
             width="109"
             height="39"
             alt="Instagram text"
           />
-        </div>
+        </Link>
         <div>
           <BorderLessTextInput
             onChange={(event) => setInputValue(event.target.value)}
