@@ -146,7 +146,12 @@ export function UserStories({ userId }) {
   return (
     <div key="all-stories" className="all-stories-container">
       <Link to="/" className="instagram-logo-link">
-        Instagram
+        <img
+          src="/stories_instagram_logo.png"
+          width="103"
+          height="29"
+          alt="Instagram text"
+        />
       </Link>
       <Link to="/" className="exit-icon-link">
         <Clear fontSize="large" />
@@ -160,7 +165,7 @@ export function UserStories({ userId }) {
           storiesData.map((user) => {
             const activeUser = userId === user.user_id;
             const story = activeUser ? activeUserStory : user.stories[0];
-             // when the user isn't specified, we go to the first story
+            // when the user isn't specified, we go to the first story
             return (
               <div
                 className={cx('stories-container', {

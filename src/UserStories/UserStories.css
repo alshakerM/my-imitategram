@@ -32,14 +32,12 @@ html {
 }
 .instagram-logo-link {
   position: absolute;
-  left: 20px;
-  top: 10px;
+  left: 16px;
+  top: 15px;
   font-size: 2em;
-  color: white;
   text-decoration: none;
-  font-family: 'Festive', cursive !important;
   margin: 0;
-  z-index: 2;
+  z-index: 20;
 }
 
 .exit-icon-link {
