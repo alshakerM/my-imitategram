@@ -106,7 +106,6 @@ html {
 .progress-bar-core {
   height: 2px;
   background: white;
-  
 }
 
 .story-username {
@@ -143,6 +142,7 @@ html {
   cursor: pointer;
 }
 .story-action + .story-action {
+  /* only add margin between two adjacent items */
   margin-left: 5px;
 }
 
@@ -176,19 +176,21 @@ html {
 .prev-button {
   grid-area: left;
   width: min-content;
+  /* this margin is for the button to be outside the story and it's -46 to match the real IG */
   margin-left: -46px;
 }
 .next-button {
   grid-area: right;
   width: min-content;
   justify-self: flex-end;
+  /* this margin is for the button to be outside the story and it's -46 to match the real IG */
   margin-right: -46px;
 }
 
 .story-footer {
   z-index: 2;
   position: relative;
-  margin-top: -183px;
+  margin-top: -41%;
   display: flex;
   justify-content: center;
   animation: fade-in 0.6s ease-out;

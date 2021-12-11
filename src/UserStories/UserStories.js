@@ -78,7 +78,6 @@ export function UserStories({ userId }) {
   React.useEffect(() => {
     function handler() {
       setDimensions(calculateStoryDimensions());
-      console.log(1)
     }
     window.addEventListener('resize', handler);
 
@@ -161,6 +160,7 @@ export function UserStories({ userId }) {
           storiesData.map((user) => {
             const activeUser = userId === user.user_id;
             const story = activeUser ? activeUserStory : user.stories[0];
+             // when the user isn't specified, we go to the first story
             return (
               <div
                 className={cx('stories-container', {
