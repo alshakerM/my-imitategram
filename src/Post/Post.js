@@ -11,8 +11,6 @@ import {
   absoluteToRelativeDate,
   digitGrouping,
   elementHeight,
-  elementWidth,
-  numberBetween,
 } from '../utils';
 import { Avatar } from '../Avatar/Avatar';
 
@@ -20,31 +18,13 @@ import './Post.css';
 
 const POST_VERTICAL_MARGIN = 24;
 const TABLET_BREAKPOINT = 1540;
-const TABLET_STORY_RATIO = 0.59;
 
 function calculatePostDimensions({ datum }) {
   const POST_ASPECT_RATIO =
-    datum?.media_dimensions.height / datum?.media_dimensions.width / 1.5;
-  const maxHeight = window.innerHeight - POST_VERTICAL_MARGIN * 2;
-  let height, width;
-  if (window.innerWidth < window.innerHeight) {
-    // strangely, real IG connects the height of the story to the width of the screen
-    height = Math.min(window.innerWidth - POST_VERTICAL_MARGIN * 2, maxHeight);
-    width = height * POST_ASPECT_RATIO;
-  } else {
-    if (window.innerWidth < TABLET_BREAKPOINT) {
-      height = numberBetween(
-        TABLET_STORY_RATIO * window.innerWidth,
-        500,
-        maxHeight
-      );
+    datum?.media_dimensions.width / datum?.media_dimensions.height;
 
-      width = height * POST_ASPECT_RATIO;
-    } else {
-      height = maxHeight;
-      width = height * POST_ASPECT_RATIO;
-    }
-  }
+  const height = window.innerHeight - 48;
+  const width = height * POST_ASPECT_RATIO;
   return { width, height };
 }
 
@@ -408,46 +388,44 @@ function MediaSection({
   mediaIndex,
 }) {
   const mediaContainer = React.useRef();
-
-  const scrollLeft = isExpanded
-    ? -1 * mediaIndex * dimensions.width
-    : -1 * mediaIndex * 614;
+  console.log({ dimensions });
   return (
     <section
-      className="media-section"
-      style={isExpanded ? { width: dimensions.width } : { width: '614px' }}
+      className={cx('media-section', { 'is-expanded': isExpanded })}
       ref={(ref) => {
         setMediaSectionHeight(elementHeight(ref));
       }}
+      style={{ maxWidth: isExpanded ? dimensions.width : 614 }}
     >
       <div
         className="media-container"
         ref={mediaContainer}
-        style={{ transform: `translateX(${scrollLeft}px)` }}
+        style={{
+          transform: `translateX(${(-mediaIndex * 100) / media_items.length}%)`,
+          width: `${100 * media_items.length}%`,
+        }}
       >
-        {media_items?.map((mediaItem, index) => (
-          <div key={index}>
-            {mediaItem.type === 'photo' ? (
-              <PostImage
-                imageURL={mediaItem.url}
-                height={isExpanded ? dimensions.height : ''}
-                width={isExpanded ? dimensions.width : '614'}
-              />
-            ) : (
-              <PostVideo
-                videoURL={mediaItem.url}
-                active={mediaIndex === index}
-                height={isExpanded ? dimensions.height : ''}
-                width={isExpanded ? dimensions.width : '614'}
-              />
-            )}
-          </div>
-        ))}
+        {media_items?.map((mediaItem, index) =>
+          mediaItem.type === 'photo' ? (
+            <PostImage
+              key={index}
+              imageURL={mediaItem.url}
+              fraction={1 / media_items.length}
+            />
+          ) : (
+            <PostVideo
+              key={index}
+              videoURL={mediaItem.url}
+              active={mediaIndex === index}
+              fraction={1 / media_items.length}
+            />
+          )
+        )}
       </div>
       {media_items.length > 1 && (
         <div className="img-buttons-container">
           <button
-            className={cx('prev-img-button', { hidden: scrollLeft === 0 })}
+            className={cx('prev-img-button', { hidden: mediaIndex === 0 })}
             onClick={() => setMediaIndex(mediaIndex - 1)}
           >
             <CircularChevron size="24" />
@@ -488,6 +466,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
   const [dimensions, setDimensions] = React.useState(
     calculatePostDimensions({ datum })
   );
+
   React.useEffect(() => {
     function handler() {
       setDimensions(calculatePostDimensions({ datum }));
@@ -514,14 +493,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
         'is-floating': isFloating,
       })}
     >
-      <div
-        style={
-          isExpanded
-            ? { height: dimensions.height, maxWidth: dimensions.width * 1.6 }
-            : { maxWidth: '614px;' }
-        }
-        className={cx('post-content', { 'is-expanded': isExpanded })}
-      >
+      <div className={cx('post-content', { 'is-expanded': isExpanded })}>
         <>
           <PostHeader
             city={'Baghdad'}

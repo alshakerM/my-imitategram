@@ -1,5 +1,4 @@
 .post-content {
-
   margin: 20px auto;
   border: 1px solid #efefef;
   border-radius: 3px;
@@ -16,7 +15,7 @@
     'input';
 }
 .post-content.is-expanded {
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(300px, 1fr) minmax(200px, 500px);
   grid-template-areas:
     'media header'
     'media comments'
@@ -24,7 +23,35 @@
     'media likes'
     'media time'
     'media input';
-  
+  max-height: calc(100vh - 48px);
+  max-width: calc(100vw - 100px);
+  min-height: 467px;
+  height: 55vw;
+}
+
+@media screen and (max-width: 735px) {
+  .post-content.is-expanded {
+    border-radius: 8px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+      'header'
+      'media'
+      'actions'
+      'likes'
+      'time';
+    max-height: unset;
+    max-width: min-content;
+    padding-bottom: 15px;
+    height: unset;
+    min-width: 335px;
+  }
+  section.comments-section {
+    display: none;
+  }
+  section.comment-input-section {
+    display: none;
+  }
 }
 
 section.post-header {
@@ -45,7 +72,6 @@ section.post-header {
 .post-header.is-expanded {
   padding: 0;
   
-  background-color: white;
 }
 .more-icon {
   align-self: center;
@@ -79,9 +105,10 @@ section.media-section {
 .media-container {
   display: flex;
   width: max-content;
-  overflow-y: hidden;
-  overflow-x: auto;
   transition: transform 0.25s ease-in-out;
+  height: 100%;
+  align-items: center;
+  background-color: #262626;
 }
 
 section.post-actions {
@@ -96,14 +123,12 @@ section.post-actions.is-expanded {
   padding: 8px 15px;
   margin: 0;
   box-sizing: border-box;
-  background-color: #fff;
 }
 
 section.like-count {
   grid-area: likes;
   padding: 0px 15px;
   padding-bottom: 3px;
-  background-color: #fff;
 }
 
 section.post-caption-section {
@@ -124,7 +149,6 @@ section.comments-section {
 }
 section.comments-section.is-expanded {
   border-bottom: 1px solid #efefef;
-  background-color: #fff;
 }
 section.comments-section.is-expanded::-webkit-scrollbar {
   visibility: hidden;
@@ -135,7 +159,6 @@ section.post-time-section {
   padding: 0 15px;
   box-sizing: border-box;
   margin: 0;
-  background-color: #fff;
 }
 
 section.comment-input-section {
