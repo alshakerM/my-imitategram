@@ -3,27 +3,19 @@ import cx from 'classnames';
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
-import {
-  absoluteToRelativeDate,
-  digitGrouping,
-  elementHeight,
-} from '../utils';
-import { Avatar } from '../Avatar/Avatar';
-
+import { absoluteToRelativeDate, digitGrouping, elementHeight } from '../utils';
 import './Post.css';
-
-const POST_VERTICAL_MARGIN = 24;
-const TABLET_BREAKPOINT = 1540;
 
 function calculatePostDimensions({ datum }) {
   const POST_ASPECT_RATIO =
     datum?.media_dimensions.width / datum?.media_dimensions.height;
-
-  const height = window.innerHeight - 48;
+  const VERTICAL_MARGIN = 24;
+  const height = window.innerHeight - VERTICAL_MARGIN * 2;
   const width = height * POST_ASPECT_RATIO;
   return { width, height };
 }
@@ -382,24 +374,17 @@ function CommentSection({
 function MediaSection({
   media_items,
   isExpanded,
-  setMediaSectionHeight,
   dimensions,
   setMediaIndex,
   mediaIndex,
 }) {
-  const mediaContainer = React.useRef();
-  console.log({ dimensions });
   return (
     <section
       className={cx('media-section', { 'is-expanded': isExpanded })}
-      ref={(ref) => {
-        setMediaSectionHeight(elementHeight(ref));
-      }}
       style={{ maxWidth: isExpanded ? dimensions.width : 614 }}
     >
       <div
         className="media-container"
-        ref={mediaContainer}
         style={{
           transform: `translateX(${(-mediaIndex * 100) / media_items.length}%)`,
           width: `${100 * media_items.length}%`,
@@ -476,8 +461,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
     return () => {
       window.removeEventListener('resize', handler);
     };
-  }, [dimensions, mediaIndex]);
-  console.log(dimensions);
+  }, []);
   const history = useHistory();
 
   return (
