@@ -35,6 +35,7 @@
 }
 .post-content.is-floating {
   grid-template-columns: minmax(300px, 1fr) minmax(200px, 500px);
+  grid-template-rows: 1fr;
   grid-template-areas:
     'media header'
     'media comments'
@@ -46,13 +47,16 @@
   max-height: calc(100vh - 48px);
   max-width: calc(100vw - 100px);
   min-height: 467px;
-  height: 55vw;
   /* for border radius */
   overflow: hidden;
   border-radius: 8px;
   border: 0;
 }
-
+@media screen and (max-width: 1300px) {
+  .post-content.is-floating {
+    height: 70vw;
+  }
+}
 @media screen and (max-width: 735px) {
   .post-content.is-expanded:not(.is-floating) {
     border-radius: 0;
