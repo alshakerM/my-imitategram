@@ -5,6 +5,9 @@
   margin: 0 auto;
 }
 .leftSide {
+ max-width: 100%;
+ width: 614px;
+ margin: 0 auto
 }
 .content {
   display: flex;
@@ -15,6 +18,11 @@
   margin-top: calc(54px + 33px);
   padding-left: 16px;
   width: 100%;
+}
+@media screen and (max-width: 1000px) {
+  .rightSide {
+    display: none;
+  }
 }
 .fixedContent {
   position: fixed;

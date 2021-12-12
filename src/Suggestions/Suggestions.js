@@ -46,7 +46,7 @@ export function Suggestions({ isExpanded }) {
     );
   } else {
     return (
-      <div>
+      <div className={styles.suggestionContainer}>
         <div className={styles.textViewButton}>
           <p className={styles.text}>Suggestions for you</p>
           <Link to="/explore/people/" className={styles.seeAllButton}>

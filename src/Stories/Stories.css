@@ -1,5 +1,5 @@
 .stories-avatars-container {
-  width: 614px;
+  max-width: 614px;
   margin: 30px auto 0;
   border: 1px solid #dbdbdb;
   margin-top: 85px;
@@ -21,13 +21,17 @@
   margin: 130px auto;
   margin-left: 580px;
 }
+@media screen and (max-width: 674px) {
+  .story-nav-next {
+    right: 40px;
+    margin-left: 0;
+  }
+}
 .all-circles {
   width: max-content;
   justify-self: center;
   display: flex;
   background-color: white;
-  overflow-y: hidden;
-  overflow-x: auto;
   padding: 16px;
   box-sizing: border-box;
   gap: 20px;

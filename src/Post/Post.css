@@ -1,20 +1,39 @@
 .post-content {
   margin: 20px auto;
-  border: 1px solid #efefef;
-  border-radius: 3px;
-  background: white;
+  background: #fff;
   display: grid;
   grid-template-areas:
     'header'
     'media'
+    'progress'
     'actions'
     'likes'
     'caption'
     'comments'
     'time'
     'input';
+  max-width: 100%;
+  border: 1px solid #efefef;
+  border-radius: 3px;
 }
-.post-content.is-expanded {
+.post-content.is-expanded:not(.is-floating) {
+  grid-template-columns: minmax(345px, max-content) minmax(200px, 335px);
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    'media header'
+    'media comments'
+    'media actions'
+    'media likes'
+    'media time'
+    'media input'
+    'progress input';
+  max-height: 600px;
+  width: max-content;
+  max-width: calc(100% - 40px);
+  margin: 90px auto;
+  border: 0;
+}
+.post-content.is-floating {
   grid-template-columns: minmax(300px, 1fr) minmax(200px, 500px);
   grid-template-areas:
     'media header'
@@ -22,31 +41,66 @@
     'media actions'
     'media likes'
     'media time'
-    'media input';
+    'media input'
+    'progress input';
   max-height: calc(100vh - 48px);
   max-width: calc(100vw - 100px);
   min-height: 467px;
   height: 55vw;
+  /* for border radius */
+  overflow: hidden;
+  border-radius: 8px;
+  border: 0;
 }
 
 @media screen and (max-width: 735px) {
-  .post-content.is-expanded {
-    border-radius: 8px;
+  .post-content.is-expanded:not(.is-floating) {
+    border-radius: 0;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     grid-template-areas:
       'header'
       'media'
+      'progress'
       'actions'
       'likes'
       'time';
     max-height: unset;
-    max-width: min-content;
+    max-width: unset;
     padding-bottom: 15px;
-    height: unset;
+    min-height: 55vh;
     min-width: 335px;
+    border: 0;
   }
-  section.comments-section {
+
+  .post-content.is-expanded .progress-dot.is-active {
+    background-color: rgb(0, 149, 246);
+  }
+  .post-content.is-expanded .progress-dot {
+    background-color: rgb(168, 168, 168);
+  }
+  .post-content.is-expanded .progress-dots-section {
+    margin-top: 8px;
+    margin-bottom: -20px;
+  }
+
+  .post-content.is-expanded.is-floating {
+    border-radius: 8px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'header'
+      'media'
+      'progress'
+      'actions'
+      'likes'
+      'time';
+
+    padding-bottom: 15px;
+    min-width: 335px;
+    max-width: min-content;
+    border: 0;
+  }
+  section.comments-section.is-expanded {
     display: none;
   }
   section.comment-input-section {
@@ -109,7 +163,9 @@ section.media-section {
   align-items: center;
   background-color: #262626;
 }
-
+section.progress-dots-section {
+  grid-area: progress;
+}
 section.post-actions {
   grid-area: actions;
   padding: 6px 16px 8px 15px;
@@ -205,7 +261,7 @@ section.comment-input-section {
   display: flex;
 }
 .post-overlay.is-floating {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   top: 0;
   position: fixed;
   display: flex;
@@ -428,17 +484,18 @@ section.comment-input-section {
   opacity: 0.7;
 }
 .progress-dots-section {
+  margin-top: 8px;
+  margin-bottom: -20px;
+}
+.progress-dots {
   display: flex;
   gap: 5px;
   justify-content: center;
-  margin-top: 15px;
 }
 .progress-dots-section.is-expanded {
   margin: 0;
-  bottom: 2%;
+  margin-top: -20px;
   z-index: 2;
-  position: relative;
-  height: 0;
 }
 .progress-dot {
   height: 6px;

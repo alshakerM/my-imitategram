@@ -11,13 +11,23 @@ import { PostVideo } from '../PostVideo/PostVideo';
 import { absoluteToRelativeDate, digitGrouping, elementHeight } from '../utils';
 import './Post.css';
 
-function calculatePostDimensions({ datum }) {
-  const POST_ASPECT_RATIO =
-    datum?.media_dimensions.width / datum?.media_dimensions.height;
-  const VERTICAL_MARGIN = 24;
-  const height = window.innerHeight - VERTICAL_MARGIN * 2;
-  const width = height * POST_ASPECT_RATIO;
-  return { width, height };
+const INDEPENDENT_POST_HEIGHT = 600;
+
+function calculatePostDimensions(post, isInFeed) {
+  const postAspectRatio =
+    post?.media_dimensions.width / post?.media_dimensions.height;
+  if (isInFeed) {
+    const POST_ASPECT_RATIO =
+      post?.media_dimensions.width / post?.media_dimensions.height;
+    const VERTICAL_MARGIN = 24;
+    const height = window.innerHeight - VERTICAL_MARGIN * 2;
+    const width = height * POST_ASPECT_RATIO;
+    return { width, height };
+  } else {
+    const height = INDEPENDENT_POST_HEIGHT;
+    const width = height * postAspectRatio;
+    return { width, height };
+  }
 }
 
 function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
@@ -425,23 +435,6 @@ function MediaSection({
           </button>
         </div>
       )}
-      {media_items.length > 1 && (
-        <div
-          className={cx('progress-dots-section', {
-            'is-expanded': isExpanded,
-          })}
-        >
-          {media_items.map((_, index) => (
-            <div
-              key={index}
-              className={cx('progress-dot', {
-                'is-active': index === mediaIndex,
-                'is-expanded': isExpanded,
-              })}
-            ></div>
-          ))}
-        </div>
-      )}
     </section>
   );
 }
@@ -449,12 +442,12 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
   const [mediaSectionHeight, setMediaSectionHeight] = React.useState(0);
   const [mediaIndex, setMediaIndex] = React.useState(0);
   const [dimensions, setDimensions] = React.useState(
-    calculatePostDimensions({ datum })
+    calculatePostDimensions(datum, isFloating)
   );
 
   React.useEffect(() => {
     function handler() {
-      setDimensions(calculatePostDimensions({ datum }));
+      setDimensions(calculatePostDimensions(datum, isFloating));
     }
     window.addEventListener('resize', handler);
 
@@ -477,7 +470,12 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
         'is-floating': isFloating,
       })}
     >
-      <div className={cx('post-content', { 'is-expanded': isExpanded })}>
+      <div
+        className={cx('post-content', {
+          'is-expanded': isExpanded,
+          'is-floating': isFloating,
+        })}
+      >
         <>
           <PostHeader
             city={'Baghdad'}
@@ -488,13 +486,31 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
           />
 
           <MediaSection
-            setMediaSectionHeight={setMediaSectionHeight}
             media_items={datum?.media_items}
             isExpanded={isExpanded}
             dimensions={dimensions}
             mediaIndex={mediaIndex}
             setMediaIndex={setMediaIndex}
           />
+          <section
+            className={cx('progress-dots-section', {
+              'is-expanded': isExpanded,
+            })}
+          >
+            {datum?.media_items.length > 1 && (
+              <div className="progress-dots">
+                {datum?.media_items.map((_, index) => (
+                  <div
+                    key={index}
+                    className={cx('progress-dot', {
+                      'is-active': index === mediaIndex,
+                      'is-expanded': isExpanded,
+                    })}
+                  ></div>
+                ))}
+              </div>
+            )}
+          </section>
 
           <PostActions
             index={index}
