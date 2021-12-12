@@ -9,7 +9,7 @@ html {
 }
 .stories-scrollable {
   transition: transform 0.2s ease-out;
-  height: 100vh;
+  min-height: 100vh;
   flex-wrap: nowrap;
   display: flex;
   align-items: center;
@@ -139,6 +139,7 @@ html {
   color: white;
   cursor: pointer;
 }
+/* this selector only works for two adjacent story actions  */
 .story-action + .story-action {
   /* only add margin between two adjacent items */
   margin-left: 5px;
@@ -188,9 +189,9 @@ html {
 .story-footer {
   z-index: 2;
   position: relative;
-  margin-top: -41%;
+  margin-top: -182px;
   display: flex;
-  justify-content: center;
+  align-items: center;
   animation: fade-in 0.6s ease-out;
   height: 150px;
   background: linear-gradient(
@@ -201,7 +202,7 @@ html {
 }
 
 .story-reply-input {
-  width: 85%;
+  width: 86%;
   border: 1px solid white;
   border-radius: 22px;
   height: 44px;
@@ -214,6 +215,7 @@ html {
   white-space: nowrap;
   overflow: hidden;
   height: 44px;
+  margin-left: 16px;
 }
 ::-webkit-input-placeholder {
   color: white;
@@ -224,7 +226,7 @@ html {
 .direct-story-icon {
   align-self: flex-end;
   margin-bottom: 20px;
-  padding: 0 5px 0 15px;
+  padding: 0 5px 0 8px;
 }
 .loading-section {
   display: flex;
