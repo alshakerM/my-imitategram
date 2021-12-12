@@ -44,7 +44,7 @@ export function readableNumber(num) {
   return num;
 }
 /**
- * takes any number over 1k with a dot and turns it into a comma  e.g.(without: 1.000, with: 1,000)
+ * groups digit  e.g.(without: 1000, with: 1,000)
  * @param {*} num you pass a number here
  * @returns return the number with a comma
  */

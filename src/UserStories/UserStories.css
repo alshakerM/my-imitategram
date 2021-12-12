@@ -8,7 +8,7 @@ html {
   overflow: hidden;
 }
 .stories-scrollable {
-  transition: transform 0.2s ease-out;
+  transition: transform 0.4s ease-out;
   min-height: 100vh;
   flex-wrap: nowrap;
   display: flex;
@@ -17,10 +17,11 @@ html {
 .stories-container {
   margin: 18px 0;
   border-radius: 8px;
-  transition: all 0.5s ease-out;
+  transition: all 0.2s ease-out;
   flex: 0 0 auto;
 }
 .stories-container.is-expanded {
+  /* these borders are for the nav buttons. when you hover they change opacity */
   border-left: 46px solid transparent;
   border-right: 46px solid transparent;
 }
@@ -37,7 +38,6 @@ html {
   font-size: 2em;
   text-decoration: none;
   margin: 0;
-  z-index: 20;
 }
 
 .exit-icon-link {
@@ -202,7 +202,7 @@ html {
 }
 
 .story-reply-input {
-  width: 86%;
+  flex: 1;
   border: 1px solid white;
   border-radius: 22px;
   height: 44px;
@@ -226,7 +226,7 @@ html {
 .direct-story-icon {
   align-self: flex-end;
   margin-bottom: 20px;
-  padding: 0 5px 0 8px;
+  padding: 0 16px 0 8px;
 }
 .loading-section {
   display: flex;

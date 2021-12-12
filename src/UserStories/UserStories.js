@@ -164,8 +164,8 @@ export function UserStories({ userId }) {
         {Object.keys(storyIndices).length &&
           storiesData.map((user) => {
             const activeUser = userId === user.user_id;
-            const story = activeUser ? activeUserStory : user.stories[0];
             // when the user isn't specified, we go to the first story
+            const story = activeUser ? activeUserStory : user.stories[0];
             return (
               <div
                 className={cx('stories-container', {
