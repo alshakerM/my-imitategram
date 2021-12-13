@@ -99,7 +99,7 @@ export function NavBar({ from_user_id }) {
           </BorderLessTextInput>
         </div>
         <div className="nav-icons">
-          <Icons fromUserId={from_user_id} />
+          <Icons />
         </div>
       </div>
     </nav>
