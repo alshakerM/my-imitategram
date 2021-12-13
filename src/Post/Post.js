@@ -17,11 +17,10 @@ function calculatePostDimensions(post, isInFeed) {
   const postAspectRatio =
     post?.media_dimensions.width / post?.media_dimensions.height;
   if (isInFeed) {
-    const POST_ASPECT_RATIO =
-      post?.media_dimensions.width / post?.media_dimensions.height;
+
     const VERTICAL_MARGIN = 24;
     const height = window.innerHeight - VERTICAL_MARGIN * 2;
-    const width = height * POST_ASPECT_RATIO;
+    const width = height * postAspectRatio;
     return { width, height };
   } else {
     const height = INDEPENDENT_POST_HEIGHT;
@@ -244,7 +243,6 @@ function CommentSection({
   isExpanded,
   setIsExpanded,
   datum,
-  mediaSectionHeight,
 }) {
   const commentsSummary = comments?.slice(0, isExpanded ? undefined : 2);
   const [activeCommentId, setActiveCommentId] = React.useState(undefined);
@@ -439,7 +437,6 @@ function MediaSection({
   );
 }
 export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
-  const [mediaSectionHeight, setMediaSectionHeight] = React.useState(0);
   const [mediaIndex, setMediaIndex] = React.useState(0);
   const [dimensions, setDimensions] = React.useState(
     calculatePostDimensions(datum, isFloating)
@@ -530,7 +527,6 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
             </section>
           )}
           <CommentSection
-            mediaSectionHeight={mediaSectionHeight}
             datum={datum}
             postIndex={index}
             setIsExpanded={setIsExpanded}

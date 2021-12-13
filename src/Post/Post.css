@@ -31,7 +31,7 @@
   width: max-content;
   max-width: calc(100% - 40px);
   margin: 90px auto;
-  border: 0;
+
 }
 .post-content.is-floating {
   grid-template-columns: minmax(300px, 1fr) minmax(200px, 500px);

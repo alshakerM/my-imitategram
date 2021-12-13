@@ -16,9 +16,6 @@ export function absoluteToRelativeDate(date, dateTextSize) {
 export function elementWidth(el) {
   return el?.getBoundingClientRect().width;
 }
-export function elementHeight(el) {
-  return el?.getBoundingClientRect().height;
-}
 
 /**
  * Locks the body from scrolling
