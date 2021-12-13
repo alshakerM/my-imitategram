@@ -25,7 +25,7 @@ html {
   border-left: 46px solid transparent;
   border-right: 46px solid transparent;
 }
-.stories-container.is-expanded:hover *.next-prev-buttons {
+.stories-container.is-expanded:hover .next-prev-buttons {
   opacity: 1;
 }
 .stories-container.is-small {
