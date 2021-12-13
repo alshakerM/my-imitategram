@@ -141,7 +141,6 @@ function PostDate({ posting_time, isExpanded }) {
   );
 }
 
-
 function PostHeader({ user_name, city, datum }) {
   return (
     <section className="post-header">
@@ -427,7 +426,6 @@ function MediaSection({ media_items, isExpanded }) {
 }
 export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
   const history = useHistory();
-
   return (
     <article
       key={datum?.post_id}

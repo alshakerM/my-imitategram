@@ -8,31 +8,36 @@ html {
   overflow: hidden;
 }
 .stories-scrollable {
+  transition: transform 0.4s ease-out;
+  min-height: 100vh;
+  flex-wrap: nowrap;
   display: flex;
-  padding-left: 50vw;
-  transition: transform 0.5s ease-in-out;
-  height: 100vh;
+  align-items: center;
 }
 .stories-container {
-  margin: 70px auto;
-  height: 800px;
-  min-width: 449px;
+  margin: 18px 0;
   border-radius: 8px;
-  margin-left: 50px;
+  transition: all 0.2s ease-out;
+  flex: 0 0 auto;
+}
+.stories-container.is-expanded {
+  /* these borders are for the nav buttons. when you hover they change opacity */
+  border-left: 46px solid transparent;
+  border-right: 46px solid transparent;
+}
+.stories-container.is-expanded:hover .next-prev-buttons {
+  opacity: 1;
 }
 .stories-container.is-small {
   transform: scale(0.4);
 }
 .instagram-logo-link {
   position: absolute;
-  left: 20px;
-  top: 10px;
+  left: 16px;
+  top: 15px;
   font-size: 2em;
-  color: white;
   text-decoration: none;
-  font-family: 'Festive', cursive !important;
   margin: 0;
-  z-index: 2;
 }
 
 .exit-icon-link {
@@ -62,6 +67,7 @@ html {
   position: relative;
   animation: fade-in 0.7s ease-out forwards;
   align-items: flex-start;
+  border-radius: 8px;
 }
 @keyframes fade-in {
   0% {
@@ -76,8 +82,9 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: absolute;
   align-items: center;
-  margin-bottom: -800px;
+  width: 100%;
   background: none;
   animation: none;
   background-color: rgba(31, 31, 31, 0.8);
@@ -97,8 +104,8 @@ html {
 .progress-bar-core {
   height: 2px;
   background: white;
-  transition: width 200ms linear;
 }
+
 .story-username {
   box-sizing: border-box;
   margin: 8px 5px;
@@ -125,8 +132,26 @@ html {
 .story-actions {
   justify-self: flex-end;
 }
-.story-actions button {
+.story-action {
+  padding: 0;
+  background: none;
+  border: none;
   color: white;
+  cursor: pointer;
+}
+/* this selector only works for two adjacent story actions  */
+.story-action + .story-action {
+  /* only add margin between two adjacent items */
+  margin-left: 5px;
+}
+
+.story-body {
+  transition: transform 0.5s ease-out;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.story-body.is-small {
+  border-radius: 20px;
 }
 .next-prev-buttons {
   position: relative;
@@ -138,14 +163,7 @@ html {
   width: 500px;
   opacity: 0.2;
 }
-.story-body {
-  transition: transform 0.5s ease-out;
-  border-radius: 8px;
-  overflow: hidden;
-}
-.story-body.is-small {
-  border-radius: 20px;
-}
+
 .next-button,
 .prev-button {
   border-radius: 50%;
@@ -157,20 +175,23 @@ html {
 .prev-button {
   grid-area: left;
   width: min-content;
-  margin-left: -50px;
+  /* this margin is for the button to be outside the story and it's -46 to match the real IG */
+  margin-left: -46px;
 }
 .next-button {
   grid-area: right;
   width: min-content;
   justify-self: flex-end;
+  /* this margin is for the button to be outside the story and it's -46 to match the real IG */
+  margin-right: -46px;
 }
 
 .story-footer {
   z-index: 2;
   position: relative;
-  margin-top: -184px;
+  margin-top: -182px;
   display: flex;
-  justify-content: center;
+  align-items: center;
   animation: fade-in 0.6s ease-out;
   height: 150px;
   background: linear-gradient(
@@ -181,7 +202,7 @@ html {
 }
 
 .story-reply-input {
-  width: 85%;
+  flex: 1;
   border: 1px solid white;
   border-radius: 22px;
   height: 44px;
@@ -194,6 +215,7 @@ html {
   white-space: nowrap;
   overflow: hidden;
   height: 44px;
+  margin-left: 16px;
 }
 ::-webkit-input-placeholder {
   color: white;
@@ -204,7 +226,7 @@ html {
 .direct-story-icon {
   align-self: flex-end;
   margin-bottom: 20px;
-  padding: 0 5px 0 15px;
+  padding: 0 16px 0 8px;
 }
 .loading-section {
   display: flex;
