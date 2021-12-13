@@ -2747,7 +2747,7 @@
     ],
     "user_id": "dd923653-e68a-4c09-bc5e-56a535499499",
     "media_items": [
-      { "type": "video", "url": "/Media/posts/5/1.jpeg" },
+      { "type": "photo", "url": "/Media/posts/5/1.jpg" },
       { "type": "photo", "url": "/Media/posts/5/2.jpg" },
       { "type": "photo", "url": "/Media/posts/5/3.jpg" },
       { "type": "video", "url": "/Media/posts/5/4.mp4" },
@@ -8294,7 +8294,7 @@
     ],
     "user_id": "87170fcf-2bcd-4839-a4fc-9f09f93404d1",
     "media_items": [
-      { "type": "video", "url": "/Media/posts/5/1.jpeg" },
+      { "type": "photo", "url": "/Media/posts/5/1.jpg" },
       { "type": "photo", "url": "/Media/posts/5/2.jpg" },
       { "type": "photo", "url": "/Media/posts/5/3.jpg" },
       { "type": "video", "url": "/Media/posts/5/4.mp4" },
