@@ -8,7 +8,7 @@ import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
-import { absoluteToRelativeDate, digitGrouping, elementHeight } from '../utils';
+import { absoluteToRelativeDate, digitGrouping } from '../utils';
 import './Post.css';
 
 const INDEPENDENT_POST_HEIGHT = 600;
@@ -17,7 +17,6 @@ function calculatePostDimensions(post, isInFeed) {
   const postAspectRatio =
     post?.media_dimensions.width / post?.media_dimensions.height;
   if (isInFeed) {
-
     const VERTICAL_MARGIN = 24;
     const height = window.innerHeight - VERTICAL_MARGIN * 2;
     const width = height * postAspectRatio;
