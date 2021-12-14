@@ -1,8 +1,8 @@
 import { PlayArrowRounded } from '@mui/icons-material';
 import React, { useRef } from 'react';
-import styles from  './PostVideo.module.css';
+import styles from './PostVideo.module.css';
 
-export function PostVideo({ videoURL, active }) {
+export function PostVideo({ videoURL, active, fraction }) {
   const [videoPause, setVideoPause] = React.useState(true);
   const videoRef = useRef();
   React.useEffect(() => {
@@ -23,7 +23,12 @@ export function PostVideo({ videoURL, active }) {
   }, [active]);
 
   return (
-    <div onClick={() => setVideoPause(!videoPause)}>
+    <div
+      onClick={() => setVideoPause(!videoPause)}
+      width={`${fraction * 100}%`}
+      className={styles.videoContainer}
+    >
+      <video className={styles.postVideo} ref={videoRef} src={videoURL} />
       {videoPause && (
         <div className={styles.playIconContainer}>
           <PlayArrowRounded
@@ -33,8 +38,6 @@ export function PostVideo({ videoURL, active }) {
           />
         </div>
       )}
-
-      <video className={styles.postVideo} ref={videoRef} src={videoURL} />
     </div>
   );
 }

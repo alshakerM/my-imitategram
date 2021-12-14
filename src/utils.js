@@ -44,19 +44,19 @@ export function readableNumber(num) {
   return num;
 }
 /**
- * groups digit  e.g.(without: 1000, with: 1,000)
+ *
  * @param {*} num you pass a number here
  * @returns return the number with a comma
  */
 export function digitGrouping(num) {
   return Intl.NumberFormat('en-us', { useGrouping: true }).format(num);
 }
-/** 
+/**
  * bounds n between min and max
- * @param {number} n 
- * @param {number} min 
- * @param {number} max 
- * @returns 
+ * @param {number} n
+ * @param {number} min
+ * @param {number} max
+ * @returns
  */
 export function numberBetween(n, min, max) {
   return Math.max(min, Math.min(n, max));

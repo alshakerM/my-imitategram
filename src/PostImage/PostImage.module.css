@@ -1,4 +1,4 @@
 .postImg {
-  height: 614px;
   display: block;
+  max-height: 100%;
 }

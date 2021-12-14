@@ -3,14 +3,30 @@ import cx from 'classnames';
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import { Avatar } from '../Avatar/Avatar';
 import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
-import { absoluteToRelativeDate, digitGrouping, elementWidth } from '../utils';
-import { Avatar } from '../Avatar/Avatar';
-
+import { absoluteToRelativeDate, digitGrouping } from '../utils';
 import './Post.css';
+
+const INDEPENDENT_POST_HEIGHT = 600;
+
+function calculatePostDimensions(post, isInFeed) {
+  const postAspectRatio =
+    post?.media_dimensions.width / post?.media_dimensions.height;
+  if (isInFeed) {
+    const VERTICAL_MARGIN = 24;
+    const height = window.innerHeight - VERTICAL_MARGIN * 2;
+    const width = height * postAspectRatio;
+    return { width, height };
+  } else {
+    const height = INDEPENDENT_POST_HEIGHT;
+    const width = height * postAspectRatio;
+    return { width, height };
+  }
+}
 
 function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
   return (
@@ -141,10 +157,15 @@ function PostDate({ posting_time, isExpanded }) {
   );
 }
 
-function PostHeader({ user_name, city, datum }) {
+function PostHeader({ user_name, city, datum, isExpanded }) {
   return (
-    <section className="post-header">
-      <Avatar user={datum} size="small" colorRing={datum?.poster_has_story} />
+    <section className={cx('post-header', { 'is-expanded': isExpanded })}>
+      <Avatar
+        user={datum}
+        size="small"
+        colorRing={datum?.poster_has_story}
+        className={cx('post-header-profile-pic', { 'is-expanded': isExpanded })}
+      />
 
       <div className="user-info">
         <Link to={`/${user_name}`} className="user-name">
@@ -357,74 +378,96 @@ function CommentSection({
   );
 }
 
-function MediaSection({ media_items, isExpanded }) {
-  const mediaContainer = React.useRef();
-  const [mediaSectionWidth, setMediaSectionWidth] = React.useState(0);
+function MediaSection({ media_items, isExpanded, dimensions }) {
   const [mediaIndex, setMediaIndex] = React.useState(0);
-  const scrollLeft = -1 * mediaIndex * mediaSectionWidth;
-
   return (
-    <section
-      className="media-section"
-      ref={(ref) => setMediaSectionWidth(elementWidth(ref))}
-    >
-      <div
-        className="media-container"
-        ref={mediaContainer}
-        style={{ transform: `translateX(${scrollLeft}px)` }}
+    <>
+      <section
+        className={cx('media-section', { 'is-expanded': isExpanded })}
+        style={{ maxWidth: isExpanded ? dimensions.width : 614 }}
       >
-        {media_items?.map((mediaItem, index) => (
-          <div key={index}>
-            {mediaItem.type === 'photo' ? (
-              <PostImage imageURL={mediaItem.url} />
+        <div
+          className="media-container"
+          style={{
+            transform: `translateX(${
+              (-mediaIndex * 100) / media_items.length
+            }%)`,
+            width: `${100 * media_items.length}%`,
+          }}
+        >
+          {media_items?.map((mediaItem, index) =>
+            mediaItem.type === 'photo' ? (
+              <PostImage
+                key={index}
+                imageURL={mediaItem.url}
+                fraction={1 / media_items.length}
+              />
             ) : (
               <PostVideo
+                key={index}
                 videoURL={mediaItem.url}
                 active={mediaIndex === index}
+                fraction={1 / media_items.length}
               />
-            )}
-          </div>
-        ))}
-      </div>
-      {media_items.length > 1 && (
-        <div className="img-buttons-container">
-          <button
-            className={cx('prev-img-button', { hidden: scrollLeft === 0 })}
-            onClick={() => setMediaIndex(mediaIndex - 1)}
-          >
-            <CircularChevron size="24" />
-          </button>
-          <button
-            className={cx('next-img-button', {
-              hidden: mediaIndex === media_items.length - 1,
-            })}
-            onClick={() => setMediaIndex(mediaIndex + 1)}
-          >
-            <CircularChevron size="24" direction="left" />
-          </button>
+            )
+          )}
         </div>
-      )}
-      {media_items.length > 1 && (
-        <div
-          className={cx('progress-dots-section', {
-            'is-expanded': isExpanded,
-          })}
-        >
-          {media_items.map((_, index) => (
-            <div
-              key={index}
-              className={cx('progress-dot', {
-                'is-active': index === mediaIndex,
-                'is-expanded': isExpanded,
+        {media_items.length > 1 && (
+          <div className="img-buttons-container">
+            <button
+              className={cx('prev-img-button', { hidden: mediaIndex === 0 })}
+              onClick={() => setMediaIndex(mediaIndex - 1)}
+            >
+              <CircularChevron size="24" />
+            </button>
+            <button
+              className={cx('next-img-button', {
+                hidden: mediaIndex === media_items.length - 1,
               })}
-            ></div>
-          ))}
-        </div>
-      )}
-    </section>
+              onClick={() => setMediaIndex(mediaIndex + 1)}
+            >
+              <CircularChevron size="24" direction="left" />
+            </button>
+          </div>
+        )}
+      </section>
+      <section
+        className={cx('progress-dots-section', {
+          'is-expanded': isExpanded,
+        })}
+      >
+        {media_items.length > 1 && (
+          <div className="progress-dots">
+            {media_items.map((_, index) => (
+              <div
+                key={index}
+                className={cx('progress-dot', {
+                  'is-active': index === mediaIndex,
+                  'is-expanded': isExpanded,
+                })}
+              ></div>
+            ))}
+          </div>
+        )}
+      </section>
+    </>
   );
 }
 export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
+  const [dimensions, setDimensions] = React.useState(
+    calculatePostDimensions(datum, isFloating)
+  );
+
+  React.useEffect(() => {
+    function handler() {
+      setDimensions(calculatePostDimensions(datum, isFloating));
+    }
+    window.addEventListener('resize', handler);
+
+    return () => {
+      window.removeEventListener('resize', handler);
+    };
+  }, []);
   const history = useHistory();
   return (
     <article
@@ -439,18 +482,25 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
         'is-floating': isFloating,
       })}
     >
-      <div className={cx('post-content', { 'is-expanded': isExpanded })}>
+      <div
+        className={cx('post-content', {
+          'is-expanded': isExpanded,
+          'is-floating': isFloating,
+        })}
+      >
         <>
           <PostHeader
             city={'Baghdad'}
             user_name={datum?.user_name}
             user_thumbnail={datum?.user_thumbnail}
             datum={datum}
+            isExpanded={isExpanded}
           />
 
           <MediaSection
             media_items={datum?.media_items}
             isExpanded={isExpanded}
+            dimensions={dimensions}
           />
 
           <PostActions
