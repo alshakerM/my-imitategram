@@ -1,6 +1,6 @@
 import styles from './PostImage.module.css';
 
-export function PostImage({ imageURL, fraction }) {
+export function PostImage({ imageURL, fraction, aspectRatio }) {
   return (
     <img
       className={styles.postImg}
@@ -8,6 +8,7 @@ export function PostImage({ imageURL, fraction }) {
       alt="post"
       loading="lazy"
       width={`${fraction * 100}%`}
+      style={{ aspectRatio }}
     />
   );
 }

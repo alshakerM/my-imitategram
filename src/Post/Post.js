@@ -378,8 +378,11 @@ function CommentSection({
   );
 }
 
-function MediaSection({ media_items, isExpanded, dimensions }) {
+function MediaSection({ post, isExpanded, dimensions }) {
+  const items = post.media_items;
+  const aspectRatio = `${post.media_dimensions.width} / ${post.media_dimensions.height}`;
   const [mediaIndex, setMediaIndex] = React.useState(0);
+
   return (
     <>
       <section
@@ -389,30 +392,30 @@ function MediaSection({ media_items, isExpanded, dimensions }) {
         <div
           className="media-container"
           style={{
-            transform: `translateX(${
-              (-mediaIndex * 100) / media_items.length
-            }%)`,
-            width: `${100 * media_items.length}%`,
+            transform: `translateX(${(-mediaIndex * 100) / items.length}%)`,
+            width: `${100 * items.length}%`,
           }}
         >
-          {media_items?.map((mediaItem, index) =>
+          {items?.map((mediaItem, index) =>
             mediaItem.type === 'photo' ? (
               <PostImage
                 key={index}
                 imageURL={mediaItem.url}
-                fraction={1 / media_items.length}
+                fraction={1 / items.length}
+                aspectRatio={aspectRatio}
               />
             ) : (
               <PostVideo
                 key={index}
                 videoURL={mediaItem.url}
                 active={mediaIndex === index}
-                fraction={1 / media_items.length}
+                fraction={1 / items.length}
+                aspectRatio={aspectRatio}
               />
             )
           )}
         </div>
-        {media_items.length > 1 && (
+        {items.length > 1 && (
           <div className="img-buttons-container">
             <button
               className={cx('prev-img-button', { hidden: mediaIndex === 0 })}
@@ -422,7 +425,7 @@ function MediaSection({ media_items, isExpanded, dimensions }) {
             </button>
             <button
               className={cx('next-img-button', {
-                hidden: mediaIndex === media_items.length - 1,
+                hidden: mediaIndex === items.length - 1,
               })}
               onClick={() => setMediaIndex(mediaIndex + 1)}
             >
@@ -436,9 +439,9 @@ function MediaSection({ media_items, isExpanded, dimensions }) {
           'is-expanded': isExpanded,
         })}
       >
-        {media_items.length > 1 && (
+        {items.length > 1 && (
           <div className="progress-dots">
-            {media_items.map((_, index) => (
+            {items.map((_, index) => (
               <div
                 key={index}
                 className={cx('progress-dot', {
@@ -498,9 +501,9 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
           />
 
           <MediaSection
-            media_items={datum?.media_items}
             isExpanded={isExpanded}
             dimensions={dimensions}
+            post={datum}
           />
 
           <PostActions
