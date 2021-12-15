@@ -27,13 +27,9 @@ export function PostVideo({ videoURL, active, fraction, aspectRatio }) {
       onClick={() => setVideoPause(!videoPause)}
       width={`${fraction * 100}%`}
       className={styles.videoContainer}
+      style={{ aspectRatio, width: `${fraction * 100}%` }}
     >
-      <video
-        style={{ aspectRatio }}
-        className={styles.postVideo}
-        ref={videoRef}
-        src={videoURL}
-      />
+      <video className={styles.postVideo} ref={videoRef} src={videoURL} />
       {videoPause && (
         <div className={styles.playIconContainer}>
           <PlayArrowRounded
