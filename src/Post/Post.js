@@ -382,6 +382,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
   const items = post.media_items;
   const aspectRatio = `${post.media_dimensions.width} / ${post.media_dimensions.height}`;
   const [mediaIndex, setMediaIndex] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   return (
     <>
@@ -403,6 +404,8 @@ function MediaSection({ post, isExpanded, dimensions }) {
                 imageURL={mediaItem.url}
                 fraction={1 / items.length}
                 aspectRatio={aspectRatio}
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
               />
             ) : (
               <PostVideo
@@ -411,11 +414,13 @@ function MediaSection({ post, isExpanded, dimensions }) {
                 active={mediaIndex === index}
                 fraction={1 / items.length}
                 aspectRatio={aspectRatio}
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
               />
             )
           )}
         </div>
-        {items.length > 1 && (
+        {items.length > 1 && !isLoading && (
           <div className="img-buttons-container">
             <button
               className={cx('prev-img-button', { hidden: mediaIndex === 0 })}

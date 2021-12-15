@@ -2,3 +2,17 @@
   display: block;
   max-height: 100%;
 }
+.postImg {
+  background: linear-gradient(120deg, #efefef 30%, white 40%, #efefef 50%);
+  background-size: 100% 600%;
+  animation: loading 2.5s ease-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100% 100%;
+  }
+  50% {
+    background-position: 100% 97%;
+  }
+}
