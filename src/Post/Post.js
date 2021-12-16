@@ -399,13 +399,32 @@ function MediaSection({ post, isExpanded, dimensions }) {
         >
           {items?.map((mediaItem, index) =>
             mediaItem.type === 'photo' ? (
-              <PostImage
+              index === 0 ? (
+                <PostImage
+                  key={index}
+                  imageURL={mediaItem.url}
+                  fraction={1 / items.length}
+                  aspectRatio={aspectRatio}
+                  setIsLoading={setIsLoading}
+                  isLoading={isLoading}
+                />
+              ) : (
+                <PostImage
+                  key={index}
+                  imageURL={mediaItem.url}
+                  fraction={1 / items.length}
+                  aspectRatio={aspectRatio}
+                />
+              )
+            ) : index === 0 ? (
+              <PostVideo
                 key={index}
-                imageURL={mediaItem.url}
+                videoURL={mediaItem.url}
+                active={mediaIndex === index}
                 fraction={1 / items.length}
                 aspectRatio={aspectRatio}
-                setIsLoading={index === 0 && setIsLoading}
-                isLoading={index === 0 && isLoading}
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
               />
             ) : (
               <PostVideo
@@ -414,8 +433,6 @@ function MediaSection({ post, isExpanded, dimensions }) {
                 active={mediaIndex === index}
                 fraction={1 / items.length}
                 aspectRatio={aspectRatio}
-                setIsLoading={index === 0 && setIsLoading}
-                isLoading={index === 0 && isLoading}
               />
             )
           )}
