@@ -404,8 +404,8 @@ function MediaSection({ post, isExpanded, dimensions }) {
                 imageURL={mediaItem.url}
                 fraction={1 / items.length}
                 aspectRatio={aspectRatio}
-                setIsLoading={setIsLoading}
-                isLoading={isLoading}
+                setIsLoading={index === 0 && setIsLoading}
+                isLoading={index === 0 && isLoading}
               />
             ) : (
               <PostVideo
@@ -414,8 +414,8 @@ function MediaSection({ post, isExpanded, dimensions }) {
                 active={mediaIndex === index}
                 fraction={1 / items.length}
                 aspectRatio={aspectRatio}
-                setIsLoading={setIsLoading}
-                isLoading={isLoading}
+                setIsLoading={index === 0 && setIsLoading}
+                isLoading={index === 0 && isLoading}
               />
             )
           )}
@@ -475,7 +475,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
     return () => {
       window.removeEventListener('resize', handler);
     };
-  }, []);
+  }, [datum, isFloating]);
   const history = useHistory();
   return (
     <article
