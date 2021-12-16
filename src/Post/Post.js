@@ -382,6 +382,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
   const items = post.media_items;
   const aspectRatio = `${post.media_dimensions.width} / ${post.media_dimensions.height}`;
   const [mediaIndex, setMediaIndex] = React.useState(0);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   return (
     <>
@@ -398,11 +399,32 @@ function MediaSection({ post, isExpanded, dimensions }) {
         >
           {items?.map((mediaItem, index) =>
             mediaItem.type === 'photo' ? (
-              <PostImage
+              index === 0 ? (
+                <PostImage
+                  key={index}
+                  imageURL={mediaItem.url}
+                  fraction={1 / items.length}
+                  aspectRatio={aspectRatio}
+                  setIsLoading={setIsLoading}
+                  isLoading={isLoading}
+                />
+              ) : (
+                <PostImage
+                  key={index}
+                  imageURL={mediaItem.url}
+                  fraction={1 / items.length}
+                  aspectRatio={aspectRatio}
+                />
+              )
+            ) : index === 0 ? (
+              <PostVideo
                 key={index}
-                imageURL={mediaItem.url}
+                videoURL={mediaItem.url}
+                active={mediaIndex === index}
                 fraction={1 / items.length}
                 aspectRatio={aspectRatio}
+                setIsLoading={setIsLoading}
+                isLoading={isLoading}
               />
             ) : (
               <PostVideo
@@ -415,7 +437,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
             )
           )}
         </div>
-        {items.length > 1 && (
+        {items.length > 1 && !isLoading && (
           <div className="img-buttons-container">
             <button
               className={cx('prev-img-button', { hidden: mediaIndex === 0 })}
@@ -470,7 +492,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
     return () => {
       window.removeEventListener('resize', handler);
     };
-  }, []);
+  }, [datum, isFloating]);
   const history = useHistory();
   return (
     <article
