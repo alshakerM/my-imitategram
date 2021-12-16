@@ -18,7 +18,7 @@ export function PostImage({
       loading="lazy"
       width={`${fraction * 100}%`}
       style={{ aspectRatio }}
-      onLoad={() => setIsLoading(false)}
+      onLoad={() => setIsLoading?.(false)}
     />
   );
 }

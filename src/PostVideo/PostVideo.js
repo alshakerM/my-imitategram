@@ -44,7 +44,7 @@ export function PostVideo({
         ref={videoRef}
         src={videoURL}
         style={{ aspectRatio }}
-        onLoad={() => setIsLoading(false)}
+        onLoad={() => setIsLoading?.(false)}
       />
       {videoPause && !isLoading && (
         <div className={styles.playIconContainer}>
