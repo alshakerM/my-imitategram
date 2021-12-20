@@ -8,9 +8,12 @@ import { SuggestionPage } from './SuggestionsPage/SuggestionPage';
 import { UserProfile } from './UserProfile/UserProfile';
 import { UserStories } from './UserStories/UserStories';
 import { lockBodyScrolls } from './utils';
+import { useSelect } from '@wordpress/data';
 
 function App() {
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const isExpanded = Boolean(
+    useSelect((select) => select('ig-posts').getExpandedPost())
+  );
   lockBodyScrolls(isExpanded);
 
   return (
@@ -21,7 +24,7 @@ function App() {
           exact
           render={(match) => <UserStories userId={match.match.params.userId} />}
         ></Route>
-        <Route path="/">
+        <Route path="/" >
           <Switch>
             <Route
               path="/p/:postId"
@@ -31,7 +34,6 @@ function App() {
                   <PostPage
                     isFloating={isExpanded}
                     postId={match.match.params.postId}
-                    setIsExpanded={setIsExpanded}
                   />
                 </>
               )}
@@ -47,8 +49,8 @@ function App() {
           <Route path="/explore/people/" exact>
             <SuggestionPage />
           </Route>
-          <Route path="/" exact={!isExpanded}>
-            <HomePage setIsExpanded={setIsExpanded} />
+          <Route path="/" >
+            <HomePage />
           </Route>
           <Route
             path={['/:userName', '/:userName/channel/', '/:userName/tagged/']}

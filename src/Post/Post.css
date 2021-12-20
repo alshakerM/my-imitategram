@@ -31,7 +31,6 @@
   width: max-content;
   max-width: calc(100% - 40px);
   margin: 90px auto;
-
 }
 .post-content.is-floating {
   grid-template-columns: minmax(300px, 1fr) minmax(200px, 500px);
@@ -352,7 +351,11 @@ section.comment-input-section {
 .post-button {
   background: none;
   border: none;
-  color: rgba(0, 149, 246, 0.3);
+  color: rgba(0, 149, 246, 1);
+}
+
+.post-button:disabled {
+  opacity: 0.3;
 }
 
 .post-video-container {

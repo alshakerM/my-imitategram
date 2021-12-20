@@ -1,10 +1,11 @@
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
+import { useDispatch, useSelect } from '@wordpress/data';
 import cx from 'classnames';
 import React from 'react';
+import { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
-import { useIGData } from '../hooks/useIGData';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
@@ -49,7 +50,7 @@ function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
   );
 }
 function PostActions({ index, is_post_liked, isExpanded }) {
-  const { toggleLike } = useIGData();
+  const { togglePostLike } = useDispatch('ig-posts');
   return (
     <section
       className={cx('post-actions', {
@@ -59,7 +60,7 @@ function PostActions({ index, is_post_liked, isExpanded }) {
       <div className="like-share-telegram-icons">
         <LikeButton
           is_post_liked={is_post_liked}
-          onClick={() => toggleLike(index)}
+          onClick={() => togglePostLike(index)}
         />
         <svg
           aria-label="Comment"
@@ -104,7 +105,19 @@ function PostActions({ index, is_post_liked, isExpanded }) {
 }
 
 function PostInput({ index, isExpanded }) {
-  const { addComment } = useIGData();
+  const inputRef = React.useRef();
+  const { submitComment } = useDispatch('ig-posts');
+  const { setCommentFieldText } = useDispatch('ig-posts');
+  const commentFieldText = useSelect((select) =>
+    select('ig-posts').getCommentFieldText()
+  );
+  const commentFieldCommentId = useSelect((select) =>
+    select('ig-posts').getCommentFieldCommentId()
+  );
+  useEffect(() => {
+    inputRef.current?.focus();
+    inputRef.current?.setSelectionRange(100, 100);
+  }, [commentFieldCommentId]);
   return (
     <section
       className={cx('comment-input-section', {
@@ -128,15 +141,18 @@ function PostInput({ index, isExpanded }) {
         onSubmit={(event) => {
           event.preventDefault();
           const comment = event.target.commentBody.value;
-          addComment(index, comment, 'mdoggett0');
+          submitComment(index, comment);
         }}
       >
         <input
           name="commentBody"
+          ref={inputRef}
           className="comment-input"
           placeholder="Add a comment..."
+          onChange={(e) => setCommentFieldText(e.target.value)}
+          value={commentFieldText}
         />
-        <button className="post-button">
+        <button disabled={!commentFieldText} className="post-button">
           <strong>Post</strong>
         </button>
       </form>
@@ -179,7 +195,7 @@ function PostHeader({ user_name, city, datum, isExpanded }) {
   );
 }
 function CommentReplySection({ comment, postIndex }) {
-  const { toggleCommentReplyLike } = useIGData();
+  const { toggleReplyLike } = useDispatch('ig-posts');
   return (
     <div className="reply-section">
       {comment.replies.map((reply) => (
@@ -193,11 +209,7 @@ function CommentReplySection({ comment, postIndex }) {
             <LikeButton
               is_post_liked={reply.is_liked_by_user}
               onClick={() =>
-                toggleCommentReplyLike(
-                  postIndex,
-                  comment.comment_id,
-                  reply.comment_id
-                )
+                toggleReplyLike(postIndex, comment.comment_id, reply.comment_id)
               }
               height="12"
               width="12"
@@ -240,12 +252,14 @@ function CommentSection({
   postIndex,
   comments,
   isExpanded,
-  setIsExpanded,
+  expandPost,
   datum,
 }) {
   const commentsSummary = comments?.slice(0, isExpanded ? undefined : 2);
   const [activeCommentId, setActiveCommentId] = React.useState(undefined);
-  const { toggleCommentLike } = useIGData();
+  const { setCommentFieldCommentId } = useDispatch('ig-posts');
+
+  const { toggleCommentLike } = useDispatch('ig-posts');
   return (
     <section
       className={cx('comments-section', {
@@ -258,7 +272,7 @@ function CommentSection({
             to={`/p/${postIndex}`}
             className="view-comments-button"
             onClick={() => {
-              setIsExpanded(true);
+              expandPost();
             }}
           >
             View all comments
@@ -315,7 +329,12 @@ function CommentSection({
                       {comment.comment_likes > 0 ? ' likes' : ' like'}
                     </strong>
                   </button>
-                  <button className="comment-action">
+                  <button
+                    onClick={() =>
+                      setCommentFieldCommentId(postIndex, comment.comment_id)
+                    }
+                    className="comment-action"
+                  >
                     <strong>Reply</strong>
                   </button>
 
@@ -478,7 +497,15 @@ function MediaSection({ post, isExpanded, dimensions }) {
     </>
   );
 }
-export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
+export function Post({ isIndependentPost, datum, index, isFloating }) {
+  const isExpanded =
+    useSelect((select) => select('ig-posts').getExpandedPost()) ===
+      datum.post_id || isIndependentPost;
+
+  const setExpandedPost = useDispatch('ig-posts').setExpandedPost;
+  function expandPost() {
+    setExpandedPost(datum.post_id);
+  }
   const [dimensions, setDimensions] = React.useState(
     calculatePostDimensions(datum, isFloating)
   );
@@ -499,7 +526,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
       key={datum?.post_id}
       onClick={(event) => {
         if (event.target === event.currentTarget && isFloating) {
-          setIsExpanded(false);
+          setExpandedPost(undefined);
           history.push('/');
         }
       }}
@@ -548,7 +575,7 @@ export function Post({ datum, isExpanded, setIsExpanded, index, isFloating }) {
           <CommentSection
             datum={datum}
             postIndex={index}
-            setIsExpanded={setIsExpanded}
+            expandPost={expandPost}
             comments={datum?.comments}
             isExpanded={isExpanded}
             key={datum.post_id}
