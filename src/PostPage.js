@@ -1,9 +1,9 @@
 import { Post } from './Post/Post';
 import React from 'react';
-import { useIGData } from './hooks/useIGData';
+import { useSelect } from '@wordpress/data';
 
-export function PostPage({ setIsExpanded, postId, isFloating }) {
-  const { data } = useIGData();
+export function PostPage({ postId, isFloating }) {
+  const data = useSelect((select) => select('ig-posts').getPosts());
   if (!data.length) {
     return null;
   }
@@ -14,9 +14,8 @@ export function PostPage({ setIsExpanded, postId, isFloating }) {
         index={postId}
         datum={post}
         comments={post?.comments}
-        isExpanded={true}
-        setIsExpanded={setIsExpanded}
         isFloating={isFloating}
+        isIndependentPost
       />
     </div>
   );
