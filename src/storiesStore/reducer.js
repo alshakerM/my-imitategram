@@ -8,7 +8,7 @@ export default function reducer(state = defaultState, action) {
       return { ...state, stories: action.stories };
     }
     case 'SET_LOADING': {
-      const newState = { ...state, stories: [...state.stories] };
+      const newState = { ...state };
       newState.isLoading = action.isLoading;
       return newState;
     }
