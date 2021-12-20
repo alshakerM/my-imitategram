@@ -18,6 +18,7 @@ import { absoluteToRelativeDate, numberBetween } from '../utils';
 import CircularProgress from '@mui/material/CircularProgress';
 import './UserStories.css';
 import { StoryVideo } from '../StroyVideo/StoryVideo';
+import { useDispatch, useSelect } from '@wordpress/data';
 
 const STORY_ASPECT_RATIO = 0.562;
 const STORY_VERTICAL_MARGIN = 18;
@@ -66,15 +67,7 @@ export function UserStories({ userId }) {
   const [dimensions, setDimensions] = React.useState(
     calculateStoryDimensions()
   );
-
-  const [storiesData, setStoriesData] = React.useState([]);
-  React.useEffect(() => {
-    fetch('/Data/IG-Stories.json', {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((results) => setStoriesData(results));
-  }, []);
+  const storiesData = useSelect((select) => select('ig-stories').getStories());
   React.useEffect(() => {
     function handler() {
       setDimensions(calculateStoryDimensions());
