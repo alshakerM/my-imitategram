@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import styles from './Suggestions.module.css';
-import {  useSelect } from '@wordpress/data';
+import { useSelect } from '@wordpress/data';
 
 export function Suggestions({ isExpanded }) {
   const suggestionsData = useSelect((select) =>
