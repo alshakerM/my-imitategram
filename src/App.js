@@ -24,7 +24,7 @@ function App() {
           exact
           render={(match) => <UserStories userId={match.match.params.userId} />}
         ></Route>
-        <Route path="/" >
+        <Route path="/">
           <Switch>
             <Route
               path="/p/:postId"
@@ -45,11 +45,12 @@ function App() {
             render={(match) => (
               <Messages fromUserId={match.match.params.fromUserId} />
             )}
+            exact
           ></Route>
           <Route path="/explore/people/" exact>
             <SuggestionPage />
           </Route>
-          <Route path="/" >
+          <Route path="/" exact>
             <HomePage />
           </Route>
           <Route

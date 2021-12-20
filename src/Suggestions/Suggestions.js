@@ -3,16 +3,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import styles from './Suggestions.module.css';
+import { useSelect } from '@wordpress/data';
 
 export function Suggestions({ isExpanded }) {
-  const [suggestionsData, setSuggestionsData] = React.useState([]);
-  React.useEffect(() => {
-    fetch('/Data/suggestions.json', {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((results) => setSuggestionsData(results));
-  }, []);
+  const suggestionsData = useSelect((select) =>
+    select('ig-suggestions').getSuggestions()
+  );
+
   const slicedSuggestionData = suggestionsData.slice(0, 5);
   if (isExpanded) {
     return (
