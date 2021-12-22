@@ -269,7 +269,7 @@ function CommentSection({
       {!isExpanded && (
         <div>
           <Link
-            to={`/p/${postIndex}`}
+            to={`/p/${datum.post_id}`}
             className="view-comments-button"
             onClick={() => {
               expandPost();

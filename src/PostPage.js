@@ -7,7 +7,7 @@ export function PostPage({ postId, isFloating }) {
   if (!data.length) {
     return null;
   }
-  const post = data[postId];
+  const post = data?.find((el) => postId === el.post_id);
   return (
     <div className="content-section">
       <Post
