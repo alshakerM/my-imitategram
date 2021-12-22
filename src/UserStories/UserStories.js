@@ -8,17 +8,17 @@ import {
   VolumeDown,
   VolumeOff,
 } from '@mui/icons-material';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useSelect } from '@wordpress/data';
 import cx from 'classnames';
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Avatar } from '../Avatar/Avatar';
 import { StoryImage } from '../StoryImage/StoryImage';
-import { absoluteToRelativeDate, numberBetween } from '../utils';
-import CircularProgress from '@mui/material/CircularProgress';
-import './UserStories.css';
 import { StoryVideo } from '../StroyVideo/StoryVideo';
-import { useDispatch, useSelect } from '@wordpress/data';
+import { absoluteToRelativeDate, numberBetween } from '../utils';
+import './UserStories.css';
 
 const STORY_ASPECT_RATIO = 0.562;
 const STORY_VERTICAL_MARGIN = 18;

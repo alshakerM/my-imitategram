@@ -1,7 +1,6 @@
 import cx from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { NavBar } from '../NavBar/NavBar';
 import { absoluteToRelativeDate } from '../utils';
 import styles from './Messages.module.css';
 
@@ -95,7 +94,6 @@ export function Messages({ fromUserId }) {
   );
   return (
     <>
-      
       <div className={styles.messagesPageContainer}>
         <div className={styles.leftSection}>
           <UserSection />
@@ -126,10 +124,10 @@ export function Messages({ fromUserId }) {
               >
                 <path d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z"></path>
                 <circle
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                   cx="24"
                   cy="14.8"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   r="2.6"
                 ></circle>
                 <path d="M27.1 35.7h-6.2c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h6.2c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5z"></path>

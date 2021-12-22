@@ -48,9 +48,9 @@ export function Avatar({
               cy={150}
               r={140}
               stroke={isUnread ? 'url(#ig-grad)' : '#8e8e8e'}
-              stroke-width={dimensions.strokeWidth}
+              strokeWidth={dimensions.strokeWidth}
               fill="none"
-              stroke-linecap="round"
+              strokeLinecap="round"
             />
           </g>
         )}
