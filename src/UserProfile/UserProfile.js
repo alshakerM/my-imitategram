@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import styles from './UserProfile.module.css';
 import { Avatar } from '../Avatar/Avatar';
 import { readableNumber } from '../utils';
-
+import { useDispatch, useSelect } from '@wordpress/data';
 function UserProfilePost({ post }) {
   return (
     <Link to={`/p/${post.post_id}`} className={styles.postContainer}>
@@ -50,17 +50,11 @@ function UserProfilePost({ post }) {
   );
 }
 export function UserProfile({ userName }) {
-  const [usersData, setUsersData] = React.useState([]);
   const location = useLocation();
+  const usersData = useSelect((select) =>
+    select('ig-profile').getProfileData()
+  );
   const user = usersData?.find((element) => element.user_name === userName);
-  React.useEffect(() => {
-    fetch('/Data/users.json', {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((results) => setUsersData(results));
-  }, []);
-
   if (!user) {
     return null;
   }

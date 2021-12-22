@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import './store';
 import './storiesStore';
 import './suggestionsStore';
+import './profileStore';
 
 ReactDOM.render(
   <React.StrictMode>
