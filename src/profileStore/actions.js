@@ -8,10 +8,3 @@ export function receiveProfileData(profileData) {
     profileData,
   };
 }
-
-export function setLoadingProfile(isLoading) {
-  return {
-    type: 'SET_LOADING',
-    isLoading,
-  };
-}

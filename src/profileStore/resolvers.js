@@ -1,12 +1,6 @@
-import {
-  setLoadingProfile,
-  requestProfileData,
-  receiveProfileData,
-} from './actions';
+import { requestProfileData, receiveProfileData } from './actions';
 
 export function* getProfileData() {
-  yield setLoadingProfile(true);
-  const suggestions = yield requestProfileData();
-  yield receiveProfileData(suggestions);
-  yield setLoadingProfile(false);
+  const userProfile = yield requestProfileData();
+  yield receiveProfileData(userProfile);
 }
