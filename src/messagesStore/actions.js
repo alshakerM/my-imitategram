@@ -14,10 +14,9 @@ export function setMessageFieldText(text) {
     text,
   };
 }
-export function submitMessage(userIndex, text) {
+export function submitMessage(userIndex) {
   return {
     type: 'SUBMIT_MESSAGE',
     userIndex,
-    text,
   };
 }

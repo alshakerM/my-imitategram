@@ -198,8 +198,7 @@ export function Messages({ fromUserId }) {
                     className={styles.inputForm}
                     onSubmit={(event) => {
                       event.preventDefault();
-                      const message = event.target.messageBody.value;
-                      submitMessage(userIndex, message);
+                      submitMessage(userIndex);
                     }}
                   >
                     <input
