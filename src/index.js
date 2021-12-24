@@ -6,6 +6,7 @@ import './store';
 import './storiesStore';
 import './messagesStore';
 import './suggestionsStore';
+import './profileStore';
 
 ReactDOM.render(
   <React.StrictMode>
