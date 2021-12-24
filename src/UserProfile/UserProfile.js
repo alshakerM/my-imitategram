@@ -223,7 +223,12 @@ export function UserProfile({ userName }) {
 
         <div className={styles.postsSection}>
           {postsToRender.map((post) => (
-            <UserProfilePost post={post} location={location} user={user} key={post.user_id} />
+            <UserProfilePost
+              post={post}
+              location={location}
+              user={user}
+              key={post.post_id}
+            />
           ))}
         </div>
         <div hidden={postsToRender.length > 0}>
