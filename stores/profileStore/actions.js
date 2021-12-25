@@ -1,5 +1,5 @@
-export function requestProfileData() {
-  return { type: 'REQUEST_PROFILE' };
+export function requestProfileData(userName) {
+  return { type: 'REQUEST_PROFILE', userName };
 }
 
 export function receiveProfileData(profileData) {

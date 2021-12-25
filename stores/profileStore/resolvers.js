@@ -1,6 +1,6 @@
 import { requestProfileData, receiveProfileData } from './actions';
 
-export function* getProfileData() {
-  const userProfile = yield requestProfileData();
+export function* getProfileData(userName) {
+  const userProfile = yield requestProfileData(userName);
   yield receiveProfileData(userProfile);
 }

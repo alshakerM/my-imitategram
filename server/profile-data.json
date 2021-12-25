@@ -1,0 +1,1622 @@
+[
+  {
+    "user_name": "mdoggett0",
+    "user_thumbnail": "/avatars/1.jpg",
+    "user_id": "3cefc132-0741-4432-b4ca-970dda6333b3",
+    "user_has_story": true,
+    "full_name": "Odille Whanstall",
+    "followers": 10000,
+    "following": 48304,
+    "bio": "Aenean lectus. Pellentesque eget nunc.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 31,
+        "comment_count": 23,
+        "post_id": "e5a6d017-54ee-496b-907c-9199c945a50c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 31,
+        "comment_count": 23,
+        "post_id": "e5a6d017-54ee-496b-907c-9199c945a50c"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "smcgeady1",
+    "user_thumbnail": "/avatars/2.jpg",
+    "user_id": "e90314ba-ae40-4e42-9938-9655347739cc",
+    "user_has_story": false,
+    "full_name": "Carmencita Daal",
+    "followers": 966799,
+    "following": 1478,
+    "bio": "Sed ante.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 57,
+        "comment_count": 29,
+        "post_id": "95a63aec-051c-4f02-a5eb-45ea261d5b1c"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 57,
+        "comment_count": 29,
+        "post_id": "95a63aec-051c-4f02-a5eb-45ea261d5b1c"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "wmcnaughton2",
+    "user_thumbnail": "/avatars/3.jpg",
+    "user_id": "02b54c64-98e8-4474-8794-e11db915d6e8",
+    "user_has_story": false,
+    "full_name": "Wade Crady",
+    "followers": 2250887,
+    "following": 29734,
+    "bio": "Sed accumsan felis. Ut at dolor quis odio consequat varius.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 29,
+        "comment_count": 8,
+        "post_id": "d435e568-3c74-47d4-98ee-2aeab1bb4cce"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 29,
+        "comment_count": 8,
+        "post_id": "d435e568-3c74-47d4-98ee-2aeab1bb4cce"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "melwin3",
+    "user_thumbnail": "/avatars/4.jpg",
+    "user_id": "00a5fcd4-351d-438f-98f6-dbecb63d8bd7",
+    "user_has_story": false,
+    "full_name": "Wyndham Leupoldt",
+    "followers": 1405221,
+    "following": 10076,
+    "bio": "Mauris lacinia sapien quis libero.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1010",
+        "likes_count": 84,
+        "comment_count": 17,
+        "post_id": "50771b0a-5b1d-43a8-9bed-4ccb1b29929c"
+      },
+      {
+        "post_image": "https://picsum.photos/1010",
+        "likes_count": 84,
+        "comment_count": 17,
+        "post_id": "50771b0a-5b1d-43a8-9bed-4ccb1b29929c"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "othunderman4",
+    "user_thumbnail": "/avatars/5.jpg",
+    "user_id": "dd923653-e68a-4c09-bc5e-56a535499499",
+    "user_has_story": false,
+    "full_name": "Ali Ager",
+    "followers": 4849202,
+    "following": 27008,
+    "bio": "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 13,
+        "comment_count": 3,
+        "post_id": "974b0b76-fb55-4fc6-b9ad-e1720938a8e8"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 13,
+        "comment_count": 3,
+        "post_id": "974b0b76-fb55-4fc6-b9ad-e1720938a8e8"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "brosentholer5",
+    "user_thumbnail": "/avatars/6.jpg",
+    "user_id": "c793e9f0-1ca4-4e83-9ac1-d904894d6e3e",
+    "user_has_story": false,
+    "full_name": "Cally Keddie",
+    "followers": 1973883,
+    "following": 30777,
+    "bio": "Quisque ut erat.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 64,
+        "comment_count": 17,
+        "post_id": "fd29b85b-ea34-4851-88e6-0e65bb34f7ac"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 64,
+        "comment_count": 17,
+        "post_id": "fd29b85b-ea34-4851-88e6-0e65bb34f7ac"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "mshannon6",
+    "user_thumbnail": "/avatars/7.jpg",
+    "user_id": "cbb6ff78-af3c-45ed-b78b-c4e971ece7d2",
+    "user_has_story": false,
+    "full_name": "Albertina Ulyatt",
+    "followers": 8041,
+    "following": 10656,
+    "bio": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 33,
+        "comment_count": 27,
+        "post_id": "aadfdef5-f55c-4fc8-b471-797c2b05ab00"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 33,
+        "comment_count": 27,
+        "post_id": "aadfdef5-f55c-4fc8-b471-797c2b05ab00"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "bduckham7",
+    "user_thumbnail": "/avatars/8.jpg",
+    "user_id": "9bfae802-78f6-4056-87d9-c37be1b8d45f",
+    "user_has_story": false,
+    "full_name": "Cherice Andreix",
+    "followers": 2186586,
+    "following": 7955,
+    "bio": "In hac habitasse platea dictumst.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 90,
+        "comment_count": 24,
+        "post_id": "368572b6-ed2a-4dad-97b8-dd06dd95457f"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 90,
+        "comment_count": 24,
+        "post_id": "368572b6-ed2a-4dad-97b8-dd06dd95457f"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "cpryde8",
+    "user_thumbnail": "/avatars/9.jpg",
+    "user_id": "e1f15d3f-8eb9-4dbc-9178-7abd0d697b33",
+    "user_has_story": true,
+    "full_name": "Branden Sawforde",
+    "followers": 2326423,
+    "following": 1450,
+    "bio": "Vestibulum rutrum rutrum neque.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 52,
+        "comment_count": 21,
+        "post_id": "783d88b8-66de-448e-abc7-63cf65499763"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 52,
+        "comment_count": 21,
+        "post_id": "783d88b8-66de-448e-abc7-63cf65499763"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "adennison9",
+    "user_thumbnail": "/avatars/10.jpg",
+    "user_id": "b8a8d429-e9db-47b6-987b-2e2e3299155b",
+    "user_has_story": false,
+    "full_name": "Darci Flarity",
+    "followers": 3012258,
+    "following": 21999,
+    "bio": "Duis aliquam convallis nunc.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1010",
+        "likes_count": 71,
+        "comment_count": 11,
+        "post_id": "9cdf6dac-a978-41df-ad94-378c9e0302ee"
+      },
+      {
+        "post_image": "https://picsum.photos/1010",
+        "likes_count": 71,
+        "comment_count": 11,
+        "post_id": "9cdf6dac-a978-41df-ad94-378c9e0302ee"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "mdreusa",
+    "user_thumbnail": "/avatars/11.jpg",
+    "user_id": "4c50779c-f920-4108-bbfe-7f0c318023a0",
+    "user_has_story": true,
+    "full_name": "Gran Norvel",
+    "followers": 617439,
+    "following": 25574,
+    "bio": "Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "qlumoxb",
+    "user_thumbnail": "/avatars/12.jpg",
+    "user_id": "44fab68c-8ca7-4116-8995-6dce40591d45",
+    "user_has_story": true,
+    "full_name": "Woodman Dyson",
+    "followers": 2113218,
+    "following": 36941,
+    "bio": "Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "kcoultarc",
+    "user_thumbnail": "/avatars/13.jpg",
+    "user_id": "39aff2da-2937-4de4-83b7-92606a3da122",
+    "user_has_story": false,
+    "full_name": "Tabbie Fanton",
+    "followers": 233555,
+    "following": 3492,
+    "bio": "Aenean lectus.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "ieglesed",
+    "user_thumbnail": "/avatars/14.jpg",
+    "user_id": "87170fcf-2bcd-4839-a4fc-9f09f93404d1",
+    "user_has_story": false,
+    "full_name": "Alwyn Heephy",
+    "followers": 4558193,
+    "following": 3476,
+    "bio": "In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "cdenyagine",
+    "user_thumbnail": "/avatars/15.jpg",
+    "user_id": "2f6677ce-1cfb-4a1c-9211-4afcdb48afa8",
+    "user_has_story": false,
+    "full_name": "Gal Battershall",
+    "followers": 884246,
+    "following": 19038,
+    "bio": "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "kantleyf",
+    "user_thumbnail": "/avatars/16.jpg",
+    "user_id": "6dbff543-bdfb-4cd1-ad3b-63c8841166fd",
+    "user_has_story": false,
+    "full_name": "Agnes Hadfield",
+    "followers": 4427901,
+    "following": 34139,
+    "bio": "Etiam pretium iaculis justo.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "lkingswoodg",
+    "user_thumbnail": "/avatars/17.jpg",
+    "user_id": "a9c91c65-ac9e-4642-8bbf-bd2d7051bec4",
+    "user_has_story": false,
+    "full_name": "Earl de Verson",
+    "followers": 4399201,
+    "following": 10093,
+    "bio": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "dhardstaffh",
+    "user_thumbnail": "/avatars/18.jpg",
+    "user_id": "b2aa3327-f0e8-4baa-a7db-633496a40350",
+    "user_has_story": true,
+    "full_name": "Melania Cowp",
+    "followers": 754508,
+    "following": 23681,
+    "bio": "Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "ipepini",
+    "user_thumbnail": "/avatars/19.jpg",
+    "user_id": "52e2b152-8f17-4346-9e8f-d45173080078",
+    "user_has_story": false,
+    "full_name": "Esme Nossent",
+    "followers": 1139256,
+    "following": 32655,
+    "bio": "Nulla justo. Aliquam quis turpis eget elit sodales scelerisque.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ]
+  },
+  {
+    "user_name": "lkaserj",
+    "user_thumbnail": "/avatars/20.jpg",
+    "user_id": "052a7187-03db-4af1-9f3f-ee17d9349ec3",
+    "user_has_story": true,
+    "full_name": "Shay Wildes",
+    "followers": 166325,
+    "following": 11323,
+    "bio": "In congue.",
+    "postCount": 2,
+    "posts": [
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      },
+      {
+        "post_image": "https://picsum.photos/1020",
+        "likes_count": 78,
+        "comment_count": 23,
+        "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4"
+      }
+    ],
+    "taggedPosts": [
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 82,
+        "comment_count": 27,
+        "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61"
+      },
+      {
+        "post_image": "https://picsum.photos/1040",
+        "likes_count": 87,
+        "comment_count": 16,
+        "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 70,
+        "comment_count": 4,
+        "post_id": "46467ec5-726f-450c-8a4a-88f631458994"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 7,
+        "comment_count": 13,
+        "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 16,
+        "comment_count": 14,
+        "post_id": "d50837dc-05c7-40c1-be57-e348d633911f"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 89,
+        "comment_count": 28,
+        "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947"
+      },
+      {
+        "post_image": "https://picsum.photos/1000",
+        "likes_count": 99,
+        "comment_count": 27,
+        "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94"
+      },
+      {
+        "post_image": "https://picsum.photos/1050",
+        "likes_count": 18,
+        "comment_count": 12,
+        "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec"
+      },
+      {
+        "post_image": "https://picsum.photos/1030",
+        "likes_count": 90,
+        "comment_count": 7,
+        "post_id": "0c59699a-6c75-48e8-9923-7587625d015d"
+      }
+    ]
+  }
+]

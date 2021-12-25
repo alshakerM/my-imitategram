@@ -28,6 +28,7 @@ function UserProfilePost({ post }) {
               role="img"
               viewBox="0 0 48 48"
               width="19"
+              fill='white'
             >
               <path
                 className={styles.Icon}
@@ -56,9 +57,8 @@ function UserProfilePost({ post }) {
 }
 export function UserProfile({ userName }) {
   const usersData = useSelect((select) =>
-    select('ig-profile').getProfileData()
+    select('ig-profile').getProfileData(userName)
   );
-
   const location = useRouter();
   const user = usersData?.find((element) => element.user_name === userName);
 
@@ -68,7 +68,6 @@ export function UserProfile({ userName }) {
 
   const postsToRender =
     (location.asPath.includes('tagged') ? user.taggedPosts : user.posts) || [];
-    console.log(`/${user?.user_name}/channel/`)
 
   return (
     <>
@@ -152,8 +151,7 @@ export function UserProfile({ userName }) {
           <Link href={`/${user?.user_name}`}>
             <a
               className={cx(styles.link, {
-                [styles.isSelected]:
-                  location.asPath === `/${user?.user_name}`,
+                [styles.isSelected]: location.asPath === `/${user?.user_name}`,
               })}
             >
               <svg
