@@ -1,9 +1,19 @@
 .icon {
-  padding: 0 5px;
+  padding: 0 10px;
   stroke: black;
+}
+.homeIcon {
+  padding: 0 10px;
+  stroke: white;
 }
 .messagesIcon {
   padding: 0;
   background: none;
   border: none;
+}
+.profilePic {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  margin-left: 10px;
 }

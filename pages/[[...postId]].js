@@ -5,6 +5,7 @@ import { useSelect } from '@wordpress/data';
 import React from 'react';
 import { UserProfile } from '../components/pages/UserProfile/UserProfile';
 import { useRouter } from 'next/router';
+import { lockBodyScrolls } from '../utils';
 
 export default function CatchAll({ query }) {
   const expandedPostId = useSelect((select) =>
@@ -60,7 +61,7 @@ export default function CatchAll({ query }) {
   return (
     <>
       <NavBar />
-      <HomePage key="omar" />
+      <HomePage />
     </>
   );
 }

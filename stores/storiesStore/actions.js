@@ -1,5 +1,5 @@
-export function requestStories() {
-  return { type: 'REQUEST_STORIES' };
+export function requestStories(userId) {
+  return { type: 'REQUEST_STORIES', userId };
 }
 
 export function receiveStories(stories) {
