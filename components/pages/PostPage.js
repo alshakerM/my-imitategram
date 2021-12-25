@@ -11,7 +11,6 @@ export function PostPage({ postId, isFloating }) {
   return (
     <div className="content-section">
       <Post
-        index={postId}
         datum={post}
         comments={post?.comments}
         isFloating={isFloating}

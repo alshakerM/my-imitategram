@@ -1,14 +1,14 @@
-export function togglePostLike(postIndex) {
+export function togglePostLike(postId) {
   return {
     type: 'TOGGLE_POST_LIKE',
-    postIndex,
+    postId,
   };
 }
 
-export function toggleCommentLike(postIndex, commentId) {
+export function toggleCommentLike(postId, commentId) {
   return {
     type: 'TOGGLE_COMMENT_LIKE',
-    postIndex,
+    postId,
     commentId,
   };
 }
@@ -20,18 +20,18 @@ export function setCommentFieldText(text) {
   };
 }
 
-export function setCommentFieldCommentId(postIndex, commentId) {
+export function setCommentFieldCommentId(postId, commentId) {
   return {
     type: 'SET_COMMENT_FIELD_COMMENT_ID',
-    postIndex,
+    postId,
     commentId,
   };
 }
 
-export function toggleReplyLike(postIndex, commentId, replyId) {
+export function toggleReplyLike(postId, commentId, replyId) {
   return {
     type: 'TOGGLE_REPLY_LIKE',
-    postIndex,
+    postId,
     commentId,
     replyId,
   };
@@ -61,10 +61,10 @@ export function receivePosts(posts) {
   };
 }
 
-export function submitComment(postIndex, text) {
+export function submitComment(postId, text) {
   return {
     type: 'SUBMIT_POST_COMMENT',
-    postIndex,
+    postId,
     text,
   };
 }

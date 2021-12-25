@@ -52,7 +52,7 @@ export function Stories() {
             setScrollLeft((s) => Math.min(0, s + containerWidth / 2));
           }}
           className={classnames(styles.storyNavPrev, {
-            hidden: scrollLeft === 0,
+            [styles.hidden]: scrollLeft === 0,
           })}
         >
           <CircularChevron maskKey="story-previous" size="24" />
@@ -63,7 +63,7 @@ export function Stories() {
             setScrollLeft((s) => Math.max(scrollLimit, s - containerWidth / 2));
           }}
           className={classnames(styles.storyNavNext, {
-            hidden: scrollLeft === scrollLimit,
+            [styles.hidden]: scrollLeft === scrollLimit,
           })}
         >
           <CircularChevron maskKey="story-next" size="24" direction="left" />

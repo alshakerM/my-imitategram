@@ -22,11 +22,10 @@ const borderStyles = createStyles({
   },
   inputSizeSmall: {
     height: '20px!important',
-    width: '190px!important',
     fontSize: '14px!important',
     padding: '0!important',
   },
-  formControl: { height: 28, padding: '0 12px!important' },
+  formControl: { height: 36, padding: '0 12px!important' },
 });
 
 const BorderLessTextInput = withStyles(borderStyles)((props) => {

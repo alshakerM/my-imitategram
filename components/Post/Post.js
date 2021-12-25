@@ -48,7 +48,7 @@ function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
     </button>
   );
 }
-function PostActions({ index, is_post_liked, isExpanded }) {
+function PostActions({ postId, is_post_liked, isExpanded }) {
   const { togglePostLike } = useDispatch('ig-posts');
   return (
     <section
@@ -59,7 +59,7 @@ function PostActions({ index, is_post_liked, isExpanded }) {
       <div className={styles.likeShareTelegramIcons}>
         <LikeButton
           is_post_liked={is_post_liked}
-          onClick={() => togglePostLike(index)}
+          onClick={() => togglePostLike(postId)}
         />
         <svg
           aria-label="Comment"
@@ -182,16 +182,17 @@ function PostHeader({ user_name, city, datum, isExpanded }) {
       <Avatar
         user={datum}
         size="small"
-        colorRing={datum?.poster_has_story}
+        colorRing={datum.poster_has_story}
         className={cx(styles.postHeaderProfilePic, {
           [styles.isExpanded]: isExpanded,
         })}
       />
 
       <div className={styles.userInfo}>
-        <Link href={`/${user_name}`} className={styles.userName}>
-          {user_name}
+        <Link href={`/${user_name}`}>
+          <a className={styles.userName}>{user_name}</a>
         </Link>
+
         <p className={styles.userLocation}>{city}</p>
       </div>
 
@@ -199,7 +200,7 @@ function PostHeader({ user_name, city, datum, isExpanded }) {
     </section>
   );
 }
-function CommentReplySection({ comment, postIndex }) {
+function CommentReplySection({ comment, postId }) {
   const { toggleReplyLike } = useDispatch('ig-posts');
   return (
     <div className={styles.replySection}>
@@ -214,7 +215,7 @@ function CommentReplySection({ comment, postIndex }) {
             <LikeButton
               is_post_liked={reply.is_liked_by_user}
               onClick={() =>
-                toggleReplyLike(postIndex, comment.comment_id, reply.comment_id)
+                toggleReplyLike(postId, comment.comment_id, reply.comment_id)
               }
               height="12"
               width="12"
@@ -254,7 +255,6 @@ function CommentReplySection({ comment, postIndex }) {
   );
 }
 function CommentSection({
-  postIndex,
   comments,
   isExpanded,
   expandPost,
@@ -291,8 +291,8 @@ function CommentSection({
         >
           <Avatar user={datum} size="32" />
           <p className={styles.postCaptionText}>
-            <span className={styles.commentUsername}>{datum?.user_name}</span>{' '}
-            {datum?.post_caption}
+            <span className={styles.commentUsername}>{datum.user_name}</span>{' '}
+            {datum.post_caption}
           </p>
         </section>
       )}
@@ -316,7 +316,7 @@ function CommentSection({
                 <LikeButton
                   is_post_liked={comment.is_liked_by_user}
                   onClick={() =>
-                    toggleCommentLike(postIndex, comment.comment_id)
+                    toggleCommentLike(datum.post_id, comment.comment_id)
                   }
                   height="12"
                   width="12"
@@ -337,7 +337,7 @@ function CommentSection({
                   </button>
                   <button
                     onClick={() =>
-                      setCommentFieldCommentId(postIndex, comment.comment_id)
+                      setCommentFieldCommentId(datum.post_id, comment.comment_id)
                     }
                     className={styles.commentAction}
                   >
@@ -383,7 +383,7 @@ function CommentSection({
                   <CommentReplySection
                     comment={comment}
                     toggleCommentLike={toggleCommentLike}
-                    postIndex={postIndex}
+                    postId={datum.post_id}
                   />
                 )}
               </div>
@@ -391,7 +391,7 @@ function CommentSection({
             {!isExpanded && (
               <LikeButton
                 is_post_liked={comment.is_liked_by_user}
-                onClick={() => toggleCommentLike(postIndex, comment.comment_id)}
+                onClick={() => toggleCommentLike(datum.post_id, comment.comment_id)}
                 height="12"
                 width="12"
               />
@@ -465,7 +465,9 @@ function MediaSection({ post, isExpanded, dimensions }) {
         {items.length > 1 && !isLoading && (
           <div className={styles.imgButtonsContainer}>
             <button
-              className={cx(styles.prevImgButton, { hidden: mediaIndex === 0 })}
+              className={cx(styles.prevImgButton, {
+                [styles.hidden]: mediaIndex === 0,
+              })}
               onClick={() => setMediaIndex(mediaIndex - 1)}
             >
               <CircularChevron
@@ -475,7 +477,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
             </button>
             <button
               className={cx(styles.nextImgButton, {
-                hidden: mediaIndex === items.length - 1,
+                [styles.hidden]: mediaIndex === items.length - 1,
               })}
               onClick={() => setMediaIndex(mediaIndex + 1)}
             >
@@ -519,7 +521,7 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
     function expandPost() {
       setExpandedPost(datum.post_id);
     },
-    [datum.post_id]
+    [datum?.post_id]
   );
 
   const [dimensions, setDimensions] = React.useState(
@@ -536,9 +538,12 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
       window.removeEventListener('resize', handler);
     };
   }, [datum, isFloating]);
+  if (!datum) {
+    return null;
+  }
   return (
     <article
-      key={datum?.post_id}
+      key={datum.post_id}
       onClick={(event) => {
         if (event.target === event.currentTarget && isFloating) {
           setExpandedPost(undefined);
@@ -558,8 +563,8 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
         <>
           <PostHeader
             city={'Baghdad'}
-            user_name={datum?.user_name}
-            user_thumbnail={datum?.user_thumbnail}
+            user_name={datum.user_name}
+            user_thumbnail={datum.user_thumbnail}
             datum={datum}
             isExpanded={isExpanded}
           />
@@ -572,34 +577,30 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
           />
 
           <PostActions
-            index={index}
-            is_post_liked={datum?.is_post_liked}
+            postId={datum.post_id}
+            is_post_liked={datum.is_post_liked}
             isExpanded={isExpanded}
           />
 
           <section className={styles.likeCount}>
-            Liked by <strong>{datum?.user_name}</strong> and
-            <strong> {digitGrouping(datum?.likes_count)} others </strong>
+            Liked by <strong>{datum.user_name}</strong> and
+            <strong> {digitGrouping(datum.likes_count)} others </strong>
           </section>
           {!isExpanded && (
             <section className={styles.postCaptionSection}>
               <p className={styles.postCaptionText}>
-                <strong>{datum?.user_name}</strong> {datum?.post_caption}
+                <strong>{datum.user_name}</strong> {datum.post_caption}
               </p>
             </section>
           )}
           <CommentSection
             datum={datum}
-            postIndex={index}
             expandPost={expandPost}
-            comments={datum?.comments}
+            comments={datum.comments}
             isExpanded={isExpanded}
           />
 
-          <PostDate
-            posting_time={datum?.posting_time}
-            isExpanded={isExpanded}
-          />
+          <PostDate posting_time={datum.posting_time} isExpanded={isExpanded} />
           <PostInput index={index} isExpanded={isExpanded} />
         </>
       </div>

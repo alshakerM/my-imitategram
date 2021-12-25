@@ -7,7 +7,7 @@ const defaultState = {
   isLoading: false,
   commentFieldText: '',
   commentFieldCommentId: null,
-  commentFieldPostIndex: null,
+  commentFieldPostId: null,
   isExpanded: false,
 };
 
@@ -15,26 +15,26 @@ export default function reducer(state = defaultState, action) {
   switch (action.type) {
     case 'TOGGLE_POST_LIKE': {
       return produce(state, (draft) => {
-        const post = draft.posts[action.postIndex];
+        const post = draft.posts.find((p) => p.post_id === action.postId);
         post.is_post_liked = !post.is_post_liked;
       });
     }
     case 'SET_LOADING': {
-      const newState = { ...state, posts: [...state.posts] };
+      const newState = { ...state };
       newState.isLoading = action.isLoading;
       return newState;
     }
     case 'SET_EXPANDED_POST': {
-        const newState = { ...state };
-        newState.expandedPostId = action.postId;
-        return newState;
-      }
+      const newState = { ...state };
+      newState.expandedPostId = action.postId;
+      return newState;
+    }
     case 'RECEIVE_POSTS': {
       return { ...state, posts: action.posts };
     }
     case 'TOGGLE_COMMENT_LIKE': {
       return produce(state, (draft) => {
-        const post = draft.posts[action.postIndex];
+        const post = draft.posts.find((p) => p.post_id === action.postId);
         const comment = post.comments.find(
           (comment) => comment.comment_id === action.commentId
         );
@@ -43,7 +43,8 @@ export default function reducer(state = defaultState, action) {
     }
     case 'TOGGLE_REPLY_LIKE': {
       return produce(state, (draft) => {
-        const comment = draft.posts[action.postIndex].comments.find(
+        const post = draft.posts.find((p) => p.post_id === action.postId);
+        const comment = post.comments.find(
           (el) => el.comment_id === action.commentId
         );
         const reply = comment.replies.find(
@@ -55,9 +56,10 @@ export default function reducer(state = defaultState, action) {
     case 'SUBMIT_POST_COMMENT': {
       if (state.commentFieldCommentId) {
         return produce(state, (draft) => {
-          const comment = draft.posts[
-            draft.commentFieldPostIndex
-          ].comments.find(
+          const post = draft.posts.find(
+            (p) => p.post_id === draft.commentFieldPostId
+          );
+          const comment = post.comments.find(
             (el) => el.comment_id === draft.commentFieldCommentId
           );
           comment.replies.push({
@@ -75,7 +77,8 @@ export default function reducer(state = defaultState, action) {
         });
       } else {
         return produce(state, (draft) => {
-          draft.posts[action.postIndex].comments.push({
+          const post = draft.posts.find((p) => p.post_id === action.postId);
+          post.comments.push({
             comment_id: v4(),
             user_name: LOGGED_IN_USER,
             comment: draft.commentFieldText,
@@ -97,13 +100,14 @@ export default function reducer(state = defaultState, action) {
     }
     case 'SET_COMMENT_FIELD_COMMENT_ID': {
       const newState = { ...state };
-      const comment = newState.posts[action.postIndex].comments.find(
+      const post = newState.posts.find((p) => p.post_id === action.postId);
+      const comment = post.comments.find(
         (el) => el.comment_id === action.commentId
       );
       const userName = comment.user_name;
       newState.commentFieldText = `@${userName} `;
       newState.commentFieldCommentId = action.commentId;
-      newState.commentFieldPostIndex = action.postIndex;
+      newState.commentFieldPostId = action.postId;
       return newState;
     }
     default:
