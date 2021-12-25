@@ -1,5 +1,10 @@
-export async function REQUEST_SUGGESTIONS() {
-  const response = await fetch('/Data/suggestions.json');
-  const results = await response.json();
-  return results;
+export async function REQUEST_SUGGESTIONS(action) {
+  const { count } = action;
+  if (count) {
+    const response = await fetch(`/api/explore/people?count=${count}`);
+    return await response.json();
+  } else {
+    const response = await fetch(`/api/explore/people`);
+    return await response.json();
+  }
 }
