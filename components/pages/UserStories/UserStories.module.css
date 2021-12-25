@@ -167,7 +167,7 @@
   color: #1f1f1f;
   padding: 3px;
 }
-.preButton {
+.prevButton {
   grid-area: left;
   width: min-content;
   /* this margin is for the button to be outside the story and it's -46 to match the real IG */

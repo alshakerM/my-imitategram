@@ -1,8 +1,8 @@
 import { UserStories } from '../../components/pages/UserStories/UserStories';
 import { useRouter } from 'next/router';
 
-export default function Inbox() {
+export default function Stories() {
   const router = useRouter();
   const { userId } = router.query;
-  return <UserStories fromUserId={userId} />;
+  return <UserStories userId={userId} />;
 }

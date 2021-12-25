@@ -12,7 +12,7 @@ export function StoryVideo({ videoURL, paused, muted, onProgress }) {
   }, [paused]);
   return (
     <video
-      className="story-video"
+      className={styles.storyVideo}
       muted={muted}
       autoPlay
       ref={videoRef}

@@ -3,7 +3,7 @@ import { IconButton, InputAdornment } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { createStyles, withStyles } from '@mui/styles';
 import React from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 import { Icons } from '../Icons/Icons';
 import {
   clearButton,
@@ -53,13 +53,15 @@ export function NavBar() {
   return (
     <nav className={navContainer}>
       <div className={navContent}>
-        <Link href="/" className={navTitle}>
-          <img
-            src="/Instagram_logo_text.svg"
-            width="109"
-            height="39"
-            alt="Instagram text"
-          />
+        <Link href="/">
+          <a className={navTitle}>
+            <img
+              src="/Instagram_logo_text.svg"
+              width="109"
+              height="39"
+              alt="Instagram text"
+            />
+          </a>
         </Link>
         <div>
           <BorderLessTextInput
