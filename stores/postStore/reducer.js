@@ -29,6 +29,9 @@ export default function reducer(state = defaultState, action) {
       newState.expandedPostId = action.postId;
       return newState;
     }
+    case 'RECEIVE_POST': {
+      return { ...state, posts: [...state.posts, action.post] };
+    }
     case 'RECEIVE_POSTS': {
       return { ...state, posts: action.posts };
     }
