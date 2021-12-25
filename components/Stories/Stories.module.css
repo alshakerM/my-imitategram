@@ -1,0 +1,73 @@
+.storiesAvatarsContainer {
+  max-width: 614px;
+  margin: 30px auto 0;
+  border: 1px solid #dbdbdb;
+  margin-top: 85px;
+  border-radius: 3px;
+}
+.storiesOverflow {
+  overflow: hidden;
+}
+.storyNavPrev {
+  position: absolute;
+  top: 0;
+  margin: 130px auto;
+  margin-left: 10px;
+}
+
+.storyNavNext {
+  position: absolute;
+  top: 0;
+  margin: 130px auto;
+  margin-left: 580px;
+}
+@media screen and (max-width: 674px) {
+  .storyNavNext {
+    right: 40px;
+    margin-left: 0;
+  }
+}
+.allCircles {
+  width: max-content;
+  justify-self: center;
+  display: flex;
+  background-color: white;
+  padding: 16px;
+  box-sizing: border-box;
+  gap: 20px;
+  transition: transform 0.5s ease-out;
+}
+.allCircles::-webkit-scrollbar {
+  display: none;
+}
+
+.storyNavPrev,
+.storyNavNext {
+  padding: 0;
+  border-radius: 50%;
+  height: 23px;
+  width: 23px;
+  border: none;
+  background: transparent;
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.28);
+}
+.storyNavNext.hidden,
+.storyNavPrev.hidden {
+  visibility: hidden;
+}
+.storyAvatarUsername {
+  margin: 0;
+  text-align: center;
+  color: #262626;
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  max-width: 64px;
+  overflow: hidden;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,0 +1,254 @@
+.messagesPageContainer {
+  max-width: 935px;
+  margin: 80px auto;
+  display: flex;
+  border-radius: 40px;
+  box-sizing: border-box;
+}
+.emptyUserName {
+  margin-right: 20px;
+  width: 24px;
+  height: 24px;
+}
+.userSection {
+  display: flex;
+  width: 350px;
+  border: 1px solid #dbdbdb;
+  padding: 0;
+  margin: 0;
+  height: 58px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px 0 0 0;
+  flex: 1;
+}
+.sendMessageIcon {
+  margin-right: 20px;
+}
+.usernameIconSection {
+  display: flex;
+  background-color: #fff;
+}
+.arrowDownIcon {
+  transform: rotate(180deg);
+  align-self: center;
+  padding: 0 10px;
+}
+.sendersSection {
+  width: 350px;
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  overflow: hidden auto;
+  height: calc(100vh - 80px - 80px);
+  background-color: #fff;
+  border-radius: 0 0 0 4px;
+}
+.sendersSection::-webkit-scrollbar {
+  display: none;
+}
+.senderInfo {
+  display: flex;
+  padding: 8px 20px;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+}
+.senderInfo.isSent {
+  background-color: #efefef;
+}
+.senderInfo:hover {
+  background-color: #fafafa;
+}
+.senderThumbnail {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+}
+.senderUsername {
+  align-self: center;
+  padding: 0;
+  margin: 0;
+  color: #262626;
+}
+.hasSentMessage {
+  padding: 0;
+  margin: 0;
+  color: #8e8e8e;
+}
+.rightSection {
+  width: 100%;
+}
+.messagesHeader {
+  width: 100%;
+  display: flex;
+  border-top: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  background-color: #fff;
+  height: 58px;
+  padding: 0 20px;
+  align-items: center;
+  box-sizing: border-box;
+}
+.messagesSenderAvatar {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+.messagesSenderInfo {
+  display: flex;
+  border-top: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  background-color: #fff;
+  width: 635px;
+  padding: 0 20px;
+  margin: 0;
+  height: 60px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 0 4px 0 0;
+}
+.messagesSenderUsername {
+  justify-self: center;
+  margin: 0;
+}
+.whenWasActive {
+  padding: 0;
+  margin: 3px 0;
+  color: #8e8e8e;
+  font-size: 12px;
+}
+.messagesSenderUserInfo {
+  flex: 1;
+}
+.messagesSection {
+  height: calc(100vh - 80px - 80px);
+  background-color: #fff;
+  border-bottom: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: auto;
+}
+.messagesBody {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.lastMessageSentDate {
+  align-self: center;
+  color: #8e8e8e;
+}
+.messageText {
+  border: 1px solid #efefef;
+  border-radius: 22px;
+  max-width: 236px;
+  min-height: 44px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+.messageText.isSent {
+  background-color: #efefef;
+}
+
+.messagesUserThumbnailMessageText {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.messagesUserThumbnailMessageText.isSent {
+  align-self: flex-end;
+  padding-right: 16px;
+  box-sizing: border-box;
+}
+.emptyImg {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+.messagesInputContent {
+  display: flex;
+  justify-content: space-around;
+  min-height: 44px;
+  border-width: 1px;
+  padding-left: 11px;
+  padding-right: 8px;
+  border: 1px solid #dbdbdb;
+  border-radius: 22px;
+  align-items: center;
+}
+.messagesInputSection {
+  padding: 20px;
+}
+.messagesInput {
+  height: 18px;
+  width: 80%;
+  outline: none;
+  border: none;
+}
+.messagesInput::placeholder {
+  color: #262626;
+}
+.sendMessagesSection {
+  width: 100%;
+  border-right: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
+  border-top: 1px solid #dbdbdb;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.telegramIconContainer {
+  width: 96px;
+  height: 96px;
+  border: 3px solid #262626;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.telegramIcon {
+  padding-top: 10px;
+  box-sizing: border-box;
+}
+.yourMessages {
+  margin: 0;
+  font-size: 18px;
+  margin-top: 16px;
+  color: #262626;
+  font-weight: 350;
+}
+.sendAMessage {
+  color: #8e8e8e;
+}
+.sendMessageButton {
+  border: 1px solid transparent;
+  background-color: #0095f6;
+  border-radius: 4px;
+  color: #fff;
+  padding: 5px 9px;
+  font-weight: 600;
+}
+.sendButton {
+  background: none;
+  border: 0;
+}
+.sendButton.isText {
+  color: #0095f6;
+  font-weight: 600;
+  font-size: 14px;
+}
+.inputForm {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
