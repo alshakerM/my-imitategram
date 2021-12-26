@@ -68,6 +68,7 @@ export function UserProfile({ userName }) {
 
   const postsToRender =
     (location.asPath.includes('tagged') ? user.taggedPosts : user.posts) || [];
+    console.log(`/${user?.user_name}/channel/`)
 
   return (
     <>
@@ -151,7 +152,8 @@ export function UserProfile({ userName }) {
           <Link href={`/${user?.user_name}`}>
             <a
               className={cx(styles.link, {
-                [styles.isSelected]: location.asPath === `/${user?.user_name}`,
+                [styles.isSelected]:
+                  location.asPath === `/${user?.user_name}`,
               })}
             >
               <svg

@@ -272,7 +272,7 @@ function CommentSection({ comments, isExpanded, expandPost, datum }) {
     >
       {!isExpanded && (
         <div>
-          <Link href={`/p/${datum.post_id}`}>
+          <Link shallow href={`/p/${datum.post_id}`}>
             <a
               onClick={() => expandPost()}
               className={styles.viewCommentsButton}

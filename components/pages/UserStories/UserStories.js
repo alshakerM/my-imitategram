@@ -131,7 +131,7 @@ export function UserStories({ userId }) {
       if (storyIndices[userId] === user.stories.length - 1) {
         if (nextUser) {
           history.push(`/stories/${nextUser.user_id}`, undefined, {
-            shallow: false,
+            shallow: true,
           });
         }
       } else {
@@ -194,7 +194,7 @@ export function UserStories({ userId }) {
                   if (!activeUser) {
                     setCurrentProgress(0);
                     history.push(`/stories/${user.user_id}`, undefined, {
-                      shallow: false,
+                      shallow: true,
                     });
                   }
                 }}
@@ -321,7 +321,7 @@ export function UserStories({ userId }) {
                               history.push(
                                 `/stories/${prevUser.user_id}`,
                                 undefined,
-                                { shallow: false }
+                                { shallow: true }
                               );
                             } else if (isOneUser) {
                               history.push('/');
@@ -346,7 +346,7 @@ export function UserStories({ userId }) {
                             history.push(
                               `/stories/${nextUser.user_id}`,
                               undefined,
-                              { shallow: false }
+                              { shallow: true }
                             );
                           } else if (isOneUser) {
                             history.push('/');

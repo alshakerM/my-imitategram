@@ -1,11 +1,11 @@
 import { HomePage } from '../components/pages/HomePage/HomePage';
+import { useRouter } from 'next/router';
 import { PostPage } from '../components/pages/PostPage';
 import { NavBar } from '../components/NavBar/NavBar';
 import { useSelect } from '@wordpress/data';
 import React from 'react';
 import { UserProfile } from '../components/pages/UserProfile/UserProfile';
-import { useRouter } from 'next/router';
-import { lockBodyScrolls } from '../utils';
+
 
 export default function CatchAll({ query }) {
   const expandedPostId = useSelect((select) =>
@@ -69,3 +69,4 @@ export default function CatchAll({ query }) {
 CatchAll.getInitialProps = async function (context) {
   return { query: context.query };
 };
+
