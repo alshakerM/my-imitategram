@@ -1,20 +1,53 @@
-import { SearchRounded } from '@mui/icons-material';
-import Link from 'next/link';
+import { Clear, SearchRounded } from '@mui/icons-material';
+import { IconButton, InputAdornment } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import { createStyles, withStyles } from '@mui/styles';
 import React from 'react';
+import Link from 'next/link';
 import { Icons } from '../Icons/Icons';
 import {
+  clearButton,
+  clearIcon,
+  searchInputSection,
   navContainer,
   navContent,
-  navIcons,
   navTitle,
   searchIcon,
-  searchInput,
-  searchPlaceholder,
 } from './NavBar.module.css';
+
+const borderStyles = createStyles({
+  notchedOutline: {
+    borderColor: '#dbdbdb !important',
+    borderWidth: '1px !important',
+  },
+  inputSizeSmall: {
+    height: '20px!important',
+    fontSize: '14px!important',
+    padding: '0!important',
+  },
+  formControl: { height: 36, padding: '0 12px!important' },
+});
+
+const BorderLessTextInput = withStyles(borderStyles)((props) => {
+  const { classes, InputProps, ...rest } = props;
+  return (
+    <TextField
+      sx={{ width: 200 }}
+      {...rest}
+      InputProps={{
+        ...InputProps,
+        classes: {
+          notchedOutline: classes.notchedOutline,
+          inputSizeSmall: classes.inputSizeSmall,
+          formControl: classes.formControl,
+        },
+      }}
+    />
+  );
+});
 
 export function NavBar() {
   const [inputValue, setInputValue] = React.useState('');
-  const [searchActive, setSearchActive] = React.useState(false);
   const hasValue = inputValue;
   return (
     <nav className={navContainer}>
@@ -30,27 +63,43 @@ export function NavBar() {
           </a>
         </Link>
         <div>
-          {searchActive ? (
-            <input
-              type="search"
-              onBlur={() => !hasValue && setSearchActive(false)}
-              placeholder="Search"
-              onChange={(e) => setInputValue(e.target.value)}
-              value={inputValue}
-              className={searchInput}
-              autoFocus
-            ></input>
-          ) : (
-            <button
-              className={searchPlaceholder}
-              onClick={() => setSearchActive(true)}
-            >
-              <SearchRounded fontSize="small" className={searchIcon} />
-              <span> Search</span>
-            </button>
-          )}
+          <BorderLessTextInput
+            onChange={(event) => setInputValue(event.target.value)}
+            margin="dense"
+            value={inputValue}
+            className={searchInputSection}
+            placeholder="Search"
+            size="small"
+            InputProps={
+              hasValue
+                ? {
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          className={clearButton}
+                          onClick={() => setInputValue('')}
+                        >
+                          <Clear className={clearIcon} fontSize="small" />
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }
+                : {
+                    startAdornment: (
+                      <InputAdornment position="start" style={{ margin: 0 }}>
+                        <SearchRounded
+                          fontSize="small"
+                          className={searchIcon}
+                        />
+                      </InputAdornment>
+                    ),
+                  }
+            }
+          >
+            <SearchRounded />
+          </BorderLessTextInput>
         </div>
-        <div className={navIcons}>
+        <div className="nav-icons">
           <Icons />
         </div>
       </div>

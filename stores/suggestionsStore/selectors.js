@@ -4,4 +4,3 @@ export function getSuggestions(state) {
 export function getIsLoading(state) {
   return state.isLoading;
 }
-

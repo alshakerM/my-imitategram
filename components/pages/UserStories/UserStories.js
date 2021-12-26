@@ -65,25 +65,7 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
 
 export function UserStories({ userId }) {
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
-  const areStoriesResolved = useSelect((select) =>
-    select('ig-stories').hasFinishedResolution('getStories')
-  );
-  const [isOneUser] = React.useState(!areStoriesResolved);
-
-  const storiesData = useSelect(
-    (select) => {
-      if (areStoriesResolved) {
-        return select('ig-stories').getStories();
-      } else {
-        if (!userId) {
-          return [];
-        }
-        return select('ig-stories').getStories(userId);
-      }
-    },
-    [userId]
-  );
-  console.log(storiesData);
+  const storiesData = useSelect((select) => select('ig-stories').getStories());
   React.useEffect(() => {
     function handler() {
       setDimensions(calculateStoryDimensions());
@@ -131,7 +113,7 @@ export function UserStories({ userId }) {
       if (storyIndices[userId] === user.stories.length - 1) {
         if (nextUser) {
           history.push(`/stories/${nextUser.user_id}`, undefined, {
-            shallow: false,
+            shallow: true,
           });
         }
       } else {
@@ -194,7 +176,7 @@ export function UserStories({ userId }) {
                   if (!activeUser) {
                     setCurrentProgress(0);
                     history.push(`/stories/${user.user_id}`, undefined, {
-                      shallow: false,
+                      shallow: true,
                     });
                   }
                 }}
@@ -304,9 +286,7 @@ export function UserStories({ userId }) {
                     className={styles.nextPrevButtons}
                     style={{ width: dimensions.width }}
                   >
-                    {(storyIndices[userId] > 0 ||
-                      userIndex > 0 ||
-                      isOneUser) && (
+                    {(storyIndices[userId] > 0 || userIndex > 0) && (
                       <button
                         className={styles.prevButton}
                         onClick={() => {
@@ -321,10 +301,8 @@ export function UserStories({ userId }) {
                               history.push(
                                 `/stories/${prevUser.user_id}`,
                                 undefined,
-                                { shallow: false }
+                                { shallow: true }
                               );
-                            } else if (isOneUser) {
-                              history.push('/');
                             }
                           }
                         }}
@@ -346,10 +324,8 @@ export function UserStories({ userId }) {
                             history.push(
                               `/stories/${nextUser.user_id}`,
                               undefined,
-                              { shallow: false }
+                              { shallow: true }
                             );
-                          } else if (isOneUser) {
-                            history.push('/');
                           }
                         }
                       }}
