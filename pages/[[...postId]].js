@@ -61,7 +61,7 @@ export default function CatchAll({ query }) {
   return (
     <>
       <NavBar />
-      <HomePage key="omar" />
+      <HomePage />
     </>
   );
 }
