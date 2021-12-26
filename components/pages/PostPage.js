@@ -3,10 +3,11 @@ import React from 'react';
 import { useSelect } from '@wordpress/data';
 
 export function PostPage({ postId, isFloating }) {
-  const post = useSelect((select) => select('ig-posts').getPost(postId));
-  if (!post) {
+  const data = useSelect((select) => select('ig-posts').getPosts());
+  if (!data.length) {
     return null;
   }
+  const post = data?.find((el) => postId === el.post_id);
   return (
     <div className="content-section">
       <Post

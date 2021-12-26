@@ -123,7 +123,7 @@ section.postHeader {
   box-sizing: border-box;
   gap: 10px;
 }
-.postHeaderProfilePic.isExpanded {
+.postHeaderProfile-pic.isExpanded {
   margin: 9px 0 5px 12px;
 }
 .postHeader.isExpanded {
@@ -272,7 +272,7 @@ section.commentInputSection {
   height: 100%;
   align-items: center;
   justify-content: center;
-  z-index: 3;
+  z-index: 1;
 }
 
 .likeShareTelegramIcons {
