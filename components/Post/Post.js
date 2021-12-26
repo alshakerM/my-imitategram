@@ -8,7 +8,11 @@ import { Avatar } from '../Avatar/Avatar';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
-import { absoluteToRelativeDate, digitGrouping } from '../../utils';
+import {
+  absoluteToRelativeDate,
+  digitGrouping,
+  lockBodyScrolls,
+} from '../../utils';
 import styles from './Post.module.css';
 import '../../stores/postStore';
 
@@ -254,12 +258,7 @@ function CommentReplySection({ comment, postId }) {
     </div>
   );
 }
-function CommentSection({
-  comments,
-  isExpanded,
-  expandPost,
-  datum,
-}) {
+function CommentSection({ comments, isExpanded, expandPost, datum }) {
   const commentsSummary = comments?.slice(0, isExpanded ? undefined : 2);
   const [activeCommentId, setActiveCommentId] = React.useState(undefined);
   const { setCommentFieldCommentId } = useDispatch('ig-posts');
@@ -273,7 +272,7 @@ function CommentSection({
     >
       {!isExpanded && (
         <div>
-          <Link shallow href={`/p/${datum.post_id}`}>
+          <Link href={`/p/${datum.post_id}`}>
             <a
               onClick={() => expandPost()}
               className={styles.viewCommentsButton}
@@ -337,7 +336,10 @@ function CommentSection({
                   </button>
                   <button
                     onClick={() =>
-                      setCommentFieldCommentId(datum.post_id, comment.comment_id)
+                      setCommentFieldCommentId(
+                        datum.post_id,
+                        comment.comment_id
+                      )
                     }
                     className={styles.commentAction}
                   >
@@ -391,7 +393,9 @@ function CommentSection({
             {!isExpanded && (
               <LikeButton
                 is_post_liked={comment.is_liked_by_user}
-                onClick={() => toggleCommentLike(datum.post_id, comment.comment_id)}
+                onClick={() =>
+                  toggleCommentLike(datum.post_id, comment.comment_id)
+                }
                 height="12"
                 width="12"
               />
@@ -540,6 +544,11 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
   }, [datum, isFloating]);
   if (!datum) {
     return null;
+  }
+  if (isFloating) {
+    lockBodyScrolls('lock');
+  } else {
+    lockBodyScrolls();
   }
   return (
     <article

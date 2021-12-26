@@ -7,7 +7,6 @@ import styles from './HomePage.module.css';
 
 export function HomePage() {
   const data = useSelect((select) => select('ig-posts').getPosts());
-  console.log('rendering posts');
   return (
     <div className={styles.content}>
       <div className={styles.leftSide}>

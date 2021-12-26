@@ -1,25 +1,33 @@
 import { HomePage } from '../components/pages/HomePage/HomePage';
-import { useRouter } from 'next/router';
 import { PostPage } from '../components/pages/PostPage';
 import { NavBar } from '../components/NavBar/NavBar';
 import { useSelect } from '@wordpress/data';
 import React from 'react';
 import { UserProfile } from '../components/pages/UserProfile/UserProfile';
+import { useRouter } from 'next/router';
+import { lockBodyScrolls } from '../utils';
 
-export default function index() {
-  const isExpanded = useSelect((select) =>
+export default function CatchAll({ query }) {
+  const expandedPostId = useSelect((select) =>
     select('ig-posts').getExpandedPost()
   );
 
-  const router = useRouter();
-  const pathNames = router.query.postId;
-  // when post, url /p/32423432-234sdfdsfdsf2342csd-332 ['p', '32423432-234sdfdsfdsf2342csd-332']
-  // when user, /marwan.alshaker ['marwan.alsahker'] ((the viewer wants a user's page))
-  const postId = pathNames?.[1];
-  const userName = pathNames?.[0];
+  const serverPostId = query?.postId?.[1];
+  const userName = query?.postId?.[0];
+
+  // when expanded post is closed, the postId from the query remains stuck
+  // which means postId is true, and expandedPostId is false, which looks like an independent post
+  // this makes sure to keep track of expandedPostId until serverPostId changes (the query resets)
+  // keeping them in sync
+  const lastExpandedPostId = React.useMemo(
+    () => expandedPostId,
+    [serverPostId]
+  );
+
+  // user profile route
   if (
-    pathNames?.length === 1 ||
-    ['channel', 'tagged'].includes(pathNames?.[1])
+    query?.postId?.length === 1 ||
+    ['channel', 'tagged'].includes(query?.postId?.[1])
   ) {
     return (
       <>
@@ -28,25 +36,36 @@ export default function index() {
       </>
     );
   }
+
+  // expanded post (in feed) page
+  if (expandedPostId || lastExpandedPostId) {
+    return (
+      <>
+        <NavBar />
+        <HomePage />
+        <PostPage postId={expandedPostId || lastExpandedPostId} isFloating />
+      </>
+    );
+  }
+
+  // independent post id
+  if (serverPostId) {
+    return (
+      <>
+        <NavBar />
+        <PostPage postId={serverPostId} />
+      </>
+    );
+  }
+
   return (
     <>
-      {!postId && !isExpanded && (
-        <>
-          <HomePage /> <NavBar />
-        </>
-      )}
-      {postId && isExpanded && (
-        <>
-          <HomePage />
-          <PostPage postId={postId} isFloating={isExpanded} />
-        </>
-      )}
-      {postId && !isExpanded && (
-        <>
-          <NavBar />
-          <PostPage postId={postId} />
-        </>
-      )}
+      <NavBar />
+      <HomePage />
     </>
   );
 }
+
+CatchAll.getInitialProps = async function (context) {
+  return { query: context.query };
+};
