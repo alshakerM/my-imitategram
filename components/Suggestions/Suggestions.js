@@ -7,9 +7,13 @@ import { useSelect } from '@wordpress/data';
 import '../../stores/suggestionsStore';
 
 export function Suggestions({ isExpanded }) {
-  const suggestionsData = useSelect((select) =>
-    select('ig-suggestions').getSuggestions(!isExpanded && 5)
-  );
+  const suggestionsData = useSelect((select) => {
+    if (isExpanded) {
+      return select('ig-suggestions').getSuggestions(0);
+    } else {
+      return select('ig-suggestions').getSuggestions(5);
+    }
+  });
 
   return (
     <div className={styles.suggestionSection}>

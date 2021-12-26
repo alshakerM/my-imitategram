@@ -65,24 +65,7 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
 
 export function UserStories({ userId }) {
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
-  const areStoriesResolved = useSelect((select) =>
-    select('ig-stories').hasFinishedResolution('getStories')
-  );
-  const [isOneUser] = React.useState(!areStoriesResolved);
 
-  const storiesData = useSelect(
-    (select) => {
-      if (areStoriesResolved) {
-        return select('ig-stories').getStories();
-      } else {
-        if (!userId) {
-          return [];
-        }
-        return select('ig-stories').getStories(userId);
-      }
-    },
-    [userId]
-  );
   React.useEffect(() => {
     function handler() {
       setDimensions(calculateStoryDimensions());
