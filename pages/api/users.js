@@ -1,9 +1,9 @@
 import profileData from '../../server/profile-data.json';
 
 export default function handler(req, res) {
-  const { userName } = req.query;
-  if (userName) {
-    const user = profileData.find((u) => u.user_name === userName);
+  const { userId } = req.query;
+  if (userId) {
+    const user = profileData.find((u) => u.user_name === userId);
     if (user) {
       res.status(200).json([user]);
     } else {
