@@ -65,7 +65,25 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
 
 export function UserStories({ userId }) {
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
-  const storiesData = useSelect((select) => select('ig-stories').getStories());
+  const areStoriesResolved = useSelect((select) =>
+    select('ig-stories').hasFinishedResolution('getStories')
+  );
+  const [isOneUser] = React.useState(!areStoriesResolved);
+
+  const storiesData = useSelect(
+    (select) => {
+      if (areStoriesResolved) {
+        return select('ig-stories').getStories();
+      } else {
+        if (!userId) {
+          return [];
+        }
+        return select('ig-stories').getStories(userId);
+      }
+    },
+    [userId]
+  );
+  console.log(storiesData);
   React.useEffect(() => {
     function handler() {
       setDimensions(calculateStoryDimensions());
@@ -286,7 +304,9 @@ export function UserStories({ userId }) {
                     className={styles.nextPrevButtons}
                     style={{ width: dimensions.width }}
                   >
-                    {(storyIndices[userId] > 0 || userIndex > 0) && (
+                    {(storyIndices[userId] > 0 ||
+                      userIndex > 0 ||
+                      isOneUser) && (
                       <button
                         className={styles.prevButton}
                         onClick={() => {
@@ -303,6 +323,8 @@ export function UserStories({ userId }) {
                                 undefined,
                                 { shallow: true }
                               );
+                            } else if (isOneUser) {
+                              history.push('/');
                             }
                           }
                         }}
@@ -326,6 +348,8 @@ export function UserStories({ userId }) {
                               undefined,
                               { shallow: true }
                             );
+                          } else if (isOneUser) {
+                            history.push('/');
                           }
                         }
                       }}
