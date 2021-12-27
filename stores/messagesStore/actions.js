@@ -1,5 +1,5 @@
-export function requestMessages() {
-  return { type: 'REQUEST_MESSAGES' };
+export function requestMessages(fromUserId, fields) {
+  return { type: 'REQUEST_MESSAGES', fromUserId, fields };
 }
 
 export function receiveMessages(messages) {

@@ -6,7 +6,7 @@ import { useSelect } from '@wordpress/data';
 import React from 'react';
 import { UserProfile } from '../components/pages/UserProfile/UserProfile';
 
-export default function index() {
+export default function Index() {
   const isExpanded = useSelect((select) =>
     select('ig-posts').getExpandedPost()
   );

@@ -44,23 +44,29 @@ function UserSection() {
     </div>
   );
 }
-function SenderSection({ messagesData, fromUserId }) {
+function SenderSection({ fromUserId }) {
+  const messagesData = useSelect((select) =>
+    select('ig-messages').getMessages(fromUserId, [
+      'from_user_id',
+      'from_user_thumbnail',
+      'from_username',
+    ])
+  );
+
   return (
     <div className={styles.sendersSection}>
       {messagesData.map((user) => (
-        <Link href={`/direct/t/${user.from_user_id}`}>
+        <Link key={user.from_user_id} href={`/direct/t/${user.from_user_id}`}>
           <a
             className={cx(styles.senderInfo, {
               [styles.isSent]: user.from_user_id === fromUserId,
             })}
           >
-            <Link href={`/direct/t/${user.from_user_id}`}>
-              <img
-                className={styles.senderThumbnail}
-                src={user.from_user_thumbnail}
-                alt="sender avatar"
-              />
-            </Link>
+            <img
+              className={styles.senderThumbnail}
+              src={user.from_user_thumbnail}
+              alt="sender avatar"
+            />
             <div>
               <p className={styles.senderUsername}>{user.from_username}</p>
               <p className={styles.hasSentMessage}>
@@ -78,7 +84,7 @@ function SenderSection({ messagesData, fromUserId }) {
 }
 export function Messages({ fromUserId }) {
   const messagesData = useSelect((select) =>
-    select('ig-messages').getMessages()
+    select('ig-messages').getMessages(fromUserId)
   );
   const userIndex = messagesData?.findIndex(
     (user) => user.from_user_id === fromUserId
