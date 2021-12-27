@@ -80,7 +80,6 @@ export function Messages({ fromUserId }) {
   const messagesData = useSelect((select) =>
     select('ig-messages').getMessages()
   );
-  console.log(messagesData)
   const userIndex = messagesData?.findIndex(
     (user) => user.from_user_id === fromUserId
   );
