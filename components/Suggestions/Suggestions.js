@@ -9,7 +9,7 @@ import '../../stores/suggestionsStore';
 export function Suggestions({ isExpanded }) {
   const suggestionsData = useSelect((select) => {
     if (isExpanded) {
-      return select('ig-suggestions').getSuggestions(0);
+      return select('ig-suggestions').getSuggestions();
     } else {
       return select('ig-suggestions').getSuggestions(5);
     }

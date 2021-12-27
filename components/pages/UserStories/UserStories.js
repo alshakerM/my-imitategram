@@ -65,7 +65,7 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
 
 export function UserStories({ userId }) {
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
-
+  const storiesData = useSelect((select) => select('ig-stories').getStories());
   React.useEffect(() => {
     function handler() {
       setDimensions(calculateStoryDimensions());
