@@ -1,6 +1,16 @@
-import { requestMessages, receiveMessages } from './actions';
+import { requestThreads, receiveThreads, receiveThread } from './actions';
 
-export function* getMessages(fromUserId, fields) {
-  const messages = yield requestMessages(fromUserId, fields);
-  yield receiveMessages(messages);
+export function* getThreads() {
+  const threads = yield requestThreads(undefined, [
+    'from_user_id',
+    'from_user_thumbnail',
+    'from_username',
+    'last_message',
+  ]);
+  yield receiveThreads(threads);
+}
+
+export function* getThread(fromUserId) {
+  const thread = yield requestThreads(fromUserId);
+  yield receiveThread(thread);
 }

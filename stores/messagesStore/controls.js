@@ -1,6 +1,6 @@
-export async function REQUEST_MESSAGES(action) {
+export async function REQUEST_THREADS(action) {
   const { fromUserId, fields } = action;
-  let url = '/api/messages/?';
+  let url = '/api/messages?';
 
   if (fromUserId) {
     url += `fromUserId=${fromUserId}&`;

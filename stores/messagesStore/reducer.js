@@ -2,14 +2,22 @@ import { LOGGED_IN_USER } from '../constants';
 import produce from 'immer';
 
 const defaultState = {
-  messages: [],
+  threads: [],
   messageFieldText: '',
   messagesFieldUserIndex: null,
+  loadedThreads: {},
 };
+
 export default function reducer(state = defaultState, action) {
   switch (action.type) {
-    case 'RECEIVE_MESSAGES': {
-      return { ...state, messages: action.messages };
+    case 'RECEIVE_THREADS': {
+      return { ...state, threads: action.threads };
+    }
+
+    case 'RECEIVE_THREAD': {
+      return produce(state, (draft) => {
+        draft.loadedThreads[action.thread.from_user_id] = action.thread;
+      });
     }
 
     case 'SET_MESSAGE_FIELD_TEXT': {
@@ -19,7 +27,7 @@ export default function reducer(state = defaultState, action) {
     }
     case 'SUBMIT_MESSAGE': {
       return produce(state, (draft) => {
-        draft.messages[action.userIndex].messages.push({
+        draft.loadedThreads[action.userId].messages.push({
           message_body: draft.messageFieldText,
           sent_on: new Date().toISOString(),
           is_liked_by_user: false,

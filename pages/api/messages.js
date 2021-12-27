@@ -1,12 +1,22 @@
 import messagesData from '../../server/messages-data.json';
 
-const allowedFields = Object.keys(messagesData[0]);
+const allowedFields = [
+  'from_user_id',
+  'from_username',
+  'from_user_thumbnail',
+  'messages',
+  'last_message',
+];
 
 export default function handler(req, res) {
   const { fields, fromUserId } = req.query;
 
   // <--- this part filters by field ---->
-  let filteredThreads = messagesData;
+  let filteredThreads = messagesData.map((thread) => {
+    // add last message to response, to make accessing the datetime of the last message and summary easier
+    thread.last_message = thread.messages[thread.messages.length - 1];
+    return thread;
+  });
 
   if (fields) {
     const filteredFields = fields

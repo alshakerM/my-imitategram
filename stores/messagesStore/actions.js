@@ -1,22 +1,30 @@
-export function requestMessages(fromUserId, fields) {
-  return { type: 'REQUEST_MESSAGES', fromUserId, fields };
+export function requestThreads(fromUserId, fields) {
+  return { type: 'REQUEST_THREADS', fields, fromUserId };
 }
 
-export function receiveMessages(messages) {
+export function receiveThreads(threads) {
   return {
-    type: 'RECEIVE_MESSAGES',
-    messages,
+    type: 'RECEIVE_THREADS',
+    threads,
   };
 }
+
+export function receiveThread(thread) {
+  return {
+    type: 'RECEIVE_THREAD',
+    thread,
+  };
+}
+
 export function setMessageFieldText(text) {
   return {
     type: 'SET_MESSAGE_FIELD_TEXT',
     text,
   };
 }
-export function submitMessage(userIndex) {
+export function submitMessage(userId) {
   return {
     type: 'SUBMIT_MESSAGE',
-    userIndex,
+    userId,
   };
 }
