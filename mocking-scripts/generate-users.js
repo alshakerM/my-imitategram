@@ -1,11 +1,12 @@
 const { writeFileSync } = require('fs');
-const IGData = require('./public/Data/IG-v4.json');
+const IGData = require('../public/Data/IG-v4.json');
 const users = IGData.map((data) => ({
   user_name: data.user_name,
   user_thumbnail: data.user_thumbnail,
   user_id: data.user_id,
   user_has_story: data.poster_has_story,
-}));
+})).filter((u, _, arr) => !arr.filter((user) => user.user_name === u.user_name).length < 2);
+
 const messages = IGData.flatMap((d) => d.comments.map((c) => c.comment));
 const fullNames = [
   { full_name: 'Odille Whanstall' },
@@ -60,4 +61,4 @@ const conversations = users.map((user, index) => {
   };
 });
 
-writeFileSync('./public/Data/users.json', JSON.stringify(conversations));
+writeFileSync('../public/Data/users.json', JSON.stringify(conversations));

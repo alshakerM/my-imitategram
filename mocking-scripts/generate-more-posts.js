@@ -1,5 +1,5 @@
 const { writeFileSync } = require('fs');
-let IGData = require('./public/Data/IG-v4.json');
+let IGData = require('../public/Data/IG-v4.json');
 const { v4 } = require('uuid');
 
 const result = [];
@@ -19,4 +19,4 @@ IGData.forEach((post, index) => {
 
 result.sort(() => Math.random() - 0.5);
 
-writeFileSync('./public/Data/IG-v4.json', JSON.stringify(result));
+writeFileSync('../public/Data/IG-v4.json', JSON.stringify(result));
