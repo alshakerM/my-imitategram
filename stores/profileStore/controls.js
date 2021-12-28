@@ -1,7 +1,14 @@
 export async function REQUEST_PROFILE(action) {
-  const { userName } = action;
+  const { userName, postType } = action;
+  let url = '/api/users?';
   if (userName) {
-    const response = await fetch(`/api/users?userId=${userName}`);
-    return await response.json();
+    url += `userId=${userName}&`;
   }
+
+  if (postType) {
+    url += `postType=${postType}`;
+  }
+
+  const response = await fetch(url);
+  return await response.json();
 }

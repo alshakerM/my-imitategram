@@ -1,3 +1,3 @@
-export function getProfileData(state) {
-  return state.profileData;
+export function getProfileData(state, _, postType) {
+  return state.profileData[postType];
 }

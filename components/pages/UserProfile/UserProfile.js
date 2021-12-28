@@ -28,7 +28,7 @@ function UserProfilePost({ post }) {
               role="img"
               viewBox="0 0 48 48"
               width="19"
-              fill='white'
+              fill="white"
             >
               <path
                 className={styles.Icon}
@@ -56,18 +56,13 @@ function UserProfilePost({ post }) {
   );
 }
 export function UserProfile({ userName }) {
-  const usersData = useSelect((select) =>
-    select('ig-profile').getProfileData(userName)
-  );
   const location = useRouter();
-  const user = usersData?.find((element) => element.user_name === userName);
+  const postType = location.asPath.includes('tagged') ? 'tagged' : 'posts';
+  const user = useSelect((select) =>
+    select('ig-profile').getProfileData(userName, postType)
+  );
 
-  if (!user) {
-    return null;
-  }
-
-  const postsToRender =
-    (location.asPath.includes('tagged') ? user.taggedPosts : user.posts) || [];
+  console.log({user})
 
   return (
     <>
@@ -83,7 +78,7 @@ export function UserProfile({ userName }) {
           </div>
           <div>
             <div className={styles.userInfoAndButtons}>
-              <p className={styles.userName}>{user?.user_name}</p>
+              <p className={styles.userName}>{user.user_name}</p>
               <div className={styles.buttonsContainer}>
                 <button className={styles.messageButton}>
                   <strong>Message</strong>
@@ -225,7 +220,7 @@ export function UserProfile({ userName }) {
         </div>
 
         <div className={styles.postsSection}>
-          {postsToRender.map((post) => (
+          {user.posts?.map((post) => (
             <UserProfilePost
               post={post}
               location={location}
@@ -234,7 +229,7 @@ export function UserProfile({ userName }) {
             />
           ))}
         </div>
-        <div hidden={postsToRender.length > 0}>
+        <div hidden={user.posts?.length > 0}>
           <div className={styles.emptyTaggedSection}>
             <div className={styles.iconSection}>
               <PhotoCameraFrontOutlined className={styles.profileIcon} />
