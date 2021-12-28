@@ -6,6 +6,7 @@ import { useSelect } from '@wordpress/data';
 import styles from './HomePage.module.css';
 
 export function HomePage() {
+  const [page, setPage] = React.useState(0);
   const data = useSelect((select) => select('ig-posts').getPosts());
   console.log('rendering posts');
   return (
