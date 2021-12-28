@@ -50,14 +50,20 @@ export function setExpandedPost(postId) {
   };
 }
 
-export function requestPosts() {
-  return { type: 'REQUEST_POSTS' };
+export function requestPosts(postId) {
+  return { type: 'REQUEST_POSTS', postId };
 }
 
 export function receivePosts(posts) {
   return {
     type: 'RECEIVE_POSTS',
     posts,
+  };
+}
+export function receivePost(post) {
+  return {
+    type: 'RECEIVE_POST',
+    post,
   };
 }
 

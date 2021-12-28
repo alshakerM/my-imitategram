@@ -19,7 +19,7 @@ import '../../stores/postStore';
 const INDEPENDENT_POST_HEIGHT = 600;
 function calculatePostDimensions(post, isInFeed) {
   const postAspectRatio =
-    post?.media_dimensions.width / post?.media_dimensions.height;
+    post.media_dimensions.width / post.media_dimensions.height;
   if (isInFeed) {
     const VERTICAL_MARGIN = 24;
     const height = window.innerHeight - VERTICAL_MARGIN * 2;
@@ -272,7 +272,7 @@ function CommentSection({ comments, isExpanded, expandPost, datum }) {
     >
       {!isExpanded && (
         <div>
-          <Link shallow href={`/p/${datum.post_id}`}>
+          <Link href={`/p/${datum.post_id}`}>
             <a
               onClick={() => expandPost()}
               className={styles.viewCommentsButton}
@@ -525,23 +525,30 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
     function expandPost() {
       setExpandedPost(datum.post_id);
     },
-    [datum?.post_id]
+    [datum?.post_id, setExpandedPost]
   );
 
-  const [dimensions, setDimensions] = React.useState(
-    calculatePostDimensions(datum, isFloating)
-  );
+  // until the post is loaded, assume it's a 1000x1000 square
+  const [dimensions, setDimensions] = React.useState({
+    width: 1000,
+    height: 1000,
+  });
 
   React.useEffect(() => {
     function handler() {
-      setDimensions(calculatePostDimensions(datum, isFloating));
+      if (datum) {
+        setDimensions(calculatePostDimensions(datum, isFloating));
+      }
     }
     window.addEventListener('resize', handler);
+    // call the handler to set the default values
+    handler();
 
     return () => {
       window.removeEventListener('resize', handler);
     };
   }, [datum, isFloating]);
+
   if (!datum) {
     return null;
   }
