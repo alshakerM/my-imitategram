@@ -6,8 +6,29 @@ import { useSelect } from '@wordpress/data';
 import styles from './HomePage.module.css';
 
 export function HomePage() {
-  const data = useSelect((select) => select('ig-posts').getPosts());
-  console.log('rendering posts');
+  const [pageNumber, setPageNumber] = React.useState(20);
+  const data = useSelect((select) => select('ig-posts').getPosts(pageNumber));
+  const isLoading = useSelect((select) => select('ig-stories').getIsLoading());
+  React.useEffect(() => {
+    let scrollReachedEnd = false;
+    const handler = () => {
+      if (
+        document.body.scrollHeight <
+        window.pageYOffset + window.innerHeight + 200
+      ) {
+        if (!scrollReachedEnd && !isLoading) {
+          setPageNumber(pageNumber + 20);
+          scrollReachedEnd = true;
+        }
+      } else {
+        scrollReachedEnd = false;
+      }
+    };
+    window.addEventListener('scroll', handler);
+    return () => {
+      window.removeEventListener('scroll', handler);
+    };
+  }, [pageNumber]);
   return (
     <div className={styles.content}>
       <div className={styles.leftSide}>

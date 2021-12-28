@@ -5,9 +5,11 @@ import {
   receivePost,
 } from './actions';
 
-export function* getPosts() {
+export function* getPosts(pageNumber) {
   yield setLoadingPosts(true);
-  const posts = yield requestPosts();
+
+  const posts = yield requestPosts(undefined, pageNumber);
+
   yield receivePosts(posts);
   yield setLoadingPosts(false);
 }

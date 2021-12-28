@@ -13,7 +13,7 @@ export function getPost(state, postId) {
     return select('ig-posts')._getPost(postId);
   }
 }
-export function getPosts(state) {
+export function getPosts(state, pageNumber) {
   return state.posts;
 }
 export function getIsLoading(state) {

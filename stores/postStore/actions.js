@@ -34,36 +34,41 @@ export function toggleReplyLike(postId, commentId, replyId) {
     postId,
     commentId,
     replyId,
+    
   };
 }
 
-export function setLoadingPosts(isLoading) {
+export function setLoadingPosts(isLoading,pageNumber) {
   return {
     type: 'SET_LOADING',
     isLoading,
+    pageNumber
   };
 }
-export function setExpandedPost(postId) {
+export function setExpandedPost(postId, pageNumber) {
   return {
     type: 'SET_EXPANDED_POST',
     postId,
+    pageNumber
   };
 }
 
-export function requestPosts(postId) {
-  return { type: 'REQUEST_POSTS', postId };
+export function requestPosts(postId, pageNumber) {
+  return { type: 'REQUEST_POSTS', postId, pageNumber };
 }
 
-export function receivePosts(posts) {
+export function receivePosts(posts, pageNumber) {
   return {
     type: 'RECEIVE_POSTS',
     posts,
+    pageNumber,
   };
 }
-export function receivePost(post) {
+export function receivePost(post, pageNumber) {
   return {
     type: 'RECEIVE_POST',
     post,
+    pageNumber
   };
 }
 
