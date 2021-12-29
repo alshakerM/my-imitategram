@@ -5,6 +5,8 @@ import { CircularChevron } from '../Icons/CircularChevron';
 import { Avatar } from '../Avatar/Avatar';
 import { elementWidth } from '../../utils';
 import styles from './Stories.module.css';
+import { useSelect } from '@wordpress/data';
+import '../../stores/storiesStore';
 
 export function Stories() {
   const allCirclesDiv = React.useRef();
@@ -12,14 +14,7 @@ export function Stories() {
   const [containerWidth, setContainerWidth] = useState(0);
   const [scrollLeft, setScrollLeft] = React.useState(0);
   const scrollLimit = -1 * (allCirclesWidth - containerWidth);
-  const [storiesData, setStoriesData] = React.useState([]);
-  React.useEffect(() => {
-    fetch('../Data/IG-Stories.json', {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((results) => setStoriesData(results));
-  }, []);
+  const storiesData = useSelect((select) => select('ig-stories').getStories());
   return (
     <div className={styles.storiesAvatarsContainer}>
       <div

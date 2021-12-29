@@ -9,6 +9,7 @@ const defaultState = {
   commentFieldCommentId: null,
   commentFieldPostId: null,
   isExpanded: false,
+  itemsLeft: 0,
 };
 
 export default function reducer(state = defaultState, action) {
@@ -24,13 +25,21 @@ export default function reducer(state = defaultState, action) {
       newState.isLoading = action.isLoading;
       return newState;
     }
+    case 'SET_ITEMS_LEFT': {
+      const newState = { ...state };
+      newState.itemsLeft = action.itemsLeft;
+      return newState;
+    }
     case 'SET_EXPANDED_POST': {
       const newState = { ...state };
       newState.expandedPostId = action.postId;
       return newState;
     }
+    case 'RECEIVE_POST': {
+      return { ...state, posts: [...state.posts, action.post] };
+    }
     case 'RECEIVE_POSTS': {
-      return { ...state, posts: action.posts };
+      return { ...state, posts: [...state.posts, ...action.posts] };
     }
     case 'TOGGLE_COMMENT_LIKE': {
       return produce(state, (draft) => {

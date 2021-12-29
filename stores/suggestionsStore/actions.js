@@ -1,5 +1,5 @@
-export function requestSuggestions() {
-  return { type: 'REQUEST_SUGGESTIONS' };
+export function requestSuggestions(count) {
+  return { type: 'REQUEST_SUGGESTIONS', count };
 }
 
 export function receiveSuggestions(suggestions) {
