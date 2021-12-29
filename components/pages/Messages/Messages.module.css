@@ -58,7 +58,7 @@
 .senderInfo.isSent {
   background-color: #efefef;
 }
-.senderInfo:hover {
+.senderInfo:not(.isSent):hover {
   background-color: #fafafa;
 }
 .senderThumbnail {
@@ -111,7 +111,6 @@
   align-items: center;
   gap: 10px;
   border-radius: 0 4px 0 0;
-  
 }
 .messagesSenderUsername {
   justify-self: center;
