@@ -3,12 +3,14 @@ import {
   requestPosts,
   receivePosts,
   receivePost,
+  setItemsLeft,
 } from './actions';
 
-export function* getPosts() {
+export function* getPosts(pageNumber) {
   yield setLoadingPosts(true);
-  const posts = yield requestPosts();
+  const { posts, itemsLeft } = yield requestPosts(undefined, pageNumber);
   yield receivePosts(posts);
+  yield setItemsLeft(itemsLeft);
   yield setLoadingPosts(false);
 }
 

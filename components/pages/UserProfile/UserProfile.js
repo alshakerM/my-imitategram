@@ -68,7 +68,6 @@ export function UserProfile({ userName }) {
 
   const postsToRender =
     (location.asPath.includes('tagged') ? user.taggedPosts : user.posts) || [];
-    console.log(`/${user?.user_name}/channel/`)
 
   return (
     <>

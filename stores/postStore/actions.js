@@ -43,6 +43,12 @@ export function setLoadingPosts(isLoading) {
     isLoading,
   };
 }
+export function setItemsLeft(itemsLeft) {
+  return {
+    type: 'SET_ITEMS_LEFT',
+    itemsLeft,
+  };
+}
 export function setExpandedPost(postId) {
   return {
     type: 'SET_EXPANDED_POST',
@@ -50,14 +56,15 @@ export function setExpandedPost(postId) {
   };
 }
 
-export function requestPosts(postId) {
-  return { type: 'REQUEST_POSTS', postId };
+export function requestPosts(postId, pageNumber) {
+  return { type: 'REQUEST_POSTS', postId, pageNumber };
 }
 
-export function receivePosts(posts) {
+export function receivePosts(posts, pageNumber) {
   return {
     type: 'RECEIVE_POSTS',
     posts,
+    pageNumber,
   };
 }
 export function receivePost(post) {

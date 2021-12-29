@@ -5,9 +5,9 @@
   margin: 0 auto;
 }
 .leftSide {
- max-width: 100%;
- width: 614px;
- margin: 0 auto
+  max-width: 100%;
+  width: 614px;
+  margin: 0 auto;
 }
 .content {
   display: flex;
@@ -26,4 +26,9 @@
 }
 .fixedContent {
   position: fixed;
+}
+.noMoreText {
+  text-align: center;
+  color: #262626;
+  font-size: 1rem;
 }

@@ -83,7 +83,6 @@ export function UserStories({ userId }) {
     },
     [userId]
   );
-  console.log(storiesData);
   React.useEffect(() => {
     function handler() {
       setDimensions(calculateStoryDimensions());

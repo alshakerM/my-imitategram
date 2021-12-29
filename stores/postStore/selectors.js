@@ -19,6 +19,9 @@ export function getPosts(state) {
 export function getIsLoading(state) {
   return state.isLoading;
 }
+export function getItemsLeft(state) {
+  return state.itemsLeft;
+}
 export function getExpandedPost(state) {
   return state.expandedPostId;
 }
