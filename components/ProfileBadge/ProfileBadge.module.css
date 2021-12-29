@@ -1,0 +1,31 @@
+.contentSection {
+  display: flex;
+  gap: 18px;
+}
+
+.profilePic {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+.userName {
+  margin: 0;
+}
+.userRealName {
+  margin: 0;
+  color: #8e8e8e;
+}
+.switchButton {
+  border: none;
+  background: none;
+  font-weight: 600;
+  color: #0095f6;
+  font-size: 12px;
+  padding: 0;
+}

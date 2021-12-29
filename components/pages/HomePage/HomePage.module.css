@@ -14,10 +14,10 @@
 }
 
 .rightSide {
-  /* 54px is the navbar's height + some nice margin */
-  margin-top: calc(54px + 33px);
-  padding-left: 16px;
-  width: 100%;
+  /* 61px is the navbar's height + some nice margin */
+  margin-top: calc(61px + 47px);
+  padding-left: 28px;
+  width: 321px;
 }
 @media screen and (max-width: 1000px) {
   .rightSide {
@@ -26,6 +26,7 @@
 }
 .fixedContent {
   position: fixed;
+  width: 289px;
 }
 .noMoreText {
   text-align: center;

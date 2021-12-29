@@ -16,9 +16,19 @@ export function Suggestions({ isExpanded }) {
   });
 
   return (
-    <div className={styles.suggestionSection}>
+    <div
+      className={cx(styles.suggestionSection, {
+        [styles.isExpanded]: isExpanded,
+      })}
+    >
       {isExpanded ? (
-        <p className={cx(styles.text, styles.isExpanded)}>Suggested</p>
+        <p
+          className={cx(styles.text, {
+            [styles.isExpanded]: isExpanded,
+          })}
+        >
+          Suggested
+        </p>
       ) : (
         <div className={styles.textViewButton}>
           <p className={styles.text}>Suggestions for you</p>
@@ -35,11 +45,17 @@ export function Suggestions({ isExpanded }) {
       >
         {suggestionsData.map((suggestionData) => (
           <div
-            className={cx(styles.content, styles.isExpanded)}
+            className={cx(styles.content, {
+              [styles.isExpanded]: isExpanded,
+            })}
             key={suggestionData.user_id}
           >
-            <Avatar user={suggestionData} size={isExpanded ? '44' : 'small'} />
-            <div className={cx(styles.userNameAndReason, styles.isExpanded)}>
+            <Avatar user={suggestionData} size={isExpanded ? '51' : '37'} />
+            <div
+              className={cx(styles.userNameAndReason, {
+                [styles.isExpanded]: isExpanded,
+              })}
+            >
               <Link href={`/${suggestionData.user_name}`}>
                 <a className={cx(styles.userName, styles.isExpanded)}>
                   {suggestionData.user_name}

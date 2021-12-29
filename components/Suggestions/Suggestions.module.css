@@ -1,14 +1,17 @@
 .suggestionSection {
-  padding: 112px 0;
+  padding: 0px 0;
   margin: 0 auto;
   max-width: 614px;
   width: 100%;
   box-sizing: border-box;
 }
-
+.suggestionSection.isExpanded {
+  padding: 116px 0;
+}
 .text {
   color: #8e8e8e;
   font-weight: 600;
+  margin: 8px 0;
 }
 
 .text.isExpanded {
@@ -23,7 +26,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16px;
+  padding: 0;
 }
 .seeAllButton {
   border: 0;
@@ -44,6 +47,7 @@
   padding: 1px;
   align-items: center;
   box-sizing: border-box;
+  margin-bottom: 5px;
 }
 .content.isExpanded {
   padding: 8px 16px;
@@ -80,7 +84,7 @@
   white-space: nowrap;
 }
 .userReason {
-  max-width: 165px;
+  max-width: 193px;
 }
 
 .followButton {
