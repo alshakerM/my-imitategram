@@ -9,27 +9,29 @@ export function HomePage() {
   const [pageNumber, setPageNumber] = React.useState(20);
   const data = useSelect((select) => select('ig-posts').getPosts(pageNumber));
   const isLoading = useSelect((select) => select('ig-posts').getIsLoading());
-  console.log({ pageNumber });
+  const [scrollEnd, setScrollEnd] = React.useState(false);
+  console.log(
+    scrollEnd
+  );
   React.useEffect(() => {
-    let scrollReachedEnd = false;
     const handler = () => {
       if (
         document.body.scrollHeight <
-        window.pageYOffset + window.innerHeight + 5
+        window.pageYOffset + window.innerHeight + 200
       ) {
-        if (!scrollReachedEnd && !isLoading) {
+        if (!scrollEnd && !isLoading) {
           setPageNumber(pageNumber + 20);
-          scrollReachedEnd = true;
+          setScrollEnd(true)
         }
       } else {
-        scrollReachedEnd = false;
+        setScrollEnd(false)
       }
     };
     window.addEventListener('scroll', handler);
     return () => {
       window.removeEventListener('scroll', handler);
     };
-  }, [pageNumber, isLoading]);
+  }, [scrollEnd, isLoading]);
   return (
     <div className={styles.content}>
       <div className={styles.leftSide}>
