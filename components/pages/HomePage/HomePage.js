@@ -8,13 +8,14 @@ import styles from './HomePage.module.css';
 export function HomePage() {
   const [pageNumber, setPageNumber] = React.useState(20);
   const data = useSelect((select) => select('ig-posts').getPosts(pageNumber));
-  const isLoading = useSelect((select) => select('ig-stories').getIsLoading());
+  const isLoading = useSelect((select) => select('ig-posts').getIsLoading());
+  console.log({ pageNumber });
   React.useEffect(() => {
     let scrollReachedEnd = false;
     const handler = () => {
       if (
         document.body.scrollHeight <
-        window.pageYOffset + window.innerHeight + 200
+        window.pageYOffset + window.innerHeight + 5
       ) {
         if (!scrollReachedEnd && !isLoading) {
           setPageNumber(pageNumber + 20);
@@ -28,7 +29,7 @@ export function HomePage() {
     return () => {
       window.removeEventListener('scroll', handler);
     };
-  }, [pageNumber]);
+  }, [pageNumber, isLoading]);
   return (
     <div className={styles.content}>
       <div className={styles.leftSide}>

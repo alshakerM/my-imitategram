@@ -34,22 +34,19 @@ export function toggleReplyLike(postId, commentId, replyId) {
     postId,
     commentId,
     replyId,
-    
   };
 }
 
-export function setLoadingPosts(isLoading,pageNumber) {
+export function setLoadingPosts(isLoading) {
   return {
     type: 'SET_LOADING',
     isLoading,
-    pageNumber
   };
 }
-export function setExpandedPost(postId, pageNumber) {
+export function setExpandedPost(postId) {
   return {
     type: 'SET_EXPANDED_POST',
     postId,
-    pageNumber
   };
 }
 
@@ -64,11 +61,10 @@ export function receivePosts(posts, pageNumber) {
     pageNumber,
   };
 }
-export function receivePost(post, pageNumber) {
+export function receivePost(post) {
   return {
     type: 'RECEIVE_POST',
     post,
-    pageNumber
   };
 }
 
