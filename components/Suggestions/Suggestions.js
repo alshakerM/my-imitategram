@@ -33,7 +33,7 @@ export function Suggestions({ isExpanded }) {
           [styles.isExpanded]: isExpanded,
         })}
       >
-        {suggestionsData?.map((suggestionData) => (
+        {suggestionsData.map((suggestionData) => (
           <div
             className={cx(styles.content, styles.isExpanded)}
             key={suggestionData.user_id}
