@@ -4,9 +4,9 @@ import {
   receiveSuggestions,
 } from './actions';
 
-export function* getSuggestions() {
+export function* getSuggestions(count) {
   yield setLoadingSuggestions(true);
-  const suggestions = yield requestSuggestions();
+  const suggestions = yield requestSuggestions(count);
   yield receiveSuggestions(suggestions);
   yield setLoadingSuggestions(false);
 }
