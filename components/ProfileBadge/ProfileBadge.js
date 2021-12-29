@@ -1,4 +1,5 @@
 import styles from './ProfileBadge.module.css';
+import { LOGGED_IN_USER } from '../../stores/constants'
 
 export function ProfileBadge() {
   return (
@@ -10,9 +11,9 @@ export function ProfileBadge() {
       />
       <div className={styles.userInfo}>
         <p className={styles.userName}>
-          <strong>marwan.alshaker</strong>
+          <strong>{LOGGED_IN_USER}</strong>
         </p>
-        <p className={styles.userRealName}>Marwan Ahmed</p>
+        <p className={styles.userRealName}>Marwan Alshaker</p>
       </div>
       <button className={styles.switchButton}>Switch</button>
     </div>

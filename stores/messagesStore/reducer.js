@@ -1,4 +1,3 @@
-import { LOGGED_IN_USER } from '../constants';
 import produce from 'immer';
 
 const defaultState = {
