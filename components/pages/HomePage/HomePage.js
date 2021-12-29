@@ -19,7 +19,13 @@ export function HomePage() {
             key={datum.post_id}
           />
         ))}
+        {itemsLeft === 0 && !isLoading && (
+          <div>
+            <h1 className={styles.noMoreText}>Sorry no more Posts</h1>
+          </div>
+        )}
       </div>
+
       <div className={styles.rightSide}>
         <div className={styles.fixedContent}>
           <Suggestions />
