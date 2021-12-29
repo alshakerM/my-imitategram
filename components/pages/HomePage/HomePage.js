@@ -5,6 +5,7 @@ import { Suggestions } from '../../Suggestions/Suggestions';
 import { useSelect } from '@wordpress/data';
 import styles from './HomePage.module.css';
 import { ProfileBadge } from '../../ProfileBadge/ProfileBadge';
+import { FinePrint } from '../../FinePrint/FinePrint';
 
 export function HomePage() {
   const [pageNumber, setPageNumber] = React.useState(0);
@@ -55,6 +56,7 @@ export function HomePage() {
         <div className={styles.fixedContent}>
           <ProfileBadge />
           <Suggestions />
+          <FinePrint />
         </div>
       </div>
     </div>
