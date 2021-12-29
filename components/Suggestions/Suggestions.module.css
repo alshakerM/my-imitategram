@@ -11,7 +11,8 @@
 .text {
   color: #8e8e8e;
   font-weight: 600;
-  margin: 8px 0;
+  margin-bottom: 8px;
+  margin-top: 18px;
 }
 
 .text.isExpanded {
