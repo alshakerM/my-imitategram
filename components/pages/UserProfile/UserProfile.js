@@ -62,8 +62,6 @@ export function UserProfile({ userName }) {
     select('ig-profile').getProfileData(userName, postType)
   );
 
-  console.log({user})
-
   return (
     <>
       <div className={styles.profilePage}>
