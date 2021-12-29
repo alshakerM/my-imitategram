@@ -43,6 +43,12 @@ export function setLoadingPosts(isLoading) {
     isLoading,
   };
 }
+export function setItemsLeft(itemsLeft) {
+  return {
+    type: 'SET_ITEMS_LEFT',
+    itemsLeft,
+  };
+}
 export function setExpandedPost(postId) {
   return {
     type: 'SET_EXPANDED_POST',
@@ -54,11 +60,12 @@ export function requestPosts(postId, pageNumber) {
   return { type: 'REQUEST_POSTS', postId, pageNumber };
 }
 
-export function receivePosts(posts, pageNumber) {
+export function receivePosts(posts, pageNumber, itemsLeft) {
   return {
     type: 'RECEIVE_POSTS',
     posts,
     pageNumber,
+    itemsLeft,
   };
 }
 export function receivePost(post) {

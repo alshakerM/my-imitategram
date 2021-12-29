@@ -1,5 +1,7 @@
 import posts from '../../server/posts-data.json';
 
+const PAGE_SIZE = 20;
+
 export default function handler(req, res) {
   const { postId, pageNumber } = req.query;
   if (postId) {
@@ -10,10 +12,14 @@ export default function handler(req, res) {
       res.status(404).send('Not found.');
     }
   } else {
-    if (pageNumber < posts.length) {
-      const newPosts = posts.slice(0, pageNumber);
-      res.status(200).json(newPosts);
-    }
-    res.status(200).json(posts);
+    const start = pageNumber * PAGE_SIZE;
+    const end = start + PAGE_SIZE;
+    const response = {
+      posts: posts.slice(start, end),
+      start,
+      end,
+      itemsLeft: Math.max(0, posts.length - end),
+    };
+    return res.status(200).json(response);
   }
 }
