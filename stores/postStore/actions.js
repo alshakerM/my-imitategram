@@ -60,12 +60,11 @@ export function requestPosts(postId, pageNumber) {
   return { type: 'REQUEST_POSTS', postId, pageNumber };
 }
 
-export function receivePosts(posts, pageNumber, itemsLeft) {
+export function receivePosts(posts, pageNumber) {
   return {
     type: 'RECEIVE_POSTS',
     posts,
     pageNumber,
-    itemsLeft,
   };
 }
 export function receivePost(post) {
