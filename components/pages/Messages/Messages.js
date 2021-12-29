@@ -44,75 +44,87 @@ function UserSection() {
     </div>
   );
 }
-function SenderSection({ messagesData, fromUserId }) {
+function SenderSection({ fromUserId }) {
+  const threadsData = useSelect((select) => select('ig-messages').getThreads());
+
+  const loadedThreads = useSelect((select) =>
+    threadsData.map((user) =>
+      select('ig-messages').getLoadedThread(user.from_user_id)
+    )
+  );
+
   return (
     <div className={styles.sendersSection}>
-      {messagesData.map((user) => (
-        <Link href={`/direct/t/${user.from_user_id}`}>
-          <a
-            className={cx(styles.senderInfo, {
-              [styles.isSent]: user.from_user_id === fromUserId,
-            })}
-          >
-            <Link href={`/direct/t/${user.from_user_id}`}>
+      {threadsData.map((user, index) => {
+        const activeThread = loadedThreads[index];
+        // getLoadedThread selector gives you threads already in memory, we can hook up to the messages array of loaded threads
+        // to stay up to date with the last message's timestamp
+        // this is good because we only update threads after putting them in focus and fetching them
+        const lastMessageTime = activeThread
+          ? activeThread.messages[activeThread.messages.length - 1]?.sent_on
+          : user.last_message.sent_on;
+
+        return (
+          <Link key={user.from_user_id} href={`/direct/t/${user.from_user_id}`}>
+            <a
+              className={cx(styles.senderInfo, {
+                [styles.isSent]: user.from_user_id === fromUserId,
+              })}
+            >
               <img
                 className={styles.senderThumbnail}
                 src={user.from_user_thumbnail}
                 alt="sender avatar"
               />
-            </Link>
-            <div>
-              <p className={styles.senderUsername}>{user.from_username}</p>
-              <p className={styles.hasSentMessage}>
-                Active{' '}
-                {absoluteToRelativeDate(
-                  user.messages[user.messages.length - 1].sent_on
-                )}
-              </p>
-            </div>
-          </a>
-        </Link>
-      ))}
+              <div>
+                <p className={styles.senderUsername}>{user.from_username}</p>
+                <p className={styles.hasSentMessage}>
+                  Active {absoluteToRelativeDate(lastMessageTime)}
+                </p>
+              </div>
+            </a>
+          </Link>
+        );
+      })}
     </div>
   );
 }
-export function Messages({ fromUserId }) {
-  const messagesData = useSelect((select) =>
-    select('ig-messages').getMessages()
-  );
-  const userIndex = messagesData?.findIndex(
-    (user) => user.from_user_id === fromUserId
-  );
 
-  const date = new Date(
-    messagesData[userIndex]?.messages[
-      messagesData[userIndex]?.messages.length - 1
-    ].sent_on
+export function Messages({ fromUserId }) {
+  const threadData = useSelect(
+    (select) => {
+      if (fromUserId) {
+        return select('ig-messages').getThread(fromUserId);
+      }
+    },
+    [fromUserId]
   );
+  const date = new Date(threadData?.last_message?.sent_on);
   const { setMessageFieldText } = useDispatch('ig-messages');
   const { submitMessage } = useDispatch('ig-messages');
   const messageFieldText = useSelect((select) =>
     select('ig-messages').getMessageFieldText()
   );
+  console.log({ threadData });
   return (
     <>
       <div className={styles.messagesPageContainer}>
         <div className={styles.leftSection}>
           <UserSection />
-          <SenderSection messagesData={messagesData} fromUserId={fromUserId} />
+          <SenderSection fromUserId={fromUserId} />
         </div>
 
         {fromUserId ? (
           <div className={styles.rightSection}>
             <div className={styles.messagesHeader}>
               <img
-                src={messagesData[userIndex]?.from_user_thumbnail}
+                src={threadData?.from_user_thumbnail}
                 alt="sender avatar"
                 className={styles.messagesSenderAvatar}
               />
               <div className={styles.messagesSenderUserInfo}>
                 <p className={styles.messagesSenderUsername}>
-                  <strong>{messagesData[userIndex]?.from_username}</strong>
+                  <strong>{threadData?.from_username}</strong>
                 </p>
                 <p className={styles.whenWasActive}>Active 20min ago</p>
               </div>
@@ -141,7 +153,7 @@ export function Messages({ fromUserId }) {
                 className={styles.messagesBody}
                 ref={(div) => div && (div.scrollTop = 100000)}
               >
-                {messagesData.length > 0 && (
+                {threadData?.messages.length > 0 && (
                   <p className={styles.lastMessageSentDate}>
                     {date.toLocaleString('en-us', {
                       month: 'long',
@@ -154,19 +166,20 @@ export function Messages({ fromUserId }) {
                   </p>
                 )}
 
-                {messagesData[userIndex]?.messages.map((message, index) => {
+                {threadData?.messages.map((message, index) => {
                   const nextMessage = index + 1;
                   return (
                     <div
+                      key={message.from_user_id}
                       className={cx(styles.messagesUserThumbnailMessageText, {
                         [styles.isSent]: message.direction === 'sent',
                       })}
                     >
                       {message.direction !==
-                        messagesData[userIndex]?.messages[nextMessage]
-                          ?.direction && message.direction !== 'sent' ? (
+                        threadData?.messages[nextMessage]?.direction &&
+                      message.direction !== 'sent' ? (
                         <img
-                          src={messagesData[userIndex].from_user_thumbnail}
+                          src={threadData?.from_user_thumbnail}
                           alt="sender profile pic"
                           className={styles.messagesSenderAvatar}
                         />
@@ -201,7 +214,7 @@ export function Messages({ fromUserId }) {
                     className={styles.inputForm}
                     onSubmit={(event) => {
                       event.preventDefault();
-                      submitMessage(userIndex);
+                      submitMessage(threadData?.from_user_id);
                     }}
                   >
                     <input

@@ -1,5 +1,15 @@
-export async function REQUEST_MESSAGES() {
-  const response = await fetch('/Data/messages.json');
-  const results = await response.json();
-  return results;
+export async function REQUEST_THREADS(action) {
+  const { fromUserId, fields } = action;
+  let url = '/api/messages?';
+
+  if (fromUserId) {
+    url += `fromUserId=${fromUserId}&`;
+  }
+
+  if (fields) {
+    url += `fields=${fields.join(',')}`;
+  }
+
+  const response = await fetch(url);
+  return await response.json();
 }
