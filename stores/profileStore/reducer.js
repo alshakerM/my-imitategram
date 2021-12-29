@@ -1,16 +1,17 @@
 const defaultState = {
-  profileData: [],
+  profileData: {
+    posts: {},
+    tagged: {},
+  },
 };
 
 export default function reducer(state = defaultState, action) {
   switch (action.type) {
     case 'RECEIVE_PROFILE': {
-      return { ...state, profileData: action.profileData };
-    }
-    case 'SET_LOADING': {
-      const newState = { ...state, profileData: [...state.profileData] };
-      newState.isLoading = action.isLoading;
-      return newState;
+      const profileData = { ...state.profileData };
+      profileData[action.postType] = action.profileData;
+
+      return { ...state, profileData };
     }
     default:
       return state;
