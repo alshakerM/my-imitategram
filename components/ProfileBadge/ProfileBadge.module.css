@@ -21,11 +21,12 @@
   margin: 0;
   color: #8e8e8e;
 }
-.switchButton {
+.gitHubLink {
   border: none;
   background: none;
   font-weight: 600;
   color: #0095f6;
   font-size: 12px;
-  padding: 0;
+  text-decoration: none;
+  align-self: center;
 }

@@ -1,5 +1,5 @@
 import styles from './ProfileBadge.module.css';
-import { LOGGED_IN_USER } from '../../stores/constants'
+import { LOGGED_IN_USER } from '../../stores/constants';
 
 export function ProfileBadge() {
   return (
@@ -15,7 +15,13 @@ export function ProfileBadge() {
         </p>
         <p className={styles.userRealName}>Marwan Alshaker</p>
       </div>
-      <button className={styles.switchButton}>Switch</button>
+      <a
+        href="https://github.com/alshakerM"
+        className={styles.gitHubLink}
+        target="_blank"
+      >
+        GitHub
+      </a>
     </div>
   );
 }
