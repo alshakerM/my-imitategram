@@ -139,6 +139,7 @@
 .messagesBody {
   overflow: auto;
   display: flex;
+
   flex-direction: column;
 }
 .lastMessageSentDate {
@@ -157,15 +158,18 @@
   background-color: #efefef;
 }
 
-.messagesUserThumbnailMessageText {
+.usersMessagesText {
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
 }
 .messagesUserThumbnailMessageText.isSent {
   align-self: flex-end;
   padding-right: 16px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 .emptyImg {
   width: 24px;
@@ -252,4 +256,101 @@
   justify-content: space-around;
   width: 100%;
   align-items: center;
+}
+.likeIconContainer {
+  width: max-content;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: #efefef;
+  margin-left: 52px;
+  margin-top: -25px;
+  border: 2px solid #fff;
+  z-index: 5;
+  position: relative;
+}
+.likeIconContainer.isSent {
+  align-self: flex-end;
+}
+.likeIcon {
+  fill: #0095f6;
+}
+.messageTextAndThreeDots {
+  display: flex;
+}
+.messageTextAndThreeDots:hover .threeDotsButton {
+  visibility: visible;
+}
+.threeDotsButton {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  padding-left: 8px;
+  margin-bottom: 14px;
+  visibility: hidden;
+}
+.threeDotsButton.isClicked {
+  visibility: unset;
+}
+.threeDotsButton.isSent {
+  padding-left: 0;
+  padding-right: 8px;
+}
+.threeDotsSVG:hover {
+  fill: #262626;
+}
+.threeDotsSVG.isClicked {
+  fill: #262626;
+}
+.interactButtonsContainer {
+  background-color: black;
+  box-shadow: rgb(0 0 0 / 20%) 0 4px 22px;
+  height: 30px;
+  border-radius: 8px;
+  margin: 0 5px;
+  padding: 5px;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+.interactButtons {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+.emptyArrow {
+  height: 10px;
+  width: inherit;
+  margin-top: -2.5px;
+  margin-right: 80%;
+}
+.arrow {
+  border-radius: 2px;
+  height: 15px;
+  margin: auto;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 15px;
+  background-color: black;
+}
+.emptyArrow.isSent {
+  margin-right: 0%;
+  margin-left: 80%;
+}
+.interactionSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: flex-end;
+}
+.messageInteraction {
+  align-self: flex-end;
 }
