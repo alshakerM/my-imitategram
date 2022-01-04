@@ -5,7 +5,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <div>
       <Head>
-        <title>instagram clone</title>
+        <title>instagram Clone</title>
         <link rel="shortcut icon" href="/Instagarm logo.png" />
       </Head>
       <Component {...pageProps} />
