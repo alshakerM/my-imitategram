@@ -1,0 +1,25 @@
+.containerList {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 11px;
+  color: #c7c7c7;
+  padding: 0;
+  list-style-type: none;
+  margin-top: 25px;
+}
+.list {
+  margin-right: 2.5px;
+  margin-top: 4px;
+}
+.list::after {
+  margin-left: 2.5px;
+  margin-top: 10px;
+  content: '.';
+  position: relative;
+  top: -15%;
+}
+
+.instaText {
+  font-size: 11px;
+  color: #c7c7c7;
+}

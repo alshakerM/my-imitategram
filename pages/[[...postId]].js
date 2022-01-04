@@ -6,7 +6,6 @@ import { useSelect } from '@wordpress/data';
 import React from 'react';
 import { UserProfile } from '../components/pages/UserProfile/UserProfile';
 
-
 export default function CatchAll({ query }) {
   const expandedPostId = useSelect((select) =>
     select('ig-posts').getExpandedPost()
@@ -69,4 +68,3 @@ export default function CatchAll({ query }) {
 CatchAll.getInitialProps = async function (context) {
   return { query: context.query };
 };
-
