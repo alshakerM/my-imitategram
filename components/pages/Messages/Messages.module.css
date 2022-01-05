@@ -261,16 +261,11 @@
   width: max-content;
   padding: 6px;
   border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   box-sizing: border-box;
   background-color: #efefef;
   margin-left: 52px;
   margin-top: -25px;
   border: 2px solid #fff;
-  z-index: 5;
-  position: relative;
 }
 .likeIconContainer.isSent {
   align-self: flex-end;

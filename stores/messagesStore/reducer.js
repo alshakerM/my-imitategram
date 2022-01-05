@@ -32,6 +32,13 @@ export default function reducer(state = defaultState, action) {
         message.is_liked_by_user = !message.is_liked_by_user;
       });
     }
+    case 'MESSAGE_LIKE': {
+      return produce(state, (draft) => {
+        const message =
+          draft.loadedThreads[action.fromUserId].messages[action.index];
+        message.is_liked_by_user = true;
+      });
+    }
     case 'DELETE_MESSAGE': {
       return produce(state, (draft) => {
         const deletedMessage = draft.loadedThreads[

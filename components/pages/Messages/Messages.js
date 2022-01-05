@@ -106,19 +106,18 @@ export function Messages({ fromUserId }) {
     select('ig-messages').getMessageFieldText()
   );
   const { toggleMessageLike } = useDispatch('ig-messages');
+  const { messageLike } = useDispatch('ig-messages');
   const { deleteMessage } = useDispatch('ig-messages');
-  const [messageIndex, setMessageIndex] = React.useState(undefined);
-  const [isDotsClicked, setIsDotsClicked] = React.useState(false);
+  const [focusedIndex, setFocusedIndex] = React.useState(undefined);
+  const [areDotsClicked, setAreDotsClicked] = React.useState(false);
   return (
     <>
       <div
         className={styles.messagesPageContainer}
         onClick={(event) => {
           // hide the context-menu when you click outside of it
-          if (
-            !event.target.matches(`.${styles.messageTextAndThreeDots} *`)
-          ) {
-            setMessageIndex(undefined);
+          if (!event.target.matches(`.${styles.messageTextAndThreeDots} *`)) {
+            setFocusedIndex(undefined);
           }
         }}
       >
@@ -200,14 +199,14 @@ export function Messages({ fromUserId }) {
                         {message.direction === 'sent' ? (
                           <div className={styles.messageTextAndThreeDots}>
                             <div className={styles.interactionSection}>
-                              {messageIndex === index && (
+                              {focusedIndex === index && (
                                 <div
                                   className={styles.interactButtonsContainer}
                                 >
                                   <button
                                     onClick={() => {
                                       toggleMessageLike(fromUserId, index);
-                                      setMessageIndex(undefined);
+                                      setFocusedIndex(undefined);
                                     }}
                                     className={styles.interactButtons}
                                   >
@@ -221,7 +220,7 @@ export function Messages({ fromUserId }) {
                                       navigator.clipboard.writeText(
                                         message.message_body
                                       );
-                                      setMessageIndex(undefined);
+                                      setFocusedIndex(undefined);
                                     }}
                                   >
                                     Copy
@@ -230,15 +229,16 @@ export function Messages({ fromUserId }) {
                                     className={styles.interactButtons}
                                     onClick={() => {
                                       deleteMessage(fromUserId, index);
-                                      setMessageIndex(undefined);
+                                      setFocusedIndex(undefined);
                                     }}
                                   >
                                     Unsend
                                   </button>
                                   <div
-                                    className={cx(styles.emptyArrow, [
-                                      styles.isSent,
-                                    ])}
+                                    className={cx(
+                                      styles.emptyArrow,
+                                      styles.isSent
+                                    )}
                                   >
                                     <div className={styles.arrow}></div>
                                   </div>
@@ -249,21 +249,21 @@ export function Messages({ fromUserId }) {
                                 className={cx(styles.threeDotsButton, {
                                   [styles.isSent]: message.direction === 'sent',
                                   [styles.isClicked]:
-                                    messageIndex === index && isDotsClicked,
+                                    focusedIndex === index && areDotsClicked,
                                 })}
                                 onClick={() => {
-                                  setMessageIndex(
-                                    messageIndex === index ? undefined : index
+                                  setFocusedIndex(
+                                    focusedIndex === index ? undefined : index
                                   );
-                                  if (messageIndex === index) {
-                                    setIsDotsClicked(true);
+                                  if (focusedIndex === index) {
+                                    setAreDotsClicked(true);
                                   }
                                 }}
                               >
                                 <svg
                                   className={cx(styles.threeDotsSVG, {
                                     [styles.isClicked]:
-                                      messageIndex === index && isDotsClicked,
+                                      focusedIndex === index && areDotsClicked,
                                   })}
                                   aria-label="Comment options"
                                   fill="#8e8e8e"
@@ -283,7 +283,7 @@ export function Messages({ fromUserId }) {
                                 [styles.isSent]: message.direction === 'sent',
                               })}
                               onDoubleClick={() =>
-                                toggleMessageLike(fromUserId, index)
+                                messageLike(fromUserId, index)
                               }
                             >
                               {message.message_body}
@@ -296,24 +296,26 @@ export function Messages({ fromUserId }) {
                                 [styles.isSent]: message.direction === 'sent',
                               })}
                               onDoubleClick={() =>
-                                toggleMessageLike(fromUserId, index)
+                                messageLike(fromUserId, index)
                               }
                             >
                               {message.message_body}
                             </p>
                             <div className={styles.messageInteraction}>
-                              {messageIndex === index && (
+                              {focusedIndex === index && (
                                 <div
                                   className={styles.interactButtonsContainer}
                                 >
                                   <button
                                     className={styles.interactButtons}
                                     onClick={() => {
-                                      messageUnLike(fromUserId, index);
-                                      setMessageIndex(undefined);
+                                      toggleMessageLike(fromUserId, index);
+                                      setFocusedIndex(undefined);
                                     }}
                                   >
-                                    Unlike
+                                    {message.is_liked_by_user
+                                      ? 'Unlike'
+                                      : 'Like'}
                                   </button>
                                   <button
                                     className={styles.interactButtons}
@@ -321,7 +323,7 @@ export function Messages({ fromUserId }) {
                                       navigator.clipboard.writeText(
                                         message.message_body
                                       );
-                                      setMessageIndex(undefined);
+                                      setFocusedIndex(undefined);
                                     }}
                                   >
                                     Copy
@@ -338,21 +340,21 @@ export function Messages({ fromUserId }) {
                               <button
                                 className={cx(styles.threeDotsButton, {
                                   [styles.isClicked]:
-                                    messageIndex === index && isDotsClicked,
+                                    focusedIndex === index && areDotsClicked,
                                 })}
                                 onClick={() => {
-                                  setMessageIndex(
-                                    messageIndex === index ? undefined : index
+                                  setFocusedIndex(
+                                    focusedIndex === index ? undefined : index
                                   );
-                                  if (messageIndex === index) {
-                                    setIsDotsClicked(true);
+                                  if (focusedIndex === index) {
+                                    setAreDotsClicked(true);
                                   }
                                 }}
                               >
                                 <svg
                                   className={cx(styles.threeDotsSVG, {
                                     [styles.isClicked]:
-                                      messageIndex === index && isDotsClicked,
+                                      focusedIndex === index && areDotsClicked,
                                   })}
                                   aria-label="Comment options"
                                   fill="#8e8e8e"
