@@ -54,6 +54,7 @@ function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
 }
 function PostActions({ postId, is_post_liked, isExpanded }) {
   const { togglePostLike } = useDispatch('ig-posts');
+
   return (
     <section
       className={cx(styles.postActions, {
@@ -412,6 +413,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
   const aspectRatio = `${post.media_dimensions.width} / ${post.media_dimensions.height}`;
   const [mediaIndex, setMediaIndex] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
+  const { postLike } = useDispatch('ig-posts');
 
   return (
     <>
@@ -436,6 +438,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
                   aspectRatio={aspectRatio}
                   setIsLoading={setIsLoading}
                   isLoading={isLoading}
+                  onDoubleClick={() => postLike(post.post_id)}
                 />
               ) : (
                 <PostImage
@@ -443,6 +446,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
                   imageURL={mediaItem.url}
                   fraction={1 / items.length}
                   aspectRatio={aspectRatio}
+                  onDoubleClick={() => postLike(post.post_id)}
                 />
               )
             ) : index === 0 ? (

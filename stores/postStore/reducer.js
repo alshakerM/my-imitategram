@@ -20,6 +20,12 @@ export default function reducer(state = defaultState, action) {
         post.is_post_liked = !post.is_post_liked;
       });
     }
+    case 'POST_LIKE': {
+      return produce(state, (draft) => {
+        const post = draft.posts.find((p) => p.post_id === action.postId);
+        post.is_post_liked = true;
+      });
+    }
     case 'SET_LOADING': {
       const newState = { ...state };
       newState.isLoading = action.isLoading;
