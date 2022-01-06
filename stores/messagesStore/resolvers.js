@@ -14,3 +14,4 @@ export function* getThread(fromUserId) {
   const thread = yield requestThreads(fromUserId);
   yield receiveThread(thread);
 }
+

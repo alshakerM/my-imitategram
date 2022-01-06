@@ -105,7 +105,6 @@ export function Messages({ fromUserId }) {
   const messageFieldText = useSelect((select) =>
     select('ig-messages').getMessageFieldText()
   );
-  const { toggleMessageLike } = useDispatch('ig-messages');
   const { messageLike } = useDispatch('ig-messages');
   const { deleteMessage } = useDispatch('ig-messages');
   const [focusedIndex, setFocusedIndex] = React.useState(undefined);
@@ -205,7 +204,11 @@ export function Messages({ fromUserId }) {
                                 >
                                   <button
                                     onClick={() => {
-                                      toggleMessageLike(fromUserId, index);
+                                      messageLike(
+                                        fromUserId,
+                                        index,
+                                        !message.is_liked_by_user
+                                      );
                                       setFocusedIndex(undefined);
                                     }}
                                     className={styles.interactButtons}
@@ -309,7 +312,11 @@ export function Messages({ fromUserId }) {
                                   <button
                                     className={styles.interactButtons}
                                     onClick={() => {
-                                      toggleMessageLike(fromUserId, index);
+                                      messageLike(
+                                        fromUserId,
+                                        index,
+                                        !message.is_liked_by_user
+                                      );
                                       setFocusedIndex(undefined);
                                     }}
                                   >
@@ -378,9 +385,7 @@ export function Messages({ fromUserId }) {
                             [styles.isSent]: message.direction === 'sent',
                           })}
                         >
-                          <span className={cx(styles.likeIcon)}>
-                            ❤️
-                          </span>
+                          <span className={cx(styles.likeIcon)}>❤️</span>
                         </div>
                       )}
                     </div>
