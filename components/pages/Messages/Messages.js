@@ -105,7 +105,6 @@ export function Messages({ fromUserId }) {
   const messageFieldText = useSelect((select) =>
     select('ig-messages').getMessageFieldText()
   );
-  console.log({ threadData });
   return (
     <>
       <div className={styles.messagesPageContainer}>

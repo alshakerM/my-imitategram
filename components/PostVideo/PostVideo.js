@@ -10,7 +10,6 @@ export function PostVideo({
   aspectRatio,
   isLoading,
   setIsLoading,
-  onDoubleClick,
 }) {
   const [videoPause, setVideoPause] = React.useState(true);
   const videoRef = useRef();
@@ -46,7 +45,6 @@ export function PostVideo({
         src={videoURL}
         style={{ aspectRatio }}
         onLoad={() => setIsLoading?.(false)}
-        onDoubleClick={onDoubleClick}
       />
       {videoPause && !isLoading && (
         <div className={styles.playIconContainer}>
