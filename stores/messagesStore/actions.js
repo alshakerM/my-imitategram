@@ -28,3 +28,24 @@ export function submitMessage(userId) {
     userId,
   };
 }
+export function toggleMessageLike(fromUserId, index) {
+  return {
+    type: 'TOGGLE_MESSAGE_LIKE',
+    fromUserId,
+    index,
+  };
+}
+export function messageLike(fromUserId, index) {
+  return {
+    type: 'MESSAGE_LIKE',
+    fromUserId,
+    index,
+  };
+}
+export function deleteMessage(fromUserId, index) {
+  return {
+    type: 'DELETE_MESSAGE',
+    fromUserId,
+    index,
+  };
+}
