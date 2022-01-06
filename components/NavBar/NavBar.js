@@ -1,4 +1,4 @@
-import { SearchRounded } from '@mui/icons-material';
+import { Cancel, SearchRounded } from '@mui/icons-material';
 import Link from 'next/link';
 import React from 'react';
 import { Icons } from '../Icons/Icons';
@@ -10,6 +10,9 @@ import {
   searchIcon,
   searchInput,
   searchPlaceholder,
+  cancelIconContainer,
+  inputSection,
+  cancelIcon,
 } from './NavBar.module.css';
 
 export function NavBar() {
@@ -31,15 +34,23 @@ export function NavBar() {
         </Link>
         <div>
           {searchActive ? (
-            <input
-              type="search"
-              onBlur={() => !hasValue && setSearchActive(false)}
-              placeholder="Search"
-              onChange={(e) => setInputValue(e.target.value)}
-              value={inputValue}
-              className={searchInput}
-              autoFocus
-            ></input>
+            <div className={inputSection}>
+              <input
+                type="text"
+                onBlur={() => !hasValue && setSearchActive(false)}
+                placeholder="Search"
+                onChange={(e) => setInputValue(e.target.value)}
+                value={inputValue}
+                className={searchInput}
+                autoFocus
+              ></input>
+              <div
+                className={cancelIconContainer}
+                onClick={() => setInputValue('')}
+              >
+                <Cancel className={cancelIcon} fontSize="small" />
+              </div>
+            </div>
           ) : (
             <button
               className={searchPlaceholder}
