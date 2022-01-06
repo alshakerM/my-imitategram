@@ -378,7 +378,9 @@ export function Messages({ fromUserId }) {
                             [styles.isSent]: message.direction === 'sent',
                           })}
                         >
-                          ❤️
+                          <span className={cx(styles.likeIcon)}>
+                            ❤️
+                          </span>
                         </div>
                       )}
                     </div>

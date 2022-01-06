@@ -259,7 +259,7 @@
 }
 .likeIconContainer {
   width: max-content;
-  padding: 6px;
+  padding: 5px 6px;
   border-radius: 50%;
   box-sizing: border-box;
   background-color: #efefef;
@@ -271,7 +271,7 @@
   align-self: flex-end;
 }
 .likeIcon {
-  fill: #0095f6;
+  line-height: 0;
 }
 .messageTextAndThreeDots {
   display: flex;
