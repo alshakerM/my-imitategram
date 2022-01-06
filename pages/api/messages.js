@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
+import { act } from 'react-dom/test-utils';
 
 const messagesDataPath = resolve(
   __dirname,
@@ -24,10 +25,8 @@ const allowedFields = [
 export default function handler(req, res) {
   if (req.method === 'POST') {
     const { action } = req.query;
-    const { index, fromUserId, like } = req.body;
-    if (typeof index !== 'number') {
-      return res.status(400).send('Bad request. Index needs to be a number');
-    }
+    const { index, fromUserId, like, text } = req.body;
+
     if (!fromUserId) {
       return res
         .status(400)
@@ -42,12 +41,10 @@ export default function handler(req, res) {
         const message = thread.messages[index];
         message.is_liked_by_user = like;
         syncMessageFile();
-        return res
-          .status(200)
-          .json({
-            ok: true,
-            message: `Message is now ${like ? 'liked' : 'unliked'}`,
-          });
+        return res.status(200).json({
+          ok: true,
+          message: `Message is now ${like ? 'liked' : 'unliked'}`,
+        });
       }
       case 'deleteMessage': {
         const thread = messagesData.find(
@@ -58,6 +55,21 @@ export default function handler(req, res) {
         return res
           .status(200)
           .json({ ok: true, message: 'Message is now deleted' });
+      }
+      case 'submitMessage': {
+        const thread = messagesData.find(
+          (thread) => thread.from_user_id === fromUserId
+        );
+        thread.messages.push({
+          message_body: text,
+          sent_on: new Date().toISOString(),
+          is_liked_by_user: false,
+          direction: 'sent',
+        });
+        syncMessageFile();
+        return res
+          .status(200)
+          .json({ ok: true, message: 'Message is now Added' });
       }
       default: {
         return res.status(400).send(`Bad request. Bad action type: ${action}`);

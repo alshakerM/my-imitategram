@@ -40,3 +40,15 @@ export async function DELETE_MESSAGE(action) {
     }),
   });
 }
+export async function SUBMIT_MESSAGE(action) {
+  await fetch('/api/messages?action=submitMessage', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      fromUserId: action.fromUserId,
+      text: action.text,
+    }),
+  });
+}

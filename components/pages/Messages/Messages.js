@@ -409,7 +409,7 @@ export function Messages({ fromUserId }) {
                     className={styles.inputForm}
                     onSubmit={(event) => {
                       event.preventDefault();
-                      submitMessage(threadData?.from_user_id);
+                      submitMessage(threadData?.from_user_id, messageFieldText);
                     }}
                   >
                     <input

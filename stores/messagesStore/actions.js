@@ -25,10 +25,16 @@ export function setMessageFieldText(text) {
     text,
   };
 }
-export function submitMessage(userId) {
+export function* submitMessage(fromUserId, text) {
+  yield {
+    type: 'SUBMIT_MESSAGE',
+    fromUserId,
+    text
+  };
   return {
     type: 'SUBMIT_MESSAGE',
-    userId,
+    fromUserId,
+    text
   };
 }
 
