@@ -4,6 +4,12 @@ export function togglePostLike(postId) {
     postId,
   };
 }
+export function postLike(postId) {
+  return {
+    type: 'POST_LIKE',
+    postId,
+  };
+}
 
 export function toggleCommentLike(postId, commentId) {
   return {
