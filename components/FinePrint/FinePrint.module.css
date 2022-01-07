@@ -14,9 +14,7 @@
 .list::after {
   margin-left: 2.5px;
   margin-top: 10px;
-  content: '.';
-  position: relative;
-  top: -15%;
+  content: '•';
 }
 
 .instaText {

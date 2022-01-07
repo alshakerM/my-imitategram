@@ -24,6 +24,29 @@ export default function reducer(state = defaultState, action) {
       newState.messageFieldText = action.text;
       return newState;
     }
+
+    case 'TOGGLE_MESSAGE_LIKE': {
+      return produce(state, (draft) => {
+        const message =
+          draft.loadedThreads[action.fromUserId].messages[action.index];
+        message.is_liked_by_user = !message.is_liked_by_user;
+      });
+    }
+    case 'MESSAGE_LIKE': {
+      return produce(state, (draft) => {
+        const message =
+          draft.loadedThreads[action.fromUserId].messages[action.index];
+        message.is_liked_by_user = true;
+      });
+    }
+    case 'DELETE_MESSAGE': {
+      return produce(state, (draft) => {
+        const deletedMessage = draft.loadedThreads[
+          action.fromUserId
+        ].messages.splice(action.index, 1);
+      });
+    }
+
     case 'SUBMIT_MESSAGE': {
       return produce(state, (draft) => {
         draft.loadedThreads[action.userId].messages.push({
@@ -35,6 +58,7 @@ export default function reducer(state = defaultState, action) {
         draft.messageFieldText = '';
       });
     }
+
     default:
       return state;
   }

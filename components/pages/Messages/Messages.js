@@ -105,9 +105,22 @@ export function Messages({ fromUserId }) {
   const messageFieldText = useSelect((select) =>
     select('ig-messages').getMessageFieldText()
   );
+  const { toggleMessageLike } = useDispatch('ig-messages');
+  const { messageLike } = useDispatch('ig-messages');
+  const { deleteMessage } = useDispatch('ig-messages');
+  const [focusedIndex, setFocusedIndex] = React.useState(undefined);
+  const [areDotsClicked, setAreDotsClicked] = React.useState(false);
   return (
     <>
-      <div className={styles.messagesPageContainer}>
+      <div
+        className={styles.messagesPageContainer}
+        onClick={(event) => {
+          // hide the context-menu when you click outside of it
+          if (!event.target.matches(`.${styles.messageTextAndThreeDots} *`)) {
+            setFocusedIndex(undefined);
+          }
+        }}
+      >
         <div className={styles.leftSection}>
           <UserSection />
           <SenderSection fromUserId={fromUserId} />
@@ -148,10 +161,7 @@ export function Messages({ fromUserId }) {
               </svg>
             </div>
             <div className={styles.messagesSection}>
-              <div
-                className={styles.messagesBody}
-                ref={(div) => div && (div.scrollTop = 100000)}
-              >
+              <div className={styles.messagesBody}>
                 {threadData?.messages.length > 0 && (
                   <p className={styles.lastMessageSentDate}>
                     {date.toLocaleString('en-us', {
@@ -174,24 +184,205 @@ export function Messages({ fromUserId }) {
                         [styles.isSent]: message.direction === 'sent',
                       })}
                     >
-                      {message.direction !==
-                        threadData?.messages[nextMessage]?.direction &&
-                      message.direction !== 'sent' ? (
-                        <img
-                          src={threadData?.from_user_thumbnail}
-                          alt="sender profile pic"
-                          className={styles.messagesSenderAvatar}
-                        />
-                      ) : (
-                        <div className={styles.emptyImg}></div>
+                      <div className={styles.usersMessagesText}>
+                        {message.direction !==
+                          threadData?.messages[nextMessage]?.direction &&
+                        message.direction !== 'sent' ? (
+                          <img
+                            src={threadData?.from_user_thumbnail}
+                            alt="sender profile pic"
+                            className={styles.messagesSenderAvatar}
+                          />
+                        ) : (
+                          <div className={styles.emptyImg}></div>
+                        )}
+                        {message.direction === 'sent' ? (
+                          <div className={styles.messageTextAndThreeDots}>
+                            <div className={styles.interactionSection}>
+                              {focusedIndex === index && (
+                                <div
+                                  className={styles.interactButtonsContainer}
+                                >
+                                  <button
+                                    onClick={() => {
+                                      toggleMessageLike(fromUserId, index);
+                                      setFocusedIndex(undefined);
+                                    }}
+                                    className={styles.interactButtons}
+                                  >
+                                    {message.is_liked_by_user
+                                      ? 'Unlike'
+                                      : 'Like'}
+                                  </button>
+                                  <button
+                                    className={styles.interactButtons}
+                                    onClick={() => {
+                                      navigator.clipboard.writeText(
+                                        message.message_body
+                                      );
+                                      setFocusedIndex(undefined);
+                                    }}
+                                  >
+                                    Copy
+                                  </button>
+                                  <button
+                                    className={styles.interactButtons}
+                                    onClick={() => {
+                                      deleteMessage(fromUserId, index);
+                                      setFocusedIndex(undefined);
+                                    }}
+                                  >
+                                    Unsend
+                                  </button>
+                                  <div
+                                    className={cx(
+                                      styles.emptyArrow,
+                                      styles.isSent
+                                    )}
+                                  >
+                                    <div className={styles.arrow}></div>
+                                  </div>
+                                </div>
+                              )}
+
+                              <button
+                                className={cx(styles.threeDotsButton, {
+                                  [styles.isSent]: message.direction === 'sent',
+                                  [styles.isClicked]:
+                                    focusedIndex === index && areDotsClicked,
+                                })}
+                                onClick={() => {
+                                  setFocusedIndex(
+                                    focusedIndex === index ? undefined : index
+                                  );
+                                  if (focusedIndex === index) {
+                                    setAreDotsClicked(true);
+                                  }
+                                }}
+                              >
+                                <svg
+                                  className={cx(styles.threeDotsSVG, {
+                                    [styles.isClicked]:
+                                      focusedIndex === index && areDotsClicked,
+                                  })}
+                                  aria-label="Comment options"
+                                  fill="#8e8e8e"
+                                  height="24"
+                                  role="img"
+                                  viewBox="0 0 24 24"
+                                  width="24"
+                                >
+                                  <circle cx="12" cy="12" r="1.5"></circle>
+                                  <circle cx="6.5" cy="12" r="1.5"></circle>
+                                  <circle cx="17.5" cy="12" r="1.5"></circle>
+                                </svg>
+                              </button>
+                            </div>
+                            <p
+                              className={cx(styles.messageText, {
+                                [styles.isSent]: message.direction === 'sent',
+                              })}
+                              onDoubleClick={() =>
+                                messageLike(fromUserId, index)
+                              }
+                            >
+                              {message.message_body}
+                            </p>
+                          </div>
+                        ) : (
+                          <div className={styles.messageTextAndThreeDots}>
+                            <p
+                              className={cx(styles.messageText, {
+                                [styles.isSent]: message.direction === 'sent',
+                              })}
+                              onDoubleClick={() =>
+                                messageLike(fromUserId, index)
+                              }
+                            >
+                              {message.message_body}
+                            </p>
+                            <div className={styles.messageInteraction}>
+                              {focusedIndex === index && (
+                                <div
+                                  className={styles.interactButtonsContainer}
+                                >
+                                  <button
+                                    className={styles.interactButtons}
+                                    onClick={() => {
+                                      toggleMessageLike(fromUserId, index);
+                                      setFocusedIndex(undefined);
+                                    }}
+                                  >
+                                    {message.is_liked_by_user
+                                      ? 'Unlike'
+                                      : 'Like'}
+                                  </button>
+                                  <button
+                                    className={styles.interactButtons}
+                                    onClick={() => {
+                                      navigator.clipboard.writeText(
+                                        message.message_body
+                                      );
+                                      setFocusedIndex(undefined);
+                                    }}
+                                  >
+                                    Copy
+                                  </button>
+                                  <button className={styles.interactButtons}>
+                                    Report
+                                  </button>
+                                  <div className={styles.emptyArrow}>
+                                    <div className={styles.arrow}></div>
+                                  </div>
+                                </div>
+                              )}
+
+                              <button
+                                className={cx(styles.threeDotsButton, {
+                                  [styles.isClicked]:
+                                    focusedIndex === index && areDotsClicked,
+                                })}
+                                onClick={() => {
+                                  setFocusedIndex(
+                                    focusedIndex === index ? undefined : index
+                                  );
+                                  if (focusedIndex === index) {
+                                    setAreDotsClicked(true);
+                                  }
+                                }}
+                              >
+                                <svg
+                                  className={cx(styles.threeDotsSVG, {
+                                    [styles.isClicked]:
+                                      focusedIndex === index && areDotsClicked,
+                                  })}
+                                  aria-label="Comment options"
+                                  fill="#8e8e8e"
+                                  height="24"
+                                  role="img"
+                                  viewBox="0 0 24 24"
+                                  width="24"
+                                >
+                                  <circle cx="12" cy="12" r="1.5"></circle>
+                                  <circle cx="6.5" cy="12" r="1.5"></circle>
+                                  <circle cx="17.5" cy="12" r="1.5"></circle>
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      {message.is_liked_by_user && (
+                        <div
+                          className={cx(styles.likeIconContainer, {
+                            [styles.isSent]: message.direction === 'sent',
+                          })}
+                        >
+                          <span className={cx(styles.likeIcon)}>
+                            ❤️
+                          </span>
+                        </div>
                       )}
-                      <p
-                        className={cx(styles.messageText, {
-                          [styles.isSent]: message.direction === 'sent',
-                        })}
-                      >
-                        {message.message_body}
-                      </p>
                     </div>
                   );
                 })}
