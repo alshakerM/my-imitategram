@@ -1,6 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
-import { act } from 'react-dom/test-utils';
 
 const messagesDataPath = resolve(
   __dirname,
@@ -31,6 +30,9 @@ export default function handler(req, res) {
       return res
         .status(400)
         .send('Bad request. fromUserId needs to be provided');
+    }
+    if (typeof index !== 'number') {
+      return res.status(400).send('Bad request. index needs to be a number');
     }
 
     switch (action) {

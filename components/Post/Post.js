@@ -53,7 +53,7 @@ function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
   );
 }
 function PostActions({ postId, is_post_liked, isExpanded }) {
-  const { togglePostLike } = useDispatch('ig-posts');
+  const { postLike } = useDispatch('ig-posts');
   return (
     <section
       className={cx(styles.postActions, {
@@ -63,7 +63,7 @@ function PostActions({ postId, is_post_liked, isExpanded }) {
       <div className={styles.likeShareTelegramIcons}>
         <LikeButton
           is_post_liked={is_post_liked}
-          onClick={() => togglePostLike(postId)}
+          onClick={() => postLike(postId, !is_post_liked)}
         />
         <svg
           aria-label="Comment"
@@ -617,7 +617,7 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
           />
 
           <PostDate posting_time={datum.posting_time} isExpanded={isExpanded} />
-          <PostInput index={index} isExpanded={isExpanded} />
+          <PostInput index={datum.post_id} isExpanded={isExpanded} />
         </>
       </div>
     </article>
