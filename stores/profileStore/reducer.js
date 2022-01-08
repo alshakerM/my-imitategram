@@ -13,6 +13,10 @@ export default function reducer(state = defaultState, action) {
 
       return { ...state, profileData };
     }
+    case 'RECEIVE_ALL_PROFILE': {
+      console.log(action.profileData);
+      return { ...state, profileData: action.profileData };
+    }
     default:
       return state;
   }

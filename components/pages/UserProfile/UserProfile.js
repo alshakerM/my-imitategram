@@ -1,7 +1,6 @@
 import { Check, Person, PhotoCameraFrontOutlined } from '@mui/icons-material';
 import cx from 'classnames';
 import React from 'react';
-
 import Link from 'next/link';
 import styles from './UserProfile.module.css';
 import { Avatar } from '../../Avatar/Avatar';
@@ -11,6 +10,73 @@ import { useRouter } from 'next/router';
 import { useSelect } from '@wordpress/data';
 import Image from 'next/image';
 
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+function DialogSection({ openDialog, setOpenDialog }) {
+  const users = useSelect((select) => select('ig-profile').getProfileData());
+  return (
+    <Dialog
+      open={openDialog}
+      onClose={() => setOpenDialog(false)}
+      className={styles.dialog}
+    >
+      <DialogTitle className={styles.dialogTitle}>
+        <div className={styles.emptyDiv}></div>
+        <p className={styles.followersText}>Followers</p>
+        <button
+          className={styles.clearButton}
+          onClick={() => setOpenDialog(false)}
+        >
+          <svg
+            aria-label="Close"
+            className={styles.clearIcon}
+            fill="#262626"
+            height="24"
+            role="img"
+            viewBox="0 0 24 24"
+            width="24"
+          >
+            <line
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              x1="21"
+              x2="3"
+              y1="3"
+              y2="21"
+            ></line>
+            <line
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              x1="21"
+              x2="3"
+              y1="21"
+              y2="3"
+            ></line>
+          </svg>
+        </button>
+      </DialogTitle>
+      <DialogContent className={styles.dialogContent}>
+        {users?.map((data) => (
+          <div className={styles.followersSection}>
+            <Avatar user={data} alt="profile pic" size="36" />
+            <div className={styles.followerInfo}>
+              <p className={styles.followersUserName}>{data.user_name}</p>
+              <p className={styles.followersFullName}>{data.full_name}</p>
+            </div>
+            <button className={styles.followersButton}>Follow</button>
+          </div>
+        ))}
+      </DialogContent>
+    </Dialog>
+  );
+}
 function UserProfilePost({ post }) {
   return (
     <Link href={`/p/${post.post_id}`}>
@@ -68,6 +134,7 @@ export function UserProfile({ userName }) {
     select('ig-profile').getProfileData(userName, postType)
   );
 
+  const [openDialog, setOpenDialog] = React.useState(false);
   return (
     <>
       <div className={styles.profilePage}>
@@ -130,10 +197,17 @@ export function UserProfile({ userName }) {
                 <strong>{readableNumber(user?.postCount)}</strong>{' '}
                 {user?.postCount > 1 ? 'posts' : 'post'}
               </p>
-              <p className={styles.count}>
+              <button
+                className={styles.followersCount}
+                onClick={() => setOpenDialog(true)}
+              >
                 <strong>{readableNumber(user?.followers)}</strong>{' '}
                 {user?.followers > 1 ? 'followers' : 'follower'}
-              </p>
+              </button>
+              <DialogSection
+                openDialog={openDialog}
+                setOpenDialog={setOpenDialog}
+              />
               <p className={styles.count}>
                 <strong>{readableNumber(user?.following)}</strong> following
               </p>
