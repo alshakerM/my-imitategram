@@ -46,7 +46,10 @@ export function NavBar() {
               ></input>
               <div
                 className={cancelIconContainer}
-                onClick={() => setInputValue('')}
+                onClick={() => {
+                  setInputValue('');
+                  setSearchActive(false);
+                }}
               >
                 <Cancel className={cancelIcon} fontSize="small" />
               </div>
