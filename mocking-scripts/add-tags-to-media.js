@@ -14,10 +14,10 @@ posts = posts.map((post, index) => {
         photo.tags = [
           {
             coordinates: {
-              x: 200 + Math.floor(Math.random() * 500),
-              y: 200 + Math.floor(Math.random() * 500),
-              tagged_user_name: getRandomUser().user_name,
+              x: 200 + Math.floor(Math.random() * 400),
+              y: 200 + Math.floor(Math.random() * 400),
             },
+            tagged_user_name: getRandomUser().user_name,
           },
         ];
         return photo;
@@ -27,6 +27,5 @@ posts = posts.map((post, index) => {
   post.post_has_tags = false;
   return post;
 });
-
 
 writeFileSync('../server/posts-data.json', JSON.stringify(posts));

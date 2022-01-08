@@ -14,7 +14,9 @@
   align-items: center;
   justify-content: center;
   grid-template-areas: 'center';
+  position: relative;
 }
+
 .likeIcon {
   color: #fff;
   align-self: center;
@@ -51,4 +53,52 @@
   50% {
     background-position: 100% 97%;
   }
+}
+.tooltip {
+  position: absolute;
+  z-index: 5;
+}
+.tagIconContainer {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 28px;
+  height: 28px;
+  background-color: #262626;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.taggedContent {
+  opacity: 0.85;
+}
+.taggedContent:active {
+  opacity: 0.5;
+}
+.taggedUserName {
+  background-color: rgb(0, 0, 0);
+  font-weight: 600;
+  line-height: 36px;
+  color: #fff;
+  padding: 0 12px;
+  border-radius: 4px;
+  margin: 0;
+  border: 0;
+}
+.taggedUserLink {
+  text-decoration: none;
+  color: #fff;
+}
+.emptyArrow {
+  margin-bottom: -13px;
+}
+
+.arrow {
+  height: 15px;
+  margin: auto;
+  transform: rotate(45deg);
+  width: 15px;
+  background-color: rgb(0, 0, 0);
 }

@@ -438,6 +438,9 @@ function MediaSection({ post, isExpanded, dimensions }) {
                   setIsLoading={setIsLoading}
                   isLoading={isLoading}
                   onDoubleClick={() => postLike(post.post_id)}
+                  tags={mediaItem.tags}
+                  postDimensions={post.media_dimensions}
+                  isActive={mediaIndex === index}
                 />
               ) : (
                 <PostImage
@@ -446,6 +449,9 @@ function MediaSection({ post, isExpanded, dimensions }) {
                   fraction={1 / items.length}
                   aspectRatio={aspectRatio}
                   onDoubleClick={() => postLike(post.post_id)}
+                  tags={mediaItem.tags}
+                  postDimensions={post.media_dimensions}
+                  isActive={mediaIndex === index}
                 />
               )
             ) : index === 0 ? (
