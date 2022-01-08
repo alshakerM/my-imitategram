@@ -816,12 +816,40 @@
     ],
     "user_id": "2f6677ce-1cfb-4a1c-9211-4afcdb48afa8",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/8/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/8/2.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 544, "y": 554 },
+            "tagged_user_name": "othunderman4"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 530, "y": 333 },
+            "tagged_user_name": "mdreusa"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
-      { "type": "photo", "url": "/Media/posts/8/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 215, "y": 565 },
+            "tagged_user_name": "kcoultarc"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "c8c02312-a18a-4de1-a913-b54594e0b047",
@@ -1603,7 +1631,8 @@
       { "type": "photo", "url": "/Media/posts/1/2.jpg" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "cee676e9-06ab-46a0-ab03-8db49871672f",
@@ -1977,7 +2006,8 @@
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "4ca2cf25-9795-443d-a124-f2834ac7868e",
@@ -2486,14 +2516,60 @@
     ],
     "user_id": "4c50779c-f920-4108-bbfe-7f0c318023a0",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/5/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/3.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 585, "y": 512 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 426, "y": 352 },
+            "tagged_user_name": "othunderman4"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 502, "y": 360 },
+            "tagged_user_name": "kcoultarc"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/5/4.mp4" },
-      { "type": "photo", "url": "/Media/posts/5/5.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/6.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/5.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 485, "y": 590 },
+            "tagged_user_name": "bduckham7"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/6.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 349, "y": 402 },
+            "tagged_user_name": "cpryde8"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "50771b0a-5b1d-43a8-9bed-4ccb1b29929c",
@@ -3100,7 +3176,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "fac4ee47-eb98-4dcc-bf78-c56f56deb6b8",
@@ -4020,7 +4097,8 @@
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
       { "type": "photo", "url": "/Media/posts/8/4.jpg" }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "0f63cdaf-9475-45ba-b26a-fc7fa2e2b79b",
@@ -4935,12 +5013,40 @@
     ],
     "user_id": "00a5fcd4-351d-438f-98f6-dbecb63d8bd7",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/8/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/8/2.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 438, "y": 496 },
+            "tagged_user_name": "melwin3"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 489, "y": 307 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
-      { "type": "photo", "url": "/Media/posts/8/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 416, "y": 550 },
+            "tagged_user_name": "adennison9"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "b0fde0d5-44dc-4b35-8c6e-ebc22f19a638",
@@ -5447,7 +5553,8 @@
       { "type": "photo", "url": "/Media/posts/6/1.jpg" },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "94777108-5ca4-45e5-b47c-fc3fa3fb7913",
@@ -5783,7 +5890,8 @@
       { "type": "photo", "url": "/Media/posts/9/1.jpg" },
       { "type": "photo", "url": "/Media/posts/9/2.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "3b59242e-f1f8-4813-981e-d0042c58fb47",
@@ -6799,11 +6907,39 @@
     ],
     "user_id": "52e2b152-8f17-4346-9e8f-d45173080078",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/2/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/3.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 337, "y": 275 },
+            "tagged_user_name": "mdoggett0"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 299, "y": 557 },
+            "tagged_user_name": "qlumoxb"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 599, "y": 269 },
+            "tagged_user_name": "mshannon6"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "8b7339f4-4ef5-469d-be8a-abbf9536ea61",
@@ -7817,7 +7953,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "253d7225-edda-40fc-8f5b-ff3418d3d6ea",
@@ -8424,7 +8561,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "f5314f2b-63eb-4347-8232-09a76343ea95",
@@ -8862,12 +9000,49 @@
     ],
     "user_id": "4c50779c-f920-4108-bbfe-7f0c318023a0",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/3/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 570, "y": 445 },
+            "tagged_user_name": "dhardstaffh"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 551, "y": 506 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 200, "y": 546 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 201, "y": 251 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "4e9d4807-14ad-4165-95b8-c2f10abbc76d",
@@ -9796,7 +9971,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "ebb7db5f-df05-48cd-a569-b08299ebb7a2",
@@ -9993,7 +10169,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "af660c21-c170-4233-a021-a79cc4754cdd",
@@ -11009,11 +11186,39 @@
     ],
     "user_id": "3cefc132-0741-4432-b4ca-970dda6333b3",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/2/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/3.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 284, "y": 548 },
+            "tagged_user_name": "smcgeady1"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 335, "y": 355 },
+            "tagged_user_name": "bduckham7"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 312, "y": 452 },
+            "tagged_user_name": "brosentholer5"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "d83f1ffd-e354-49a8-8ee3-e4ae36ad71d0",
@@ -11210,7 +11415,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "997c2eca-37d8-4e18-8a59-0d48995db5bb",
@@ -11459,7 +11665,8 @@
       { "type": "photo", "url": "/Media/posts/3/3.jpg" },
       { "type": "photo", "url": "/Media/posts/3/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "3cb25fe4-064e-4987-bac0-dbd1fd2d2b88",
@@ -11757,12 +11964,40 @@
     ],
     "user_id": "87170fcf-2bcd-4839-a4fc-9f09f93404d1",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/1/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/1/2.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 399, "y": 551 },
+            "tagged_user_name": "mdoggett0"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 206, "y": 388 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
-      { "type": "photo", "url": "/Media/posts/1/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 296, "y": 447 },
+            "tagged_user_name": "mdreusa"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "0c59699a-6c75-48e8-9923-7587625d015d",
@@ -12065,7 +12300,8 @@
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "98136a13-3388-4cba-a3d7-1440195b0aa8",
@@ -13085,7 +13321,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "e5a6d017-54ee-496b-907c-9199c945a50c",
@@ -13863,11 +14100,39 @@
     ],
     "user_id": "3cefc132-0741-4432-b4ca-970dda6333b3",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/1/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/1/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/1/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 406, "y": 423 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 243, "y": 264 },
+            "tagged_user_name": "dhardstaffh"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 356, "y": 494 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "c33e7fa1-5211-4493-b534-0f269c68a100",
@@ -14887,7 +15152,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "03ae2aa6-39ee-427a-af82-e2d15a3d8880",
@@ -15816,7 +16082,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "9ee918e2-f9a5-40f0-9317-e40c025482ae",
@@ -16010,10 +16277,20 @@
     ],
     "user_id": "4c50779c-f920-4108-bbfe-7f0c318023a0",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/4/1.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/4/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 350, "y": 439 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "94ef8a84-49ec-4d1f-9e6f-67e4b162b00f",
@@ -16387,7 +16664,8 @@
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "033d6e21-cd63-4184-8691-7b64ac599f2c",
@@ -16636,7 +16914,8 @@
       { "type": "photo", "url": "/Media/posts/3/3.jpg" },
       { "type": "photo", "url": "/Media/posts/3/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "c52001fc-1945-42de-8849-4eb85438de19",
@@ -16728,14 +17007,60 @@
     ],
     "user_id": "00a5fcd4-351d-438f-98f6-dbecb63d8bd7",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/5/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/3.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 436, "y": 525 },
+            "tagged_user_name": "adennison9"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 592, "y": 408 },
+            "tagged_user_name": "cpryde8"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 472, "y": 275 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/5/4.mp4" },
-      { "type": "photo", "url": "/Media/posts/5/5.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/6.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/5.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 316, "y": 453 },
+            "tagged_user_name": "qlumoxb"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/6.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 303, "y": 476 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "327de82c-9c48-476a-90da-54c54c11a1e1",
@@ -17251,7 +17576,8 @@
       { "type": "photo", "url": "/Media/posts/5/5.jpg" },
       { "type": "photo", "url": "/Media/posts/5/6.jpg" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "cc8c14d0-7da5-4aba-aeec-ffe21fe40e68",
@@ -17854,7 +18180,8 @@
       { "type": "photo", "url": "/Media/posts/9/1.jpg" },
       { "type": "photo", "url": "/Media/posts/9/2.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "7226a8f5-d136-48a9-ad0a-8190c48a495c",
@@ -18098,12 +18425,49 @@
     ],
     "user_id": "3cefc132-0741-4432-b4ca-970dda6333b3",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/3/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 289, "y": 331 },
+            "tagged_user_name": "mdreusa"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 541, "y": 559 },
+            "tagged_user_name": "kantleyf"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 323, "y": 445 },
+            "tagged_user_name": "othunderman4"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 456, "y": 270 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "2693c9aa-1c8b-4a7d-8c2d-f8961f748efe",
@@ -18710,7 +19074,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "bc205137-668f-46e6-9916-f7d0f31ae46c",
@@ -19013,7 +19378,8 @@
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "24e83cf5-f057-4c66-838a-6e0c203380c8",
@@ -19979,14 +20345,69 @@
     ],
     "user_id": "e90314ba-ae40-4e42-9938-9655347739cc",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/7/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/4.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/5.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/6.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 503, "y": 283 },
+            "tagged_user_name": "lkingswoodg"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 372, "y": 296 },
+            "tagged_user_name": "othunderman4"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 470, "y": 541 },
+            "tagged_user_name": "kcoultarc"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 511, "y": 382 },
+            "tagged_user_name": "wmcnaughton2"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/5.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 528, "y": 566 },
+            "tagged_user_name": "kantleyf"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/6.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 367, "y": 501 },
+            "tagged_user_name": "kcoultarc"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "368572b6-ed2a-4dad-97b8-dd06dd95457f",
@@ -20906,7 +21327,8 @@
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
       { "type": "photo", "url": "/Media/posts/8/4.jpg" }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "cb0636b4-bb98-4fef-a7c7-b914bbcf5e84",
@@ -21513,7 +21935,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "32ccd285-218f-4245-a441-edbbd1b8dbec",
@@ -21846,10 +22269,29 @@
     ],
     "user_id": "b2aa3327-f0e8-4baa-a7db-633496a40350",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/9/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/9/2.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 436, "y": 447 },
+            "tagged_user_name": "wmcnaughton2"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 210, "y": 395 },
+            "tagged_user_name": "brosentholer5"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "cbd58918-cd95-4e1f-a1d8-40ec3dc50c48",
@@ -22185,7 +22627,8 @@
       { "type": "photo", "url": "/Media/posts/9/1.jpg" },
       { "type": "photo", "url": "/Media/posts/9/2.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "b2c815b5-fd5b-447a-a68e-af9623a38124",
@@ -23199,7 +23642,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "9cdf6dac-a978-41df-ad94-378c9e0302ee",
@@ -23568,12 +24012,40 @@
     ],
     "user_id": "b8a8d429-e9db-47b6-987b-2e2e3299155b",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/1/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/1/2.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 497, "y": 359 },
+            "tagged_user_name": "adennison9"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 225, "y": 272 },
+            "tagged_user_name": "qlumoxb"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
-      { "type": "photo", "url": "/Media/posts/1/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 455, "y": 474 },
+            "tagged_user_name": "adennison9"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "add5bcb0-5569-41d8-8d4c-0fe22fd68d66",
@@ -24080,7 +24552,8 @@
       { "type": "photo", "url": "/Media/posts/6/1.jpg" },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "a2b9ba3a-4558-494f-986f-2162afc4c8fa",
@@ -24179,7 +24652,8 @@
       { "type": "photo", "url": "/Media/posts/5/5.jpg" },
       { "type": "photo", "url": "/Media/posts/5/6.jpg" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "260da0eb-94b9-4b3a-9613-4476aff0afba",
@@ -25189,11 +25663,39 @@
     ],
     "user_id": "e1f15d3f-8eb9-4dbc-9178-7abd0d697b33",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/2/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/3.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 505, "y": 214 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 352, "y": 279 },
+            "tagged_user_name": "melwin3"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 546, "y": 293 },
+            "tagged_user_name": "lkingswoodg"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "3e85f079-7d9e-4734-b406-b449561965b0",
@@ -26113,7 +26615,8 @@
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
       { "type": "photo", "url": "/Media/posts/8/4.jpg" }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "dc7c0ad2-6440-491f-b0e6-4d89f103d64d",
@@ -26937,7 +27440,8 @@
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
       { "type": "photo", "url": "/Media/posts/8/4.jpg" }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "24a0d954-6911-4166-8d6c-f9d88ebb8244",
@@ -27953,11 +28457,39 @@
     ],
     "user_id": "052a7187-03db-4af1-9f3f-ee17d9349ec3",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/2/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/3.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 338, "y": 400 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 588, "y": 534 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 238, "y": 252 },
+            "tagged_user_name": "qlumoxb"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "e2cf3b8a-6d55-4bc1-a435-dd88463472d4",
@@ -28886,7 +29418,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "fa0811cb-d54f-4b9a-9717-c462eb0b3240",
@@ -29489,7 +30022,8 @@
       { "type": "photo", "url": "/Media/posts/9/1.jpg" },
       { "type": "photo", "url": "/Media/posts/9/2.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "86bb136b-242f-45a6-9eab-eeff2d762276",
@@ -29905,10 +30439,20 @@
     ],
     "user_id": "87170fcf-2bcd-4839-a4fc-9f09f93404d1",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/6/1.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/6/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 593, "y": 422 },
+            "tagged_user_name": "dhardstaffh"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "e03ced71-e55a-4ffb-b20f-a58c46b2952f",
@@ -30515,7 +31059,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "95f1a026-344f-45a0-a2b2-063f20daa737",
@@ -31488,7 +32033,8 @@
       { "type": "photo", "url": "/Media/posts/7/5.jpg" },
       { "type": "photo", "url": "/Media/posts/7/6.jpg" }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "e2183b22-7a80-41a0-9265-3aa80b38661c",
@@ -31904,10 +32450,20 @@
     ],
     "user_id": "4c50779c-f920-4108-bbfe-7f0c318023a0",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/6/1.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/6/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 359, "y": 555 },
+            "tagged_user_name": "adennison9"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "c4224fcf-0f13-472b-adfb-0e2302f46ff0",
@@ -32326,7 +32882,8 @@
       { "type": "photo", "url": "/Media/posts/6/1.jpg" },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "c3411e03-8bdf-4d3e-bbf5-efa2c1ac7e0c",
@@ -32425,7 +32982,8 @@
       { "type": "photo", "url": "/Media/posts/5/5.jpg" },
       { "type": "photo", "url": "/Media/posts/5/6.jpg" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "d435e568-3c74-47d4-98ee-2aeab1bb4cce",
@@ -32669,12 +33227,49 @@
     ],
     "user_id": "02b54c64-98e8-4474-8794-e11db915d6e8",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/3/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 301, "y": 237 },
+            "tagged_user_name": "mdreusa"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 399, "y": 221 },
+            "tagged_user_name": "bduckham7"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 381, "y": 269 },
+            "tagged_user_name": "dhardstaffh"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 308, "y": 520 },
+            "tagged_user_name": "lkingswoodg"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "974b0b76-fb55-4fc6-b9ad-e1720938a8e8",
@@ -32773,7 +33368,8 @@
       { "type": "photo", "url": "/Media/posts/5/5.jpg" },
       { "type": "photo", "url": "/Media/posts/5/6.jpg" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "d8fadef7-c615-405d-9023-3f95295ad4f2",
@@ -32872,7 +33468,8 @@
       { "type": "photo", "url": "/Media/posts/5/5.jpg" },
       { "type": "photo", "url": "/Media/posts/5/6.jpg" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "fd29b85b-ea34-4851-88e6-0e65bb34f7ac",
@@ -33376,10 +33973,20 @@
     ],
     "user_id": "c793e9f0-1ca4-4e83-9ac1-d904894d6e3e",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/6/1.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/6/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 574, "y": 397 },
+            "tagged_user_name": "melwin3"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "889b1065-8994-4095-972a-71a62d9aca08",
@@ -34462,7 +35069,8 @@
       { "type": "photo", "url": "/Media/posts/7/5.jpg" },
       { "type": "photo", "url": "/Media/posts/7/6.jpg" }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "46cf638a-ae7d-4bf5-bfde-669499aaf332",
@@ -34711,7 +35319,8 @@
       { "type": "photo", "url": "/Media/posts/3/3.jpg" },
       { "type": "photo", "url": "/Media/posts/3/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "783d88b8-66de-448e-abc7-63cf65499763",
@@ -35311,10 +35920,29 @@
     ],
     "user_id": "e1f15d3f-8eb9-4dbc-9178-7abd0d697b33",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/9/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/9/2.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 565, "y": 353 },
+            "tagged_user_name": "bduckham7"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 447, "y": 512 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "024791b4-3719-49c2-950f-4319c9bbb28c",
@@ -35757,7 +36385,8 @@
       { "type": "photo", "url": "/Media/posts/3/3.jpg" },
       { "type": "photo", "url": "/Media/posts/3/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "01b33d3f-74c3-4351-aec7-77d1cd21d7d6",
@@ -36176,7 +36805,8 @@
       { "type": "photo", "url": "/Media/posts/6/1.jpg" },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "369d9bf3-5e7f-433a-a253-1a7ee2a7b3bf",
@@ -37091,12 +37721,40 @@
     ],
     "user_id": "cbb6ff78-af3c-45ed-b78b-c4e971ece7d2",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/8/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/8/2.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 411, "y": 346 },
+            "tagged_user_name": "othunderman4"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 520, "y": 538 },
+            "tagged_user_name": "othunderman4"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
-      { "type": "photo", "url": "/Media/posts/8/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 516, "y": 480 },
+            "tagged_user_name": "melwin3"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "8151d77e-36b3-48f2-a4d8-d529e005e9c5",
@@ -37920,7 +38578,8 @@
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
       { "type": "photo", "url": "/Media/posts/8/4.jpg" }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "4da2c7ff-50a1-456b-8694-929e1c6450aa",
@@ -38744,7 +39403,8 @@
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
       { "type": "photo", "url": "/Media/posts/8/4.jpg" }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "f59515b5-bead-4782-a4d9-cdc4bb89e661",
@@ -39182,12 +39842,49 @@
     ],
     "user_id": "cbb6ff78-af3c-45ed-b78b-c4e971ece7d2",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/3/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 249, "y": 239 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 500, "y": 362 },
+            "tagged_user_name": "lkingswoodg"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 465, "y": 587 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 362, "y": 353 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "72dca4d4-1823-4a6a-83aa-24920990f041",
@@ -40201,7 +40898,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "5b0c5936-9537-44a7-b333-410e1e6f489f",
@@ -41284,7 +41982,8 @@
       { "type": "photo", "url": "/Media/posts/7/5.jpg" },
       { "type": "photo", "url": "/Media/posts/7/6.jpg" }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "779e0571-8ea8-476b-9cc2-a9d58b929ab0",
@@ -41617,10 +42316,29 @@
     ],
     "user_id": "87170fcf-2bcd-4839-a4fc-9f09f93404d1",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/9/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/9/2.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 518, "y": 439 },
+            "tagged_user_name": "lkingswoodg"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 555, "y": 254 },
+            "tagged_user_name": "adennison9"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "75b544d1-4435-4a27-99b5-dbdcd2630947",
@@ -42703,7 +43421,8 @@
       { "type": "photo", "url": "/Media/posts/7/5.jpg" },
       { "type": "photo", "url": "/Media/posts/7/6.jpg" }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "d01034cc-3dd2-4603-a8b0-120057726b60",
@@ -43632,7 +44351,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "426b1997-6c18-48eb-aca5-125f3cd22adc",
@@ -44141,14 +44861,60 @@
     ],
     "user_id": "39aff2da-2937-4de4-83b7-92606a3da122",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/5/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/3.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 210, "y": 525 },
+            "tagged_user_name": "qlumoxb"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 425, "y": 473 },
+            "tagged_user_name": "mdreusa"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 586, "y": 578 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/5/4.mp4" },
-      { "type": "photo", "url": "/Media/posts/5/5.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/6.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/5.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 390, "y": 569 },
+            "tagged_user_name": "adennison9"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/6.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 225, "y": 270 },
+            "tagged_user_name": "dhardstaffh"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "5866fda6-f9fc-41e1-beaa-c04412bcba10",
@@ -44522,7 +45288,8 @@
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "ba073b46-17f7-41f4-a0d0-2fb3738bb0b4",
@@ -45605,7 +46372,8 @@
       { "type": "photo", "url": "/Media/posts/7/5.jpg" },
       { "type": "photo", "url": "/Media/posts/7/6.jpg" }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "4a894367-dbf0-4b28-8c20-30fd53a1a2f0",
@@ -46571,14 +47339,69 @@
     ],
     "user_id": "00a5fcd4-351d-438f-98f6-dbecb63d8bd7",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/7/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/4.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/5.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/6.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 203, "y": 268 },
+            "tagged_user_name": "melwin3"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 234, "y": 455 },
+            "tagged_user_name": "othunderman4"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 204, "y": 217 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 576, "y": 510 },
+            "tagged_user_name": "kcoultarc"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/5.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 343, "y": 367 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/6.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 312, "y": 384 },
+            "tagged_user_name": "othunderman4"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "8a58995a-f8d6-4b2b-b069-5063b7d7b091",
@@ -47551,7 +48374,8 @@
       { "type": "photo", "url": "/Media/posts/7/5.jpg" },
       { "type": "photo", "url": "/Media/posts/7/6.jpg" }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "b02895fa-6637-4b7b-8400-ea842771eb94",
@@ -48375,7 +49199,8 @@
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
       { "type": "photo", "url": "/Media/posts/8/4.jpg" }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "021981cd-e271-4a1f-83d8-bde57af275be",
@@ -48791,10 +49616,20 @@
     ],
     "user_id": "44fab68c-8ca7-4116-8995-6dce40591d45",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/6/1.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/6/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 262, "y": 496 },
+            "tagged_user_name": "smcgeady1"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "b10427db-07bf-40cc-bbd5-ce078ffc9031",
@@ -49237,7 +50072,8 @@
       { "type": "photo", "url": "/Media/posts/3/3.jpg" },
       { "type": "photo", "url": "/Media/posts/3/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "04428b78-3534-4925-971a-c63b791d90cd",
@@ -49840,7 +50676,8 @@
       { "type": "photo", "url": "/Media/posts/9/1.jpg" },
       { "type": "photo", "url": "/Media/posts/9/2.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "2a305454-d89b-4619-9e0e-8ce3fe5fc138",
@@ -50349,14 +51186,60 @@
     ],
     "user_id": "87170fcf-2bcd-4839-a4fc-9f09f93404d1",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/5/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/3.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 222, "y": 205 },
+            "tagged_user_name": "mshannon6"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 360, "y": 219 },
+            "tagged_user_name": "ipepini"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 527, "y": 424 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/5/4.mp4" },
-      { "type": "photo", "url": "/Media/posts/5/5.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/6.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/5.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 534, "y": 556 },
+            "tagged_user_name": "melwin3"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/6.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 527, "y": 580 },
+            "tagged_user_name": "cpryde8"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "93db2de3-9482-4287-b1c2-365c3bfda8a6",
@@ -50730,7 +51613,8 @@
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "bfa59a8a-b342-42e5-b907-34a1bfd28e1c",
@@ -51512,7 +52396,8 @@
       { "type": "photo", "url": "/Media/posts/1/2.jpg" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "1b0fb435-00f5-4fbe-8a11-82c87044fd54",
@@ -51810,12 +52695,40 @@
     ],
     "user_id": "6dbff543-bdfb-4cd1-ad3b-63c8841166fd",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/1/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/1/2.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 230, "y": 243 },
+            "tagged_user_name": "mdoggett0"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 563, "y": 415 },
+            "tagged_user_name": "qlumoxb"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
-      { "type": "photo", "url": "/Media/posts/1/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 493, "y": 443 },
+            "tagged_user_name": "kantleyf"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "0b0507af-4469-4975-9159-49549e930289",
@@ -52422,7 +53335,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "232378b9-d304-4294-96e4-ccdc8cc0792c",
@@ -52929,7 +53843,8 @@
       { "type": "photo", "url": "/Media/posts/6/1.jpg" },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "1ff770d6-71cb-4396-96be-fcf938e8e2a0",
@@ -53529,10 +54444,29 @@
     ],
     "user_id": "dd923653-e68a-4c09-bc5e-56a535499499",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/9/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/9/2.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 383, "y": 231 },
+            "tagged_user_name": "kantleyf"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 483, "y": 440 },
+            "tagged_user_name": "cpryde8"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "0cd30df9-817e-44f9-98a1-a5c6be817642",
@@ -53729,7 +54663,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "cb8d6da0-2de5-4404-9896-11bb26f93531",
@@ -54332,7 +55267,8 @@
       { "type": "photo", "url": "/Media/posts/9/1.jpg" },
       { "type": "photo", "url": "/Media/posts/9/2.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "459a11cb-5b6e-4df8-b332-74cfc3210db8",
@@ -54424,14 +55360,60 @@
     ],
     "user_id": "02b54c64-98e8-4474-8794-e11db915d6e8",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/5/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/3.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 426, "y": 574 },
+            "tagged_user_name": "dhardstaffh"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 238, "y": 357 },
+            "tagged_user_name": "wmcnaughton2"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 581, "y": 331 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/5/4.mp4" },
-      { "type": "photo", "url": "/Media/posts/5/5.jpg" },
-      { "type": "photo", "url": "/Media/posts/5/6.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/5.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 217, "y": 396 },
+            "tagged_user_name": "wmcnaughton2"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/5/6.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 463, "y": 345 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "bb077e57-5d80-477c-9efe-01fac9423728",
@@ -54938,7 +55920,8 @@
       { "type": "photo", "url": "/Media/posts/6/1.jpg" },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "44f6661e-515c-4709-9640-5afa69077d59",
@@ -55867,7 +56850,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "2328cf88-d046-4ca8-b4ce-29259debbdcf",
@@ -56943,14 +57927,69 @@
     ],
     "user_id": "39aff2da-2937-4de4-83b7-92606a3da122",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/7/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/4.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/5.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/6.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 594, "y": 278 },
+            "tagged_user_name": "kcoultarc"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 367, "y": 244 },
+            "tagged_user_name": "mshannon6"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 253, "y": 455 },
+            "tagged_user_name": "dhardstaffh"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 258, "y": 423 },
+            "tagged_user_name": "smcgeady1"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/5.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 236, "y": 493 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/6.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 491, "y": 503 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "1b1994e9-858c-424a-a493-d48c2e71aaa6",
@@ -58033,7 +59072,8 @@
       { "type": "photo", "url": "/Media/posts/7/5.jpg" },
       { "type": "photo", "url": "/Media/posts/7/6.jpg" }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "d3900e8f-da56-4174-a3e2-21c7a7b30750",
@@ -59047,7 +60087,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "35799415-cf64-4dee-93d2-d7ec1e406664",
@@ -59825,11 +60866,39 @@
     ],
     "user_id": "6dbff543-bdfb-4cd1-ad3b-63c8841166fd",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/1/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/1/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/1/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 459, "y": 514 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 254, "y": 206 },
+            "tagged_user_name": "kcoultarc"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/1/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 215, "y": 439 },
+            "tagged_user_name": "kcoultarc"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "aadfdef5-f55c-4fc8-b471-797c2b05ab00",
@@ -60802,7 +61871,8 @@
       { "type": "photo", "url": "/Media/posts/7/5.jpg" },
       { "type": "photo", "url": "/Media/posts/7/6.jpg" }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "c915e3d0-b96f-4f9f-b4ba-a7f0fe1a867d",
@@ -61309,7 +62379,8 @@
       { "type": "photo", "url": "/Media/posts/6/1.jpg" },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "e525d612-d5b6-4296-abe9-ca974d3e5d6c",
@@ -61747,12 +62818,49 @@
     ],
     "user_id": "e1f15d3f-8eb9-4dbc-9178-7abd0d697b33",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/3/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 282, "y": 531 },
+            "tagged_user_name": "smcgeady1"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 399, "y": 404 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 317, "y": 534 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 584, "y": 232 },
+            "tagged_user_name": "othunderman4"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "b0cb9ca1-8069-4748-b851-7bfac377fb6e",
@@ -62766,7 +63874,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "566ec0d9-2cc8-4b49-96a0-7167d1acf5ea",
@@ -63282,7 +64391,8 @@
       { "type": "photo", "url": "/Media/posts/5/5.jpg" },
       { "type": "photo", "url": "/Media/posts/5/6.jpg" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "e37a8176-2d7c-4c29-b064-6828b7953056",
@@ -63615,10 +64725,29 @@
     ],
     "user_id": "2f6677ce-1cfb-4a1c-9211-4afcdb48afa8",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/9/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/9/2.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 354, "y": 362 },
+            "tagged_user_name": "melwin3"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/9/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 267, "y": 343 },
+            "tagged_user_name": "dhardstaffh"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "7aee4e01-eefd-4456-97ef-a6fb64a8f5c9",
@@ -64134,7 +65263,8 @@
       { "type": "photo", "url": "/Media/posts/5/5.jpg" },
       { "type": "photo", "url": "/Media/posts/5/6.jpg" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "4bb555bf-8ea1-4636-9905-de65f84ca4c3",
@@ -64437,7 +65567,8 @@
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "277031e0-0072-45e1-bcb5-7c7612c8e9b6",
@@ -65403,14 +66534,69 @@
     ],
     "user_id": "c793e9f0-1ca4-4e83-9ac1-d904894d6e3e",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/7/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/4.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/5.jpg" },
-      { "type": "photo", "url": "/Media/posts/7/6.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 226, "y": 320 },
+            "tagged_user_name": "cpryde8"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 325, "y": 229 },
+            "tagged_user_name": "mdreusa"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 425, "y": 355 },
+            "tagged_user_name": "brosentholer5"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 488, "y": 550 },
+            "tagged_user_name": "bduckham7"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/5.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 485, "y": 264 },
+            "tagged_user_name": "kcoultarc"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/7/6.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 553, "y": 559 },
+            "tagged_user_name": "lkingswoodg"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1346, "width": 1080 }
+    "media_dimensions": { "height": 1346, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "1ba363d6-9b12-4b55-9868-11bd1b00fa31",
@@ -65746,7 +66932,8 @@
       { "type": "photo", "url": "/Media/posts/9/1.jpg" },
       { "type": "photo", "url": "/Media/posts/9/2.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "c6607fae-511e-4c27-9694-5c30538fcca9",
@@ -66120,7 +67307,8 @@
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "95a63aec-051c-4f02-a5eb-45ea261d5b1c",
@@ -67136,11 +68324,39 @@
     ],
     "user_id": "e90314ba-ae40-4e42-9938-9655347739cc",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/2/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/2/3.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 272, "y": 324 },
+            "tagged_user_name": "smcgeady1"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 313, "y": 287 },
+            "tagged_user_name": "smcgeady1"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/2/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 245, "y": 443 },
+            "tagged_user_name": "ieglesed"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "65212258-9713-40c8-bc20-65cf56d4ae3e",
@@ -68069,7 +69285,8 @@
       { "type": "photo", "url": "/Media/posts/2/2.jpg" },
       { "type": "photo", "url": "/Media/posts/2/3.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "364c97b4-ae64-4b9d-a218-52daf456559a",
@@ -68989,7 +70206,8 @@
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
       { "type": "photo", "url": "/Media/posts/8/4.jpg" }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "944c603d-9357-432e-b274-c15e7b5c7b84",
@@ -69808,12 +71026,40 @@
     ],
     "user_id": "87170fcf-2bcd-4839-a4fc-9f09f93404d1",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/8/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/8/2.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 267, "y": 367 },
+            "tagged_user_name": "kantleyf"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 384, "y": 267 },
+            "tagged_user_name": "cdenyagine"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/8/3.mp4" },
-      { "type": "photo", "url": "/Media/posts/8/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/8/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 220, "y": 592 },
+            "tagged_user_name": "adennison9"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 900, "width": 720 }
+    "media_dimensions": { "height": 900, "width": 720 },
+    "post_has_tags": false
   },
   {
     "post_id": "d50837dc-05c7-40c1-be57-e348d633911f",
@@ -70232,7 +71478,8 @@
       { "type": "photo", "url": "/Media/posts/6/1.jpg" },
       { "type": "video", "url": "/Media/posts/6/2.mp4" }
     ],
-    "media_dimensions": { "height": 1345, "width": 1080 }
+    "media_dimensions": { "height": 1345, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "c6210d13-7769-4593-a3f2-5257ace6f8cb",
@@ -70481,7 +71728,8 @@
       { "type": "photo", "url": "/Media/posts/3/3.jpg" },
       { "type": "photo", "url": "/Media/posts/3/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "c42729bd-9e18-48b1-9fa2-024139f6da95",
@@ -70919,12 +72167,49 @@
     ],
     "user_id": "b8a8d429-e9db-47b6-987b-2e2e3299155b",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/3/1.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/2.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/3.jpg" },
-      { "type": "photo", "url": "/Media/posts/3/4.jpg" }
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 449, "y": 239 },
+            "tagged_user_name": "mshannon6"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/2.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 216, "y": 347 },
+            "tagged_user_name": "mdoggett0"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/3.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 522, "y": 539 },
+            "tagged_user_name": "lkingswoodg"
+          }
+        ]
+      },
+      {
+        "type": "photo",
+        "url": "/Media/posts/3/4.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 573, "y": 419 },
+            "tagged_user_name": "adennison9"
+          }
+        ]
+      }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "0e6565f5-c554-4e83-bf51-46e54398cc58",
@@ -71121,7 +72406,8 @@
       { "type": "photo", "url": "/Media/posts/4/1.jpg" },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "17038f99-ad86-4123-92d3-6972698676f7",
@@ -71424,7 +72710,8 @@
       { "type": "video", "url": "/Media/posts/1/3.mp4" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "46467ec5-726f-450c-8a4a-88f631458994",
@@ -71618,10 +72905,20 @@
     ],
     "user_id": "39aff2da-2937-4de4-83b7-92606a3da122",
     "media_items": [
-      { "type": "photo", "url": "/Media/posts/4/1.jpg" },
+      {
+        "type": "photo",
+        "url": "/Media/posts/4/1.jpg",
+        "tags": [
+          {
+            "coordinates": { "x": 510, "y": 508 },
+            "tagged_user_name": "dhardstaffh"
+          }
+        ]
+      },
       { "type": "video", "url": "/Media/posts/4/2.mp4" }
     ],
-    "media_dimensions": { "height": 1080, "width": 1080 }
+    "media_dimensions": { "height": 1080, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "e07e7430-c57a-41b1-85a9-3477a11ffd21",
@@ -72403,7 +73700,8 @@
       { "type": "photo", "url": "/Media/posts/1/2.jpg" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   },
   {
     "post_id": "471fcbf1-02de-40e0-a3c6-8e3961a6a4e4",
@@ -73185,6 +74483,7 @@
       { "type": "photo", "url": "/Media/posts/1/2.jpg" },
       { "type": "photo", "url": "/Media/posts/1/4.jpg" }
     ],
-    "media_dimensions": { "height": 1350, "width": 1080 }
+    "media_dimensions": { "height": 1350, "width": 1080 },
+    "post_has_tags": false
   }
 ]
