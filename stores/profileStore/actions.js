@@ -11,7 +11,7 @@ export function receiveProfileData(profileData, postType) {
 }
 export function receiveAllProfileData(profileData) {
   return {
-    type: 'RECEIVE_ALL_PROFILE',
+    type: 'RECEIVE_ALL_PROFILES',
     profileData,
   };
 }

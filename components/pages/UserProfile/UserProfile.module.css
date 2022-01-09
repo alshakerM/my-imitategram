@@ -224,7 +224,6 @@
   font-size: 16px;
   font-weight: 550;
   color: #262626;
-  border-radius: 12px;
   padding: 0;
   justify-content: space-between;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -249,6 +248,7 @@
   border: 0;
   background: 0;
   padding: 0;
+  cursor: pointer;
 }
 .clearIcon {
   margin-right: 12px;
