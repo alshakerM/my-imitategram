@@ -62,8 +62,6 @@
   background-color: #fafafa;
 }
 .senderThumbnail {
-  height: 56px;
-  width: 56px;
   border-radius: 50%;
 }
 .senderUsername {
@@ -93,8 +91,6 @@
   box-sizing: border-box;
 }
 .messagesSenderAvatar {
-  height: 24px;
-  width: 24px;
   border-radius: 50%;
   margin-left: 8px;
 }

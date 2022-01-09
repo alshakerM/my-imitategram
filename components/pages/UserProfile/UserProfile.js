@@ -9,15 +9,18 @@ import { readableNumber } from '../../../utils';
 import '../../../stores/profileStore';
 import { useRouter } from 'next/router';
 import { useSelect } from '@wordpress/data';
+import Image from 'next/image';
 
 function UserProfilePost({ post }) {
   return (
     <Link href={`/p/${post.post_id}`}>
       <a className={styles.postContainer}>
-        <img
-          src={post.post_image}
+        <Image
+          src="https://picsum.photos/1050"
           alt={post.user_name}
           className={styles.postImg}
+          width={293}
+          height={293}
         />
         <div className={styles.postHover}>
           <div className={styles.likeIconCount}>

@@ -2,6 +2,7 @@ import styles from './Avatar.module.css';
 import React from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
+import Image from 'next/image';
 
 export function Avatar({
   user,
@@ -63,14 +64,17 @@ export function Avatar({
             </g>
           )}
           <foreignObject x="0" y="0" width="300" height="300">
-            <img
-              style={{ margin: 20 }}
-              src={user?.user_thumbnail}
-              alt={`${user?.user_name} avatar`}
-              className={styles.userAvatar}
-              width="260"
-              height="260"
-            />
+            {user?.user_thumbnail && (
+              <div style={{ margin: 20 }}>
+                <Image
+                  src={user.user_thumbnail}
+                  alt={`${user.user_name} avatar`}
+                  className={styles.userAvatar}
+                  width="260"
+                  height="260"
+                />
+              </div>
+            )}
           </foreignObject>
         </svg>
       </a>

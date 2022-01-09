@@ -20,6 +20,7 @@ import { absoluteToRelativeDate, numberBetween } from '../../../utils';
 import styles from './UserStories.module.css';
 import '../../../stores/storiesStore';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 const STORY_ASPECT_RATIO = 0.562;
 const STORY_VERTICAL_MARGIN = 18;
@@ -157,7 +158,7 @@ export function UserStories({ userId }) {
     <div key="all-stories" className={styles.allStoriesContainer}>
       <Link href="/">
         <a className={styles.instagramLogoLink}>
-          <img
+          <Image
             src="/stories_instagram_logo.png"
             width="103"
             height="29"
@@ -295,7 +296,8 @@ export function UserStories({ userId }) {
                       onProgress={progressHandler}
                       paused={activeUser ? pause : true}
                       key={story.story_id}
-                    ></StoryImage>
+                      dimensions={dimensions}
+                    />
                   )}
                 </div>
                 {activeUser && (

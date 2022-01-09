@@ -14,6 +14,7 @@ import {
   inputSection,
   cancelIcon,
 } from './NavBar.module.css';
+import Image from 'next/image';
 
 export function NavBar() {
   const [inputValue, setInputValue] = React.useState('');
@@ -24,7 +25,7 @@ export function NavBar() {
       <div className={navContent}>
         <Link href="/">
           <a className={navTitle}>
-            <img
+            <Image
               src="/Instagram_logo_text.svg"
               width="109"
               height="39"

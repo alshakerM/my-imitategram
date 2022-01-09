@@ -1,7 +1,8 @@
 import React from 'react';
 import styles from './StoryImage.module.css';
+import Image from 'next/image';
 
-export function StoryImage({ onProgress, paused, alt, ...props }) {
+export function StoryImage({ onProgress, paused, alt, dimensions, ...props }) {
   const [progress, setCurrentProgress] = React.useState(0);
 
   React.useEffect(() => {
@@ -13,5 +14,13 @@ export function StoryImage({ onProgress, paused, alt, ...props }) {
     }
   }, [progress, onProgress, paused]);
 
-  return <img className={styles.storyImg} alt={alt} {...props} />;
+  return (
+    <Image
+      className={styles.storyImg}
+      alt={alt}
+      {...props}
+      width={dimensions.width}
+      height={dimensions.height}
+    />
+  );
 }

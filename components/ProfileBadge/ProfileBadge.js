@@ -1,12 +1,15 @@
 import styles from './ProfileBadge.module.css';
 import { LOGGED_IN_USER } from '../../stores/constants';
+import Image from 'next/image';
 
 export function ProfileBadge() {
   return (
     <div className={styles.contentSection}>
-      <img
-        src="my-suit-pic.jpg"
+      <Image
+        src="/my-suit-pic.jpg"
         alt="profile pic"
+        width={56}
+        height={56}
         className={styles.profilePic}
       />
       <div className={styles.userInfo}>

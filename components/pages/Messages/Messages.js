@@ -5,6 +5,7 @@ import { absoluteToRelativeDate } from '../../../utils';
 import styles from './Messages.module.css';
 import { useDispatch, useSelect } from '@wordpress/data';
 import '../../../stores/messagesStore';
+import Image from 'next/image';
 
 function UserSection() {
   return (
@@ -71,10 +72,12 @@ function SenderSection({ fromUserId }) {
                 [styles.isSent]: user.from_user_id === fromUserId,
               })}
             >
-              <img
+              <Image
                 className={styles.senderThumbnail}
                 src={user.from_user_thumbnail}
                 alt="sender avatar"
+                width={56}
+                height={56}
               />
               <div>
                 <p className={styles.senderUsername}>{user.from_username}</p>
@@ -128,11 +131,15 @@ export function Messages({ fromUserId }) {
         {fromUserId ? (
           <div className={styles.rightSection}>
             <div className={styles.messagesHeader}>
-              <img
-                src={threadData?.from_user_thumbnail}
-                alt="sender avatar"
-                className={styles.messagesSenderAvatar}
-              />
+              {threadData?.from_user_id && (
+                <Image
+                  src={threadData?.from_user_thumbnail}
+                  alt="sender profile pic"
+                  width={24}
+                  height={24}
+                  className={styles.messagesSenderAvatar}
+                />
+              )}
               <div className={styles.messagesSenderUserInfo}>
                 <p className={styles.messagesSenderUsername}>
                   <strong>{threadData?.from_username}</strong>
@@ -187,11 +194,15 @@ export function Messages({ fromUserId }) {
                         {message.direction !==
                           threadData?.messages[nextMessage]?.direction &&
                         message.direction !== 'sent' ? (
-                          <img
-                            src={threadData?.from_user_thumbnail}
-                            alt="sender profile pic"
-                            className={styles.messagesSenderAvatar}
-                          />
+                          threadData.from_user_id && (
+                            <Image
+                              src={threadData?.from_user_thumbnail}
+                              alt="sender profile pic"
+                              width={24}
+                              height={24}
+                              className={styles.messagesSenderAvatar}
+                            />
+                          )
                         ) : (
                           <div className={styles.emptyImg}></div>
                         )}
