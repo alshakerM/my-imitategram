@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { v4 } from 'uuid';
 import { resolve } from 'path';
+import { LOGGED_IN_USER } from '../../stores/constants';
 
 const postsDataPath = resolve(__dirname, '../../../../server/posts-data.json');
 
@@ -66,19 +67,18 @@ export default function handler(req, res) {
             }`,
           });
         } catch (e) {
-          console.log('omar',  e);
+          console.log('omar', e);
         }
       }
       case 'submitPostComment': {
         const post = posts.find((p) => p.post_id === postId);
         post.comments.push({
           comment_id: v4(),
-          user_name: 'Marwan Al Shaker',
+          user_name: LOGGED_IN_USER,
           comment: text,
           comment_likes: 0,
           is_liked_by_user: false,
-          user_thumbnail:
-            'https://robohash.org/velitillosimilique.png?size=64x64&set=set1',
+          user_thumbnail: '/my-suit-pic.jpg',
           posted_on: new Date().toISOString(),
           replies: [],
         });

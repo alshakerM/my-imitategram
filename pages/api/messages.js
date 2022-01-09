@@ -31,32 +31,41 @@ export default function handler(req, res) {
         .status(400)
         .send('Bad request. fromUserId needs to be provided');
     }
-    if (typeof index !== 'number') {
-      return res.status(400).send('Bad request. index needs to be a number');
-    }
 
     switch (action) {
       case 'messageLike': {
         const thread = messagesData.find(
           (thread) => thread.from_user_id === fromUserId
         );
-        const message = thread.messages[index];
-        message.is_liked_by_user = like;
-        syncMessageFile();
-        return res.status(200).json({
-          ok: true,
-          message: `Message is now ${like ? 'liked' : 'unliked'}`,
-        });
+        if (typeof index !== 'number') {
+          return res
+            .status(400)
+            .send('Bad request. index needs to be a number');
+        } else {
+          const message = thread.messages[index];
+          message.is_liked_by_user = like;
+          syncMessageFile();
+          return res.status(200).json({
+            ok: true,
+            message: `Message is now ${like ? 'liked' : 'unliked'}`,
+          });
+        }
       }
       case 'deleteMessage': {
         const thread = messagesData.find(
           (thread) => thread.from_user_id === fromUserId
         );
-        thread.messages.splice(index, 1);
-        syncMessageFile();
-        return res
-          .status(200)
-          .json({ ok: true, message: 'Message is now deleted' });
+        if (typeof index !== 'number') {
+          return res
+            .status(400)
+            .send('Bad request. index needs to be a number');
+        } else {
+          thread.messages.splice(index, 1);
+          syncMessageFile();
+          return res
+            .status(200)
+            .json({ ok: true, message: 'Message is now deleted' });
+        }
       }
       case 'submitMessage': {
         const thread = messagesData.find(
@@ -74,7 +83,7 @@ export default function handler(req, res) {
           .json({ ok: true, message: 'Message is now Added' });
       }
       default: {
-        return res.status(400).send(`Bad request. Bad action type: ${action}`);
+        return res.status(400).send(`Bad request. Bad action type`);
       }
     }
   } else {
