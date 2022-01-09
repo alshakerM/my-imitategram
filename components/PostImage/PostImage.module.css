@@ -69,6 +69,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
 }
 
 .taggedContent {
@@ -101,4 +102,19 @@
   transform: rotate(45deg);
   width: 15px;
   background-color: rgb(0, 0, 0);
+}
+.tagIconContainer.isVisible {
+  opacity: 1;
+  animation: hide 0.2s linear forwards;
+  animation-delay: 3s;
+}
+.tagIconContainer.isClicked {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes hide {
+  100% {
+    opacity: 0;
+  }
 }

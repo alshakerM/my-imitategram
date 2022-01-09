@@ -1,7 +1,26 @@
 import styles from './PostImage.module.css';
 import cx from 'classnames';
 import React from 'react';
-import { Tooltip } from '@mui/material';
+
+const useElementOnScreen = (options) => {
+  const imgRef = React.useRef(null);
+  const [isVisible, setIsVisible] = React.useState(false);
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsVisible(entry.isIntersecting);
+    }, options);
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+    return () => {
+      if (imgRef.current && isVisible) {
+        observer.disconnect(imgRef.current);
+      }
+    };
+  }, [imgRef, options]);
+
+  return [imgRef, isVisible];
+};
 
 export function PostImage({
   imageURL,
@@ -16,6 +35,11 @@ export function PostImage({
 }) {
   const [isImgDoubleClicked, setIsImgDoubleCLicked] = React.useState(false);
   const [isImgClicked, setIsImgCLicked] = React.useState(false);
+  const [imgRef, isVisible] = useElementOnScreen({
+    root: null,
+    rootMargin: '0px',
+    threshold: 1,
+  });
 
   React.useEffect(() => {
     if (!isActive) {
@@ -40,6 +64,7 @@ export function PostImage({
         className={cx(styles.postImg, {
           [styles.isLoading]: isLoading,
         })}
+        ref={imgRef}
         src={imageURL}
         alt="post"
         loading="lazy"
@@ -97,7 +122,12 @@ export function PostImage({
         );
       })}
       {tags && (
-        <div className={styles.tagIconContainer}>
+        <div
+          className={cx(styles.tagIconContainer, {
+            [styles.isVisible]: isVisible,
+            [styles.isClicked]: isImgClicked,
+          })}
+        >
           <svg
             aria-label="Tags"
             className={styles.tagIcon}
