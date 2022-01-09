@@ -17,6 +17,9 @@
 .imgContainer {
   width: 24px;
   height: 24px;
+<<<<<<< HEAD
   display: inline-block;
   margin-left: 10px;
+=======
+>>>>>>> f95fe23 (Switch to image/next.js)
 }
