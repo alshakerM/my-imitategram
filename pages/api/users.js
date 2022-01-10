@@ -1,6 +1,12 @@
 import profileData from '../../server/profile-data.json';
 
-const allowedFields = ['user_name', 'user_thumbnail', 'full_name'];
+const allowedFields = [
+  'user_name',
+  'user_thumbnail',
+  'full_name',
+  'user_has_story',
+  'user_id',
+];
 let filteredProfiles;
 
 export default function handler(req, res) {

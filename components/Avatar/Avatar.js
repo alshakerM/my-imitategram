@@ -11,6 +11,7 @@ export function Avatar({
   animate,
   colorRing,
   isUnread = true,
+  link = `/stories/${user.user_id}`,
 }) {
   const dimensions = {};
   switch (size) {
@@ -33,7 +34,7 @@ export function Avatar({
   }
 
   return (
-    <Link href={`/stories/${user.user_id}`}>
+    <Link href={link}>
       <a className={className}>
         <svg
           viewBox={`0 0 300 300`}

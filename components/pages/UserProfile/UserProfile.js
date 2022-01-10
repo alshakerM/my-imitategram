@@ -13,11 +13,13 @@ import Image from 'next/image';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-function DialogSection({ openDialog, setOpenDialog }) {
-  const users = useSelect((select) => select('ig-profile').getProfileData());
+
+function DialogSection({ setOpenDialog }) {
+  const users = useSelect((select) => select('ig-profile').getProfiles());
+
   return (
     <Dialog
-      open={openDialog}
+      open={true}
       onClose={() => setOpenDialog(false)}
       className={styles.dialog}
     >
@@ -65,7 +67,19 @@ function DialogSection({ openDialog, setOpenDialog }) {
       <DialogContent className={styles.dialogContent}>
         {users?.map((data) => (
           <div className={styles.followersSection}>
-            <Avatar user={data} alt="profile pic" size="36" />
+            <div onClick={() => setOpenDialog(false)}>
+              <Avatar
+                user={data}
+                alt="profile pic"
+                size="small"
+                link={
+                  data.user_has_story
+                    ? `/stories/${data.user_id}`
+                    : `/${data.user_name}`
+                }
+                colorRing={data.user_has_story}
+              />
+            </div>
             <div className={styles.followerInfo}>
               <p className={styles.followersUserName}>{data.user_name}</p>
               <p className={styles.followersFullName}>{data.full_name}</p>
@@ -131,7 +145,7 @@ export function UserProfile({ userName }) {
   const location = useRouter();
   const postType = location.asPath.includes('tagged') ? 'tagged' : 'posts';
   const user = useSelect((select) =>
-    select('ig-profile').getProfileData(userName, postType)
+    select('ig-profile').getProfile(userName, postType)
   );
 
   const [openDialog, setOpenDialog] = React.useState(false);
@@ -204,10 +218,7 @@ export function UserProfile({ userName }) {
                 <strong>{readableNumber(user?.followers)}</strong>{' '}
                 {user?.followers > 1 ? 'followers' : 'follower'}
               </button>
-              <DialogSection
-                openDialog={openDialog}
-                setOpenDialog={setOpenDialog}
-              />
+              {openDialog && <DialogSection setOpenDialog={setOpenDialog} />}
               <p className={styles.count}>
                 <strong>{readableNumber(user?.following)}</strong> following
               </p>

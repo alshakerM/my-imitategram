@@ -1,17 +1,22 @@
-export function requestProfileData(userName, postType, fields) {
-  return { type: 'REQUEST_PROFILE', userName, postType, fields };
+export function requestProfile(userName, postType) {
+  return { type: 'REQUEST_PROFILE', userName, postType };
 }
 
-export function receiveProfileData(profileData, postType) {
+export function receiveProfile(fullProfileData, postType) {
   return {
     type: 'RECEIVE_PROFILE',
-    profileData,
+    fullProfileData,
     postType,
   };
 }
-export function receiveAllProfileData(profileData) {
+
+export function requestProfiles(fields) {
+  return { type: 'REQUEST_PROFILES', fields };
+}
+
+export function receiveProfiles(profiles) {
   return {
-    type: 'RECEIVE_ALL_PROFILES',
-    profileData,
+    type: 'RECEIVE_PROFILES',
+    profiles
   };
 }
