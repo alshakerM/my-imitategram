@@ -7,7 +7,9 @@ const useElementOnScreen = (options) => {
   const [isVisible, setIsVisible] = React.useState(false);
   React.useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      setIsVisible(entry.isIntersecting);
+      if (entry.isIntersecting !== isVisible) {
+        setIsVisible(entry.isIntersecting);
+      }
     }, options);
     if (imgRef.current) {
       observer.observe(imgRef.current);
@@ -38,7 +40,7 @@ export function PostImage({
   const [imgRef, isVisible] = useElementOnScreen({
     root: null,
     rootMargin: '0px',
-    threshold: 1,
+    threshold: 0,
   });
 
   React.useEffect(() => {
@@ -58,7 +60,6 @@ export function PostImage({
         [styles.isLoading]: isLoading,
       })}
       style={{ aspectRatio, width: `${fraction * 100}%` }}
-      onBlur={() => setIsTagIconVisible(false)}
     >
       <img
         className={cx(styles.postImg, {
