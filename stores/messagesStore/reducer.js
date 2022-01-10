@@ -25,18 +25,11 @@ export default function reducer(state = defaultState, action) {
       return newState;
     }
 
-    case 'TOGGLE_MESSAGE_LIKE': {
-      return produce(state, (draft) => {
-        const message =
-          draft.loadedThreads[action.fromUserId].messages[action.index];
-        message.is_liked_by_user = !message.is_liked_by_user;
-      });
-    }
     case 'MESSAGE_LIKE': {
       return produce(state, (draft) => {
         const message =
           draft.loadedThreads[action.fromUserId].messages[action.index];
-        message.is_liked_by_user = true;
+        message.is_liked_by_user = action.like;
       });
     }
     case 'DELETE_MESSAGE': {
@@ -49,8 +42,8 @@ export default function reducer(state = defaultState, action) {
 
     case 'SUBMIT_MESSAGE': {
       return produce(state, (draft) => {
-        draft.loadedThreads[action.userId].messages.push({
-          message_body: draft.messageFieldText,
+        draft.loadedThreads[action.fromUserId].messages.push({
+          message_body: action.text,
           sent_on: new Date().toISOString(),
           is_liked_by_user: false,
           direction: 'sent',

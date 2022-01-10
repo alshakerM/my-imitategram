@@ -1,7 +1,13 @@
-export function togglePostLike(postId) {
-  return {
-    type: 'TOGGLE_POST_LIKE',
+export function* postLike(postId, like = true) {
+  yield {
+    type: 'POST_LIKE',
     postId,
+    like,
+  };
+  return {
+    type: 'POST_LIKE',
+    postId,
+    like,
   };
 }
 export function postLike(postId) {
@@ -11,7 +17,12 @@ export function postLike(postId) {
   };
 }
 
-export function toggleCommentLike(postId, commentId) {
+export function* toggleCommentLike(postId, commentId) {
+  yield {
+    type: 'TOGGLE_COMMENT_LIKE',
+    postId,
+    commentId,
+  };
   return {
     type: 'TOGGLE_COMMENT_LIKE',
     postId,
@@ -34,7 +45,13 @@ export function setCommentFieldCommentId(postId, commentId) {
   };
 }
 
-export function toggleReplyLike(postId, commentId, replyId) {
+export function* toggleReplyLike(postId, commentId, replyId) {
+  yield {
+    type: 'TOGGLE_REPLY_LIKE',
+    postId,
+    commentId,
+    replyId,
+  };
   return {
     type: 'TOGGLE_REPLY_LIKE',
     postId,
@@ -80,7 +97,12 @@ export function receivePost(post) {
   };
 }
 
-export function submitComment(postId, text) {
+export function* submitComment(postId, text) {
+  yield {
+    type: 'SUBMIT_POST_COMMENT',
+    postId,
+    text,
+  };
   return {
     type: 'SUBMIT_POST_COMMENT',
     postId,

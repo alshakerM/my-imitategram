@@ -14,7 +14,7 @@ const defaultState = {
 
 export default function reducer(state = defaultState, action) {
   switch (action.type) {
-    case 'TOGGLE_POST_LIKE': {
+    case 'POST_LIKE': {
       return produce(state, (draft) => {
         const post = draft.posts.find((p) => p.post_id === action.postId);
         post.is_post_liked = !post.is_post_liked;

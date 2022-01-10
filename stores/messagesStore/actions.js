@@ -1,6 +1,9 @@
 export function requestThreads(fromUserId, fields) {
   return { type: 'REQUEST_THREADS', fields, fromUserId };
 }
+export function requestMessageLike(fromUserId, index, like) {
+  return { type: 'REQUEST_MESSAGE_LIKE', index, fromUserId, like };
+}
 
 export function receiveThreads(threads) {
   return {
@@ -22,27 +25,35 @@ export function setMessageFieldText(text) {
     text,
   };
 }
-export function submitMessage(userId) {
+export function* submitMessage(fromUserId, text) {
+  yield {
+    type: 'SUBMIT_MESSAGE',
+    fromUserId,
+    text
+  };
   return {
     type: 'SUBMIT_MESSAGE',
-    userId,
-  };
-}
-export function toggleMessageLike(fromUserId, index) {
-  return {
-    type: 'TOGGLE_MESSAGE_LIKE',
     fromUserId,
-    index,
+    text
   };
 }
-export function messageLike(fromUserId, index) {
-  return {
+
+export function* messageLike(fromUserId, index, like = true) {
+  yield requestMessageLike(fromUserId, index, like);
+
+  yield {
     type: 'MESSAGE_LIKE',
     fromUserId,
     index,
+    like,
   };
 }
-export function deleteMessage(fromUserId, index) {
+export function* deleteMessage(fromUserId, index) {
+  yield {
+    type: 'DELETE_MESSAGE',
+    fromUserId,
+    index,
+  };
   return {
     type: 'DELETE_MESSAGE',
     fromUserId,
