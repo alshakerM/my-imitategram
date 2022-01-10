@@ -16,11 +16,14 @@ function UserProfilePost({ post }) {
     <Link href={`/p/${post.post_id}`}>
       <a className={styles.postContainer}>
         <Image
-          src="https://picsum.photos/1050"
+          src={post.post_image.url}
           alt={post.user_name}
           className={styles.postImg}
-          width={293}
-          height={293}
+          width={post.media_dimensions.width}
+          height={post.media_dimensions.width}
+          layout='responsive'
+          objectFit='cover'
+          objectPosition='top'
         />
         <div className={styles.postHover}>
           <div className={styles.likeIconCount}>
@@ -75,6 +78,7 @@ export function UserProfile({ userName }) {
               size="large"
               animate={user.user_has_story}
               colorRing={user.user_has_story}
+              
             />
           </div>
           <div>

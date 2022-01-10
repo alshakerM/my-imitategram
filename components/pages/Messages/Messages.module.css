@@ -92,7 +92,7 @@
 }
 .messagesSenderAvatar {
   border-radius: 50%;
-  margin-left: 8px;
+ 
 }
 .messagesSenderInfo {
   display: flex;
@@ -107,6 +107,16 @@
   align-items: center;
   gap: 10px;
   border-radius: 0 4px 0 0;
+}
+.imgContainer {
+  width: 56px;
+  height: 56px;
+}
+.headerImgContainer,
+.userImgContainer {
+  width: 24px;
+  height: 24px;
+  margin-left: 8px;
 }
 .messagesSenderUsername {
   justify-self: center;

@@ -28,3 +28,7 @@
   text-decoration: none;
   align-self: center;
 }
+.imgContainer {
+  width: 56px;
+  height: 56px;
+}

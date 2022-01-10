@@ -72,13 +72,16 @@ function SenderSection({ fromUserId }) {
                 [styles.isSent]: user.from_user_id === fromUserId,
               })}
             >
-              <Image
-                className={styles.senderThumbnail}
-                src={user.from_user_thumbnail}
-                alt="sender avatar"
-                width={56}
-                height={56}
-              />
+              <div className={styles.imgContainer}>
+                <Image
+                  className={styles.senderThumbnail}
+                  src={user.from_user_thumbnail}
+                  alt="sender avatar"
+                  width={197}
+                  height={197}
+                  layout="responsive"
+                />
+              </div>
               <div>
                 <p className={styles.senderUsername}>{user.from_username}</p>
                 <p className={styles.hasSentMessage}>
@@ -132,13 +135,16 @@ export function Messages({ fromUserId }) {
           <div className={styles.rightSection}>
             <div className={styles.messagesHeader}>
               {threadData?.from_user_id && (
-                <Image
-                  src={threadData?.from_user_thumbnail}
-                  alt="sender profile pic"
-                  width={24}
-                  height={24}
-                  className={styles.messagesSenderAvatar}
-                />
+                <div className={styles.headerImgContainer}>
+                  <Image
+                    src={threadData?.from_user_thumbnail}
+                    alt="sender profile pic"
+                    width={179}
+                    height={179}
+                    layout="responsive"
+                    className={styles.messagesSenderAvatar}
+                  />
+                </div>
               )}
               <div className={styles.messagesSenderUserInfo}>
                 <p className={styles.messagesSenderUsername}>
@@ -195,13 +201,15 @@ export function Messages({ fromUserId }) {
                           threadData?.messages[nextMessage]?.direction &&
                         message.direction !== 'sent' ? (
                           threadData.from_user_id && (
-                            <Image
-                              src={threadData?.from_user_thumbnail}
-                              alt="sender profile pic"
-                              width={24}
-                              height={24}
-                              className={styles.messagesSenderAvatar}
-                            />
+                            <div className={styles.userImgContainer}>
+                              <Image
+                                src={threadData?.from_user_thumbnail}
+                                alt="sender profile pic"
+                                width={179}
+                                height={179}
+                                className={styles.messagesSenderAvatar}
+                              />
+                            </div>
                           )
                         ) : (
                           <div className={styles.emptyImg}></div>

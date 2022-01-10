@@ -5,13 +5,16 @@ import Image from 'next/image';
 export function ProfileBadge() {
   return (
     <div className={styles.contentSection}>
-      <Image
-        src="/my-suit-pic.jpg"
-        alt="profile pic"
-        width={56}
-        height={56}
-        className={styles.profilePic}
-      />
+      <div className={styles.imgContainer}>
+        <Image
+          src="/my-suit-pic.jpg"
+          alt="profile pic"
+          width={270}
+          height={270}
+          layout="responsive"
+          className={styles.profilePic}
+        />
+      </div>
       <div className={styles.userInfo}>
         <p className={styles.userName}>
           <strong>{LOGGED_IN_USER}</strong>

@@ -162,9 +162,10 @@
   display: flex;
 }
 .postsSection {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 293px 293px 293px;
   gap: 28px;
+  justify-content: space-between;
 }
 
 .emptyTaggedSection {
