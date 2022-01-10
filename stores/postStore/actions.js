@@ -10,6 +10,12 @@ export function* postLike(postId, like = true) {
     like,
   };
 }
+export function postLike(postId) {
+  return {
+    type: 'POST_LIKE',
+    postId,
+  };
+}
 
 export function* toggleCommentLike(postId, commentId) {
   yield {
