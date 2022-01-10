@@ -50,7 +50,11 @@ export function Suggestions({ isExpanded }) {
             })}
             key={suggestionData.user_id}
           >
-            <Avatar user={suggestionData} size={isExpanded ? '51' : '37'} />
+            <Avatar
+              user={suggestionData}
+              size={isExpanded ? '51' : '37'}
+              link={`/${suggestionData.user_name}`}
+            />
             <div
               className={cx(styles.userNameAndReason, {
                 [styles.isExpanded]: isExpanded,

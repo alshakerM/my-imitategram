@@ -34,6 +34,7 @@ export function Stories() {
                 index={index}
                 colorRing
                 size="medium"
+                link={`/stories/${user.user_id}`}
               />
               <Link href={`/${user?.user_name}`}>
                 <a className={styles.storyAvatarUsername}>{user.user_name}</a>

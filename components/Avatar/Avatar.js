@@ -4,6 +4,13 @@ import Link from 'next/link';
 import cx from 'classnames';
 import Image from 'next/image';
 
+function SmartLink({ link, children, ...props }) {
+  if (link) {
+    return <Link href={link}>{children}</Link>;
+  } else {
+    return <>{children}</>;
+  }
+}
 export function Avatar({
   user,
   className,
@@ -11,7 +18,7 @@ export function Avatar({
   animate,
   colorRing,
   isUnread = true,
-  link = `/stories/${user.user_id}`,
+  link,
 }) {
   const dimensions = {};
   switch (size) {
@@ -34,7 +41,7 @@ export function Avatar({
   }
 
   return (
-    <Link href={link}>
+    <SmartLink link={link}>
       <a className={className}>
         <svg
           viewBox={`0 0 300 300`}
@@ -79,6 +86,6 @@ export function Avatar({
           </foreignObject>
         </svg>
       </a>
-    </Link>
+    </SmartLink>
   );
 }
