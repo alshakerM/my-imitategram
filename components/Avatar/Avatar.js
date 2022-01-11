@@ -6,7 +6,11 @@ import Image from 'next/image';
 
 function SmartLink({ link, children, ...props }) {
   if (link) {
-    return <Link href={link}>{children}</Link>;
+    return (
+      <Link {...props} href={link}>
+        {children}
+      </Link>
+    );
   } else {
     return <>{children}</>;
   }
