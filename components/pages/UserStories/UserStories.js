@@ -234,6 +234,7 @@ export function UserStories({ userId }) {
                       [styles.storyAvatarActive]: activeUser,
                     })}
                     colorRing={!activeUser}
+                    link={`/stories/${user.user_id}`}
                   />
                   <p
                     className={cx(styles.storyUsername, {

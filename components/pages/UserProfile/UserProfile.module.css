@@ -85,6 +85,12 @@
   font-size: 16px;
   cursor: pointer;
 }
+.followersCount {
+  border: 0;
+  background: 0;
+  font-size: 16px;
+  cursor: pointer;
+}
 .postCount {
   font-size: 16px;
 }
@@ -189,4 +195,61 @@
 .noPhotos {
   font-size: 28px;
   font-weight: 300;
+}
+.followersSection {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.followerInfo {
+  flex: 1;
+}
+.followersButton {
+  border: 1px solid transparent;
+  width: 61px;
+  height: 30px;
+  border-radius: 4px;
+  color: #fff;
+  background-color: #0095f6;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.dialogTitle {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #dbdbdb;
+  height: 43px;
+  font-size: 16px;
+  font-weight: 550;
+  color: #262626;
+  padding: 0;
+  justify-content: space-between;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin-bottom: 8px;
+}
+.followersUserName {
+  font-weight: 600;
+  margin: 0;
+}
+.followersFullName {
+  margin: 0;
+}
+.followersText {
+  flex: 0;
+  margin: 0;
+}
+.emptyDiv {
+  width: 35px;
+}
+.clearButton {
+  border: 0;
+  background: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.clearIcon {
+  margin-right: 12px;
 }

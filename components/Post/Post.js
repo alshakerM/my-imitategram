@@ -190,6 +190,9 @@ function PostHeader({ user_name, city, datum, isExpanded }) {
         className={cx(styles.postHeaderProfilePic, {
           [styles.isExpanded]: isExpanded,
         })}
+        link={
+          datum.poster_has_story ? `/stories/${datum.user_id}` : `/${user_name}`
+        }
       />
 
       <div className={styles.userInfo}>
@@ -211,7 +214,7 @@ function CommentReplySection({ comment, postId }) {
       {comment.replies.map((reply) => (
         <div key={reply.comment_id} className={styles.replierSection}>
           <div className={styles.replierInfo}>
-            <Avatar user={reply} size="24" />
+            <Avatar user={reply} size="24" link={`/${reply.user_name}`} />
 
             <p className={styles.replierUsernameText}>
               <strong>{reply.user_name}</strong> {reply.comment}
@@ -288,7 +291,15 @@ function CommentSection({ comments, isExpanded, expandPost, datum }) {
             [styles.isExpanded]: isExpanded,
           })}
         >
-          <Avatar user={datum} size="32" />
+          <Avatar
+            user={datum}
+            size="32"
+            link={
+              datum.poster_has_story
+                ? `/stories/${datum.user_id}`
+                : `/${datum.user_name}`
+            }
+          />
           <p className={styles.postCaptionText}>
             <span className={styles.commentUsername}>{datum.user_name}</span>{' '}
             {datum.post_caption}
@@ -304,7 +315,13 @@ function CommentSection({ comments, isExpanded, expandPost, datum }) {
             })}
           >
             <div className={styles.commentBody}>
-              {isExpanded && <Avatar user={comment} size="32" />}
+              {isExpanded && (
+                <Avatar
+                  user={comment}
+                  size="32"
+                  link={`/${comment.user_name}`}
+                />
+              )}
               <p className={styles.commentText}>
                 <span className={styles.commentUsername}>
                   {comment.user_name}

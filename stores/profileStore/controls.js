@@ -12,3 +12,13 @@ export async function REQUEST_PROFILE(action) {
   const response = await fetch(url);
   return await response.json();
 }
+
+export async function REQUEST_PROFILES(action) {
+  const { fields } = action;
+  let url = '/api/users?';
+  if (fields) {
+    url += `fields=${fields.join(',')}`;
+  }
+  const response = await fetch(url);
+  return await response.json();
+}
