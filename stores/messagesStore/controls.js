@@ -1,3 +1,5 @@
+import { isomorphicFetch } from "../../utils";
+
 export async function REQUEST_THREADS(action) {
   const { fromUserId, fields } = action;
   let url = '/api/messages?';
@@ -10,12 +12,12 @@ export async function REQUEST_THREADS(action) {
     url += `fields=${fields.join(',')}`;
   }
 
-  const response = await fetch(url);
+  const response = await isomorphicFetch(url);
   return await response.json();
 }
 
 export async function REQUEST_MESSAGE_LIKE(action) {
-  await fetch('/api/messages?action=messageLike', {
+  await isomorphicFetch('/api/messages?action=messageLike', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -29,7 +31,7 @@ export async function REQUEST_MESSAGE_LIKE(action) {
 }
 
 export async function DELETE_MESSAGE(action) {
-  await fetch('/api/messages?action=deleteMessage', {
+  await isomorphicFetch('/api/messages?action=deleteMessage', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -41,7 +43,7 @@ export async function DELETE_MESSAGE(action) {
   });
 }
 export async function SUBMIT_MESSAGE(action) {
-  await fetch('/api/messages?action=submitMessage', {
+  await isomorphicFetch('/api/messages?action=submitMessage', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

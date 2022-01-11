@@ -1,3 +1,5 @@
+import { isomorphicFetch } from "../../utils";
+
 export async function REQUEST_PROFILE(action) {
   const { userName, postType } = action;
   let url = '/api/users?';
@@ -9,7 +11,7 @@ export async function REQUEST_PROFILE(action) {
     url += `postType=${postType}`;
   }
 
-  const response = await fetch(url);
+  const response = await isomorphicFetch(url);
   return await response.json();
 }
 
@@ -19,6 +21,6 @@ export async function REQUEST_PROFILES(action) {
   if (fields) {
     url += `fields=${fields.join(',')}`;
   }
-  const response = await fetch(url);
+  const response = await isomorphicFetch(url);
   return await response.json();
 }

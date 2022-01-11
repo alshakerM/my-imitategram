@@ -1,19 +1,21 @@
+import { isomorphicFetch } from "../../utils";
+
 export async function REQUEST_POSTS(action) {
   const { postId, pageNumber } = action;
   let response;
   if (postId) {
-    response = await fetch(`/api/posts?postId=${postId}`);
+    response = await isomorphicFetch(`/api/posts?postId=${postId}`);
   } else {
-    response = await fetch('/api/posts');
+    response = await isomorphicFetch('/api/posts');
   }
   if (pageNumber >= 0) {
-    response = await fetch(`/api/posts?pageNumber=${pageNumber}`);
+    response = await isomorphicFetch(`/api/posts?pageNumber=${pageNumber}`);
   }
   const results = await response.json();
   return results;
 }
 export async function POST_LIKE(action) {
-  await fetch('/api/posts?action=postLike', {
+  await isomorphicFetch('/api/posts?action=postLike', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -25,7 +27,7 @@ export async function POST_LIKE(action) {
   });
 }
 export async function TOGGLE_COMMENT_LIKE(action) {
-  await fetch('/api/posts?action=toggleCommentLike', {
+  await isomorphicFetch('/api/posts?action=toggleCommentLike', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -37,7 +39,7 @@ export async function TOGGLE_COMMENT_LIKE(action) {
   });
 }
 export async function TOGGLE_REPLY_LIKE(action) {
-  await fetch('/api/posts?action=toggleReplyLike', {
+  await isomorphicFetch('/api/posts?action=toggleReplyLike', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -50,7 +52,7 @@ export async function TOGGLE_REPLY_LIKE(action) {
   });
 }
 export async function SUBMIT_POST_COMMENT(action) {
-  await fetch('/api/posts?action=submitPostComment', {
+  await isomorphicFetch('/api/posts?action=submitPostComment', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

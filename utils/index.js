@@ -22,7 +22,9 @@ export function elementWidth(el) {
  * @param {Boolean} lock true = lock, false = unlock
  */
 export function lockBodyScrolls(lock) {
-  document.body.style.overflow = lock ? 'hidden' : '';
+  if (typeof window !== undefined) {
+    document.body.style.overflow = lock ? 'hidden' : '';
+  }
 }
 
 /**
@@ -60,4 +62,11 @@ export function digitGrouping(num) {
  */
 export function numberBetween(n, min, max) {
   return Math.max(min, Math.min(n, max));
+}
+
+export function isomorphicFetch(url, config) {
+  const base =
+    typeof window !== 'undefined' ? window.location.href : process.env.BASE_URL;
+  const absoluteURL = new URL(url, base).href;
+  return fetch(absoluteURL, config);
 }
