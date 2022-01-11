@@ -25,6 +25,7 @@ export function ProfileBadge() {
         href="https://github.com/alshakerM"
         className={styles.gitHubLink}
         target="_blank"
+        rel="noreferrer"
       >
         GitHub
       </a>

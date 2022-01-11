@@ -12,15 +12,16 @@ const useElementOnScreen = (options) => {
         setIsVisible(entry.isIntersecting);
       }
     }, options);
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
+    const img = imgRef.current;
+    if (img) {
+      observer.observe(img);
     }
     return () => {
-      if (imgRef.current && isVisible) {
-        observer.disconnect(imgRef.current);
+      if (img && isVisible) {
+        observer.disconnect(img);
       }
     };
-  }, [imgRef, options]);
+  }, [imgRef, options, isVisible]);
 
   return [imgRef, isVisible];
 };
@@ -75,7 +76,7 @@ export function PostImage({
           setIsImgCLicked(!isImgClicked);
         }}
         width={postDimensions.width}
-        height={postDimensions.height}        
+        height={postDimensions.height}
       />
       {isImgDoubleClicked && (
         <div className={styles.likeIconContainer}>

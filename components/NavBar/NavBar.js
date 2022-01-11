@@ -26,7 +26,7 @@ export function NavBar() {
     <nav className={navContainer}>
       <div className={navContent}>
         <Link href="/">
-          <div className={navTitle}>
+          <a className={navTitle}>
             <Image
               src="/Instagram_logo_text.svg"
               width={840}
@@ -35,7 +35,7 @@ export function NavBar() {
               alt="Instagram text"
               className={titleImg}
             />
-          </div>
+          </a>
         </Link>
         <div className={inputMain}>
           {searchActive ? (
