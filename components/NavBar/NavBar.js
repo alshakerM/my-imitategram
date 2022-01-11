@@ -13,7 +13,10 @@ import {
   cancelIconContainer,
   inputSection,
   cancelIcon,
+  titleImg,
+  inputMain,
 } from './NavBar.module.css';
+import Image from 'next/image';
 
 export function NavBar() {
   const [inputValue, setInputValue] = React.useState('');
@@ -23,16 +26,18 @@ export function NavBar() {
     <nav className={navContainer}>
       <div className={navContent}>
         <Link href="/">
-          <a className={navTitle}>
-            <img
+          <div className={navTitle}>
+            <Image
               src="/Instagram_logo_text.svg"
-              width="109"
-              height="39"
+              width={840}
+              height={300}
+              layout="responsive"
               alt="Instagram text"
+              className={titleImg}
             />
-          </a>
+          </div>
         </Link>
-        <div>
+        <div className={inputMain}>
           {searchActive ? (
             <div className={inputSection}>
               <input
@@ -59,7 +64,7 @@ export function NavBar() {
               className={searchPlaceholder}
               onClick={() => setSearchActive(true)}
             >
-              <SearchRounded fontSize="small" className={searchIcon} />
+              <SearchRounded className={searchIcon} />
               <span> Search</span>
             </button>
           )}

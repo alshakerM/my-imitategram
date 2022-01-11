@@ -1,6 +1,7 @@
 import styles from './PostImage.module.css';
 import cx from 'classnames';
 import React from 'react';
+import Image from 'next/image';
 
 const useElementOnScreen = (options) => {
   const imgRef = React.useRef(null);
@@ -61,20 +62,20 @@ export function PostImage({
       })}
       style={{ aspectRatio, width: `${fraction * 100}%` }}
     >
-      <img
+      <Image
         className={cx(styles.postImg, {
           [styles.isLoading]: isLoading,
         })}
         ref={imgRef}
         src={imageURL}
         alt="post"
-        loading="lazy"
-        style={{ aspectRatio }}
         onLoad={() => setIsLoading?.(false)}
         onDoubleClick={onDoubleClick}
         onClick={() => {
           setIsImgCLicked(!isImgClicked);
         }}
+        width={postDimensions.width}
+        height={postDimensions.height}        
       />
       {isImgDoubleClicked && (
         <div className={styles.likeIconContainer}>
