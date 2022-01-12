@@ -18,7 +18,6 @@ export default function reducer(state = defaultState, action) {
       });
     }
     case 'RECEIVE_PROFILES': {
-      debugger
       return { ...state, profiles: action.profiles };
     }
     default:
