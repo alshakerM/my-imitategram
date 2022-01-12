@@ -29,3 +29,33 @@ textarea {
 .MuiDialogContent-root {
   padding: 0 20px;
 }
+
+.loading-bar {
+  height: 5px;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  animation: spread 1.5s ease-out;
+}
+@keyframes spread {
+  0% {
+    width: 1%;
+    background: #a432b1;
+  }
+  30% {
+    width: 30%;
+    background: #fdd074;
+  }
+  50% {
+    width: 50%;
+    background: #fd1d1d;
+  }
+  70% {
+    width: 70%;
+    background: #dd326e;
+  }
+  100% {
+    width: 100%;
+    background: #a432b1;
+  }
+}
