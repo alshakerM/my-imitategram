@@ -27,7 +27,6 @@ function MyApp({ Component, pageProps }) {
       router.events.off('routerChangeComplete', handleEnd);
     };
   }, [router]);
-  console.log(isLoading);
   return (
     <div>
       <Head>
