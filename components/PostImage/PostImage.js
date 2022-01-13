@@ -17,7 +17,7 @@ const useElementOnScreen = (options) => {
       observer.observe(img);
     }
     return () => {
-      if (img && isVisible) {
+      if (img) {
         observer.disconnect(img);
       }
     };
