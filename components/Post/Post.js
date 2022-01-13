@@ -501,7 +501,9 @@ function MediaSection({ post, isExpanded, dimensions }) {
               onClick={() => setMediaIndex(mediaIndex - 1)}
             >
               <CircularChevron
-                maskKey={`post-previous-${post.post_id}`}
+                maskKey={`post-previous-${post.post_id}-${
+                  isExpanded ? 'expanded' : 'not-expanded'
+                }`}
                 size="24"
               />
             </button>
@@ -512,7 +514,9 @@ function MediaSection({ post, isExpanded, dimensions }) {
               onClick={() => setMediaIndex(mediaIndex + 1)}
             >
               <CircularChevron
-                maskKey={`post-next-${post.post_id}`}
+                maskKey={`post-next-${post.post_id}-${
+                  isExpanded ? 'expanded' : 'not-expanded'
+                }`}
                 size="24"
                 direction="left"
               />
