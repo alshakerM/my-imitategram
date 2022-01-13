@@ -159,9 +159,9 @@ export function UserStories({ userId }) {
       <Link href="/">
         <a className={styles.instagramLogoLink}>
           <Image
-            src="/stories_instagram_logo.png"
-            width="103"
-            height="29"
+            src="/Instagram_logo_text-light.svg"
+            width="109"
+            height="39"
             alt="Instagram text"
           />
         </a>
