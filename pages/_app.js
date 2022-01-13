@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
+import { WarningPage } from '../components/pages/WarningPage/WarningPage';
 import '../styles/globals.css';
 
 const routeTitleMap = {
@@ -9,7 +10,7 @@ const routeTitleMap = {
   '/stories/[userId]': 'Stories • Instagram',
 };
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps, cookie }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = React.useState(false);
   React.useEffect(() => {
@@ -34,10 +35,20 @@ function MyApp({ Component, pageProps }) {
         <link rel="shortcut icon" href="/Instagarm logo.png" />
       </Head>
       {isLoading && <div className="loading-bar"></div>}
-
+      {cookie === undefined || cookie === 'hasSeenWarning=false' ? (
+        <WarningPage />
+      ) : (
+        ''
+      )}
       <Component {...pageProps} />
     </div>
   );
 }
+MyApp.getInitialProps = async function (context) {
+  const { req, res } = context.ctx;
+  const cookie = req.headers?.cookie;
+
+  return { cookie };
+};
 
 export default MyApp;

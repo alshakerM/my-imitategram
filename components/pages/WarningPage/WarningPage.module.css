@@ -1,0 +1,51 @@
+.contentSection {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+}
+.headsUpText {
+  font-size: 30px;
+  font-weight: 600;
+  color: #434343;
+}
+.warningText {
+  font-size: 30px;
+  color: #434343;
+}
+.googleText {
+  font-size: 18px;
+  color: #434343;
+}
+.continueButton {
+  background: #e89954 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  color: #fff;
+  padding: 10px;
+  width: 334px;
+  height: 61px;
+  border-radius: 2px;
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.rightLip {
+  transform-origin: 208px 119px;
+  transition: transform 0.5s ease-in-out;
+}
+.leftLip {
+  transform-origin: 208px 119px;
+  transition: transform 0.5s ease-in-out;
+}
+.cat:hover .rightLip {
+  transform: scale(1.5, 1.2) rotate(-7deg);
+}
+
+.cat:hover .leftLip {
+  transform: scale(1.5, 1.2) rotate(-7deg);
+}
