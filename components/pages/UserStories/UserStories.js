@@ -98,6 +98,7 @@ export function UserStories({ userId }) {
   const user = storiesData[userIndex];
   const nextUser = storiesData[userIndex + 1];
   const prevUser = storiesData[userIndex - 1];
+  const [prevUserName, setPrevUserName] = React.useState([]);
   const history = useRouter();
   const [storyIndices, setStoryIndices] = React.useState(
     storiesData.reduce((acc, user) => {
@@ -129,6 +130,7 @@ export function UserStories({ userId }) {
   const progressHandler = (progress) => {
     if (progress === 1) {
       if (storyIndices[userId] === user.stories.length - 1) {
+        setPrevUserName([...prevUserName, user.user_name]);
         if (nextUser) {
           history.push(`/stories/${nextUser.user_id}`, undefined, {
             shallow: true,
@@ -153,7 +155,6 @@ export function UserStories({ userId }) {
       </div>
     );
   }
-
   return (
     <div key="all-stories" className={styles.allStoriesContainer}>
       <Link href="/">
@@ -226,6 +227,7 @@ export function UserStories({ userId }) {
                       ))}
                     </div>
                   )}
+
                   <Avatar
                     user={user}
                     size={activeUser ? 'small' : 'medium'}
@@ -233,9 +235,13 @@ export function UserStories({ userId }) {
                       [styles.storyAvatarSmall]: !activeUser,
                       [styles.storyAvatarActive]: activeUser,
                     })}
-                    colorRing={!activeUser}
+                    colorRing={
+                      !activeUser && !prevUserName.includes(user.user_name)
+                    }
+                    isSilver={prevUserName.includes(user.user_name)}
                     link={`/stories/${user.user_id}`}
                   />
+
                   <p
                     className={cx(styles.storyUsername, {
                       [styles.isExpanded]: activeUser,
@@ -286,7 +292,6 @@ export function UserStories({ userId }) {
                       paused={activeUser ? pause : true}
                       muted={activeUser ? mute : true}
                       videoURL={story.story_media}
-                      className={styles.storyVideo}
                       onProgress={progressHandler}
                       key={story.story_id}
                       autoPlay={true}
