@@ -609,12 +609,14 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
           [styles.isExpanded]: isExpanded,
           [styles.isFloating]: isFloating,
         })}
-        style={{
-          maxHeight: Math.min(
-            window.innerHeight - VERTICAL_MARGIN * 2,
-            datum.media_dimensions.height
-          ),
-        }}
+        style={
+          isFloating && {
+            maxHeight: Math.min(
+              window.innerHeight - VERTICAL_MARGIN * 2,
+              datum.media_dimensions.height
+            ),
+          }
+        }
       >
         <>
           <PostHeader
