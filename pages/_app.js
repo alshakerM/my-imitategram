@@ -10,9 +10,17 @@ const routeTitleMap = {
   '/stories/[userId]': 'Stories • Instagram',
 };
 
-function MyApp({ Component, pageProps, cookie }) {
+function MyApp({ Component, pageProps }) {
+  const [shouldWarn, setShouldWarn] = React.useState(false);
   const router = useRouter();
   const [isLoading, setIsLoading] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!window.localStorage.getItem('wasUserWarned')) {
+      setShouldWarn(true);
+    }
+  }, []);
+
   React.useEffect(() => {
     const handleStart = () => {
       setIsLoading(true);
@@ -34,21 +42,11 @@ function MyApp({ Component, pageProps, cookie }) {
         <title>{routeTitleMap[router.pathname] || 'Instagram Clone'}</title>
         <link rel="shortcut icon" href="/Instagarm logo.png" />
       </Head>
+      {shouldWarn && <WarningPage setShouldWarn={setShouldWarn} />}
       {isLoading && <div className="loading-bar"></div>}
-      {cookie === undefined || cookie === 'hasSeenWarning=false' ? (
-        <WarningPage />
-      ) : (
-        ''
-      )}
-      <Component {...pageProps} />
+      {!shouldWarn && <Component {...pageProps} />}
     </div>
   );
 }
-MyApp.getInitialProps = async function (context) {
-  const { req, res } = context.ctx;
-  const cookie = req.headers?.cookie;
-
-  return { cookie };
-};
 
 export default MyApp;
