@@ -66,7 +66,7 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
 
 export function UserStories({ userId }) {
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
-  const [isMediaLoading, setIsMediaLoading] = React.useState(true);
+
   const areStoriesResolved = useSelect((select) =>
     select('ig-stories').hasFinishedResolution('getStories')
   );
@@ -206,7 +206,7 @@ export function UserStories({ userId }) {
                     [styles.isSmall]: !activeUser,
                   })}
                 >
-                  {activeUser && !isMediaLoading && (
+                  {activeUser && (
                     <div className={styles.progressBars}>
                       {user.stories.map((story, index) => (
                         <div
@@ -291,15 +291,9 @@ export function UserStories({ userId }) {
                       onProgress={progressHandler}
                       key={story.story_id}
                       autoPlay={true}
-                      onLoad={() => {
-                        setIsMediaLoading(false);
-                      }}
                     />
                   ) : (
                     <StoryImage
-                      onLoad={() => {
-                        setIsMediaLoading(false);
-                      }}
                       src={story.story_media}
                       onProgress={progressHandler}
                       paused={activeUser ? pause : true}
