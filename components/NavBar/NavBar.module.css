@@ -7,10 +7,31 @@
   top: 0px;
   height: 60px;
 }
+.mobileTopNavContainer {
+  width: 100%;
+  background-color: #fff;
+  border-bottom: 1px solid #dbdbdb;
+  position: fixed;
+  left: 0;
+  z-index: 2;
+  top: 0px;
+  height: 44px;
+}
+.mobileBottomNavContainer {
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #dbdbdb;
+  position: fixed;
+  left: 0;
+  z-index: 2;
+  top: 96%;
+  height: 44px;
+}
 .navTitle {
-  width: 109px;
+  min-width: 109px;
   height: 39px;
 }
+
 .navContent {
   display: flex;
   margin: 7px auto;
@@ -18,6 +39,15 @@
   align-items: center;
   height: 53px;
   max-width: 975px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.mobileNavContent {
+  display: flex;
+  margin: 7px auto;
+  justify-content: space-between;
+  align-items: center;
   padding: 0 20px;
   box-sizing: border-box;
   width: 100%;
@@ -35,12 +65,9 @@
   padding: 0 10px;
   box-sizing: border-box;
   background-color: #efefef;
-  
   border: 0;
 }
 .searchIcon {
- 
-  color: #bebfc1;
   padding: 0 5px;
 }
 
@@ -70,7 +97,21 @@
   margin-top: 7px;
   transform: scale(0.8);
 }
+.mobileIcons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.mobileIcons * {
+  margin-top: 4px;
+}
+.placeholderText {
+  color: rgb(142, 142, 142);
+  font-weight: 200;
+}
 .inputMain {
-  margin-left: 173px;
- 
+  margin-left: 10%;
+}
+.navIcons {
+  min-width: 250px;
 }
