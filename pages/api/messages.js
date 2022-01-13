@@ -1,13 +1,14 @@
 import { readFileSync, writeFileSync } from 'fs';
 import { resolve } from 'path';
 
-const messagesDataPath = resolve(
-  __dirname,
-  '../../../../server/messages-data.json'
-);
+import messagesData from '../../server/messages-data.json';
+//const messagesDataPath = resolve(
+// __dirname,
+//('../../../../server/messages-data.json');
+//);
 
-const messageString = readFileSync(messagesDataPath).toString();
-let messagesData = JSON.parse(messageString);
+//const messageString = readFileSync(messagesDataPath).toString();
+//let messagesData = JSON.parse(messageString);
 
 function syncMessageFile() {
   writeFileSync(messagesDataPath, JSON.stringify(messagesData));

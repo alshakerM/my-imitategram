@@ -42,9 +42,9 @@ function DialogSection({ setOpenDialog }) {
             <line
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               x1="21"
               x2="3"
               y1="3"
@@ -53,9 +53,9 @@ function DialogSection({ setOpenDialog }) {
             <line
               fill="none"
               stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               x1="21"
               x2="3"
               y1="21"
@@ -66,7 +66,7 @@ function DialogSection({ setOpenDialog }) {
       </DialogTitle>
       <DialogContent className={styles.dialogContent}>
         {users?.map((data) => (
-          <div className={styles.followersSection}>
+          <div className={styles.followersSection} key={data.user_id}>
             <div onClick={() => setOpenDialog(false)}>
               <Avatar
                 user={data}
@@ -101,9 +101,9 @@ function UserProfilePost({ post }) {
           className={styles.postImg}
           width={post.media_dimensions.width}
           height={post.media_dimensions.width}
-          layout='responsive'
-          objectFit='cover'
-          objectPosition='top'
+          layout="responsive"
+          objectFit="cover"
+          objectPosition="top"
         />
         <div className={styles.postHover}>
           <div className={styles.likeIconCount}>
@@ -159,7 +159,6 @@ export function UserProfile({ userName }) {
               size="large"
               animate={user.user_has_story}
               colorRing={user.user_has_story}
-              
             />
           </div>
           <div>

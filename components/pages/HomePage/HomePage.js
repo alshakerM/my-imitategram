@@ -13,25 +13,27 @@ export function HomePage() {
   const isLoading = useSelect((select) => select('ig-posts').getIsLoading());
   const itemsLeft = useSelect((select) => select('ig-posts').getItemsLeft());
   React.useEffect(() => {
-    let scrollReachedEnd = false;
-    const handler = () => {
-      if (
-        document.body.scrollHeight <
-        window.pageYOffset + window.innerHeight + 500
-      ) {
-        if (!scrollReachedEnd && !isLoading && itemsLeft > 0) {
-          setPageNumber((p) => p + 1);
-          scrollReachedEnd = true;
+    if (itemsLeft > 0) {
+      let scrollReachedEnd = false;
+      const handler = () => {
+        if (
+          document.body.scrollHeight <
+          window.pageYOffset + window.innerHeight + 500
+        ) {
+          if (!scrollReachedEnd && !isLoading) {
+            setPageNumber((p) => p + 1);
+            scrollReachedEnd = true;
+          }
+        } else {
+          scrollReachedEnd = false;
         }
-      } else {
-        scrollReachedEnd = false;
-      }
-    };
-    window.addEventListener('scroll', handler);
-    return () => {
-      window.removeEventListener('scroll', handler);
-    };
-  }, [setPageNumber, isLoading]);
+      };
+      window.addEventListener('scroll', handler);
+      return () => {
+        window.removeEventListener('scroll', handler);
+      };
+    }
+  }, [setPageNumber, isLoading, itemsLeft]);
 
   return (
     <div className={styles.content}>

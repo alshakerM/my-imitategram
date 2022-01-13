@@ -20,6 +20,7 @@ export default function CatchAll({ query }) {
   // keeping them in sync
   const lastExpandedPostId = React.useMemo(
     () => expandedPostId,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [serverPostId]
   );
 

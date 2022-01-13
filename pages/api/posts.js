@@ -3,10 +3,10 @@ import { v4 } from 'uuid';
 import { resolve } from 'path';
 import { LOGGED_IN_USER } from '../../stores/constants';
 
-const postsDataPath = resolve(__dirname, '../../../../server/posts-data.json');
+import posts from '../../server/posts-data.json';
 
-const postString = readFileSync(postsDataPath).toString();
-let posts = JSON.parse(postString);
+//const postString = readFileSync(postsDataPath).toString();
+//let posts = JSON.parse(postString);
 
 function syncPostFile() {
   writeFileSync(postsDataPath, JSON.stringify(posts));
