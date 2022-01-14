@@ -430,68 +430,71 @@ function MediaSection({ post, isExpanded, dimensions }) {
   const [mediaIndex, setMediaIndex] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
   const { postLike } = useDispatch('ig-posts');
+  const mediaSection = React.useRef();
+
+  React.useEffect(() => {
+    mediaSection.current.scrollLeft =
+      mediaIndex * (isExpanded ? dimensions.width : 614);
+  }, [mediaIndex, isExpanded, dimensions]);
 
   return (
     <>
       <section
+        ref={mediaSection}
         className={cx(styles.mediaSection, { [styles.isExpanded]: isExpanded })}
         style={{ maxWidth: isExpanded ? dimensions.width : 614 }}
+        onScroll={(e) => {
+          const page = e.currentTarget.scrollLeft / e.currentTarget.clientWidth;
+
+          // when page is an integer, it means the scroll event is done. Because page goes from 0 -> 0.1 -> 0.2 ... 1, then 1.1, 1.2 ... 2
+          if (Number.isInteger(page)) {
+            setMediaIndex(page);
+          }
+        }}
       >
-        <div
-          className={styles.mediaContainer}
-          style={{
-            transform: `translateX(${(-mediaIndex * 100) / items.length}%)`,
-            width: `${100 * items.length}%`,
-          }}
-        >
-          {items?.map((mediaItem, index) =>
-            mediaItem.type === 'photo' ? (
-              index === 0 ? (
-                <PostImage
-                  key={index}
-                  imageURL={mediaItem.url}
-                  fraction={1 / items.length}
-                  aspectRatio={aspectRatio}
-                  setIsLoading={setIsLoading}
-                  isLoading={isLoading}
-                  onDoubleClick={() => postLike(post.post_id)}
-                  tags={mediaItem.tags}
-                  postDimensions={post.media_dimensions}
-                  isActive={mediaIndex === index}
-                />
-              ) : (
-                <PostImage
-                  key={index}
-                  imageURL={mediaItem.url}
-                  fraction={1 / items.length}
-                  aspectRatio={aspectRatio}
-                  onDoubleClick={() => postLike(post.post_id)}
-                  tags={mediaItem.tags}
-                  postDimensions={post.media_dimensions}
-                  isActive={mediaIndex === index}
-                />
-              )
-            ) : index === 0 ? (
-              <PostVideo
+        {items?.map((mediaItem, index) =>
+          mediaItem.type === 'photo' ? (
+            index === 0 ? (
+              <PostImage
                 key={index}
-                videoURL={mediaItem.url}
-                active={mediaIndex === index}
-                fraction={1 / items.length}
+                imageURL={mediaItem.url}
                 aspectRatio={aspectRatio}
                 setIsLoading={setIsLoading}
                 isLoading={isLoading}
+                onDoubleClick={() => postLike(post.post_id)}
+                tags={mediaItem.tags}
+                postDimensions={post.media_dimensions}
+                isActive={mediaIndex === index}
               />
             ) : (
-              <PostVideo
+              <PostImage
                 key={index}
-                videoURL={mediaItem.url}
-                active={mediaIndex === index}
-                fraction={1 / items.length}
+                imageURL={mediaItem.url}
                 aspectRatio={aspectRatio}
+                onDoubleClick={() => postLike(post.post_id)}
+                tags={mediaItem.tags}
+                postDimensions={post.media_dimensions}
+                isActive={mediaIndex === index}
               />
             )
-          )}
-        </div>
+          ) : index === 0 ? (
+            <PostVideo
+              key={index}
+              videoURL={mediaItem.url}
+              active={mediaIndex === index}
+              aspectRatio={aspectRatio}
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+            />
+          ) : (
+            <PostVideo
+              key={index}
+              videoURL={mediaItem.url}
+              active={mediaIndex === index}
+              aspectRatio={aspectRatio}
+            />
+          )
+        )}
         {items.length > 1 && !isLoading && (
           <div className={styles.imgButtonsContainer}>
             <button
