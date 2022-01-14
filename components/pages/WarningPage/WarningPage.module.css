@@ -21,7 +21,7 @@
   }
   .textContainer {
     max-width: 100%;
-    transform: scale(0.85);
+    margin: 20px;
   }
 
   .warningText {
@@ -39,7 +39,6 @@
 .warningText {
   font-size: 20px;
   color: #434343;
- 
 }
 .googleText {
   font-size: 14px;
