@@ -9,6 +9,28 @@
   align-items: center;
   gap: 80px;
 }
+@media screen and (max-width: 720px) {
+  .contentSection {
+    flex-direction: column;
+    margin: 0 auto;
+    gap: 40px;
+  }
+  .contentSection svg {
+    width: 150px;
+    height: 150px;
+  }
+  .textContainer {
+    max-width: 100%;
+    margin: 20px;
+  }
+
+  .warningText {
+    font-size: 50px;
+  }
+  .headsUpText {
+    font-size: 1px;
+  }
+}
 .headsUpText {
   font-size: 30px;
   font-weight: 600;
