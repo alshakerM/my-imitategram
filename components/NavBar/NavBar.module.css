@@ -15,7 +15,7 @@
   left: 0;
   z-index: 2;
   top: 0px;
-  height: 44px;
+  padding: 1px;
 }
 .mobileBottomNavContainer {
   width: 100%;
@@ -24,7 +24,7 @@
   position: fixed;
   left: 0;
   z-index: 2;
-  top: 96%;
+  bottom: 0;
   height: 44px;
 }
 .navTitle {
@@ -103,7 +103,7 @@
   align-items: center;
 }
 .mobileIcons * {
-  margin-top: 4px;
+  margin-top: 5px;
 }
 .placeholderText {
   color: rgb(142, 142, 142);

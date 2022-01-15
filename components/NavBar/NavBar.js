@@ -79,7 +79,7 @@ export function NavBar() {
                     d="M19 10.5A8.5 8.5 0 1110.5 2a8.5 8.5 0 018.5 8.5z"
                     fill="none"
                     stroke="currentColor"
-                    stroke-Linecap="round"
+                    strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
                   ></path>
