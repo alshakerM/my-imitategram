@@ -473,10 +473,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
             const page =
               e.currentTarget.scrollLeft / e.currentTarget.clientWidth;
 
-            // when page is an integer, it means the scroll event is done. Because page goes from 0 -> 0.1 -> 0.2 ... 1, then 1.1, 1.2 ... 2
-            if (Number.isInteger(page)) {
-              setMediaIndex(page);
-            }
+            setMediaIndex(Math.round(page));
           }
         }}
       >
