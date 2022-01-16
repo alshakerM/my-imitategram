@@ -17,12 +17,16 @@ import styles from './Post.module.css';
 import '../../stores/postStore';
 
 const INDEPENDENT_POST_HEIGHT = 600;
+const VERTICAL_MARGIN = 24;
+
 function calculatePostDimensions(post, isInFeed) {
   const postAspectRatio =
     post.media_dimensions.width / post.media_dimensions.height;
   if (isInFeed) {
-    const VERTICAL_MARGIN = 24;
-    const height = window.innerHeight - VERTICAL_MARGIN * 2;
+    const height = Math.min(
+      post.media_dimensions.height,
+      window.innerHeight - VERTICAL_MARGIN * 2
+    );
     const width = height * postAspectRatio;
     return { width, height };
   } else {
@@ -501,7 +505,9 @@ function MediaSection({ post, isExpanded, dimensions }) {
               onClick={() => setMediaIndex(mediaIndex - 1)}
             >
               <CircularChevron
-                maskKey={`post-previous-${post.post_id}`}
+                maskKey={`post-previous-${post.post_id}-${
+                  isExpanded ? 'expanded' : 'not-expanded'
+                }`}
                 size="24"
               />
             </button>
@@ -512,7 +518,9 @@ function MediaSection({ post, isExpanded, dimensions }) {
               onClick={() => setMediaIndex(mediaIndex + 1)}
             >
               <CircularChevron
-                maskKey={`post-next-${post.post_id}`}
+                maskKey={`post-next-${post.post_id}-${
+                  isExpanded ? 'expanded' : 'not-expanded'
+                }`}
                 size="24"
                 direction="left"
               />
@@ -601,6 +609,14 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
           [styles.isExpanded]: isExpanded,
           [styles.isFloating]: isFloating,
         })}
+        style={
+          isFloating && {
+            maxHeight: Math.min(
+              window.innerHeight - VERTICAL_MARGIN * 2,
+              datum.media_dimensions.height
+            ),
+          }
+        }
       >
         <>
           <PostHeader
