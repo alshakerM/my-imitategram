@@ -24,7 +24,7 @@ function calculatePostDimensions(post, isInFeed) {
     post.media_dimensions.width / post.media_dimensions.height;
   if (isInFeed) {
     const VERTICAL_MARGIN = 24;
-    const height = window.innerHeight - VERTICAL_MARGIN * 2;
+    const height = Math.min(post.media_dimensions.height, window.innerHeight - VERTICAL_MARGIN * 2);
     const width = height * postAspectRatio;
     return { width, height };
   } else {
