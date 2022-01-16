@@ -8,6 +8,8 @@ import { Avatar } from '../Avatar/Avatar';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
+import { useMediaQuery } from '../../utils/index';
+
 import {
   absoluteToRelativeDate,
   digitGrouping,
@@ -432,23 +434,39 @@ function MediaSection({ post, isExpanded, dimensions }) {
   const { postLike } = useDispatch('ig-posts');
   const mediaSection = React.useRef();
 
+  const isMobile = useMediaQuery('(max-width: 720px)');
+
   React.useEffect(() => {
-    mediaSection.current.scrollLeft =
-      mediaIndex * (isExpanded ? dimensions.width : 614);
-  }, [mediaIndex, isExpanded, dimensions]);
+    // this effect is meant to scroll the mediaSection when the nav buttons are clicked/
+    // since we don't show them on mobiles, we can disable it.
+    if (!isMobile) {
+      mediaSection.current.scrollLeft =
+        mediaIndex * (isExpanded ? dimensions.width : 614);
+    }
+  }, [mediaIndex, isExpanded, dimensions, isMobile]);
 
   return (
     <>
       <section
         ref={mediaSection}
         className={cx(styles.mediaSection, { [styles.isExpanded]: isExpanded })}
-        style={{ maxWidth: isExpanded ? dimensions.width : 614 }}
+        style={{
+          // only enable scrolling on mobiles
+          overflowX: isMobile ? 'auto' : 'hidden',
+          maxWidth: isExpanded ? dimensions.width : 614,
+        }}
         onScroll={(e) => {
-          const page = e.currentTarget.scrollLeft / e.currentTarget.clientWidth;
+          // only support scrolling navigation on mobile to support dragging
+          if (isMobile) {
+            const page =
+              e.currentTarget.scrollLeft / e.currentTarget.clientWidth;
 
-          // when page is an integer, it means the scroll event is done. Because page goes from 0 -> 0.1 -> 0.2 ... 1, then 1.1, 1.2 ... 2
-          if (Number.isInteger(page)) {
-            setMediaIndex(page);
+            // when page is an integer, it means the scroll event is done. Because page goes from 0 -> 0.1 -> 0.2 ... 1, then 1.1, 1.2 ... 2
+            if (Number.isInteger(page)) {
+              setMediaIndex(page);
+            }
+          } else {
+            e.preventDefault();
           }
         }}
       >
@@ -495,7 +513,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
             />
           )
         )}
-        {items.length > 1 && !isLoading && (
+        {!isMobile && items.length > 1 && !isLoading && (
           <div className={styles.imgButtonsContainer}>
             <button
               className={cx(styles.prevImgButton, {
