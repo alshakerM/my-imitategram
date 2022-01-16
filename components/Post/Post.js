@@ -444,11 +444,8 @@ function MediaSection({ post, isExpanded, dimensions }) {
   React.useEffect(() => {
     // this effect is meant to scroll the mediaSection when the nav buttons are clicked/
     // since we don't show them on mobiles, we can disable it.
-    if (isMobile) {
-      mediaSection.current.scrollLeft =
-        mediaIndex * (isExpanded ? dimensions.width : 612);
-    } else {
-      // dont use scrolling on Desktop, because it's problematic on Safari
+    // dont use scrolling on Desktop, because it's problematic on Safari
+    if (!isMobile) {
       firstImage.current.style.marginLeft = `${
         -mediaIndex * (isExpanded ? dimensions.width : 612)
       }px`;
