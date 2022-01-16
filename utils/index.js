@@ -1,5 +1,6 @@
 import TimeAgo from 'javascript-time-ago';
 import en from 'javascript-time-ago/locale/en.json';
+import React from 'react';
 
 TimeAgo.addDefaultLocale(en);
 const timeAgo = new TimeAgo('en-US');
@@ -69,4 +70,35 @@ export function isomorphicFetch(url, config) {
     typeof window !== 'undefined' ? window.location.href : process.env.BASE_URL;
   const absoluteURL = new URL(url, base).href;
   return fetch(absoluteURL, config);
+}
+/**
+ * Runs a media query and returns its value when it changes.
+ * See: https://github.com/WordPress/gutenberg/blob/trunk/packages/compose/src/hooks/use-media-query/index.js
+ *
+ * @param {string} [query] Media Query.
+ * @return {boolean} return value of the media query.
+ */
+export function useMediaQuery(query) {
+  const [match, setMatch] = React.useState(
+    () =>
+      !!(
+        query &&
+        typeof window !== 'undefined' &&
+        window.matchMedia(query).matches
+      )
+  );
+
+  React.useEffect(() => {
+    if (!query) {
+      return;
+    }
+    const updateMatch = () => setMatch(window.matchMedia(query).matches);
+    updateMatch();
+    const list = window.matchMedia(query);
+    list.addListener(updateMatch);
+    return () => {
+      list.removeListener(updateMatch);
+    };
+  }, [query]);
+  return !!query && match;
 }
