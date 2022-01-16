@@ -437,28 +437,23 @@ function MediaSection({ post, isExpanded, dimensions }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const { postLike } = useDispatch('ig-posts');
   const mediaSection = React.useRef();
+  const firstImage = React.useRef();
 
   const isMobile = useMediaQuery('(max-width: 720px)');
 
   React.useEffect(() => {
     // this effect is meant to scroll the mediaSection when the nav buttons are clicked/
     // since we don't show them on mobiles, we can disable it.
-    if (!isMobile) {
-      mediaSection.current.scrollTo({
-        left: mediaIndex * (isExpanded ? dimensions.width : 614),
-        behavior: 'smooth',
-        top:0
-      });
+    if (isMobile) {
+      mediaSection.current.scrollLeft =
+        mediaIndex * (isExpanded ? dimensions.width : 612);
+    } else {
+      // dont use scrolling on Desktop, because it's problematic on Safari
+      firstImage.current.style.marginLeft = `${
+        -mediaIndex * (isExpanded ? dimensions.width : 612)
+      }px`;
     }
   }, [mediaIndex, isExpanded, dimensions, isMobile]);
-  React.useEffect(() => {
-    // this effect is meant to scroll the mediaSection when the nav buttons are clicked/
-    // since we don't show them on mobiles, we can disable it.
-    if (!isMobile) {
-      mediaSection.current.scrollLeft =
-        mediaIndex * (isExpanded ? dimensions.width : 614);
-    }
-  }, [mediaIndex, isMobile, isExpanded, dimensions]);
 
   return (
     <>
@@ -468,7 +463,8 @@ function MediaSection({ post, isExpanded, dimensions }) {
         style={{
           // only enable scrolling on mobiles
           overflowX: isMobile ? 'auto' : 'hidden',
-          maxWidth: isExpanded ? dimensions.width : 614,
+          maxWidth: isExpanded ? dimensions.width : 612,
+          '--scrollLeft': '500px',
         }}
         onScroll={(e) => {
           // only support scrolling navigation on mobile to support dragging
@@ -493,6 +489,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
                 tags={mediaItem.tags}
                 postDimensions={post.media_dimensions}
                 isActive={mediaIndex === index}
+                wrapperRef={firstImage}
               />
             ) : (
               <PostImage
