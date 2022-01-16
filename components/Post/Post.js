@@ -444,8 +444,11 @@ function MediaSection({ post, isExpanded, dimensions }) {
     // this effect is meant to scroll the mediaSection when the nav buttons are clicked/
     // since we don't show them on mobiles, we can disable it.
     if (!isMobile) {
-      mediaSection.current.scrollLeft =
-        mediaIndex * (isExpanded ? dimensions.width : 614);
+      mediaSection.current.scrollTo({
+        left: mediaIndex * (isExpanded ? dimensions.width : 614),
+        behavior: 'smooth',
+        top:0
+      });
     }
   }, [mediaIndex, isExpanded, dimensions, isMobile]);
   React.useEffect(() => {

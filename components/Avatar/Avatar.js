@@ -39,7 +39,6 @@ export function Avatar({
       dimensions.strokeWidth = 5;
       break;
     default:
-      dimensions.imgDiameter = size;
       dimensions.SVGDiameter = size;
       break;
   }
@@ -75,18 +74,14 @@ export function Avatar({
               />
             </g>
           )}
-          <foreignObject x="0" y="0" width="300" height="300">
-            {user?.user_thumbnail && (
-              <div style={{ margin: 20 }}>
-                <Image
-                  src={user.user_thumbnail}
-                  alt={`${user.user_name} avatar`}
-                  className={styles.userAvatar}
-                  width="260"
-                  height="260"
-                />
-              </div>
-            )}
+          <foreignObject x="20" y="20" width="300" height="300">
+            <img
+              src={user?.user_thumbnail}
+              alt={`${user?.user_name} avatar`}
+              className={styles.userAvatar}
+              width="260"
+              height="260"
+            />
           </foreignObject>
         </svg>
       </a>
