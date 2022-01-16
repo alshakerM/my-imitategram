@@ -43,7 +43,7 @@
     'media time'
     'media input'
     'progress input';
-  max-height: calc(100vh - 48px);
+  
   max-width: calc(100vw - 100px);
   min-height: 467px;
   /* for border radius */
