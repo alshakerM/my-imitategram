@@ -444,6 +444,10 @@ function MediaSection({ post, isExpanded, dimensions }) {
         mediaIndex * (isExpanded ? dimensions.width : 614);
     }
   }, [mediaIndex, isExpanded, dimensions, isMobile]);
+  React.useEffect(() => {
+    mediaSection.current.scrollLeft =
+      mediaIndex * (isExpanded ? dimensions.width : 614);
+  }, [mediaIndex, isExpanded, dimensions]);
 
   return (
     <>
