@@ -449,9 +449,13 @@ function MediaSection({ post, isExpanded, dimensions }) {
     }
   }, [mediaIndex, isExpanded, dimensions, isMobile]);
   React.useEffect(() => {
-    mediaSection.current.scrollLeft =
-      mediaIndex * (isExpanded ? dimensions.width : 614);
-  }, [mediaIndex, isExpanded, dimensions]);
+    // this effect is meant to scroll the mediaSection when the nav buttons are clicked/
+    // since we don't show them on mobiles, we can disable it.
+    if (!isMobile) {
+      mediaSection.current.scrollLeft =
+        mediaIndex * (isExpanded ? dimensions.width : 614);
+    }
+  }, [mediaIndex, isMobile, isExpanded, dimensions]);
 
   return (
     <>
@@ -473,8 +477,6 @@ function MediaSection({ post, isExpanded, dimensions }) {
             if (Number.isInteger(page)) {
               setMediaIndex(page);
             }
-          } else {
-            e.preventDefault();
           }
         }}
       >
