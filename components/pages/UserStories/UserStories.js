@@ -98,7 +98,6 @@ export function UserStories({ userId }) {
   const user = storiesData[userIndex];
   const nextUser = storiesData[userIndex + 1];
   const prevUser = storiesData[userIndex - 1];
-  const [prevUserName, setPrevUserName] = React.useState([]);
   const history = useRouter();
   const [storyIndices, setStoryIndices] = React.useState(
     storiesData.reduce((acc, user) => {
@@ -130,7 +129,6 @@ export function UserStories({ userId }) {
   const progressHandler = (progress) => {
     if (progress === 1) {
       if (storyIndices[userId] === user.stories.length - 1) {
-        setPrevUserName([...prevUserName, user.user_name]);
         if (nextUser) {
           history.push(`/stories/${nextUser.user_id}`, undefined, {
             shallow: true,
@@ -227,7 +225,6 @@ export function UserStories({ userId }) {
                       ))}
                     </div>
                   )}
-
                   <Avatar
                     user={user}
                     size={activeUser ? 'small' : 'medium'}
@@ -236,9 +233,13 @@ export function UserStories({ userId }) {
                       [styles.storyAvatarActive]: activeUser,
                     })}
                     colorRing={
-                      !activeUser && !prevUserName.includes(user.user_name)
+                      !activeUser &&
+                      storyIndices[user.user_id] !== user.stories.length - 1
                     }
-                    isSilver={prevUserName.includes(user.user_name)}
+                    isSilver={
+                      !activeUser &&
+                      storyIndices[user.user_id] === user.stories.length - 1
+                    }
                     link={`/stories/${user.user_id}`}
                   />
 
