@@ -240,8 +240,7 @@ export function WarningPage({ setShouldWarn }) {
           <g id="Eyes">
             <circle
               ref={leftEyeRef}
-              transform-origin="168 106"
-              transform={`rotate(${leftEyeAngle})`}
+              transform={`rotate(${leftEyeAngle}, 168, 106)`}
               fill="#FFFFFF"
               cx="172"
               cy="106"
@@ -250,8 +249,7 @@ export function WarningPage({ setShouldWarn }) {
 
             <circle
               ref={rightEyeRef}
-              transform-origin="232 94"
-              transform={`rotate(${rightEyeAngle})`}
+              transform={`rotate(${rightEyeAngle}, 232, 94)`}
               fill="#FFFFFF"
               cx="237"
               cy="94"

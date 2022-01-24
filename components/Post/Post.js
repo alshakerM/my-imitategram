@@ -8,6 +8,8 @@ import { Avatar } from '../Avatar/Avatar';
 import { CircularChevron } from '../Icons/CircularChevron';
 import { PostImage } from '../PostImage/PostImage';
 import { PostVideo } from '../PostVideo/PostVideo';
+import { useMediaQuery } from '../../utils/index';
+
 import {
   absoluteToRelativeDate,
   digitGrouping,
@@ -434,69 +436,88 @@ function MediaSection({ post, isExpanded, dimensions }) {
   const [mediaIndex, setMediaIndex] = React.useState(0);
   const [isLoading, setIsLoading] = React.useState(true);
   const { postLike } = useDispatch('ig-posts');
+  const mediaSection = React.useRef();
+  const firstImage = React.useRef();
+
+  const isMobile = useMediaQuery('(max-width: 720px)');
+
+  React.useEffect(() => {
+    // this effect is meant to scroll the mediaSection when the nav buttons are clicked/
+    // since we don't show them on mobiles, we can disable it.
+    // dont use scrolling on Desktop, because it's problematic on Safari
+    if (!isMobile) {
+      firstImage.current.style.marginLeft = `${
+        -mediaIndex * (isExpanded ? dimensions.width : 612)
+      }px`;
+    }
+  }, [mediaIndex, isExpanded, dimensions, isMobile]);
 
   return (
     <>
       <section
+        ref={mediaSection}
         className={cx(styles.mediaSection, { [styles.isExpanded]: isExpanded })}
-        style={{ maxWidth: isExpanded ? dimensions.width : 614 }}
+        style={{
+          // only enable scrolling on mobiles
+          overflowX: isMobile ? 'auto' : 'hidden',
+          maxWidth: isExpanded ? dimensions.width : 612,
+          '--scrollLeft': '500px',
+        }}
+        onScroll={(e) => {
+          // only support scrolling navigation on mobile to support dragging
+          if (isMobile) {
+            const page =
+              e.currentTarget.scrollLeft / e.currentTarget.clientWidth;
+
+            setMediaIndex(Math.round(page));
+          }
+        }}
       >
-        <div
-          className={styles.mediaContainer}
-          style={{
-            transform: `translateX(${(-mediaIndex * 100) / items.length}%)`,
-            width: `${100 * items.length}%`,
-          }}
-        >
-          {items?.map((mediaItem, index) =>
-            mediaItem.type === 'photo' ? (
-              index === 0 ? (
-                <PostImage
-                  key={index}
-                  imageURL={mediaItem.url}
-                  fraction={1 / items.length}
-                  aspectRatio={aspectRatio}
-                  setIsLoading={setIsLoading}
-                  isLoading={isLoading}
-                  onDoubleClick={() => postLike(post.post_id)}
-                  tags={mediaItem.tags}
-                  postDimensions={post.media_dimensions}
-                  isActive={mediaIndex === index}
-                />
-              ) : (
-                <PostImage
-                  key={index}
-                  imageURL={mediaItem.url}
-                  fraction={1 / items.length}
-                  aspectRatio={aspectRatio}
-                  onDoubleClick={() => postLike(post.post_id)}
-                  tags={mediaItem.tags}
-                  postDimensions={post.media_dimensions}
-                  isActive={mediaIndex === index}
-                />
-              )
-            ) : index === 0 ? (
-              <PostVideo
+        {items?.map((mediaItem, index) =>
+          mediaItem.type === 'photo' ? (
+            index === 0 ? (
+              <PostImage
                 key={index}
-                videoURL={mediaItem.url}
-                active={mediaIndex === index}
-                fraction={1 / items.length}
+                imageURL={mediaItem.url}
                 aspectRatio={aspectRatio}
                 setIsLoading={setIsLoading}
                 isLoading={isLoading}
+                onDoubleClick={() => postLike(post.post_id)}
+                tags={mediaItem.tags}
+                postDimensions={post.media_dimensions}
+                isActive={mediaIndex === index}
+                wrapperRef={firstImage}
               />
             ) : (
-              <PostVideo
+              <PostImage
                 key={index}
-                videoURL={mediaItem.url}
-                active={mediaIndex === index}
-                fraction={1 / items.length}
+                imageURL={mediaItem.url}
                 aspectRatio={aspectRatio}
+                onDoubleClick={() => postLike(post.post_id)}
+                tags={mediaItem.tags}
+                postDimensions={post.media_dimensions}
+                isActive={mediaIndex === index}
               />
             )
-          )}
-        </div>
-        {items.length > 1 && !isLoading && (
+          ) : index === 0 ? (
+            <PostVideo
+              key={index}
+              videoURL={mediaItem.url}
+              active={mediaIndex === index}
+              aspectRatio={aspectRatio}
+              setIsLoading={setIsLoading}
+              isLoading={isLoading}
+            />
+          ) : (
+            <PostVideo
+              key={index}
+              videoURL={mediaItem.url}
+              active={mediaIndex === index}
+              aspectRatio={aspectRatio}
+            />
+          )
+        )}
+        {!isMobile && items.length > 1 && !isLoading && (
           <div className={styles.imgButtonsContainer}>
             <button
               className={cx(styles.prevImgButton, {
