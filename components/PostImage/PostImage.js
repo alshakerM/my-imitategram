@@ -28,7 +28,6 @@ const useElementOnScreen = (options) => {
 
 export function PostImage({
   imageURL,
-  fraction,
   aspectRatio,
   isLoading,
   setIsLoading,
@@ -36,6 +35,8 @@ export function PostImage({
   tags,
   postDimensions,
   isActive,
+  style,
+  wrapperRef
 }) {
   const [isImgDoubleClicked, setIsImgDoubleCLicked] = React.useState(false);
   const [isImgClicked, setIsImgCLicked] = React.useState(false);
@@ -57,11 +58,11 @@ export function PostImage({
         setIsImgDoubleCLicked(true);
         setTimeout(setIsImgDoubleCLicked, 1500, false);
       }}
-      width={`${fraction * 100}%`}
       className={cx(styles.imgContainer, {
         [styles.isLoading]: isLoading,
       })}
-      style={{ aspectRatio, width: `${fraction * 100}%` }}
+      style={{ aspectRatio, ...style }}
+      ref={wrapperRef}
     >
       <Image
         className={cx(styles.postImg, {
