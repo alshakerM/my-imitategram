@@ -23,6 +23,7 @@ export function Avatar({
   colorRing,
   isUnread = true,
   link,
+  isSilver,
 }) {
   const dimensions = {};
   switch (size) {
@@ -58,6 +59,9 @@ export function Avatar({
             <stop stopColor="#dd326e" offset="75%" />
             <stop stopColor="#a432b1" offset="100%" />
           </linearGradient>
+          <linearGradient id="ig-grad-silver" x1="6" x2="3" y1="5" y2="8.2">
+            <stop stopColor="#CDCDCD"/>
+          </linearGradient>
           {colorRing && (
             <g>
               <circle
@@ -68,6 +72,22 @@ export function Avatar({
                 cy={150}
                 r={140}
                 stroke={isUnread ? 'url(#ig-grad)' : '#8e8e8e'}
+                strokeWidth={dimensions.strokeWidth}
+                fill="none"
+                strokeLinecap="round"
+              />
+            </g>
+          )}
+          {isSilver && !colorRing && (
+            <g>
+              <circle
+                className={cx(styles.animationCircle, {
+                  [styles.isAnimated]: animate,
+                })}
+                cx={150}
+                cy={150}
+                r={140}
+                stroke={isUnread ? 'url(#ig-grad-silver)' : '#8e8e8e'}
                 strokeWidth={dimensions.strokeWidth}
                 fill="none"
                 strokeLinecap="round"

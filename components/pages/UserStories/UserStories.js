@@ -154,7 +154,6 @@ export function UserStories({ userId }) {
       </div>
     );
   }
-
   return (
     <div key="all-stories" className={styles.allStoriesContainer}>
       <Link href="/">
@@ -234,9 +233,17 @@ export function UserStories({ userId }) {
                       [styles.storyAvatarSmall]: !activeUser,
                       [styles.storyAvatarActive]: activeUser,
                     })}
-                    colorRing={!activeUser}
+                    colorRing={
+                      !activeUser &&
+                      storyIndices[user.user_id] !== user.stories.length - 1
+                    }
+                    isSilver={
+                      !activeUser &&
+                      storyIndices[user.user_id] === user.stories.length - 1
+                    }
                     link={`/stories/${user.user_id}`}
                   />
+
                   <p
                     className={cx(styles.storyUsername, {
                       [styles.isExpanded]: activeUser,
@@ -287,7 +294,6 @@ export function UserStories({ userId }) {
                       paused={activeUser ? pause : true}
                       muted={activeUser ? mute : true}
                       videoURL={story.story_media}
-                      className={styles.storyVideo}
                       onProgress={progressHandler}
                       key={story.story_id}
                       autoPlay={true}
