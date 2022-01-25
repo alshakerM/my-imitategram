@@ -43,7 +43,7 @@
     'media time'
     'media input'
     'progress input';
-  max-height: calc(100vh - 48px);
+
   max-width: calc(100vw - 100px);
   min-height: 467px;
   /* for border radius */
@@ -155,17 +155,35 @@ section.postHeader {
 }
 
 section.mediaSection {
+  /* we need position: relative to make the navigation buttons absolute in relation to parent */
+  position: relative;
   grid-area: media;
-  overflow: hidden;
-}
-.mediaContainer {
+  overflow: auto;
+  scroll-snap-type: x mandatory;
   display: flex;
-  width: max-content;
-  transition: transform 0.25s ease-in-out;
+  flex: none;
+  flex-flow: row nowrap;
   height: 100%;
   align-items: center;
   background-color: #262626;
+  width: 100%;
+  scroll-behavior: smooth;
 }
+
+section.mediaSection > :first-child {
+  transition: margin-left 0.5s ease-in-out;
+}
+
+section.mediaSection::-webkit-scrollbar {
+  display: none;
+}
+
+section.mediaSection > * {
+  width: 100%;
+  scroll-snap-align: center;
+  flex: none;
+}
+
 section.progressDotsSection {
   grid-area: progress;
 }
@@ -463,13 +481,14 @@ section.commentInputSection {
   cursor: pointer;
 }
 .imgButtonsContainer {
-  position: relative;
-  top: -50%;
+  position: sticky;
+  right: 0%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: none;
+  padding: 0 5px;
+  box-sizing: border-box;
 }
 .nextImgButton,
 .prevImgButton {
@@ -480,8 +499,15 @@ section.commentInputSection {
   width: 23px;
   border: none;
   background: transparent;
-  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.28);
+  box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  opacity: 0.8;
 }
+.nextImgButton:hover,
+.prevImgButton:hover {
+  opacity: 1;
+}
+
 .nextImgButton.hidden,
 .prevImgButton.hidden {
   visibility: hidden;

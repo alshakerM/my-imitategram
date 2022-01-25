@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './Icons.module.css';
 
-export function Icons() {
+export function Icons({ className }) {
   const router = useRouter();
   const pageURL = router.asPath;
   return (
-    <div>
+    <div className={className}>
       <Link href="/">
         <a>
           <svg

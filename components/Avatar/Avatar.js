@@ -40,7 +40,6 @@ export function Avatar({
       dimensions.strokeWidth = 5;
       break;
     default:
-      dimensions.imgDiameter = size;
       dimensions.SVGDiameter = size;
       break;
   }
@@ -108,6 +107,14 @@ export function Avatar({
                 />
               </div>
             )}
+          <foreignObject x="20" y="20" width="300" height="300">
+            <img
+              src={user?.user_thumbnail}
+              alt={`${user?.user_name} avatar`}
+              className={styles.userAvatar}
+              width="260"
+              height="260"
+            />
           </foreignObject>
         </svg>
       </a>

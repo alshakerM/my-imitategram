@@ -6,7 +6,6 @@ import cx from 'classnames';
 export function PostVideo({
   videoURL,
   active,
-  fraction,
   aspectRatio,
   isLoading,
   setIsLoading,
@@ -33,11 +32,10 @@ export function PostVideo({
   return (
     <div
       onClick={() => setVideoPause(!videoPause)}
-      width={`${fraction * 100}%`}
       className={cx(styles.videoContainer, {
         [styles.isLoading]: isLoading,
       })}
-      style={{ aspectRatio, width: `${fraction * 100}%` }}
+      style={{ aspectRatio }}
     >
       <video
         className={styles.postVideo}
