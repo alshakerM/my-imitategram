@@ -60,7 +60,7 @@ export function Avatar({
             <stop stopColor="#a432b1" offset="100%" />
           </linearGradient>
           <linearGradient id="ig-grad-silver" x1="6" x2="3" y1="5" y2="8.2">
-            <stop stopColor="#CDCDCD"/>
+            <stop stopColor="#CDCDCD" />
           </linearGradient>
           {colorRing && (
             <g>
