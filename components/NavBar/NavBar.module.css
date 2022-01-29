@@ -115,3 +115,13 @@
 .navIcons {
   min-width: 250px;
 }
+.onlyCommentsNav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: flex-start;
+}
+.onlyCommentsNav h1 {
+  font-size: 14px;
+  margin: 0;
+}
