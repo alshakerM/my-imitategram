@@ -1,6 +1,3 @@
-import { readFileSync, writeFileSync } from 'fs';
-import { resolve } from 'path';
-
 import messagesData from '../../server/messages-data.json';
 //const messagesDataPath = resolve(
 // __dirname,
@@ -11,7 +8,7 @@ import messagesData from '../../server/messages-data.json';
 //let messagesData = JSON.parse(messageString);
 
 function syncMessageFile() {
-  writeFileSync(messagesDataPath, JSON.stringify(messagesData));
+  //writeFileSync(messagesDataPath, JSON.stringify(messagesData));
 }
 
 const allowedFields = [

@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaFeatures": { "jsx": true },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/jsx-filename-extension": "off",
+    "react/prop-types": "off",
+    "no-console": "warn"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
 }

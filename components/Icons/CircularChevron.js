@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function CircularChevron({ direction = 'right', size = '32', maskKey }) {
   return (
     <svg

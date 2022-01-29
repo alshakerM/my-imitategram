@@ -33,11 +33,13 @@ export default function handler(req, res) {
   if (userId) {
     const fullUser = profileData.find((u) => u.user_name === userId);
     if (postType === 'tagged') {
+      // eslint-disable-next-line no-unused-vars
       const { posts, ...user } = fullUser;
       user.posts = user.taggedPosts;
       delete user.taggedPosts;
       return res.status(200).json(user);
     } else if (postType === 'posts') {
+      // eslint-disable-next-line no-unused-vars
       const { taggedPosts, ...user } = fullUser;
       return res.status(200).json(user);
     }

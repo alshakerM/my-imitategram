@@ -1,5 +1,4 @@
 import { HomePage } from '../components/pages/HomePage/HomePage';
-import { useRouter } from 'next/router';
 import { PostPage } from '../components/pages/PostPage';
 import { NavBar } from '../components/NavBar/NavBar';
 import { useSelect } from '@wordpress/data';
@@ -21,7 +20,6 @@ export default function CatchAll({ query }) {
   // keeping them in sync
   const lastExpandedPostId = React.useMemo(
     () => expandedPostId,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [serverPostId]
   );
 
