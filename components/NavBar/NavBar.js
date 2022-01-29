@@ -1,4 +1,4 @@
-import { Cancel, ChevronLeft, SearchRounded } from '@mui/icons-material';
+import { Cancel, ChevronLeft } from '@mui/icons-material';
 import Link from 'next/link';
 import React from 'react';
 import { Icons } from '../Icons/Icons';
