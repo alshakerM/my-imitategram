@@ -13,6 +13,7 @@ export default function CatchAll({ query }) {
 
   const serverPostId = query?.postId?.[1];
   const userName = query?.postId?.[0];
+  const onlyComments = query?.postId?.[2] === 'comments';
 
   // when expanded post is closed, the postId from the query remains stuck
   // which means postId is true, and expandedPostId is false, which looks like an independent post
@@ -38,12 +39,16 @@ export default function CatchAll({ query }) {
   }
 
   // expanded post (in feed) page
-  if (expandedPostId || lastExpandedPostId) {
+  if ((expandedPostId || lastExpandedPostId) && !onlyComments) {
     return (
       <>
         <NavBar />
         <HomePage />
-        <PostPage postId={expandedPostId || lastExpandedPostId} isFloating />
+        <PostPage
+          postId={expandedPostId || lastExpandedPostId}
+          isFloating
+          onlyComments={onlyComments}
+        />
       </>
     );
   }
@@ -53,7 +58,7 @@ export default function CatchAll({ query }) {
     return (
       <>
         <NavBar />
-        <PostPage postId={serverPostId} />
+        <PostPage postId={serverPostId} onlyComments={onlyComments} />
       </>
     );
   }

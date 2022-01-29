@@ -79,12 +79,17 @@ export function isomorphicFetch(url, config) {
  * @return {boolean} return value of the media query.
  */
 export function useMediaQuery(query) {
+  const isServer = typeof window === 'undefined';
   const [match, setMatch] = React.useState(
     () =>
       !!(
-        query &&
-        typeof window !== 'undefined' &&
-        window.matchMedia(query).matches
+        // on SSR default to returning true
+        (
+          isServer ||
+          (query &&
+            typeof window !== 'undefined' &&
+            window.matchMedia(query).matches)
+        )
       )
   );
 

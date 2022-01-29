@@ -58,6 +58,32 @@ function LikeButton({ is_post_liked, onClick, height = '24', width = '28' }) {
     </button>
   );
 }
+function PostCaption({ isExpanded, datum, withAvatar = true }) {
+  return (
+    <section
+      className={cx(styles.postCaptionSection, {
+        [styles.isExpanded]: isExpanded,
+      })}
+    >
+      {withAvatar && (
+        <Avatar
+          user={datum}
+          size="32"
+          link={
+            datum.poster_has_story
+              ? `/stories/${datum.user_id}`
+              : `/${datum.user_name}`
+          }
+        />
+      )}
+
+      <p className={styles.postCaptionText}>
+        <span className={styles.commentUsername}>{datum.user_name}</span>{' '}
+        {datum.post_caption}
+      </p>
+    </section>
+  );
+}
 function PostActions({ postId, is_post_liked, isExpanded }) {
   const { postLike } = useDispatch('ig-posts');
   return (
@@ -267,12 +293,18 @@ function CommentReplySection({ comment, postId }) {
     </div>
   );
 }
-function CommentSection({ comments, isExpanded, expandPost, datum }) {
+function CommentSection({
+  comments,
+  isExpanded,
+  expandPost,
+  datum,
+  onlyComments,
+}) {
   const commentsSummary = comments?.slice(0, isExpanded ? undefined : 2);
   const [activeCommentId, setActiveCommentId] = React.useState(undefined);
   const { setCommentFieldCommentId } = useDispatch('ig-posts');
   const { toggleCommentLike } = useDispatch('ig-posts');
-
+  const isMobile = useMediaQuery('(max-width: 735px)');
   return (
     <section
       className={cx(styles.commentsSection, {
@@ -281,9 +313,13 @@ function CommentSection({ comments, isExpanded, expandPost, datum }) {
     >
       {!isExpanded && (
         <div>
-          <Link href={`/p/${datum.post_id}`}>
+          <Link
+            href={
+              isMobile ? `/p/${datum.post_id}/comments` : `/p/${datum.post_id}`
+            }
+          >
             <a
-              onClick={() => expandPost()}
+              onClick={() => !isMobile && expandPost()}
               className={styles.viewCommentsButton}
             >
               View all comments
@@ -291,26 +327,8 @@ function CommentSection({ comments, isExpanded, expandPost, datum }) {
           </Link>
         </div>
       )}
-      {isExpanded && (
-        <section
-          className={cx(styles.postCaptionSection, {
-            [styles.isExpanded]: isExpanded,
-          })}
-        >
-          <Avatar
-            user={datum}
-            size="32"
-            link={
-              datum.poster_has_story
-                ? `/stories/${datum.user_id}`
-                : `/${datum.user_name}`
-            }
-          />
-          <p className={styles.postCaptionText}>
-            <span className={styles.commentUsername}>{datum.user_name}</span>{' '}
-            {datum.post_caption}
-          </p>
-        </section>
+      {isExpanded && !onlyComments && (
+        <PostCaption isExpanded={isExpanded} datum={datum} />
       )}
       {commentsSummary?.map((comment) => {
         return (
@@ -571,7 +589,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
     </>
   );
 }
-export function Post({ isIndependentPost, datum, index, isFloating }) {
+export function Post({ isIndependentPost, datum, onlyComments, isFloating }) {
   const isExpanded = isIndependentPost;
 
   const setExpandedPost = useDispatch('ig-posts').setExpandedPost;
@@ -608,7 +626,7 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
     return null;
   }
   if (isFloating) {
-    lockBodyScrolls('lock');
+    lockBodyScrolls(true);
   } else {
     lockBodyScrolls();
   }
@@ -629,6 +647,7 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
         className={cx(styles.postContent, {
           [styles.isExpanded]: isExpanded,
           [styles.isFloating]: isFloating,
+          [styles.onlyComments]: onlyComments,
         })}
         style={
           isFloating && {
@@ -647,13 +666,14 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
             datum={datum}
             isExpanded={isExpanded}
           />
-
-          <MediaSection
-            key={`media-section-${datum.post_id}`}
-            isExpanded={isExpanded}
-            dimensions={dimensions}
-            post={datum}
-          />
+          {!onlyComments && (
+            <MediaSection
+              key={`media-section-${datum.post_id}`}
+              isExpanded={isExpanded}
+              dimensions={dimensions}
+              post={datum}
+            />
+          )}
 
           <PostActions
             postId={datum.post_id}
@@ -665,18 +685,16 @@ export function Post({ isIndependentPost, datum, index, isFloating }) {
             Liked by <strong>{datum.user_name}</strong> and
             <strong> {digitGrouping(datum.likes_count)} others </strong>
           </section>
-          {!isExpanded && (
-            <section className={styles.postCaptionSection}>
-              <p className={styles.postCaptionText}>
-                <strong>{datum.user_name}</strong> {datum.post_caption}
-              </p>
-            </section>
-          )}
+          {!isExpanded ||
+            (onlyComments && (
+              <PostCaption datum={datum} withAvatar={onlyComments} />
+            ))}
           <CommentSection
             datum={datum}
             expandPost={expandPost}
             comments={datum.comments}
             isExpanded={isExpanded}
+            onlyComments={onlyComments}
           />
 
           <PostDate posting_time={datum.posting_time} isExpanded={isExpanded} />
