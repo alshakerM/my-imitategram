@@ -36,7 +36,6 @@ export function PostImage({
   postDimensions,
   isActive,
   style,
-  wrapperRef
 }) {
   const [isImgDoubleClicked, setIsImgDoubleCLicked] = React.useState(false);
   const [isImgClicked, setIsImgCLicked] = React.useState(false);
@@ -62,13 +61,12 @@ export function PostImage({
         [styles.isLoading]: isLoading,
       })}
       style={{ aspectRatio, ...style }}
-      ref={wrapperRef}
+      ref={imgRef}
     >
       <Image
         className={cx(styles.postImg, {
           [styles.isLoading]: isLoading,
         })}
-        ref={imgRef}
         src={imageURL}
         alt="post"
         onLoad={() => setIsLoading?.(false)}

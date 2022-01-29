@@ -16,7 +16,11 @@ import Link from 'next/link';
 import { Avatar } from '../../Avatar/Avatar';
 import { StoryImage } from '../../StoryImage/StoryImage';
 import { StoryVideo } from '../../StroyVideo/StoryVideo';
-import { absoluteToRelativeDate, numberBetween } from '../../../utils';
+import {
+  absoluteToRelativeDate,
+  numberBetween,
+  useMediaQuery,
+} from '../../../utils';
 import styles from './UserStories.module.css';
 import '../../../stores/storiesStore';
 import { useRouter } from 'next/router';
@@ -30,7 +34,10 @@ const TABLET_STORY_RATIO = 0.59;
  * borders are needed to activate next-prev nav buttons hover
  */
 const STORY_BORDER_WIDTH = 46;
-function calculateStoryDimensions() {
+function calculateStoryDimensions(isMobile) {
+  if (isMobile) {
+    return { width: window.innerWidth, height: window.innerHeight };
+  }
   const maxHeight = window.innerHeight - STORY_VERTICAL_MARGIN * 2;
   let height, width;
   if (window.innerWidth < window.innerHeight) {
@@ -64,6 +71,28 @@ function progressWidth(storyIndex, progressBarIndex, progress) {
   }
 }
 
+function calculateOrigin(direction, position) {
+  if (direction === 'left') {
+    switch (position) {
+      case -1:
+        return 100;
+      case 0:
+        return 100;
+      case 1:
+        return 0;
+    }
+  } else {
+    switch (position) {
+      case -1:
+        return 100;
+      case 0:
+        return 0;
+      case 1:
+        return 100;
+    }
+  }
+}
+
 export function UserStories({ userId }) {
   const [dimensions, setDimensions] = React.useState({ width: 0, height: 0 });
 
@@ -71,7 +100,7 @@ export function UserStories({ userId }) {
     select('ig-stories').hasFinishedResolution('getStories')
   );
   const [isOneUser] = React.useState(!areStoriesResolved);
-
+  const isMobile = useMediaQuery('(max-width: 735px)');
   const storiesData = useSelect(
     (select) => {
       if (areStoriesResolved) {
@@ -87,15 +116,16 @@ export function UserStories({ userId }) {
   );
   React.useEffect(() => {
     function handler() {
-      setDimensions(calculateStoryDimensions());
+      setDimensions(calculateStoryDimensions(isMobile));
     }
     window.addEventListener('resize', handler);
-    setDimensions(calculateStoryDimensions());
+    setDimensions(calculateStoryDimensions(isMobile));
     return () => {
       window.removeEventListener('resize', handler);
     };
-  }, []);
+  }, [isMobile]);
   const userIndex = storiesData.findIndex((user) => user.user_id === userId);
+
   const user = storiesData[userIndex];
   const nextUser = storiesData[userIndex + 1];
   const prevUser = storiesData[userIndex - 1];
@@ -116,17 +146,51 @@ export function UserStories({ userId }) {
   }, [storiesData]);
   const [pause, setPause] = React.useState(false);
   const [mute, setMute] = React.useState(false);
+  const [mouseDownPosition, setMouseDownPosition] = React.useState(false);
   const activeUserStory = user?.stories[storyIndices[userId]];
   const [currentProgress, setCurrentProgress] = React.useState(0);
+  const [dragOffset, setDragOffset] = React.useState(0);
   const allStoriesContainer = useRef();
   const currentStoryX = userIndex * dimensions.width;
+  const dragDirection = dragOffset > 0 ? 'right' : 'left';
   const requiredX =
-    global.innerWidth / 2 - (dimensions.width / 2 + STORY_BORDER_WIDTH);
+    global.innerWidth / 2 -
+    (dimensions.width / 2 + (isMobile ? 0 : STORY_BORDER_WIDTH)) +
+    dragOffset;
   const scrollAmount = Math.floor(currentStoryX - requiredX);
 
   const isLoading =
     storiesData.length === 0 || Object.keys(storyIndices).length === 0;
 
+  function goToNextStory() {
+    if (storyIndices[userId] < user.stories.length - 1) {
+      setCurrentProgress(0);
+      setStoryIndices((indices) => ({
+        ...indices,
+        [userId]: indices[userId] + 1,
+      }));
+    } else {
+      goToNextUser();
+    }
+  }
+  function goToPrevUser() {
+    if (prevUser) {
+      history.push(`/stories/${prevUser.user_id}`, undefined, {
+        shallow: true,
+      });
+    } else if (isOneUser) {
+      history.push('/');
+    }
+  }
+  function goToNextUser() {
+    if (nextUser) {
+      history.push(`/stories/${nextUser.user_id}`, undefined, {
+        shallow: true,
+      });
+    } else if (isOneUser) {
+      history.push('/');
+    }
+  }
   const progressHandler = (progress) => {
     if (progress === 1) {
       if (storyIndices[userId] === user.stories.length - 1) {
@@ -156,22 +220,27 @@ export function UserStories({ userId }) {
   }
   return (
     <div key="all-stories" className={styles.allStoriesContainer}>
-      <Link href="/">
-        <a className={styles.instagramLogoLink}>
-          <Image
-            src="/Instagram_logo_text-light.svg"
-            width="109"
-            height="39"
-            alt="Instagram text"
-          />
-        </a>
-      </Link>
+      {!isMobile && (
+        <>
+          <Link href="/">
+            <a className={styles.instagramLogoLink}>
+              <Image
+                src="/Instagram_logo_text-light.svg"
+                width="109"
+                height="39"
+                alt="Instagram text"
+              />
+            </a>
+          </Link>
 
-      <Link href="/">
-        <a className={styles.exitIconLink}>
-          <Clear fontSize="large" />
-        </a>
-      </Link>
+          <Link href="/">
+            <a className={styles.exitIconLink}>
+              <Clear fontSize="large" />
+            </a>
+          </Link>
+        </>
+      )}
+
       <div
         ref={allStoriesContainer}
         className={styles.storiesScrollable}
@@ -179,19 +248,74 @@ export function UserStories({ userId }) {
       >
         {Object.keys(storyIndices).length &&
           storiesData.map((user) => {
-            const activeUser = userId === user.user_id;
+            const currentUserIndex = storiesData.findIndex(
+              (u) => u.user_id === user.user_id
+            );
+            const userPosition = currentUserIndex - userIndex;
+
+            if (Math.abs(userPosition) > 1) {
+              return (
+                <div
+                  style={{
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    flex: '0 0 auto',
+                  }}
+                ></div>
+              );
+            }
+            if (userPosition === -2 && dragDirection === 'right') {
+              return (
+                <div
+                  style={{
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    flex: '0 0 auto',
+                  }}
+                ></div>
+              );
+            }
+            if (userPosition === -1 && dragDirection === 'left') {
+              return (
+                <div
+                  style={{
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    flex: '0 0 auto',
+                  }}
+                ></div>
+              );
+            }
+
+            const fullStory = userId === user.user_id || isMobile;
+            const activeStory = userId === user.user_id;
             // when the user isn't specified, we go to the first story
-            const story = activeUser ? activeUserStory : user.stories[0];
+            let story = fullStory ? activeUserStory : user.stories[0];
+            if (isMobile) {
+              story = user.stories[storyIndices[user.user_id]];
+            }
             return (
               <div
                 className={cx(styles.storiesContainer, {
-                  [styles.isExpanded]: activeUser,
-                  [styles.isSmall]: !activeUser,
+                  [styles.isExpanded]: fullStory,
+                  [styles.isSmall]: !fullStory,
                 })}
-                style={dimensions}
+                style={{
+                  ...dimensions,
+
+                  transform: `perspective(2000px) rotateY(${Math.abs(
+                    360 +
+                      (dragOffset / window.innerWidth) * 90 +
+                      90 * userPosition
+                  )}deg)`,
+                  transformOrigin: `${calculateOrigin(
+                    dragDirection,
+                    userPosition
+                  )}% center`,
+                }}
                 key={user.user_id}
                 onClick={() => {
-                  if (!activeUser) {
+                  if (!fullStory) {
                     setCurrentProgress(0);
                     history.push(`/stories/${user.user_id}`, undefined, {
                       shallow: true,
@@ -201,11 +325,11 @@ export function UserStories({ userId }) {
               >
                 <div
                   className={cx(styles.storyHeader, {
-                    [styles.isExpanded]: activeUser,
-                    [styles.isSmall]: !activeUser,
+                    [styles.isExpanded]: fullStory,
+                    [styles.isSmall]: !fullStory,
                   })}
                 >
-                  {activeUser && (
+                  {fullStory && (
                     <div className={styles.progressBars}>
                       {user.stories.map((story, index) => (
                         <div
@@ -215,11 +339,13 @@ export function UserStories({ userId }) {
                           <div
                             className={styles.progressBarCore}
                             style={{
-                              width: progressWidth(
-                                storyIndices[userId],
-                                index,
-                                currentProgress
-                              ),
+                              width: activeStory
+                                ? progressWidth(
+                                    storyIndices[userId],
+                                    index,
+                                    currentProgress
+                                  )
+                                : 0,
                             }}
                           ></div>
                         </div>
@@ -228,17 +354,17 @@ export function UserStories({ userId }) {
                   )}
                   <Avatar
                     user={user}
-                    size={activeUser ? 'small' : 'medium'}
+                    size={fullStory ? 'small' : 'medium'}
                     className={cx({
-                      [styles.storyAvatarSmall]: !activeUser,
-                      [styles.storyAvatarActive]: activeUser,
+                      [styles.storyAvatarSmall]: !fullStory,
+                      [styles.storyAvatarActive]: fullStory,
                     })}
                     colorRing={
-                      !activeUser &&
+                      !fullStory &&
                       storyIndices[user.user_id] !== user.stories.length - 1
                     }
                     isSilver={
-                      !activeUser &&
+                      !fullStory &&
                       storyIndices[user.user_id] === user.stories.length - 1
                     }
                     link={`/stories/${user.user_id}`}
@@ -246,21 +372,21 @@ export function UserStories({ userId }) {
 
                   <p
                     className={cx(styles.storyUsername, {
-                      [styles.isExpanded]: activeUser,
-                      [styles.isSmall]: !activeUser,
+                      [styles.isExpanded]: fullStory,
+                      [styles.isSmall]: !fullStory,
                     })}
                   >
                     <strong>{user.user_name}</strong>
                   </p>
                   <p
                     className={cx(styles.storyPostTime, {
-                      [styles.isExpanded]: activeUser,
-                      [styles.isSmall]: !activeUser,
+                      [styles.isExpanded]: fullStory,
+                      [styles.isSmall]: !fullStory,
                     })}
                   >
                     {absoluteToRelativeDate(story.posting_time, 'mini')}
                   </p>
-                  {activeUser ? (
+                  {fullStory ? (
                     <div className={styles.storyActions}>
                       <button
                         className={styles.storyAction}
@@ -285,14 +411,38 @@ export function UserStories({ userId }) {
 
                 <div
                   className={cx(styles.storyBody, {
-                    [styles.isExpanded]: activeUser,
-                    [styles.isSmall]: !activeUser,
+                    [styles.isExpanded]: fullStory,
+                    [styles.isSmall]: !fullStory,
                   })}
+                  onClick={goToNextStory}
+                  onTouchStart={(e) =>
+                    setMouseDownPosition(e.changedTouches[0].clientX)
+                  }
+                  onTouchEnd={(e) => {
+                    if (
+                      Math.abs(
+                        mouseDownPosition - e.changedTouches[0].clientX
+                      ) >
+                      window.innerWidth / 3
+                    ) {
+                      if (mouseDownPosition > e.changedTouches[0].clientX) {
+                        goToNextUser();
+                      } else {
+                        goToPrevUser();
+                      }
+                    }
+                    setDragOffset(0);
+                  }}
+                  onTouchMove={(e) => {
+                    setDragOffset(
+                      e.changedTouches[0].clientX - mouseDownPosition
+                    );
+                  }}
                 >
                   {story.story_type === 'video' ? (
                     <StoryVideo
-                      paused={activeUser ? pause : true}
-                      muted={activeUser ? mute : true}
+                      paused={activeStory ? pause : true}
+                      muted={activeStory ? mute : true}
                       videoURL={story.story_media}
                       onProgress={progressHandler}
                       key={story.story_id}
@@ -302,13 +452,13 @@ export function UserStories({ userId }) {
                     <StoryImage
                       src={story.story_media}
                       onProgress={progressHandler}
-                      paused={activeUser ? pause : true}
+                      paused={activeStory ? pause : true}
                       key={story.story_id}
                       dimensions={dimensions}
                     />
                   )}
                 </div>
-                {activeUser && (
+                {fullStory && (
                   <div
                     className={styles.nextPrevButtons}
                     style={{ width: dimensions.width }}
@@ -343,32 +493,14 @@ export function UserStories({ userId }) {
                     )}
                     <button
                       className={styles.nextButton}
-                      onClick={() => {
-                        if (storyIndices[userId] < user.stories.length - 1) {
-                          setCurrentProgress(0);
-                          setStoryIndices((indices) => ({
-                            ...indices,
-                            [userId]: indices[userId] + 1,
-                          }));
-                        } else {
-                          if (nextUser) {
-                            history.push(
-                              `/stories/${nextUser.user_id}`,
-                              undefined,
-                              { shallow: true }
-                            );
-                          } else if (isOneUser) {
-                            history.push('/');
-                          }
-                        }
-                      }}
+                      onClick={goToNextStory}
                     >
                       <ChevronRight />
                     </button>
                   </div>
                 )}
 
-                {story.can_reply && activeUser ? (
+                {story.can_reply && fullStory ? (
                   <div className={styles.storyFooter}>
                     <input
                       type="text"
