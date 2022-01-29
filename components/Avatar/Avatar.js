@@ -2,7 +2,6 @@ import styles from './Avatar.module.css';
 import React from 'react';
 import Link from 'next/link';
 import cx from 'classnames';
-import Image from 'next/image';
 
 function SmartLink({ link, children, ...props }) {
   if (link) {

@@ -1,6 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
 import { v4 } from 'uuid';
-import { resolve } from 'path';
 import { LOGGED_IN_USER } from '../../stores/constants';
 
 import posts from '../../server/posts-data.json';
@@ -9,7 +7,7 @@ import posts from '../../server/posts-data.json';
 //let posts = JSON.parse(postString);
 
 function syncPostFile() {
-  writeFileSync(postsDataPath, JSON.stringify(posts));
+  // writeFileSync(postsDataPath, JSON.stringify(posts));
 }
 
 const PAGE_SIZE = 20;
@@ -18,7 +16,6 @@ export default function handler(req, res) {
   if (req.method === 'POST') {
     const { action } = req.query;
     const { postId, like, commentId, text, replyId } = req.body;
-    console.log('omar1', { postId, like, commentId, text, replyId });
 
     if (!postId) {
       return res.status(400).send('Bad request. postId needs to be provided');
@@ -49,26 +46,22 @@ export default function handler(req, res) {
         });
       }
       case 'toggleReplyLike': {
-        try {
-          const post = posts.find((p) => p.post_id === postId);
-          const comment = post.comments.find(
-            (comment) => comment.comment_id === commentId
-          );
-          const reply = comment.replies.find(
-            (reply) => reply.comment_id === replyId
-          );
-          console.log('omar1');
-          reply.is_liked_by_user = !reply.is_liked_by_user;
-          syncPostFile();
-          return res.status(200).json({
-            ok: true,
-            message: `reply is now ${
-              reply.is_liked_by_user ? 'liked' : 'unliked'
-            }`,
-          });
-        } catch (e) {
-          console.log('omar', e);
-        }
+        const post = posts.find((p) => p.post_id === postId);
+        const comment = post.comments.find(
+          (comment) => comment.comment_id === commentId
+        );
+        const reply = comment.replies.find(
+          (reply) => reply.comment_id === replyId
+        );
+
+        reply.is_liked_by_user = !reply.is_liked_by_user;
+        syncPostFile();
+        return res.status(200).json({
+          ok: true,
+          message: `reply is now ${
+            reply.is_liked_by_user ? 'liked' : 'unliked'
+          }`,
+        });
       }
       case 'submitPostComment': {
         const post = posts.find((p) => p.post_id === postId);

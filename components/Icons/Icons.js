@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from './Icons.module.css';
+import React from 'react';
 
 export function Icons({ className }) {
   const router = useRouter();

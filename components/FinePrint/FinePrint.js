@@ -1,5 +1,5 @@
 import styles from './FinePrint.module.css';
-
+import React from 'react';
 export function FinePrint() {
   return (
     <div>
