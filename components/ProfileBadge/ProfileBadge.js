@@ -1,6 +1,7 @@
 import styles from './ProfileBadge.module.css';
 import { LOGGED_IN_USER } from '../../stores/constants';
 import Image from 'next/image';
+import React from 'react';
 
 export function ProfileBadge() {
   return (
