@@ -305,7 +305,7 @@ function CommentSection({
   const { setCommentFieldCommentId } = useDispatch('ig-posts');
   const { toggleCommentLike } = useDispatch('ig-posts');
   const isMobile = useMediaQuery('(max-width: 735px)');
-
+  console.log(onlyComments);
   return (
     <section
       className={cx(styles.commentsSection, {
@@ -320,7 +320,7 @@ function CommentSection({
             }
           >
             <a
-              onClick={() => onlyComments && expandPost()}
+              onClick={() => !isMobile && expandPost()}
               className={styles.viewCommentsButton}
             >
               View all comments
