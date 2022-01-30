@@ -138,7 +138,7 @@ export function Messages({ fromUserId }) {
         </div>
 
         {fromUserId ? (
-          <div className={styles.rightSection}>
+          <div className={styles.rightSection} key="rightSide">
             <div className={styles.messagesHeader}>
               {threadData?.from_user_id && (
                 <div className={styles.headerImgContainer}>
@@ -197,7 +197,7 @@ export function Messages({ fromUserId }) {
                   const nextMessage = index + 1;
                   return (
                     <div
-                      key={message.from_user_id}
+                      key={`${threadData.from_user_id}-${index}-${message.sent_on}`}
                       className={cx(styles.messagesUserThumbnailMessageText, {
                         [styles.isSent]: message.direction === 'sent',
                       })}
