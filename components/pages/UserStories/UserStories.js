@@ -101,6 +101,7 @@ export function UserStories({ userId }) {
   );
   const [isOneUser] = React.useState(!areStoriesResolved);
   const isMobile = useMediaQuery('(max-width: 735px)');
+  console.log({ isMobile });
   const storiesData = useSelect(
     (select) => {
       if (areStoriesResolved) {
@@ -253,7 +254,7 @@ export function UserStories({ userId }) {
             );
             const userPosition = currentUserIndex - userIndex;
 
-            if (Math.abs(userPosition) > 1) {
+            if (isMobile && Math.abs(userPosition) > 1) {
               return (
                 <div
                   style={{
@@ -264,7 +265,11 @@ export function UserStories({ userId }) {
                 ></div>
               );
             }
-            if (userPosition === -2 && dragDirection === 'right') {
+            if (
+              userPosition === -2 &&
+              dragDirection === 'right' &&
+              dragOffset !== 0
+            ) {
               return (
                 <div
                   style={{
@@ -275,7 +280,11 @@ export function UserStories({ userId }) {
                 ></div>
               );
             }
-            if (userPosition === -1 && dragDirection === 'left') {
+            if (
+              userPosition === -1 &&
+              dragDirection === 'left' &&
+              dragOffset !== 0
+            ) {
               return (
                 <div
                   style={{
@@ -291,9 +300,22 @@ export function UserStories({ userId }) {
             const activeStory = userId === user.user_id;
             // when the user isn't specified, we go to the first story
             let story = fullStory ? activeUserStory : user.stories[0];
+            let transformations = {};
             if (isMobile) {
               story = user.stories[storyIndices[user.user_id]];
+              transformations = {
+                transform: `perspective(2000px) rotateY(${Math.abs(
+                  360 +
+                    (dragOffset / window.innerWidth) * 90 +
+                    90 * userPosition
+                )}deg)`,
+                transformOrigin: `${calculateOrigin(
+                  dragDirection,
+                  userPosition
+                )}% center`,
+              };
             }
+
             return (
               <div
                 className={cx(styles.storiesContainer, {
@@ -302,16 +324,7 @@ export function UserStories({ userId }) {
                 })}
                 style={{
                   ...dimensions,
-
-                  transform: `perspective(2000px) rotateY(${Math.abs(
-                    360 +
-                      (dragOffset / window.innerWidth) * 90 +
-                      90 * userPosition
-                  )}deg)`,
-                  transformOrigin: `${calculateOrigin(
-                    dragDirection,
-                    userPosition
-                  )}% center`,
+                  ...transformations,
                 }}
                 key={user.user_id}
                 onClick={() => {
