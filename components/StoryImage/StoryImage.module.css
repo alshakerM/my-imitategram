@@ -1,3 +1,9 @@
 .storyImg {
-    width: 100%;
+  width: 100%;
+}
+@media screen and (max-width: 735px) {
+  .storyImg {
+    height: 100%;
+    object-fit: cover;
+  }
 }

@@ -42,7 +42,8 @@ export function Stories() {
             </div>
           ))}
         </div>
-
+      </div>
+      <div className={styles.navButtonsContainer}>
         <button
           onClick={() => {
             setScrollLeft((s) => Math.min(0, s + containerWidth / 2));

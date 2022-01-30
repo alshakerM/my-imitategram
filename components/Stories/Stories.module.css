@@ -2,26 +2,16 @@
   max-width: 614px;
   margin: 30px auto 0;
   border: 1px solid #dbdbdb;
-  margin-top: 85px;
+  /* responsive margin */
+  margin-top: 5vw;
   border-radius: 3px;
+  position: relative;
 }
 .storiesOverflow {
   overflow: hidden;
   height: 116px;
 }
-.storyNavPrev {
-  position: absolute;
-  top: 0;
-  margin: 130px auto;
-  margin-left: 10px;
-}
 
-.storyNavNext {
-  position: absolute;
-  top: 0;
-  margin: 130px auto;
-  margin-left: 580px;
-}
 @media screen and (max-width: 674px) {
   .storyNavNext {
     right: 40px;
@@ -43,9 +33,21 @@
   display: none;
 }
 
+.navButtonsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  top: calc(50% - 12px);
+  padding: 0 10px;
+  box-sizing: border-box;
+  pointer-events: none;
+}
 .storyNavPrev,
 .storyNavNext {
   padding: 0;
+  pointer-events: all;
   border-radius: 50%;
   height: 23px;
   width: 23px;

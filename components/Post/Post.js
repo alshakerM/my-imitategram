@@ -455,7 +455,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
   const [isLoading, setIsLoading] = React.useState(true);
   const { postLike } = useDispatch('ig-posts');
   const mediaSection = React.useRef();
-  const firstImage = React.useRef();
+  const [mediaSectionMargin, setMediaSectionMargin] = React.useState(0);
 
   const isMobile = useMediaQuery('(max-width: 720px)');
 
@@ -464,9 +464,9 @@ function MediaSection({ post, isExpanded, dimensions }) {
     // since we don't show them on mobiles, we can disable it.
     // dont use scrolling on Desktop, because it's problematic on Safari
     if (!isMobile) {
-      firstImage.current.style.marginLeft = `${
+      setMediaSectionMargin(
         -mediaIndex * (isExpanded ? dimensions.width : 612)
-      }px`;
+      );
     }
   }, [mediaIndex, isExpanded, dimensions, isMobile]);
 
@@ -504,7 +504,7 @@ function MediaSection({ post, isExpanded, dimensions }) {
                 tags={mediaItem.tags}
                 postDimensions={post.media_dimensions}
                 isActive={mediaIndex === index}
-                wrapperRef={firstImage}
+                style={{ marginLeft: mediaSectionMargin }}
               />
             ) : (
               <PostImage
