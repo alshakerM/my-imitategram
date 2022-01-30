@@ -8,7 +8,6 @@ import { readableNumber, useMediaQuery } from '../../../utils';
 import '../../../stores/profileStore';
 import { useRouter } from 'next/router';
 import { useSelect } from '@wordpress/data';
-import Image from 'next/image';
 
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
