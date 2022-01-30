@@ -11,13 +11,13 @@ const routeTitleMap = {
 };
 
 function MyApp({ Component, pageProps }) {
-  const [shouldWarn, setShouldWarn] = React.useState(false);
+  const [shouldWarn, setShouldWarn] = React.useState(true);
   const router = useRouter();
   const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
-    if (!window.localStorage.getItem('wasUserWarned')) {
-      setShouldWarn(true);
+    if (window.localStorage.getItem('wasUserWarned')) {
+      setShouldWarn(false);
     }
   }, []);
 
