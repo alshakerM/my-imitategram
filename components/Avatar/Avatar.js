@@ -34,6 +34,10 @@ export function Avatar({
       dimensions.SVGDiameter = 66;
       dimensions.strokeWidth = 8;
       break;
+    case 'above-medium':
+      dimensions.SVGDiameter = 91;
+      dimensions.strokeWidth = 8;
+      break;
     case 'large':
       dimensions.SVGDiameter = 168;
       dimensions.strokeWidth = 5;

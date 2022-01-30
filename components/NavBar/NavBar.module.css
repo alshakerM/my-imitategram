@@ -25,6 +25,7 @@
   left: 0;
   z-index: 2;
   bottom: 0;
+  top: auto;
   height: 44px;
 }
 .navTitle {
@@ -115,13 +116,14 @@
 .navIcons {
   min-width: 250px;
 }
-.onlyCommentsNav {
+.limitedNavBar {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 5px 10px;
   align-items: flex-start;
+  border-bottom: 1px solid #dbdbdb;
 }
-.onlyCommentsNav h1 {
+.limitedNavBar h1 {
   font-size: 14px;
   margin: 0;
 }

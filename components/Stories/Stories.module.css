@@ -1,9 +1,7 @@
 .storiesAvatarsContainer {
   max-width: 614px;
-  margin: 30px auto 0;
+  margin: 80px auto 0;
   border: 1px solid #dbdbdb;
-  /* responsive margin */
-  margin-top: 5vw;
   border-radius: 3px;
   position: relative;
 }
