@@ -43,8 +43,8 @@ function MyApp({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
         ></meta>
-        <title>{routeTitleMap[router.pathname] || 'Imitategram Clone'}</title>
-        <link rel="shortcut icon" href="/Instagarm logo.png" />
+        <title>{routeTitleMap[router.pathname] || 'Imitategram'}</title>
+        <link rel="shortcut icon" href="/Imitategram logo.png" />
       </Head>
       {shouldWarn && <WarningPage setShouldWarn={setShouldWarn} />}
       {isLoading && <div className="loading-bar"></div>}
