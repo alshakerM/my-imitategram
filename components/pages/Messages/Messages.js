@@ -115,6 +115,12 @@ export function Messages({ fromUserId }) {
   const { deleteMessage } = useDispatch('ig-messages');
   const [focusedIndex, setFocusedIndex] = React.useState(undefined);
   const [areDotsClicked, setAreDotsClicked] = React.useState(false);
+  const messagesBodyRef = React.useRef();
+  React.useEffect(() => {
+    if (messagesBodyRef.current) {
+      messagesBodyRef.current.scrollTop = messagesBodyRef.current.scrollHeight;
+    }
+  }, [fromUserId, threadData?.messages?.length]);
   return (
     <>
       <div
@@ -173,7 +179,7 @@ export function Messages({ fromUserId }) {
               </svg>
             </div>
             <div className={styles.messagesSection}>
-              <div className={styles.messagesBody}>
+              <div className={styles.messagesBody} ref={messagesBodyRef}>
                 {threadData?.messages.length > 0 && (
                   <p className={styles.lastMessageSentDate}>
                     {date.toLocaleString('en-us', {
