@@ -13,7 +13,7 @@ export function Route({
     return emptyValue;
   }
 
-  if (paths?.includes(router.pathname) || matcher(router.asPath)) {
+  if (paths?.includes(router.pathname) || matcher?.(router.asPath)) {
     return children;
   } else {
     return emptyValue;

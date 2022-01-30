@@ -1,5 +1,5 @@
 {
-  "name": "my-instagram",
+  "name": "my-imitategram",
   "private": true,
   "scripts": {
     "dev": "next dev",

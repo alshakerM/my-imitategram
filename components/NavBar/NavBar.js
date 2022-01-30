@@ -100,11 +100,11 @@ export function NavBar({ userName }) {
           <Link href="/">
             <a className={styles.navTitle}>
               <Image
-                src="/Instagram_logo_text.svg"
+                src="/Imitategram_logo_text.svg"
                 width={840}
                 height={300}
                 layout="responsive"
-                alt="Instagram text"
+                alt="Imitategram text"
                 className={styles.titleImg}
               />
             </a>

@@ -101,7 +101,6 @@ export function UserStories({ userId }) {
   );
   const [isOneUser] = React.useState(!areStoriesResolved);
   const isMobile = useMediaQuery('(max-width: 735px)');
-  console.log({ isMobile });
   const storiesData = useSelect(
     (select) => {
       if (areStoriesResolved) {
@@ -224,12 +223,12 @@ export function UserStories({ userId }) {
       {!isMobile && (
         <>
           <Link href="/">
-            <a className={styles.instagramLogoLink}>
+            <a className={styles.imitategramLogoLink}>
               <Image
-                src="/Instagram_logo_text-light.svg"
+                src="/Imitategram_logo_text-light.svg"
                 width="109"
                 height="39"
-                alt="Instagram text"
+                alt="Imitategram text"
               />
             </a>
           </Link>

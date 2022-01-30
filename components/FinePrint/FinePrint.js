@@ -16,7 +16,9 @@ export function FinePrint() {
         <li className={styles.list}>Hashtags</li>
         <li className={styles.list}>Language</li>
       </ul>
-      <p className={styles.instaText}>© 2021 Instagram Replica by AlshakerM</p>
+      <p className={styles.instaText}>
+        © 2021 Imitategram Replica by AlshakerM
+      </p>
     </div>
   );
 }

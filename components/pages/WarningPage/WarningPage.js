@@ -261,8 +261,8 @@ export function WarningPage({ setShouldWarn }) {
       <div className={styles.textContainer}>
         <p className={styles.headsUpText}>Heads up!</p>
         <p className={styles.warningText}>
-          This site is not the real Instagram and merely a visual replica, made
-          entirely for educational purposes.
+          This site is not the real Imitategram and merely a visual replica,
+          made entirely for educational purposes.
         </p>
         <p className={styles.googleText}>
           <strong>Google Safe Browsing</strong> doesn’t like replicas of popular

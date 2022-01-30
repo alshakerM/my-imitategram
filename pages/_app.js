@@ -7,7 +7,7 @@ import '../styles/globals.css';
 const routeTitleMap = {
   '/direct/t/[userId]': 'Inbox • Direct',
   '/direct/inbox': 'Inbox • Direct',
-  '/stories/[userId]': 'Stories • Instagram',
+  '/stories/[userId]': 'Stories • Imitategram',
 };
 
 function MyApp({ Component, pageProps }) {
@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover"
         ></meta>
-        <title>{routeTitleMap[router.pathname] || 'Instagram Clone'}</title>
+        <title>{routeTitleMap[router.pathname] || 'Imitategram Clone'}</title>
         <link rel="shortcut icon" href="/Instagarm logo.png" />
       </Head>
       {shouldWarn && <WarningPage setShouldWarn={setShouldWarn} />}
