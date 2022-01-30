@@ -115,6 +115,12 @@ export function Messages({ fromUserId }) {
   const { deleteMessage } = useDispatch('ig-messages');
   const [focusedIndex, setFocusedIndex] = React.useState(undefined);
   const [areDotsClicked, setAreDotsClicked] = React.useState(false);
+  const messagesBodyRef = React.useRef();
+  React.useEffect(() => {
+    if (messagesBodyRef.current) {
+      messagesBodyRef.current.scrollTop = messagesBodyRef.current.scrollHeight;
+    }
+  }, [fromUserId, threadData?.messages?.length]);
   return (
     <>
       <div
@@ -132,7 +138,7 @@ export function Messages({ fromUserId }) {
         </div>
 
         {fromUserId ? (
-          <div className={styles.rightSection}>
+          <div className={styles.rightSection} key="rightSide">
             <div className={styles.messagesHeader}>
               {threadData?.from_user_id && (
                 <div className={styles.headerImgContainer}>
@@ -173,7 +179,7 @@ export function Messages({ fromUserId }) {
               </svg>
             </div>
             <div className={styles.messagesSection}>
-              <div className={styles.messagesBody}>
+              <div className={styles.messagesBody} ref={messagesBodyRef}>
                 {threadData?.messages.length > 0 && (
                   <p className={styles.lastMessageSentDate}>
                     {date.toLocaleString('en-us', {
@@ -191,7 +197,7 @@ export function Messages({ fromUserId }) {
                   const nextMessage = index + 1;
                   return (
                     <div
-                      key={message.from_user_id}
+                      key={`${threadData.from_user_id}-${index}-${message.sent_on}`}
                       className={cx(styles.messagesUserThumbnailMessageText, {
                         [styles.isSent]: message.direction === 'sent',
                       })}

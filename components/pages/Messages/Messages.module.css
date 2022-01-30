@@ -92,7 +92,6 @@
 }
 .messagesSenderAvatar {
   border-radius: 50%;
- 
 }
 .messagesSenderInfo {
   display: flex;
@@ -145,7 +144,7 @@
 .messagesBody {
   overflow: auto;
   display: flex;
-
+  scroll-behavior: smooth;
   flex-direction: column;
 }
 .lastMessageSentDate {
