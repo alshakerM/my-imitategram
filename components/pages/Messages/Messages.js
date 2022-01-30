@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import React from 'react';
 import Link from 'next/link';
-import { absoluteToRelativeDate } from '../../../utils';
+import { absoluteToRelativeDate, useMediaQuery } from '../../../utils';
 import styles from './Messages.module.css';
 import { useDispatch, useSelect } from '@wordpress/data';
 import '../../../stores/messagesStore';
@@ -115,6 +115,7 @@ export function Messages({ fromUserId }) {
   const { deleteMessage } = useDispatch('ig-messages');
   const [focusedIndex, setFocusedIndex] = React.useState(undefined);
   const [areDotsClicked, setAreDotsClicked] = React.useState(false);
+  const isMobile = useMediaQuery('(max-width: 735px)');
   const messagesBodyRef = React.useRef();
   React.useEffect(() => {
     if (messagesBodyRef.current) {
@@ -132,13 +133,19 @@ export function Messages({ fromUserId }) {
           }
         }}
       >
-        <div className={styles.leftSection}>
-          <UserSection />
-          <SenderSection fromUserId={fromUserId} />
-        </div>
+        {(!isMobile || (isMobile && !fromUserId)) && (
+          <div className={styles.leftSection}>
+            <UserSection />
+            <SenderSection fromUserId={fromUserId} />
+          </div>
+        )}
 
         {fromUserId ? (
-          <div className={styles.rightSection} key="rightSide">
+          <div
+            className={styles.rightSection}
+            key="rightSide"
+            hidden={isMobile && !fromUserId}
+          >
             <div className={styles.messagesHeader}>
               {threadData?.from_user_id && (
                 <div className={styles.headerImgContainer}>
@@ -474,7 +481,10 @@ export function Messages({ fromUserId }) {
             </div>
           </div>
         ) : (
-          <div className={styles.sendMessagesSection}>
+          <div
+            className={styles.sendMessagesSection}
+            hidden={isMobile && !fromUserId}
+          >
             <div className={styles.telegramIconContainer}>
               <svg
                 aria-label="Direct"

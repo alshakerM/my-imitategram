@@ -9,20 +9,23 @@
   box-sizing: border-box;
 }
 .header {
-  display: flex;
+  display: grid;
+  grid-template-areas:
+    'profile-img profile-img user-name cta options options'
+    'profile-img profile-img n-posts n-followers n-following n-following'
+    'profile-img profile-img bio bio bio bio';
   border-bottom: 1px solid #dbdbdb;
+  grid-template-columns: repeat(6, 1fr);
 }
 .imgContainer {
-  height: 208px;
-  width: 291px;
+  grid-area: profile-img;
+
   margin-right: 30px;
   display: flex;
   justify-content: center;
 }
-.userInfoAndButtons {
-  display: flex;
-}
 .userName {
+  grid-area: user-name;
   margin: 0;
   display: block;
   overflow: hidden;
@@ -35,10 +38,10 @@
 }
 
 .buttonsContainer {
+  grid-area: cta;
   display: flex;
   gap: 8px;
   height: 30px;
-  margin-left: 20px;
 }
 .messageButton,
 .followButton,
@@ -57,10 +60,12 @@
   transform: rotate(180deg);
 }
 .threeDotsButton {
+  grid-area: options;
   border: none;
   background: none;
   height: 28px;
   cursor: pointer;
+  text-align: left;
 }
 .followButton {
   padding: 2px 13px;
@@ -77,27 +82,35 @@
   margin-left: -7px;
   color: rgba(26, 26, 26, 0.5);
 }
-.postInfo {
-  display: flex;
-  gap: 40px;
-}
-.count {
+
+.followingCount {
+  grid-area: n-following;
   font-size: 16px;
   cursor: pointer;
+
+  margin: 0;
 }
 .followersCount {
+  grid-area: n-followers;
   border: 0;
   background: 0;
   font-size: 16px;
+  padding: 0;
+  align-self: flex-start;
   cursor: pointer;
+  text-align: left;
 }
 .postCount {
+  grid-area: n-posts;
   font-size: 16px;
+  text-align: left;
+  margin: 0;
 }
 .userInfo {
   margin: 0;
 }
 .userInfoAndBio {
+  grid-area: bio;
   font-size: 16px;
 }
 .postVideosTagged {
@@ -114,15 +127,20 @@
   color: #8e8e8e;
   height: 52px;
 }
+.link svg {
+  height: 12px;
+  width: 12px;
+}
 .isSelected {
   color: #262626;
   border-top: 1px solid #262626;
 }
 
 .postImg {
-  width: 293px;
-  height: 293px;
   position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 
@@ -131,8 +149,8 @@
 }
 
 .postHover {
-  width: 293px;
-  height: 293px;
+  height: 100%;
+  width: 100%;
   position: relative;
   margin-top: -100%;
   display: flex;
@@ -160,6 +178,8 @@
 
 .postContainer {
   text-decoration: none;
+  display: block;
+  aspect-ratio: 1;
 }
 .postContainer:hover .postHover {
   visibility: visible;
@@ -168,9 +188,9 @@
   display: flex;
 }
 .postsSection {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1vw;
   justify-content: space-between;
 }
 
@@ -202,9 +222,7 @@
   align-items: center;
   margin-bottom: 15px;
 }
-.followerInfo {
-  flex: 1;
-}
+
 .followersButton {
   border: 1px solid transparent;
   width: 61px;
@@ -238,7 +256,6 @@
   margin: 0;
 }
 .followersText {
-  flex: 0;
   margin: 0;
 }
 .emptyDiv {
@@ -252,4 +269,70 @@
 }
 .clearIcon {
   margin-right: 12px;
+}
+.profileSectionLabel {
+  text-transform: uppercase;
+}
+@media screen and (max-width: 735px) {
+  .header {
+    display: grid;
+    grid-template-areas:
+      'profile-img profile-img user-name user-name user-name options '
+      'profile-img profile-img cta cta cta cta'
+      'bio bio bio bio bio bio'
+      'n-posts n-posts  n-followers n-followers n-following n-following';
+    border-bottom: 1px solid #dbdbdb;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .followingCount {
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .followersCount {
+    text-align: center;
+
+    box-sizing: border-box;
+  }
+  .postCount {
+    text-align: center;
+
+    box-sizing: border-box;
+  }
+  .postCount strong,
+  .followingCount strong,
+  .followersCount strong {
+    display: block;
+  }
+  .postCount,
+  .followingCount,
+  .followersCount {
+    padding: 8px;
+    margin-top: 12px;
+    border-top: 1px solid #dbdbdb;
+  }
+  .profilePage {
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+  }
+  .userInfoAndBio {
+    padding: 0 16px;
+  }
+  .profileSectionLabel {
+    display: none;
+  }
+  .link.isSelected {
+    color: rgb(0, 149, 246);
+    border-top: none;
+  }
+  .link svg {
+    height: 24px;
+    width: 24px;
+  }
+  .postVideosTagged {
+    justify-content: space-between;
+    gap: 0;
+    padding: 0 50px;
+    box-sizing: border-box;
+  }
 }

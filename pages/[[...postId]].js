@@ -30,7 +30,7 @@ export default function CatchAll({ query }) {
   ) {
     return (
       <>
-        <NavBar />
+        <NavBar userName={userName} />
         <UserProfile userName={userName} />
       </>
     );

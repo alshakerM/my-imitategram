@@ -194,6 +194,7 @@
 }
 .messagesInputSection {
   padding: 20px;
+  box-sizing: border-box;
 }
 .messagesInput {
   height: 18px;
@@ -353,4 +354,26 @@
 }
 .messageInteraction {
   align-self: flex-end;
+}
+@media screen and (max-width: 735px) {
+  .userSection {
+    width: 100%;
+  }
+  .sendersSection {
+    width: 100%;
+  }
+  .leftSection {
+    flex: 1;
+  }
+  .messagesPageContainer {
+    margin: 0;
+  }
+  .messagesSection {
+    height: unset;
+  }
+  .messagesInputSection {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
 }

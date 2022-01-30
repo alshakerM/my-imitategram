@@ -7,8 +7,9 @@ import Image from 'next/image';
 import cx from 'classnames';
 import { BottomMobileIcons, TopMobileIcons } from '../Icons/MobileIcons';
 import { useRouter } from 'next/router';
+import { Route } from '../Route';
 
-export function NavBar() {
+export function NavBar({ userName }) {
   const [inputValue, setInputValue] = React.useState('');
   const [searchActive, setSearchActive] = React.useState(false);
   const hasValue = inputValue;
@@ -17,38 +18,80 @@ export function NavBar() {
 
   return (
     <>
-      <nav className={cx(styles.onlyCommentsNav, styles.hideOnDesktop)}>
-        <Link href="/">
-          <a>
-            <ChevronLeft />
-          </a>
-        </Link>
-        <h1>Comments</h1>
-        <Link href="/direct/inbox">
-          <a>
-            <svg
-              aria-label="Direct"
-              className={styles.icon}
-              color="#262626"
-              fill="#262626"
-              height="22"
-              role="img"
-              viewBox="0 0 48 48"
-              width="22"
+      <Route
+        matcher={(asPath) => {
+          return asPath.endsWith('comments') || asPath.match(/\/\w+$/);
+        }}
+      >
+        <nav className={cx(styles.limitedNavBar, styles.hideOnDesktop)}>
+          <Link href="/">
+            <a>
+              <ChevronLeft />
+            </a>
+          </Link>
+          <h1>
+            <Route
+              matcher={(asPath) => {
+                return asPath.endsWith('comments');
+              }}
             >
-              <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.4-.4.4-1 .1-1.5zM5.2 6.1h35.5L18 18.7 5.2 6.1zm18.7 33.6l-4.4-18.4L42.4 8.6 23.9 39.7z"></path>
-            </svg>
-          </a>
-        </Link>
-      </nav>
+              Comments
+            </Route>
+            <Route
+              matcher={(asPath) => {
+                return asPath.match(/\/\w+$/);
+              }}
+            >
+              {userName}
+            </Route>
+          </h1>
+          <Route
+            emptyValue={<div></div>}
+            matcher={(asPath) => {
+              return asPath.endsWith('comments');
+            }}
+          >
+            <Link href="/direct/inbox">
+              <a>
+                <svg
+                  aria-label="Direct"
+                  className={styles.icon}
+                  color="#262626"
+                  fill="#262626"
+                  height="22"
+                  role="img"
+                  viewBox="0 0 48 48"
+                  width="22"
+                >
+                  <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.4-.4.4-1 .1-1.5zM5.2 6.1h35.5L18 18.7 5.2 6.1zm18.7 33.6l-4.4-18.4L42.4 8.6 23.9 39.7z"></path>
+                </svg>
+              </a>
+            </Link>
+          </Route>
+        </nav>
+      </Route>
       {!commentsOnly && (
         <nav className={cx(styles.mobileTopNavContainer, styles.hideOnDesktop)}>
-          <div>
-            <TopMobileIcons className={styles.mobileNavContent} />
-          </div>
-          <div className={styles.mobileBottomNavContainer}>
-            <BottomMobileIcons className={styles.mobileIcons} />
-          </div>
+          <Route
+            paths={['/[[...postId]]']}
+            negativeMatcher={(asPath) => {
+              return asPath.match(/\/\w+$/);
+            }}
+          >
+            <div>
+              <TopMobileIcons className={styles.mobileNavContent} />
+            </div>
+          </Route>
+          <Route
+            paths={['/[[...postId]]']}
+            matcher={(asPath) => {
+              return asPath.match(/\/\w+$/);
+            }}
+          >
+            <div className={styles.mobileBottomNavContainer}>
+              <BottomMobileIcons className={styles.mobileIcons} />
+            </div>
+          </Route>
         </nav>
       )}
 
