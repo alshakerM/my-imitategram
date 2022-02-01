@@ -181,9 +181,11 @@ export function UserProfile({ userName }) {
           </button>
 
           <div className={styles.buttonsContainer}>
-            <button className={styles.messageButton}>
-              <strong>Message</strong>
-            </button>
+            <Link href={`direct/t/${user.user_id}`}>
+              <a className={styles.messageButton}>
+                <strong>Message</strong>
+              </a>
+            </Link>
             <button className={styles.followButton}>
               <Person style={{ padding: '0', margin: 0 }} fontSize="small" />
               <Check fontSize="small" className={styles.checkIcon} />

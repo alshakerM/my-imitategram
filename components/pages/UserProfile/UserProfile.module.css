@@ -34,24 +34,25 @@
   font-weight: 300;
   font-size: 28px;
   line-height: 32px;
-  height: 45px;
 }
 
 .buttonsContainer {
   grid-area: cta;
   display: flex;
   gap: 8px;
-  height: 30px;
 }
 .messageButton,
 .followButton,
 .showMore {
-  height: 28px;
+  padding: 4px;
+  align-self: flex-start;
   background-color: transparent;
   border: 1px solid #dbdbdb;
-  height: 100%;
   border-radius: 4px;
+  text-decoration: none;
+  color: #262626;
   cursor: pointer;
+  text-align: center;
 }
 .showMore {
   width: 34px;
