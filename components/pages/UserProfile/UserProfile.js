@@ -8,7 +8,7 @@ import { readableNumber, useMediaQuery } from '../../../utils';
 import '../../../stores/profileStore';
 import { useRouter } from 'next/router';
 import { useSelect } from '@wordpress/data';
-
+import { useDispatch } from '@wordpress/data';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -91,9 +91,13 @@ function DialogSection({ setOpenDialog }) {
   );
 }
 function UserProfilePost({ post }) {
+  const { setExpandedPost } = useDispatch('ig-posts');
   return (
-    <Link href={`/p/${post.post_id}`}>
-      <a className={styles.postContainer}>
+    <Link shallow href={`/?postId=${post.post_id}&source=profile`}>
+      <a
+        className={styles.postContainer}
+        onClick={() => setExpandedPost(post.post_id)}
+      >
         <img
           src={post.post_image.url}
           alt={post.user_name}
@@ -184,9 +188,11 @@ export function UserProfile({ userName }) {
           </button>
 
           <div className={styles.buttonsContainer}>
-            <button className={styles.messageButton}>
-              <strong>Message</strong>
-            </button>
+            <Link href={`direct/t/${user.user_id}`}>
+              <a className={styles.messageButton}>
+                <strong>Message</strong>
+              </a>
+            </Link>
             <button className={styles.followButton}>
               <Person style={{ padding: '0', margin: 0 }} fontSize="small" />
               <Check fontSize="small" className={styles.checkIcon} />
@@ -224,7 +230,7 @@ export function UserProfile({ userName }) {
           </p>
         </div>
         <div className={styles.postVideosTagged}>
-          <Link href={`/${user?.user_name}`}>
+          <Link shallow href={`/${user?.user_name}`}>
             <a
               className={cx(styles.link, {
                 [styles.isSelected]: location.asPath === `/${user?.user_name}`,
