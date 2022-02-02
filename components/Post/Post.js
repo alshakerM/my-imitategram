@@ -314,8 +314,11 @@ function CommentSection({
       {!isExpanded && (
         <div>
           <Link
+            shallow={!isMobile}
             href={
-              isMobile ? `/p/${datum.post_id}/comments` : `/p/${datum.post_id}`
+              isMobile
+                ? `/?postId=${datum.post_id}&comments=true`
+                : `/?postId=${datum.post_id}`
             }
           >
             <a
@@ -650,12 +653,14 @@ export function Post({ isIndependentPost, datum, onlyComments, isFloating }) {
           [styles.onlyComments]: onlyComments,
         })}
         style={
-          isFloating && {
-            maxHeight: Math.min(
-              window.innerHeight - VERTICAL_MARGIN * 2,
-              datum.media_dimensions.height
-            ),
-          }
+          isFloating
+            ? {
+                maxHeight: Math.min(
+                  window.innerHeight - VERTICAL_MARGIN * 2,
+                  datum.media_dimensions.height
+                ),
+              }
+            : {}
         }
       >
         <>

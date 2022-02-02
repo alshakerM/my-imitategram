@@ -10,10 +10,6 @@ export default function CatchAll({ query }) {
     select('ig-posts').getExpandedPost()
   );
 
-  const serverPostId = query?.postId?.[1];
-  const userName = query?.postId?.[0];
-  const onlyComments = query?.postId?.[2] === 'comments';
-
   // when expanded post is closed, the postId from the query remains stuck
   // which means postId is true, and expandedPostId is false, which looks like an independent post
   // this makes sure to keep track of expandedPostId until serverPostId changes (the query resets)
@@ -23,20 +19,30 @@ export default function CatchAll({ query }) {
     [serverPostId]
   );
 
+  const serverPostId = query?.postId;
+  const userName = query?.segments?.[0];
+  const onlyComments = query?.comments;
+
+  const userProfile = query?.segments?.length === 1;
+
   // user profile route
-  if (
-    query?.postId?.length === 1 ||
-    ['channel', 'tagged'].includes(query?.postId?.[1])
-  ) {
+  if (userProfile || ['channel', 'tagged'].includes(query?.segments?.[1])) {
     return (
       <>
         <NavBar userName={userName} />
         <UserProfile userName={userName} />
+
+        {expandedPostId && (
+          <PostPage
+            postId={expandedPostId}
+            isFloating
+            onlyComments={onlyComments}
+          />
+        )}
       </>
     );
   }
 
-  // expanded post (in feed) page
   if ((expandedPostId || lastExpandedPostId) && !onlyComments) {
     return (
       <>
@@ -44,7 +50,7 @@ export default function CatchAll({ query }) {
         <HomePage />
         <PostPage
           postId={expandedPostId || lastExpandedPostId}
-          isFloating
+          isFloating={!!expandedPostId}
           onlyComments={onlyComments}
         />
       </>

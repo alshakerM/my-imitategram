@@ -1,6 +1,6 @@
 .messagesPageContainer {
   max-width: 935px;
-  margin: 80px auto;
+  margin: 0 auto;
   display: flex;
   border-radius: 40px;
   box-sizing: border-box;
@@ -195,6 +195,7 @@
 .messagesInputSection {
   padding: 20px;
   box-sizing: border-box;
+  background-color: white;
 }
 .messagesInput {
   height: 18px;
@@ -358,6 +359,7 @@
 @media screen and (max-width: 735px) {
   .userSection {
     width: 100%;
+    display: none;
   }
   .sendersSection {
     width: 100%;

@@ -6,6 +6,7 @@ import styles from './Messages.module.css';
 import { useDispatch, useSelect } from '@wordpress/data';
 import '../../../stores/messagesStore';
 import Image from 'next/image';
+import { ArrowBackIos } from '@mui/icons-material';
 
 function UserSection() {
   return (
@@ -147,6 +148,13 @@ export function Messages({ fromUserId }) {
             hidden={isMobile && !fromUserId}
           >
             <div className={styles.messagesHeader}>
+              {isMobile && (
+                <Link href="/direct/inbox">
+                  <a>
+                    <ArrowBackIos style={{ color: 'black' }} />
+                  </a>
+                </Link>
+              )}
               {threadData?.from_user_id && (
                 <div className={styles.headerImgContainer}>
                   <Image

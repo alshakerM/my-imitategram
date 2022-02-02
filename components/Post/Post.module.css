@@ -140,15 +140,16 @@
   }
   .postContent.isExpanded.onlyComments section.commentInputSection {
     gap: 10px;
-    background-color: #dbdbdb;
+    background-color: #efefef;
     padding: 10px;
+    margin-top: 40px;
   }
   .postContent.isExpanded.onlyComments
     section.commentInputSection
     .postCommentInput {
     background-color: #fff;
     border-radius: 20px;
-    padding: 5px;
+    padding: 12px 16px;
     border: 1px solid rgb(219, 219, 219);
   }
 }

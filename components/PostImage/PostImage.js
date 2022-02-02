@@ -98,7 +98,7 @@ export function PostImage({
         const taggedY = (tag.coordinates.y / postDimensions.height) * 100 - 50;
 
         return (
-          <>
+          <React.Fragment key={tag.tagged_user_name}>
             {isImgClicked && (
               <div
                 className={styles.tooltip}
@@ -120,7 +120,7 @@ export function PostImage({
                 </div>
               </div>
             )}
-          </>
+          </React.Fragment>
         );
       })}
       {tags && (
