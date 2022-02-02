@@ -1,4 +1,4 @@
-import { Cancel, ChevronLeft } from '@mui/icons-material';
+import { ArrowBackIos, Cancel } from '@mui/icons-material';
 import Link from 'next/link';
 import React from 'react';
 import { Icons } from '../Icons/Icons';
@@ -14,43 +14,55 @@ export function NavBar({ userName }) {
   const [searchActive, setSearchActive] = React.useState(false);
   const hasValue = inputValue;
   const router = useRouter();
-  const commentsOnly = router.asPath.endsWith('comments');
-
+  const commentsOnly = router.query.comments;
+  const isUserProfile = router.asPath.match(/^\/\w+$/);
   return (
     <>
       <Route
-        matcher={(asPath) => {
-          return asPath.endsWith('comments') || asPath.match(/\/\w+$/);
+        matcher={() => {
+          return commentsOnly || isUserProfile;
         }}
+        paths={['/direct/inbox']}
       >
+        <div
+          className={cx(styles.fixedPlaceholder, styles.hideOnDesktop)}
+        ></div>
         <nav className={cx(styles.limitedNavBar, styles.hideOnDesktop)}>
           <Link href="/">
             <a>
-              <ChevronLeft />
+              <ArrowBackIos style={{ color: 'black' }} />
             </a>
           </Link>
           <h1>
             <Route
-              matcher={(asPath) => {
-                return asPath.endsWith('comments');
+              matcher={() => {
+                return commentsOnly;
               }}
             >
               Comments
             </Route>
             <Route
-              matcher={(asPath) => {
-                return asPath.match(/\/\w+$/);
+              matcher={() => {
+                return isUserProfile;
               }}
             >
-              {userName}
+              <div>{userName}</div>
+            </Route>
+
+            <Route paths={['/direct/inbox']}>
+              <div>Direct</div>
             </Route>
           </h1>
+
           <Route
-            emptyValue={<div></div>}
-            matcher={(asPath) => {
-              return asPath.endsWith('comments');
+            matcher={() => {
+              return isUserProfile;
             }}
           >
+            <div style={{ width: 64 }}></div>
+          </Route>
+
+          <Route paths={['/direct/inbox']}>
             <Link href="/direct/inbox">
               <a>
                 <svg
@@ -70,31 +82,26 @@ export function NavBar({ userName }) {
           </Route>
         </nav>
       </Route>
-      {!commentsOnly && (
+      <Route
+        paths={['/[[...segments]]']}
+        negativeMatcher={() => {
+          return isUserProfile;
+        }}
+      >
+        <div
+          className={cx(styles.fixedPlaceholder, styles.hideOnDesktop)}
+        ></div>
         <nav className={cx(styles.mobileTopNavContainer, styles.hideOnDesktop)}>
-          <Route
-            paths={['/[[...postId]]']}
-            negativeMatcher={(asPath) => {
-              return asPath.match(/\/\w+$/);
-            }}
-          >
-            <div>
-              <TopMobileIcons className={styles.mobileNavContent} />
-            </div>
-          </Route>
-          <Route
-            paths={['/[[...postId]]']}
-            matcher={(asPath) => {
-              return asPath.match(/\/\w+$/);
-            }}
-          >
-            <div className={styles.mobileBottomNavContainer}>
-              <BottomMobileIcons className={styles.mobileIcons} />
-            </div>
-          </Route>
-        </nav>
-      )}
+          <div>
+            <TopMobileIcons className={styles.mobileNavContent} />
+          </div>
 
+          <div className={styles.mobileBottomNavContainer}>
+            <BottomMobileIcons className={styles.mobileIcons} />
+          </div>
+        </nav>
+      </Route>
+      <div className={cx(styles.fixedPlaceholder, styles.hideOnMobile)}></div>
       <nav className={cx(styles.navContainer, styles.hideOnMobile)}>
         <div className={styles.navContent}>
           <Link href="/">
