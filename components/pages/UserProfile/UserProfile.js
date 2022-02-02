@@ -144,7 +144,7 @@ export function UserProfile({ userName }) {
   );
 
   const [openDialog, setOpenDialog] = React.useState(false);
-  if (!user) {
+  if (!user?.user_id) {
     return null;
   }
   return (
