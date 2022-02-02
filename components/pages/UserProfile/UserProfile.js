@@ -144,6 +144,9 @@ export function UserProfile({ userName }) {
   );
 
   const [openDialog, setOpenDialog] = React.useState(false);
+  if (!user) {
+    return null;
+  }
   return (
     <>
       <div className={styles.profilePage}>
