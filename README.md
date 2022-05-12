@@ -8,5 +8,5 @@ I decided to document this experience, the lessons I learned, the challenges I f
 
 I called it `Imitategram` because of Google Safe Browsing. GSB flags your site if it looks too similar to a popular site to prevent phishing. So, I had to rename the app and added a disclaimer when you first visit the app.
 
-For more details please check out the [blog post](https://dev.to/alshakerm/building-an-instagram-replica-from-scratch-39fb)
+For more details please check out the [blog post](https://dev.to/alshakerm/building-an-instagram-replica-from-scratch-39fb).
 
